@@ -1,4 +1,4 @@
-package board;
+package java;
 
 import java.io.File;
 import java.text.NumberFormat;
