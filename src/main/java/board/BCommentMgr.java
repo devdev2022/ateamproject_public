@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import guestbook.DBConnectionMgr;
-
 public class BCommentMgr{
 
 	private DBConnectionMgr pool;
