@@ -14,13 +14,14 @@ CREATE TABLE tblboard (
 
   	type_board smallint UNSIGNED  ,					/*게시판 분류 코드*/
  	type_cat smallint UNSIGNED  ,  					/*게시글 카테고리 분류 코드*/
-		
-  	fmus_name VARCHAR(100)  NULL,						/*첨부파일(음악) 이름*/
-  	fmus_size int(100)  NULL,							/*첨부파일(음악) 크기*/
-  	fimg_name varchar(100)  NULL,						/*첨부파일(사진) 이름*/
-  	fimg_size int(100)  NULL,							/*첨부파일(사진) 크기*/
-
   PRIMARY KEY (`num`)
+)
+
+/*파일 업로드*/
+CREATE TABLE tblupfile(
+	num INT NOT NULL,										/*게시판 번호*/
+	filename CHAR(40) NOT NULL, 						/*파일이름*/
+	filesize INT(40) NOT NULL 							/*파일크기*/
 )
 
 /*댓글 데이터 테이블*/
