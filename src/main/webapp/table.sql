@@ -19,7 +19,7 @@ CREATE TABLE tblboard (
 
 /*파일 업로드*/
 CREATE TABLE tblupfile(
-	num INT NOT NULL,										/*게시판 번호*/
+	num INT ,										/*게시판 번호*/
 	filename CHAR(40) NOT NULL, 						/*파일이름*/
 	filesize INT(40) NOT NULL 							/*파일크기*/
 )
