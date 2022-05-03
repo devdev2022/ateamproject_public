@@ -14,10 +14,6 @@ public class BoardBean {
 	private int count;
 	private int type_board;
 	private int type_cat;
-	private String fmus_name;
-	private int fmus_size;
-	private String fimg_name;
-	private int fimg_int;
 	
 	public int getNum() {
 		return num;
@@ -90,30 +86,6 @@ public class BoardBean {
 	}
 	public void setType_cat(int type_cat) {
 		this.type_cat = type_cat;
-	}
-	public String getFmus_name() {
-		return fmus_name;
-	}
-	public void setFmus_name(String fmus_name) {
-		this.fmus_name = fmus_name;
-	}
-	public int getFmus_size() {
-		return fmus_size;
-	}
-	public void setFmus_size(int fmus_size) {
-		this.fmus_size = fmus_size;
-	}
-	public String getFimg_name() {
-		return fimg_name;
-	}
-	public void setFimg_name(String fimg_name) {
-		this.fimg_name = fimg_name;
-	}
-	public int getFimg_int() {
-		return fimg_int;
-	}
-	public void setFimg_int(int fimg_int) {
-		this.fimg_int = fimg_int;
 	}
 	
 	
