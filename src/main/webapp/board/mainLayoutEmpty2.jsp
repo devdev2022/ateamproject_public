@@ -1,4 +1,16 @@
+<%@page contentType="text/html; charset=EUC-KR"%>
+<%
 
+
+%>
+
+
+<!DOCTYPE html>
+<!-- This site was created in Webflow. http://www.webflow.com -->
+<!-- Last Published: Sun May 01 2022 13:21:17 GMT+0000 (Coordinated Universal Time) -->
+
+<head>
+<style>
 /* Generated on: Tue May 03 2022 04:19:28 GMT+0000 (Coordinated Universal Time) */
 /* ==========================================================================
    normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
@@ -65,7 +77,7 @@
   text-align: center;
 }
 
-.ateam-footer-flex-container {
+.footer-flex-container {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -96,7 +108,7 @@
   object-position: 0% 50%;
 }
 
-.ateam_footer_heading {
+.footer-heading {
   margin-top: 0px;
   margin-bottom: 20px;
   font-size: 14px;
@@ -297,7 +309,7 @@
   outline-width: 3px;
 }
 
-.ateam_sidebar_left {
+.sidebar {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -327,7 +339,7 @@
   background-color: #fff;
 }
 
-.ateam_sidebar_right {
+.column-15 {
   min-height: 800px;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
@@ -414,7 +426,7 @@
   line-height: 0px;
 }
 
-.ateam_columns {
+.ateam_sidebar {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -460,7 +472,7 @@
     display: inline-block;
   }
 
-  .ateam_sidebar_right {
+  .column-15 {
     background-color: #1a1919;
   }
 
@@ -498,12 +510,12 @@
     object-fit: contain;
   }
 
-  .ateam_sidebar_left {
+  .sidebar {
     display: none;
     overflow: visible;
   }
 
-  .ateam_sidebar_right {
+  .column-15 {
     display: none;
     overflow: visible;
   }
@@ -520,7 +532,7 @@
     text-align: left;
   }
 
-  .ateam-footer-flex-container {
+  .footer-flex-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -532,7 +544,7 @@
     height: 60px;
   }
 
-  .ateam_footer_heading {
+  .footer-heading {
     margin-top: 20px;
   }
 
@@ -621,3 +633,28 @@
   -ms-grid-row-span: 1;
   grid-row-end: span 1;
 }
+</style>
+
+</head>
+
+<body class="body">
+<%@ include file="jsplayout/top.jsp" %>
+	<div class="ateam_sidebar">
+		<%@ include file="jsplayout/left.jsp" %>
+		
+		<div class="ateam_contents w-col w-col-8">
+			<!-- ==============본문 내용 시작============= -->
+			
+
+			
+			<!-- ==============본문 내용 끝============== -->
+		</div>
+		
+		<%@ include file="jsplayout/right.jsp" %>
+		
+	</div>
+<%@ include file="jsplayout/bottom.jsp" %>
+	
+	
+</body>
+</html>

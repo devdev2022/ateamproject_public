@@ -12,9 +12,7 @@
 <title>6832&#x27;s Superb Site</title>
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <meta content="Webflow" name="generator" />
-<link
-	href="https://uploads-ssl.webflow.com/626e3140a5f90ae6560b2381/css/6832s-superb-site.webflow.3fbd2bf31.css"
-	rel="stylesheet" type="text/css" />
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
 	type="text/javascript"></script>
@@ -34,17 +32,17 @@
 				&& (n.className += t + "touch")
 	}(window, document);
 </script>
-<link href="https://uploads-ssl.webflow.com/img/favicon.ico"
-	rel="shortcut icon" type="image/x-icon" />
-<link href="https://uploads-ssl.webflow.com/img/webclip.png"
-	rel="apple-touch-icon" />
+
 </head>
 
 
 <!-- =============================================================================================== -->
 
 
-	<div class="ateam_sidebar_right w-col w-col-2"></div>
+
+<body>
+	<div class="column-15 w-col w-col-2"></div>
+</body>
 
 
 
