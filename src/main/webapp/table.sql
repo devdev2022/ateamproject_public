@@ -4,8 +4,8 @@ CREATE TABLE tblboard (
 	id VARCHAR(20)  NULL,    							/*작성자 아이디*/
  	subject CHAR(40)  NULL, 							/*제목*/
  	content TEXT,											/*내용*/
- 	pos SMALLINT UNSIGNED  NULL,						/*답변글들의 정렬값*/
- 	ref SMALLINT(10)  NULL,								/*원글인 경우 자기 자신의 번호,
+ 	pos SMALLINT UNSIGNED  NULL,			/*답변글들의 정렬값*/
+ 	ref SMALLINT(10)  NULL,							/*원글인 경우 자기 자신의 번호,
 																답글인 경우 원글의 번호*/
 	depth smallint unsigned  NULL,					/*몇 번째 답글인지 나타냄*/
  	regdate date  NULL,									/*작성일자*/
@@ -20,8 +20,8 @@ CREATE TABLE tblboard (
 /*파일 업로드*/
 CREATE TABLE tblupfile(
 	num INT ,										/*게시판 번호*/
-	filename CHAR(40) NOT NULL, 						/*파일이름*/
-	filesize INT(40) NOT NULL 							/*파일크기*/
+	filename CHAR(40) , 						/*파일이름*/
+	filesize INT(40)  							/*파일크기*/
 )
 
 /*댓글 데이터 테이블*/
