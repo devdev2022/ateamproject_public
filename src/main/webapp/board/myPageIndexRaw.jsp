@@ -11,7 +11,6 @@
 	data-wf-site="626f3913f1df6551bec8a735">
 <head>
 <meta charset="utf-8" />
-<title>6832&#x27;s Radical Site</title>
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <meta content="Webflow" name="generator" />
 <link

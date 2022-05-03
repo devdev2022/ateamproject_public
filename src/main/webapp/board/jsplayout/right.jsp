@@ -44,10 +44,7 @@
 <!-- =============================================================================================== -->
 
 
-
-<body>
-	<div class="column-15 w-col w-col-2"></div>
-</body>
+	<div class="ateam_sidebar_right w-col w-col-2"></div>
 
 
 
