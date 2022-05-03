@@ -13,9 +13,9 @@
 <title>6832&#x27;s Superb Site</title>
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <meta content="Webflow" name="generator" />
-<link
+<!-- <link
 	href="https://uploads-ssl.webflow.com/626e3140a5f90ae6560b2381/css/6832s-superb-site.webflow.3fbd2bf31.css"
-	rel="stylesheet" type="text/css" />
+	rel="stylesheet" type="text/css" /> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
 	type="text/javascript"></script>

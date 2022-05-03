@@ -21,6 +21,7 @@
 		<div class="column-14 w-col w-col-8">
 			<!-- ==============본문 내용 시작============= -->
 			
+			<%@ include file="myPageIndexRaw.jsp" %>
 			
 			<!-- ==============본문 내용 끝============== -->
 		</div>
