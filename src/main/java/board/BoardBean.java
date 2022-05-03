@@ -9,7 +9,7 @@ public class BoardBean {
 	private int pos;
 	private int ref;
 	private int depth;
-	private String refdate;
+	private String regdate;
 	private String ip;
 	private int count;
 	private int type_board;
@@ -57,11 +57,11 @@ public class BoardBean {
 	public void setDepth(int depth) {
 		this.depth = depth;
 	}
-	public String getRefdate() {
-		return refdate;
+	public String getRegdate() {
+		return regdate;
 	}
-	public void setRefdate(String refdate) {
-		this.refdate = refdate;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 	public String getIp() {
 		return ip;
