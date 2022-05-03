@@ -51,7 +51,8 @@
 
 .columns {
   position: relative;
-  top: 3vw;
+  top: 3vh;
+  min-height: 70%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,7 +65,6 @@
 }
 
 .column {
-  height: 50vw;
   border-style: none dotted none none;
   border-width: 1px;
   border-color: #000;

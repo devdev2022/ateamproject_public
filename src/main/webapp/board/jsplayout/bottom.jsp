@@ -42,7 +42,7 @@
 
 
 
-	<footer id="footer" class="ateam_footer wf-section">
+	<footer id="ateam_footer" class="ateam_footer wf-section">
 		<div class="w-container">
 			<div class="footer-flex-container">
 				<a href="#" class="footer-logo-link"> <img
@@ -51,26 +51,26 @@
 				<div>
 					<h2 class="ateam_footer_heading">Heading Label</h2>
 					<ul role="list" class="w-list-unstyled">
-						<li><a href="#" class="footer-link">Text Link</a></li>
-						<li><a href="#" class="footer-link">Text Link</a></li>
-						<li><a href="#" class="footer-link">Text Link</a></li>
-						<li><a href="#" class="footer-link">Text Link</a></li>
-						<li><a href="#" class="footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
 					</ul>
 				</div>
 				<div>
 					<h2 class="ateam_footer_heading">Heading Label</h2>
 					<ul role="list" class="w-list-unstyled">
-						<li><a href="#" class="footer-link">Text Link</a></li>
-						<li><a href="#" class="footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
 					</ul>
 				</div>
 				<div>
 					<h2 class="ateam_footer_heading">Heading Label</h2>
 					<ul role="list" class="w-list-unstyled">
-						<li><a href="#" class="footer-link">Text Link</a></li>
-						<li><a href="#" class="footer-link">Text Link</a></li>
-						<li><a href="#" class="footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
 					</ul>
 				</div>
 			</div>

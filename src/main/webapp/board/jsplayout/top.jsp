@@ -11,7 +11,7 @@
 		</div>
 	</header>
 	<header class="ateam_headbar wf-section">
-		<div class="w-layout-grid header_navbar">
+		<div class="w-layout-grid ateam_header_navbar">
 			
 			<div class="ateam_header_nav_btn"></div>
 			<div class="ateam_header_nav_btn">HOME</div>
