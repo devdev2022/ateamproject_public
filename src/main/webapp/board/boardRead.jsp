@@ -160,6 +160,104 @@
   grid-column-gap: 3vw;
 }
 
+
+
+.post-comment-container {
+	padding-right: 2vw;
+	padding-left: 2vw;
+	list-style-type: none;
+}
+
+.list-item {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-bottom: 1vw;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.list-3 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.list-4 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding-left: 0px;
+	list-style-type: none;
+}
+
+.list-item-2 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.comment-user-info {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-bottom: 0px;
+}
+
+.list-item-3 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.list-4 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding-left: 0px;
+	list-style-type: none;
+}
+
+.comment-data {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-bottom: 0px;
+	padding-left: 0px;
+	list-style-type: none;
+}
+
+.post-comment {
+	margin-top: 1vw;
+}
+
+.comment-section-header {
+	margin-top: 5vw;
+}
+
+.comment-write-container {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	margin-bottom: 5vw;
+}
+
+
 @media screen and (max-width: 991px) {
   .page {
     padding-right: 2vw;
@@ -225,5 +323,41 @@
 		<button id="replybtn" type="button" class="btn btn-dark">답글</button>
 		<button id="listbtn" type="button" class="btn btn-dark">목록</button>
 	</div>
+	
+		<div class="comment-section-header w-container">
+		<div>댓글 [0]</div>
+	</div>
+	<div class="post-comment w-container">
+		<ul role="list" class="post-comment-container">
+			<li class="list-item"><ul role="list"
+					class="comment-user-info w-list-unstyled">
+					<li class="list-item-3">
+						<img src="icon/profile_def.png" width="20vw">
+					</li>
+					<li>
+						Username00000
+					</li>
+					<li></li>
+				</ul>
+				<ul role="list" class="comment-data w-list-unstyled">
+					<li class="list-item-2"><img src="icon/like_gray.png"></li>
+					<li>작성 시간</li>
+				</ul></li>
+			<li class="comment-contents">댓글 내용입니다.</li>
+		</ul>
+	</div>
+	<div class="comment-write-header w-container">
+		<div><b>댓글 달기</b></div>
+	</div>
+	<div class="comment-write-container w-container">
+		<div class="input-group mb-3">
+			<input type="text" class="form-control"
+				placeholder="Recipient's username" aria-label="Recipient's username"
+				aria-describedby="button-addon2">
+			<button class="btn btn-outline-secondary" type="button"
+				id="button-addon2">등록</button>
+		</div>
+	</div>
+
 </body>
 </html>
