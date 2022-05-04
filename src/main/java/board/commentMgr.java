@@ -100,4 +100,27 @@ public class commentMgr {
 		}
 		return;
 	}
+//	댓글 총 수량
+	public int getBCommentCount(int num/*게시물 번호*/) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		try {
+			con = pool.getConnection();
+			sql = "select count(num) FROM tblcomment where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return count;
+	}
 }

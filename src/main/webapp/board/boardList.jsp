@@ -1,6 +1,61 @@
+<%@page import="board.BoardMgr"%>
+<%@page import="board.UpFileBean"%>
+<%@page import="board.BoardBean"%>
+<%@page import="java.util.Vector"%>
 <%@page contentType="text/html; charset=EUC-KR"%>
+<jsp:useBean id="bMgr" class="board.BoardMgr"/>
+<jsp:useBean id="cMgr" class="board.commentMgr"/>
+<jsp:useBean id="fMgr" class="board.UpFileBean"/>
 <%
+	int totalRecord = 0; //총 게시물 수
+	int numPerPage = 10; //페이지당 레코드 개수(5, 10, 15, 20, 25, 30)
+	int pagePerBlock = 10; //블럭당 페이지 개수
+	int totalPage = 0; //총 페이지 개수
+	int totalBlock = 0; //총 블럭 개수
+	int nowPage = 1; //현재 페이지
+	int nowBlock = 1; //현재 블럭
+	
+	if(request.getParameter("numPerPage")!=null){
+		numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
+	}
+//	 검색에 필요한 변수
+	String keyField = null;
+	String keyWord = null;
+	String categori = null;
+	String bValue = null;
+	
+	if(request.getParameter("keyWord")!=null){
+		keyField = request.getParameter("keyField");
+		keyWord = request.getParameter("keyWord");
+		categori = request.getParameter("categori");
+		bValue = request.getParameter("bValue");
+	}
+	
+//	페이지 클릭 또는 다른페이지 에서 호출
+	if(request.getParameter("nowPage")!=null){
+		nowPage = Integer.parseInt(request.getParameter("nowPage"));
+	}
 
+// SQL문 limit에 들어가는 변수 선언
+	int start = (nowPage * numPerPage) - numPerPage;
+	int cnt = numPerPage; //default = 10개
+			
+//	검색 후에 다시 처음 리스트 요청
+	if(request.getParameter("reload")!=null && request.getParameter("reload").equals("true")){
+		keyField = null;
+		keyWord = null;
+	}
+
+	totalRecord = bMgr.getBoardCount(keyField, keyWord, categori, bValue);
+	
+// 전체 페이지 개수
+	totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
+//	전체 블럭 개수
+	totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
+// 현재 블럭
+	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
+
+	
 %>
 
 
@@ -17,6 +72,48 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+<script type="text/javascript">
+function read(num) {
+	document.readFrm.num.value = num;
+	document.readFrm.action = "read.jsp";
+	document.readFrm.submit();
+}
+
+function block(block) {
+	document.readFrm.nowPage.value=<%=pagePerBlock%>*(block - 1) + 1;
+	document.readFrm.submit();
+}
+
+function pageing(page) {
+	document.readFrm.nowPage.value=page;
+	document.readFrm.submit();
+}
+
+function list() {
+	document.listFrm.action = "boardList.jsp";
+	document.listFrm.submit();
+}
+
+function check() {
+	if(document.searchFrm.keyWord.value==null){
+		alert("검색어를 입력하세요.");
+		document.searchFrm.keyWord.focus();
+		return;
+	}
+	document.searchFrm.submit();
+}
+
+function setkeyField(keyField) {
+	document.searchFrm.keyField.value = keyField
+}
+
+function read(num) {
+	document.readFrm.num.value = num;
+	document.readFrm.action = "read.jsp";
+	document.readFrm.submit();
+}
+
+</script>
 
 <!-- webflow 요소 -->
 <style>
@@ -2146,19 +2243,19 @@ rotate(
 		<div class="board-category wf-section">
 			<div class="div-block">
 				<div class="text-block">게시판 제목</div>
-				<div>Total : 7 Articles( 1/1 Pages)</div>
+				<div>Total : <%=totalRecord %> Articles( <%=nowPage + " / " + totalPage %> Pages)</div>
 			</div>
 		</div>
 		<div class="board-btns-top w-row">
 			<div class="column w-col w-col-10 w-col-small-10 w-col-tiny-10">
-				<a href="#" class="category-btn w-button">전체</a><a href="#"
-					class="category-btn w-button">음악</a><a href="#"
-					class="category-btn w-button">리뷰</a><a href="#"
-					class="category-btn w-button">가사해석</a><a href="#"
-					class="category-btn w-button">인증/후기</a><a href="#"
-					class="category-btn w-button">그림/아트웍</a><a href="#"
-					class="category-btn w-button">일반</a><a href="#"
-					class="category-btn w-button">공지</a>
+				<a href="#" class="category-btn w-button">전체</a>
+				<a href="#" class="category-btn w-button">음악</a>
+				<a href="#" class="category-btn w-button">리뷰</a>
+				<a href="#" class="category-btn w-button">가사해석</a>
+				<a href="#" class="category-btn w-button">인증/후기</a>
+				<a href="#" class="category-btn w-button">그림/아트웍</a>
+				<a href="#" class="category-btn w-button">일반</a>
+				<a href="#" class="category-btn w-button">공지</a>
 			</div>
 
 			<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
@@ -2167,14 +2264,12 @@ rotate(
 						id="dropdownMenuButton2" data-bs-toggle="dropdown"
 						aria-expanded="false">5개씩 보기</button>
 						
-
-					<ul class="dropdown-menu dropdown-menu-dark"
-						aria-labelledby="dropdownMenuButton2">
-						<li><a class="dropdown-item active" href="#">5개씩 보기</a></li>
-						<li><a class="dropdown-item" href="#">10개씩 보기</a></li>
-						<li><a class="dropdown-item" href="#">15개씩 보기</a></li>
-						<li><a class="dropdown-item" href="#">20개씩 보기</a></li>
-					</ul>
+						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+							<li><a class="dropdown-item active" href="#">5개씩 보기</a></li>
+							<li><a class="dropdown-item" href="#">10개씩 보기</a></li>
+							<li><a class="dropdown-item" href="#">15개씩 보기</a></li>
+							<li><a class="dropdown-item" href="#">20개씩 보기</a></li>
+						</ul>
 				</div>
 			</div>
 
@@ -2188,47 +2283,65 @@ rotate(
 		<table witdh="100%">
 			<tr>
 				<td align="center" colspan="2">
-
-					<table cellspacing="0">
-						<tr align="center" bgcolor="#D0D0D0">
-							<td width="100">번 호</td>
-							<td width="250">제 목</td>
-							<td width="100">이 름</td>
-							<td width="150">날 짜</td>
-							<td width="100">조회수</td>
-						</tr>
-
-						<tr align="center">
-							<td>1</td>
-							<td align="left"><a href=""> 제목</a> <img
-								src="icon/icon_file.gif" align="middle"> <font color="red">(1)</font>
-							</td>
-							<td>이름</td>
-							<td>2022-01-01</td>
-							<td>0</td>
-						</tr>
-
-						<tr align="center">
-							<td>1</td>
-							<td align="left"><a href=""> 제목</a> <img
-								src="icon/icon_file.gif" align="middle"> <font color="red">(1)</font>
-							</td>
-							<td>이름</td>
-							<td>2022-01-01</td>
-							<td>0</td>
-						</tr>
-
-						<tr align="center">
-							<td>1</td>
-							<td align="left"><a href=""> 제목</a> <img
-								src="icon/icon_file.gif" align="middle"> <font color="red">(1)</font>
-							</td>
-							<td>이름</td>
-							<td>2022-01-01</td>
-							<td>0</td>
-						</tr>
-					</table>
-
+					<%
+						Vector<BoardBean> Bvlist = bMgr.getBoardList(keyField, keyWord, start, cnt, categori, bValue);
+						int listSize = Bvlist.size(); //마지막페이지 개수 고려
+						if(Bvlist.isEmpty()){
+					%>
+						<table cellspacing="0">
+								<tr align="center" bgcolor="#D0D0D0">
+									<td width="100">번 호</td>
+									<td width="250">제 목</td>
+									<td width="100">아이디</td>
+									<td width="150">날 짜</td>
+									<td width="100">조회수</td>
+								</tr>
+								<tr>
+									<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+								</tr>
+					<%
+								
+						}else{
+					%>		
+							<table cellspacing="0">
+								<tr align="center" bgcolor="#D0D0D0">
+									<td width="100">번 호</td>
+									<td width="250">제 목</td>
+									<td width="100">아이디</td>
+									<td width="150">날 짜</td>
+									<td width="100">조회수</td>
+								</tr>
+								<%
+									for(int i=0; i<numPerPage; i++){
+										if(i == listSize){
+											break;
+										}
+										BoardBean Bbean = Bvlist.get(i);
+										int num = Bbean.getNum();
+										String subject = Bbean.getSubject();
+										String id = Bbean.getId();
+										String regdate = Bbean.getRegdate();
+										int depth = Bbean.getDepth();
+										int count = Bbean.getCount();
+//										파일
+										UpFileBean Fbean = bMgr.getBoardFile(num);
+										int Fnum = Fbean.getNum();
+										String filename = Fbean.getFilename();
+										int filesize = Fbean.getFilesize();
+//										댓글 수
+										int bcount = cMgr.getBCommentCount(num);
+								%>
+										<tr>
+											<td align="center"><%=totalRecord - start - i %></td>
+											<td ><a href="#"><%=subject %></a></td>
+											<td align="center"><%=id %></td>
+											<td align="center"><%=regdate %></td>
+											<td align="center"><%=count %></td>
+										</tr>
+										
+							<%}%>
+								</table>
+						<%}	%>
 				</td>
 			</tr>
 		</table>
@@ -2241,25 +2354,33 @@ rotate(
 			<tr>
 				<td>
 					<div class="board-bottom-container w-container">
-						<div class="btn-toolbar" role="toolbar"
-							aria-label="Toolbar with button groups">
-							<div class="btn-group me-2" role="group"
-								aria-label="Second group">
-								<button type="button" class="btn btn-secondary"><</button>
-								<button type="button" class="btn btn-secondary">1</button>
-								<button type="button" class="btn btn-secondary">2</button>
-								<button type="button" class="btn btn-secondary">3</button>
-								<button type="button" class="btn btn-secondary">></button>
+						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+							<div class="btn-group me-2" role="group" aria-label="Second group">
+								<% if(nowBlock > 1) {%>
+									<a href="javascript:block('<%=nowBlock - 1%>')"><input type="button" class="btn btn-secondary" value="<"></a>
+								<%}	%>
+								<%
+									int pageStart = (nowBlock - 1) * pagePerBlock + 1;
+									int pageEnd = (pageStart + pagePerBlock) < totalPage ? pageStart + pagePerBlock : totalPage + 1; 
+									for(;pageStart<pageEnd;pageStart++){
+								%>
+								<a href="javascript:pageing('<%=pageStart%>')"><input type="button" class="btn btn-secondary" value="<%=pageStart %>"></a>
+								<%} %>
+								<% if(nowBlock < totalBlock) {%>
+									<a href="javascript:block('<%=nowBlock + 1%>')"><input type="button" class="btn btn-secondary" value=">"></a>
+								<%}	%>
 							</div>
 						</div>
 					</div>
 				</td>
-				<td align="right"><a style="color: white;" href=""><button
-							type="button" class="btn btn-dark">글쓰기</button></a> <a href=""><button
-							type="button" class="btn btn-light">처음으로</button></a></td>
+				<td align="right">
+					<a style="color: white;" href="boardPost.jsp"><button type="button" class="btn btn-dark">글쓰기</button></a> 
+					<a href="javascript:list()"><button type="button" class="btn btn-light">처음으로</button></a>
+				</td>
 			</tr>
 		</table>
 
+	<form name="searchFrm" >
 		<table>
 			<tr>
 				<hr width="100%">
@@ -2267,24 +2388,37 @@ rotate(
 			<tr>
 				<td align="center">
 					<div class="input-group mb-3">
-						<button class="btn btn-outline-secondary dropdown-toggle"
-							type="button" data-bs-toggle="dropdown" aria-expanded="false">이름</button>
+						<input class="btn btn-outline-secondary dropdown-toggle"
+							type="button" data-bs-toggle="dropdown" aria-expanded="false" name="keyField" value="아이디">
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">이름</a></li>
-							<li><a class="dropdown-item" href="#">제목</a></li>
-							<li><a class="dropdown-item" href="#">내용</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('아이디')">아이디</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('제목')">제목</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('내용')">내용</a></li>
 						</ul>
 						<input type="text" class="form-control"
 							placeholder="검색 키워드를 입력하세요."
 							aria-label="Recipient's username"
-							aria-describedby="button-addon2">
-						<button class="btn btn-outline-secondary" type="button"
-							id="button-addon2">검색</button>
+							aria-describedby="button-addon2" name="keyWord">
+						<input class="btn btn-outline-secondary" type="button" id="button-addon2" value="검색" onclick="check()">
 					</div>
 
 				</td>
 			</tr>
 		</table>
+	</form>
+		<form name="listFrm" method="post">
+			<input type="hidden" name="reload" value="ture">
+			<input type="hidden" name="nowPage" value="1">
+		</form>
+		<form name="readFrm">
+			<input type="hidden" name="nowPage" value="<%=nowPage%>">
+			<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
+			<input type="hidden" name="keyField" value="<%=keyField%>">
+			<input type="hidden" name="keyWord" value="<%=keyWord%>">
+			<input type="hidden" name="categori" value="<%=categori%>">
+			<input type="hidden" name="bValue" value="<%=bValue%>">
+			<input type="hidden" name="num" >
+		</form>
 	</div>
 	<!-- 하단 영역 끝 -->
 </body>

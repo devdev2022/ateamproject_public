@@ -171,7 +171,7 @@
 	</div>
 	<div class="layout-lower-bottom w-container">
 		<button type="button" class="btn btn-dark">저장</button>
-		<button type="button" class="btn btn-dark">취소</button>
+		<a href="history.back()"><button type="button" class="btn btn-dark">취소</button></a>
 
 	</div>
 	
