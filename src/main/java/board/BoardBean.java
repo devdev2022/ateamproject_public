@@ -12,8 +12,8 @@ public class BoardBean {
 	private String regdate;
 	private String ip;
 	private int count;
-	private int type_board;
-	private int type_cat;
+	private String type_board;
+	private String type_cat;
 	
 	public int getNum() {
 		return num;
@@ -75,16 +75,16 @@ public class BoardBean {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public int getType_board() {
+	public String getType_board() {
 		return type_board;
 	}
-	public void setType_board(int type_board) {
+	public void setType_board(String type_board) {
 		this.type_board = type_board;
 	}
-	public int getType_cat() {
+	public String getType_cat() {
 		return type_cat;
 	}
-	public void setType_cat(int type_cat) {
+	public void setType_cat(String type_cat) {
 		this.type_cat = type_cat;
 	}
 	
