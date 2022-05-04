@@ -17,6 +17,7 @@ CREATE TABLE tblboard (
   PRIMARY KEY (`num`)
 )
 
+
 /*파일 업로드*/
 CREATE TABLE tblupfile(
 	num INT ,										/*게시판 번호*/
