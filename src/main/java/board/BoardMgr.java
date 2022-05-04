@@ -112,7 +112,7 @@ public class BoardMgr {
 		}
 	}
 	
-//	게시물 삭제 + 파일
+//	게시물 삭제 + 파일 FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE 로 묶어둠
 	public void deleteBoard(int num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -122,14 +122,7 @@ public class BoardMgr {
 			sql = "delete from tblBoard where num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-			int cnt = pstmt.executeUpdate();
-			pstmt.close();
-			if(cnt == 1) {
-				sql = "delete from tblupfile where num=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, num);
-				pstmt.executeUpdate();
-			}
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
