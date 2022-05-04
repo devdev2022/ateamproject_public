@@ -12,8 +12,8 @@ CREATE TABLE tblboard (
  	ip VARCHAR(15)  NULL,								/*ip주소*/
  	count smallint unsigned  NULL,					/*조회수*/
 
-  	type_board smallint UNSIGNED  ,					/*게시판 분류 코드*/
- 	type_cat smallint UNSIGNED  ,  					/*게시글 카테고리 분류 코드*/
+  	type_board varchar(5)   ,					/*게시판 분류 ex)자유, 공지, 등... */
+ 	type_cat varchar(5)  ,  					/*게시글 카테고리 분류 ex)힙합, 발라드, 등...*/
   PRIMARY KEY (`num`)
 )
 
