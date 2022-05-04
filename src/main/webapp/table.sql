@@ -73,7 +73,6 @@ CREATE TABLE tblCmtLikes (
   FOREIGN KEY (cnum) REFERENCES tblcomment(cnum) ON DELETE CASCADE,
   FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE,
   FOREIGN KEY (id) REFERENCES tblmember(id) ON DELETE CASCADE
-  
 )
 
 

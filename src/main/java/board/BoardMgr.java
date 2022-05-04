@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -248,7 +247,7 @@ public class BoardMgr {
 	}
 	
 //	카테고리 + 게시판분류 별 게시글 목록 검색기능o
-	public Vector<BoardBean> getBoardList(String keyField, String keyWord, int start, int cnt, String categori, String Bvalue){
+	public Vector<BoardBean> getBoardList(String keyField, String keyWord, int start, int cnt, String categori, String bValue){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -258,55 +257,55 @@ public class BoardMgr {
 			con = pool.getConnection();
 			if(keyWord == null || keyWord.trim().equals("")) {
 //				검색x
-				if(categori == null && Bvalue == null) {
+				if(categori == null && bValue == null) {
 //					카테고리x 게시판분류 x
 					sql = "select * from tblBoard order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, start);
 					pstmt.setInt(2, cnt);
-				}else if(Bvalue != null && categori != null) {
+				}else if(bValue != null && categori != null) {
 //					카테고리o 게시판분류o
 					sql = "select * from tblBoard where type_cat=? and type_board=? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, categori);
-					pstmt.setString(2, Bvalue);
+					pstmt.setString(2, bValue);
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, cnt);
-				}else if(categori != null && Bvalue == null){
+				}else if(categori != null && bValue == null){
 //					카테고리o 게시판분류x
 					sql = "select * from tblBoard where type_cat=? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, categori);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, cnt);
-				}else if(categori == null && Bvalue != null) {
+				}else if(categori == null && bValue != null) {
 //					카테고리x 게시판분류o
 					sql = "select * from tblBoard where type_board=? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, Bvalue);
+					pstmt.setString(1, bValue);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, cnt);
 				}
 			}else if(keyWord != null || !keyWord.trim().equals("")) {
 //				검색o
-				if(categori == null && Bvalue == null) {
+				if(categori == null && bValue == null) {
 //					카테고리x 게시판분류 x
 					sql = "select * from tblBoard where " + keyField + " like ? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, "%" + keyWord + "%");
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, cnt);
-				}else if(Bvalue != null && categori != null) {
+				}else if(bValue != null && categori != null) {
 //					카테고리o 게시판분류 o
 					sql = "select * from tblBoard where " + keyField + " like ? and type_cat=? and type_board=? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, "%" + keyWord + "%");
 					pstmt.setString(2, categori);
-					pstmt.setString(3, Bvalue);
+					pstmt.setString(3, bValue);
 					pstmt.setInt(4, start);
 					pstmt.setInt(5, cnt);
 				
-				}else if(categori != null && Bvalue == null){
+				}else if(categori != null && bValue == null){
 //					카테고리o 게시판분류 x
 					sql = "select * from tblBoard where " + keyField + " like ? and type_cat=? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
@@ -315,30 +314,32 @@ public class BoardMgr {
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, cnt);
 					
-				}else if(categori == null && Bvalue != null) {
+				}else if(categori == null && bValue != null) {
 //					카테고리x 게시판분류 o
 					sql = "select * from tblBoard where " + keyField + " like ? and type_board=? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, "%" + keyWord + "%");
-					pstmt.setString(2, Bvalue);
+					pstmt.setString(2, bValue);
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, cnt);
 				}
 			}
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				BoardBean bean = new BoardBean();
-				bean.setNum(rs.getInt("num"));
-				bean.setId(rs.getString("id"));
-				bean.setSubject(rs.getString("subject"));
-				bean.setPos(rs.getInt("pos"));
-				bean.setRef(rs.getInt("ref"));
-				bean.setRegdate(rs.getString("regdate"));
-				bean.setIp(rs.getString("ip"));
-				bean.setContent(rs.getString("content"));
-				bean.setType_board(rs.getString("type_board"));
-				bean.setType_cat(rs.getString("type_cat"));
-				vlist.addElement(bean);
+				BoardBean Bbean = new BoardBean();
+				Bbean.setNum(rs.getInt("num"));
+				Bbean.setId(rs.getString("id"));
+				Bbean.setSubject(rs.getString("subject"));
+				Bbean.setContent(rs.getString("content"));
+				Bbean.setPos(rs.getInt("pos"));
+				Bbean.setRef(rs.getInt("ref"));
+				Bbean.setDepth(rs.getInt("depth"));
+				Bbean.setRegdate(rs.getString("regdate"));
+				Bbean.setIp(rs.getString("ip"));
+				Bbean.setCount(rs.getInt("count"));
+				Bbean.setType_board(rs.getString("type_board"));
+				Bbean.setType_cat(rs.getString("type_cat"));
+				vlist.addElement(Bbean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
