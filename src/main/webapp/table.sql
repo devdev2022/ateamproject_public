@@ -70,7 +70,10 @@ CREATE TABLE tblCmtLikes (
   num INT(10) NOT NULL,									/*게시글 번호*/
   id CHAR(20) NOT NULL,									/*이용자 ID*/
   PRIMARY KEY (num),
-  FOREIGN KEY (cnum) REFERENCES tblcomment(cnum) ON DELETE CASCADE
+  FOREIGN KEY (cnum) REFERENCES tblcomment(cnum) ON DELETE CASCADE,
+  FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE,
+  FOREIGN KEY (id) REFERENCES tblmember(id) ON DELETE CASCADE
+  
 )
 
 
