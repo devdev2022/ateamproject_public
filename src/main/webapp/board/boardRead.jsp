@@ -235,6 +235,7 @@
 	margin-bottom: 0px;
 	padding-left: 0px;
 	list-style-type: none;
+	grid-column-gap: 1vw;
 }
 
 .post-comment {
@@ -340,7 +341,7 @@
 					<li></li>
 				</ul>
 				<ul role="list" class="comment-data w-list-unstyled">
-					<li class="list-item-2"><img src="icon/like_gray.png"></li>
+					<li class="list-item-2"><img src="icon/like_gray.png">&nbsp;1</li>
 					<li>작성 시간</li>
 				</ul></li>
 			<li class="comment-contents">댓글 내용입니다.</li>
