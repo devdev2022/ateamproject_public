@@ -1,6 +1,9 @@
+<%@page import="java.util.Vector"%>
+<%@page import="board.BoardBean"%>
 <%@page contentType="text/html; charset=EUC-KR"%>
+<jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <%
-
+	String id = "aaa";
 %>
 
 <!DOCTYPE html>
@@ -22,7 +25,15 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-
+<script>
+	function setCategory(category) {
+		document.postFrm.category.value = category;
+	}
+	
+	function setBValue(bValue) {
+		document.postFrm.bValue.value = bValue;
+	}
+</script>
 <!-- webflow 요소 -->
 <style>
 #post-title{
@@ -135,31 +146,56 @@
   grid-column-gap: 3vw;
 }
 </style>
+
 </head>
 <body>
 	<div id="post-title"><h2>새 게시글 작성</h2></div>
-	<div class="layout-top w-container">
-		<div class="post-subject">
-			<input class="form-control" type="text" placeholder="제목을 입력하세요." aria-label="default input example">
-		</div>
-		<div class="post-type">
-			<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" type="button"
-					id="dropdownMenuButton1" data-bs-toggle="dropdown"
-					aria-expanded="false">일반</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-					<li><a class="dropdown-item" href="#">일반</a></li>
-					<li><a class="dropdown-item" href="#">유형1</a></li>
-					<li><a class="dropdown-item" href="#">유형2</a></li>
-				</ul>
+	<form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data">
+		<div class="layout-top w-container">
+			<div class="post-subject">
+				<input class="form-control" type="text" placeholder="제목을 입력하세요." aria-label="default input example" name="subject" size="150">
+				<div class="post-type">
+					<%
+						Vector<BoardBean> bVVlist = bMgr.getbValue();
+						int bVSize = bVVlist.size(); //마지막페이지 개수 고려
+					%>
+					
+					<div class="dropdown">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="게시판을 선택하세요." name="bValue">
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<%
+							for(int i=0; i<bVSize; i++){
+								BoardBean caBean = bVVlist.get(i);
+								String bValue = caBean.getType_cat();//게시판 개수 고려
+							%>
+								<li><a class="dropdown-item" href="javascript:setBValue('<%=bValue %>')"><%=bValue %></a></li>
+							<%} %>
+						</ul>
+					</div>
+					<%
+						Vector<BoardBean> caVlist = bMgr.getCategory();
+						int caSize = caVlist.size(); //카테고리 개수 고려
+					%>
+					<div class="dropdown">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="카테고리를 선택하세요." name="category">
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<%
+									for(int i=0; i<caSize; i++){
+										BoardBean caBean = caVlist.get(i);
+										String category = caBean.getType_cat();
+							%>
+										<li><a class="dropdown-item" href="javascript:setCategory('<%=category %>')"><%=category %></a></li>
+							
+							<%} %>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 	<div class="post-main w-container">
 		<div class="mb-3">
-			
-			<textarea class="form-control" id="exampleFormControlTextarea1"
-				rows="12"></textarea>
+			내용
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="12" name="content"></textarea>
 		</div>
 	</div>
 
@@ -167,14 +203,16 @@
 		<div id="fileupload" class="mb-3">
 			<label for="formFile" class="form-label">
 				첨부파일
-			</label> <input class="form-control" type="file" id="formFile">
+			</label> <input class="form-control" type="file" id="formFile" name="filename">
 		</div>
 	</div>
 	<div class="layout-lower-bottom w-container">
-		<button type="button" class="btn btn-dark">저장</button>
-		<a href="history.back()"><button type="button" class="btn btn-dark">취소</button></a>
-
+		<input type="submit" value="저장" class="btn btn-dark">
+		<a href="javascript:history.back()"><button type="button" class="btn btn-dark">취소</button></a>
+		<a href="javascript:location.href='boardList.jsp'"><button type="button" class="btn btn-dark">리스트</button></a>
 	</div>
-	
+	<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
+	<input type="hidden" name="id" value="<%=id%>">
+	</form>
 </body>
 </html>

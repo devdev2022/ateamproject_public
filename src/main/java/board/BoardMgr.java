@@ -46,23 +46,26 @@ public class BoardMgr {
 	}
 	
 //	게시글 등록 + 파일 등록
-	public void insertBoard(BoardBean bBean, HttpServletRequest req) {
+	public void insertBoard(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
+		
 		try {
+			MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
+			
 			int ref = getMaxNum() + 1;
 			con = pool.getConnection();
 			sql = "insert tblboard(id, subject, content, ref, pos, depth, regdate, ip, count, type_board, type_cat) "
 					+ "values(?, ?, ?, ?, 0, 0, now(), ?, 0, ?, ?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bBean.getId());
-			pstmt.setString(2, bBean.getSubject());
-			pstmt.setString(3, bBean.getContent());
+			pstmt.setString(1, multi.getParameter("id"));
+			pstmt.setString(2, multi.getParameter("subject"));
+			pstmt.setString(3, multi.getParameter("content"));
 			pstmt.setInt(4, ref);
-			pstmt.setString(5, bBean.getIp());
-			pstmt.setString(6, bBean.getType_board());
-			pstmt.setString(7, bBean.getType_cat());
+			pstmt.setString(5, multi.getParameter("ip"));
+			pstmt.setString(6, multi.getParameter("bValue"));
+			pstmt.setString(7, multi.getParameter("category"));
 			int cnt = pstmt.executeUpdate();
 			pstmt.close();
 			if(cnt == 1) {
@@ -71,7 +74,6 @@ public class BoardMgr {
 					if(!dir.exists()) {
 						dir.mkdirs();
 					}
-					MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
 					String filename = multi.getFilesystemName("filename");
 					File f = multi.getFile("filename");
 					int filesize = (int)f.length();
@@ -259,7 +261,7 @@ public class BoardMgr {
 //				검색x
 				if((category == null || category.trim().equals("")) && (bValue == null || bValue.trim().equals(""))) {
 //					카테고리x 게시판분류 x
-					sql = "select * from tblBoard order by ref desc, pos  limit ?, ?";
+					sql = "select * from tblBoard order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, start);
 					pstmt.setInt(2, cnt);
@@ -324,20 +326,20 @@ public class BoardMgr {
 			}
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				BoardBean Bbean = new BoardBean();
-				Bbean.setNum(rs.getInt("num"));
-				Bbean.setId(rs.getString("id"));
-				Bbean.setSubject(rs.getString("subject"));
-				Bbean.setContent(rs.getString("content"));
-				Bbean.setPos(rs.getInt("pos"));
-				Bbean.setRef(rs.getInt("ref"));
-				Bbean.setDepth(rs.getInt("depth"));
-				Bbean.setRegdate(rs.getString("regdate"));
-				Bbean.setIp(rs.getString("ip"));
-				Bbean.setCount(rs.getInt("count"));
-				Bbean.setType_board(rs.getString("type_board"));
-				Bbean.setType_cat(rs.getString("type_cat"));
-				vlist.addElement(Bbean);
+				BoardBean bBean = new BoardBean();
+				bBean.setNum(rs.getInt("num"));
+				bBean.setId(rs.getString("id"));
+				bBean.setSubject(rs.getString("subject"));
+				bBean.setContent(rs.getString("content"));
+				bBean.setPos(rs.getInt("pos"));
+				bBean.setRef(rs.getInt("ref"));
+				bBean.setDepth(rs.getInt("depth"));
+				bBean.setRegdate(rs.getString("regdate"));
+				bBean.setIp(rs.getString("ip"));
+				bBean.setCount(rs.getInt("count"));
+				bBean.setType_board(rs.getString("type_board"));
+				bBean.setType_cat(rs.getString("type_cat"));
+				vlist.addElement(bBean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -489,6 +491,55 @@ public class BoardMgr {
 		} finally {
 			pool.freeConnection(con, pstmt);
 		}
+	}
+	
+//	모든 카테고리 가져오기
+	public Vector<BoardBean> getCategory(){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<BoardBean> vlist = new Vector<BoardBean>();
+		try {
+			con = pool.getConnection();
+			sql = "select distinct type_cat from tblboard";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BoardBean bBean = new BoardBean();
+				bBean.setType_cat(rs.getString(1));
+				vlist.addElement(bBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+//	모든 게시판종류 가져오기
+	public Vector<BoardBean> getbValue(){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<BoardBean> vlist = new Vector<BoardBean>();
+		try {
+			con = pool.getConnection();
+			sql = "select distinct type_board from tblboard";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BoardBean bBean = new BoardBean();
+				bBean.setType_cat(rs.getString(1));
+				vlist.addElement(bBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
 	}
 
 	
