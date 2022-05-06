@@ -4,7 +4,7 @@
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
-<jsp:useBean id="cMgr" class="board.commentMgr"/>
+<jsp:useBean id="cMgr" class="board.CommentMgr"/>
 <jsp:useBean id="fMgr" class="board.UpFileBean"/>
 <%
 	int totalRecord = 0; //ÃÑ °Ô½Ã¹° ¼ö

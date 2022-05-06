@@ -1,7 +1,13 @@
+<%@page import="java.util.Vector"%>
+<%@page import="board.UpFileBean"%>
+<%@page import="board.BoardBean"%>
 <%@page contentType="text/html; charset=EUC-KR"%>
 <%
-
+	int num = Integer.parseInt(request.getParameter("num"));
+	
+	
 %>
+<jsp:useBean id="bMgr" class="board.BoardMgr"/>
 
 
 <!DOCTYPE html>
@@ -269,21 +275,25 @@
 
 </head>
 <body class="page">
+	<%
+		bMgr.upCount(num);
+		BoardBean bBean = bMgr.getBoard(num);
+		Vector<UpFileBean> fVlist = bMgr.getOneBoardFileAll(num);
+		int fCount = fVlist.size();
+	%>
 	<div class="layout-top w-container">
-		<div><b>[게시판 이름]</b> <font color="#E83038">게시글 유형</font></div>
-		<div><h2>게시글 제목입니다.<h2></h2></div>
-		<div><img src="icon/profile_def.png" width="20vw"> Username | 작성 시간 | 조회수 00 | 댓글 0</div>
+		<div><b><%=bBean.getType_board() %></b> <font color="#E83038"><%=bBean.getType_cat() %></font></div>
+		<div><h2><%=bBean.getSubject() %></h2></div>
+		<div><img src="icon/profile_def.png" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | <%=bBean.getCount() %> | 댓글 0</div>
 	</div>
 	<div class="post-main w-container">
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
+		<%=bBean.getContent() %>
+		<%	
+			for(int i=0; i<fCount; i++){ 
+				UpFileBean fBean = fVlist.get(i);
+		%>
+				<img src="../uploadimg/<%=fBean.getFilename()%>">
+		<%} %>
 	</div>
 	<div class="layout-upper-bottom w-container">
 		<ul role="list" class="list-2 w-list-unstyled">
@@ -330,8 +340,7 @@
 	</div>
 	<div class="post-comment w-container">
 		<ul role="list" class="post-comment-container">
-			<li class="list-item"><ul role="list"
-					class="comment-user-info w-list-unstyled">
+			<li class="list-item"><ul role="list" class="comment-user-info w-list-unstyled">
 					<li class="list-item-3">
 						<img src="icon/profile_def.png" width="20vw">
 					</li>
@@ -347,18 +356,18 @@
 			<li class="comment-contents">댓글 내용입니다.</li>
 		</ul>
 	</div>
-	<div class="comment-write-header w-container">
-		<div><b>댓글 달기</b></div>
-	</div>
-	<div class="comment-write-container w-container">
-		<div class="input-group mb-3">
-			<input type="text" class="form-control"
-				placeholder="Recipient's username" aria-label="Recipient's username"
-				aria-describedby="button-addon2">
-			<button class="btn btn-outline-secondary" type="button"
-				id="button-addon2">등록</button>
+	<form name="commentFrm" action="commentPost" method="post">
+		<div class="comment-write-header w-container">
+			<div><b>댓글 작성</b> ex) id : aaa</div>
 		</div>
-	</div>
+		<div class="comment-write-container w-container">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" name="cComment">
+				<input class="btn btn-outline-secondary" type="submit" id="button-addon2" value="등록">
+				<input type="hidden" name="cid" value="aaa">
+			</div>
+		</div>
+	</form>
 
 </body>
 </html>

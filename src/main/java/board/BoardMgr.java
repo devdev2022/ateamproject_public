@@ -154,6 +154,7 @@ public class BoardMgr {
 				bean.setRegdate(rs.getString("regdate"));
 				bean.setIp(rs.getString("ip"));
 				bean.setContent(rs.getString("content"));
+				bean.setCount(rs.getInt("count"));
 				bean.setType_board(rs.getString("type_board"));
 				bean.setType_cat(rs.getString("type_cat"));
 			}
@@ -189,6 +190,33 @@ public class BoardMgr {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		return bean;
+	}
+//	한개의 게시물에있는 파일다 가져오기
+	public Vector<UpFileBean> getOneBoardFileAll(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<UpFileBean> vlist = new Vector<UpFileBean>();
+		try {
+			con = pool.getConnection();
+			sql = "select * from tblupFile where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				UpFileBean bean = new UpFileBean();
+				bean.setFilename(rs.getString("filename"));
+				bean.setFilesize(rs.getInt("filesize"));
+				bean.setNum(rs.getInt("num"));
+				vlist.addElement(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
 	}
 	
 //	게시물 수정

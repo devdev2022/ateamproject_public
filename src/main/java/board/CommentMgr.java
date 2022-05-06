@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-public class commentMgr {
+public class CommentMgr {
 	
 	DBConnectionMgr pool;
 	
-	public commentMgr() {
+	public CommentMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
 	
