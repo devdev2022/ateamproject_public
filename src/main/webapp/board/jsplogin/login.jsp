@@ -1,17 +1,14 @@
-<%@page contentType="text/html; charset=EUC-KR"%>
-<%
-
-%>
-
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com -->
-<!-- Last Published: Wed May 04 2022 07:30:44 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain="6832s-dandy-site.webflow.io"
-	data-wf-page="6271f01e889d5b745d71a96b"
-	data-wf-site="6271f01e889d5b73f171a96a">
+<!-- Last Published: Thu May 05 2022 12:27:47 GMT+0000 (Coordinated Universal Time) -->
+
 <head>
 <style>
-
+/* Generated on: Thu May 05 2022 12:27:47 GMT+0000 (Coordinated Universal Time) */
+/* ==========================================================================
+   normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
+   ========================================================================== */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
 	font-family: sans-serif;
 	-ms-text-size-adjust: 100%;
@@ -2185,115 +2182,270 @@ rotate(
 /* ==========================================================================
    Start of custom Webflow CSS
    ========================================================================== */
-
-
-.post-comment-container {
-	padding-right: 2vw;
-	padding-left: 2vw;
-	list-style-type: none;
-}
-
-.list-item {
+.container {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	margin-bottom: 1vw;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
+	padding-bottom: 100px;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
 }
 
-.list-3 {
+.div-block {
+	position: fixed;
+	left: 30%;
+	top: 25%;
+	right: auto;
+	bottom: auto;
+	width: 450px;
+	height: 300px;
+	padding-right: 0px;
+}
+
+.loginbutton {
+	position: absolute;
+	left: 70%;
+	top: 35%;
+	right: auto;
+	bottom: auto;
+	display: inline-block;
+	width: 80px;
+	height: 90px;
+	font-weight: 400;
+	text-align: center;
+	text-decoration: none;
+	-o-object-fit: fill;
+	object-fit: fill;
+}
+
+.body {
+	background-color: #fff;
+	text-align: center;
+}
+
+.logincontainer {
+	position: fixed;
+	right: 500px;
+	bottom: 246.333px;
+}
+
+.div-block-2 {
+	position: fixed;
+	right: 200px;
+	bottom: 100px;
+	display: inline-block;
+	width: 500px;
+	height: 300px;
+	grid-auto-columns: 1fr;
+	grid-column-gap: 16px;
+	grid-row-gap: 16px;
+	-ms-grid-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+	-ms-grid-rows: auto auto;
+	grid-template-rows: auto auto;
+}
+
+.login-button {
+	position: absolute;
+	left: 364px;
+	top: 19%;
+	right: 0%;
+	bottom: auto;
+	width: 100px;
+	height: 115px;
+	text-align: center;
+}
+
+.text-field {
+	width: 300px;
+}
+
+.text-field-2 {
+	width: 300px;
+}
+
+.form {
+	position: absolute;
+	left: 300px;
+	top: 150px;
+	right: 200px;
+	bottom: 125px;
+	width: 450px;
+}
+
+.button {
+	position: absolute;
+	right: 20px;
+	bottom: 81.3333px;
+}
+
+.form-2 {
+	position: absolute;
+	right: 270px;
+	bottom: 130px;
+	display: block;
+	width: 420px;
+	height: 290px;
+	background-color: #fdfdfd;
+}
+
+.text-field-3 {
+	position: absolute;
+	right: 120px;
+	bottom: 93px;
+	width: 280px;
+}
+
+.text-field-4 {
+	position: absolute;
+	right: 120px;
+	bottom: 185px;
+	width: 280px;
+}
+
+.field-label {
+	position: absolute;
+	right: 378px;
+	bottom: 140px;
+}
+
+.field-label-2 {
+	position: absolute;
+	right: 380px;
+	bottom: 232px;
+	width: 20px;
+}
+
+.button-2 {
+	position: absolute;
+	right: 10px;
+	bottom: 95px;
+	width: 100px;
+	height: 120px;
+	background-color: #f3f3f3;
+	color: #070606;
+}
+
+.button-3 {
+	position: absolute;
+	right: 12px;
+	bottom: 102px;
+	width: 100px;
+	height: 132px;
+	background-color: #f9fbfd;
+	font-family: Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal,
+		sans-serif;
+	color: #2c2b2b;
+	text-decoration: none;
+}
+
+.pw {
+	position: absolute;
+	right: 120px;
+	bottom: 93px;
+	width: 280px;
+}
+
+.id {
+	position: absolute;
+	right: 120px;
+	bottom: 185px;
+	width: 280px;
+}
+
+.id-pw {
+	position: absolute;
+	left: auto;
+	right: 550px;
+	bottom: 175px;
+	width: 80px;
+	height: 20px;
+	color: #353535;
+}
+
+.sign_up {
+	position: absolute;
+	left: 170px;
+	bottom: 45px;
+	width: 80px;
+	color: #313131;
+}
+
+.utility-page-wrap {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	width: 100vw;
+	height: 100vh;
+	max-height: 100%;
+	max-width: 100%;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
 
-.list-item-2 {
+.utility-page-content {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-}
-
-.comment-user-info {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	margin-bottom: 0px;
-}
-
-.list-item-3 {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-}
-
-.comment-data {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	margin-bottom: 0px;
-	padding-left: 0px;
-	list-style-type: none;
-}
-
-.post-comment {
-	margin-top: 1vw;
-}
-
-.comment-section-header {
-	margin-top: 5vw;
-}
-
-.comment-write-container {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
+	width: 260px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	text-align: center;
 }
 
 @media screen and (max-width: 991px) {
-	.page {
-		padding-right: 2vw;
-		padding-left: 2vw;
+	.loginbutton {
+		left: 75%;
+		top: 20%;
+		display: inline;
+		width: 75px;
+		height: 85px;
+		text-align: center;
+		text-decoration: none;
+		text-transform: none;
+	}
+	.body {
+		text-align: center;
 	}
 }
 </style>
-</head>
-<body class="page">
-	<div class="comment-section-header w-container">
-		<div>¥Ò±€ [0]</div>
-	</div>
-	<div class="post-comment w-container">
-		<ul role="list" class="post-comment-container">
-			<li class="list-item"><ul role="list"
-					class="comment-user-info w-list-unstyled">
-					<li class="list-item-3"></li>
-					<li></li>
-					<li></li>
-				</ul>
-				<ul role="list" class="comment-data w-list-unstyled">
-					<li class="list-item-2"></li>
-					<li></li>
-				</ul></li>
-			<li class="comment-contents">πÃ√∆¥Ÿ......</li>
-		</ul>
-	</div>
-	<div class="comment-write-header w-container">
-		<div>¥Ò±€ ¥ﬁ±‚</div>
-	</div>
-	<div class="comment-write-container w-container"></div>
 
+
+</head>
+<body class="body">
+	<div class="w-form">
+		<form id="email-form" name="email-form" data-name="Email Form"
+			method="get" class="form-2">
+			<label for="name" class="field-label-2">ID</label><a href="#"
+				class="button-3 w-button"><br/>
+			<br/>Î°úÍ∑∏Ïù∏</a><label for="field" class="field-label">PW</label><input
+				type="text" class="id w-input" maxlength="256" name="field"
+				data-name="Field" placeholder="Example Text" id="field" required="" /><input
+				type="text" class="pw w-input" maxlength="256" name="field-2"
+				data-name="Field 2" placeholder="Example Text" id="field-2"
+				required="" /><a href="#" class="sign_up">ÌöåÏõêÍ∞ÄÏûÖ</a>
+		</form>
+		<div class="w-form-done">
+			<div>Thank you! Your submission has been received!</div>
+		</div>
+		<a href="#" class="id-pw">ID/PWÏ∞æÍ∏∞</a>
+		<div class="w-form-fail">
+			<div>Oops! Something went wrong while submitting the form.</div>
+		</div>
+	</div>
 </body>
-</html>
