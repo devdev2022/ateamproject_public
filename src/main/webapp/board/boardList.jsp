@@ -19,15 +19,15 @@
 		numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
 	}
 //	 검색에 필요한 변수
-	String keyField = null;
-	String keyWord = null;
-	String categori = null;
-	String bValue = null;
+	String keyField = "";
+	String keyWord = "";
+	String category = "";
+	String bValue = "";
 	
 	if(request.getParameter("keyWord")!=null){
 		keyField = request.getParameter("keyField");
 		keyWord = request.getParameter("keyWord");
-		categori = request.getParameter("categori");
+		category = request.getParameter("category");
 		bValue = request.getParameter("bValue");
 	}
 	
@@ -38,15 +38,15 @@
 
 // SQL문 limit에 들어가는 변수 선언
 	int start = (nowPage * numPerPage) - numPerPage;
-	int cnt = numPerPage; //default = 10개
+	int cnt = numPerPage; //디폴트값 = 10
 			
 //	검색 후에 다시 처음 리스트 요청
 	if(request.getParameter("reload")!=null && request.getParameter("reload").equals("true")){
-		keyField = null;
-		keyWord = null;
+		keyField = "";
+		keyWord = "";
 	}
 
-	totalRecord = bMgr.getBoardCount(keyField, keyWord, categori, bValue);
+	totalRecord = bMgr.getBoardCount(keyField, keyWord, category, bValue);
 	
 // 전체 페이지 개수
 	totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
@@ -72,12 +72,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+	
 <script type="text/javascript">
-function read(num) {
-	document.readFrm.num.value = num;
-	document.readFrm.action = "read.jsp";
-	document.readFrm.submit();
-}
 
 function block(block) {
 	document.readFrm.nowPage.value=<%=pagePerBlock%>*(block - 1) + 1;
@@ -94,24 +90,44 @@ function list() {
 	document.listFrm.submit();
 }
 
+function read(num) {
+	document.readFrm.num.value = num;
+	document.readFrm.action = "boardRead.jsp";
+	document.readFrm.submit();
+}
+
 function check() {
-	if(document.searchFrm.keyWord.value==null){
+	if(document.searchFrm.keyWord.value=="" || document.searchFrm.keyWord.value==null){
 		alert("검색어를 입력하세요.");
 		document.searchFrm.keyWord.focus();
+		return;
+	}
+	if(document.searchFrm.keyField.value=="선택"){
+		alert("검색주제를 입력하세요.");
+		document.searchFrm.keyField.focus();
 		return;
 	}
 	document.searchFrm.submit();
 }
 
+
 function setkeyField(keyField) {
 	document.searchFrm.keyField.value = keyField
 }
 
-function read(num) {
-	document.readFrm.num.value = num;
-	document.readFrm.action = "read.jsp";
+function setcategory(category) {
+	document.readFrm.category.value = category;
 	document.readFrm.submit();
 }
+
+function setviewCount(numPerPage) {
+	if(document.npFrm.numPerPage.value = numPerPage){
+		document.readFrm.numPerPage.value = numPerPage;
+		document.readFrm.submit();
+	}
+	
+}
+
 
 </script>
 
@@ -2248,30 +2264,32 @@ rotate(
 		</div>
 		<div class="board-btns-top w-row">
 			<div class="column w-col w-col-10 w-col-small-10 w-col-tiny-10">
-				<a href="#" class="category-btn w-button">전체</a>
-				<a href="#" class="category-btn w-button">음악</a>
-				<a href="#" class="category-btn w-button">리뷰</a>
-				<a href="#" class="category-btn w-button">가사해석</a>
-				<a href="#" class="category-btn w-button">인증/후기</a>
-				<a href="#" class="category-btn w-button">그림/아트웍</a>
-				<a href="#" class="category-btn w-button">일반</a>
-				<a href="#" class="category-btn w-button">공지</a>
+				<a href="javascript:setcategory('')" class="category-btn w-button">전체</a>
+				<a href="javascript:setcategory('music')" class="category-btn w-button">음악</a>
+				<a href="javascript:setcategory('리뷰')" class="category-btn w-button">리뷰</a>
+				<a href="javascript:setcategory('가사해석')" class="category-btn w-button">가사해석</a>
+				<a href="javascript:setcategory('인증/후기')" class="category-btn w-button">인증/후기</a>
+				<a href="javascript:setcategory('그림/아트웍')" class="category-btn w-button">그림/아트웍</a>
+				<a href="javascript:setcategory('1')" class="category-btn w-button">일반</a>
+				<a href="javascript:setcategory('공지')" class="category-btn w-button">공지</a>
 			</div>
-
+		<form name="npFrm" method="post">
 			<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
 				<div class="dropdown">
-					<button class="btn btn-outline-secondary dropdown-toggle" type="button"
+					<input class="btn btn-outline-secondary dropdown-toggle" type="text"
 						id="dropdownMenuButton2" data-bs-toggle="dropdown"
-						aria-expanded="false">5개씩 보기</button>
+						aria-expanded="false" value="10" name="numPerPage" size="1">개씩보기
 						
 						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-							<li><a class="dropdown-item active" href="#">5개씩 보기</a></li>
-							<li><a class="dropdown-item" href="#">10개씩 보기</a></li>
-							<li><a class="dropdown-item" href="#">15개씩 보기</a></li>
-							<li><a class="dropdown-item" href="#">20개씩 보기</a></li>
+							<li><a class="dropdown-item active" href="javascript:setviewCount(5)">5개씩 보기</a></li>
+							<li><a class="dropdown-item" href="javascript:setviewCount(10)">10개씩 보기</a></li>
+							<li><a class="dropdown-item" href="javascript:setviewCount(15)">15개씩 보기</a></li>
+							<li><a class="dropdown-item" href="javascript:setviewCount(20)">20개씩 보기</a></li>
 						</ul>
 				</div>
 			</div>
+		</form>
+		<script>document.npFrm.numPerPage.value = <%=numPerPage%>;</script>
 
 		</div>
 	</div>
@@ -2279,12 +2297,12 @@ rotate(
 
 
 	<!-- 게시판 영역 시작 -->
-	<div class="board-main-container w-container">
+	<div class="board-main-container w-container" >
 		<table witdh="100%">
 			<tr>
 				<td align="center" colspan="2">
 					<%
-						Vector<BoardBean> Bvlist = bMgr.getBoardList(keyField, keyWord, start, cnt, categori, bValue);
+						Vector<BoardBean> Bvlist = bMgr.getBoardList(keyField, keyWord, start, cnt, category, bValue);
 						int listSize = Bvlist.size(); //마지막페이지 개수 고려
 						if(Bvlist.isEmpty()){
 					%>
@@ -2299,6 +2317,7 @@ rotate(
 								<tr>
 									<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
 								</tr>
+							</table>
 					<%
 								
 						}else{
@@ -2333,7 +2352,12 @@ rotate(
 								%>
 										<tr>
 											<td align="center"><%=totalRecord - start - i %></td>
-											<td ><a href="#"><%=subject %></a></td>
+											<td >
+												<a href="javascript:read('<%=num %>')"><%=subject %></a>
+												<%if(filename != null && !filename.equals("")) {%>
+													<img src="icon/icon_file.gif" align="middle">
+												<%} %>
+											</td>
 											<td align="center"><%=id %></td>
 											<td align="center"><%=regdate %></td>
 											<td align="center"><%=count %></td>
@@ -2356,18 +2380,25 @@ rotate(
 					<div class="board-bottom-container w-container">
 						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 							<div class="btn-group me-2" role="group" aria-label="Second group">
+								<!-- 이전블록 -->
 								<% if(nowBlock > 1) {%>
-									<a href="javascript:block('<%=nowBlock - 1%>')"><input type="button" class="btn btn-secondary" value="<"></a>
+									<a href="javascript:block('<%=nowBlock - 1%>')"><input type="text" class="btn btn-secondary" value="<" size="1"></a>
 								<%}	%>
+								<!-- 블록번호 -->
 								<%
 									int pageStart = (nowBlock - 1) * pagePerBlock + 1;
 									int pageEnd = (pageStart + pagePerBlock) < totalPage ? pageStart + pagePerBlock : totalPage + 1; 
 									for(;pageStart<pageEnd;pageStart++){
 								%>
-								<a href="javascript:pageing('<%=pageStart%>')"><input type="button" class="btn btn-secondary" value="<%=pageStart %>"></a>
+								<a href="javascript:pageing('<%=pageStart%>')">
+									<input type="text" class="btn btn-secondary" value="<%=pageStart %>" size="1">
+								</a>
 								<%} %>
+								<!-- 다음블록 -->
 								<% if(nowBlock < totalBlock) {%>
-									<a href="javascript:block('<%=nowBlock + 1%>')"><input type="button" class="btn btn-secondary" value=">"></a>
+									<a href="javascript:block('<%=nowBlock + 1%>')">
+										<input type="text" class="btn btn-secondary" value=">" size="1"> 
+									</a>
 								<%}	%>
 							</div>
 						</div>
@@ -2389,17 +2420,19 @@ rotate(
 				<td align="center">
 					<div class="input-group mb-3">
 						<input class="btn btn-outline-secondary dropdown-toggle"
-							type="button" data-bs-toggle="dropdown" aria-expanded="false" name="keyField" value="아이디">
+							type="text" data-bs-toggle="dropdown" aria-expanded="false" name="keyField" value="선택" size="1">
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="javascript:setkeyField('아이디')">아이디</a></li>
-							<li><a class="dropdown-item" href="javascript:setkeyField('제목')">제목</a></li>
-							<li><a class="dropdown-item" href="javascript:setkeyField('내용')">내용</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('id')">아이디</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('subject')">제목</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('content')">내용</a></li>
 						</ul>
-						<input type="text" class="form-control"
-							placeholder="검색 키워드를 입력하세요."
-							aria-label="Recipient's username"
-							aria-describedby="button-addon2" name="keyWord">
-						<input class="btn btn-outline-secondary" type="button" id="button-addon2" value="검색" onclick="check()">
+						<input type="text" class="form-control" placeholder="검색 키워드를 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2" name="keyWord" >
+						<button class="btn btn-outline-secondary" type="button" id="button-addon2" value="" onclick="check()">검색</button>
+						<input type="hidden" name="nowPage" value="<%=nowPage%>">
+						<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
+						<input type="hidden" name="category" value="<%=category%>">
+						<input type="hidden" name="bValue" value="<%=bValue%>">
+						<input type="hidden" name="num" >
 					</div>
 
 				</td>
@@ -2410,12 +2443,12 @@ rotate(
 			<input type="hidden" name="reload" value="ture">
 			<input type="hidden" name="nowPage" value="1">
 		</form>
-		<form name="readFrm">
+		<form name="readFrm" method="get">
 			<input type="hidden" name="nowPage" value="<%=nowPage%>">
 			<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
 			<input type="hidden" name="keyField" value="<%=keyField%>">
 			<input type="hidden" name="keyWord" value="<%=keyWord%>">
-			<input type="hidden" name="categori" value="<%=categori%>">
+			<input type="hidden" name="category" value="<%=category%>">
 			<input type="hidden" name="bValue" value="<%=bValue%>">
 			<input type="hidden" name="num" >
 		</form>

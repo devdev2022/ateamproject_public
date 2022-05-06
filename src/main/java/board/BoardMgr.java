@@ -247,7 +247,7 @@ public class BoardMgr {
 	}
 	
 //	카테고리 + 게시판분류 별 게시글 목록 검색기능o
-	public Vector<BoardBean> getBoardList(String keyField, String keyWord, int start, int cnt, String categori, String bValue){
+	public Vector<BoardBean> getBoardList(String keyField, String keyWord, int start, int cnt, String category, String bValue){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -257,64 +257,45 @@ public class BoardMgr {
 			con = pool.getConnection();
 			if(keyWord == null || keyWord.trim().equals("")) {
 //				검색x
-				if(categori == null && bValue == null) {
+				if((category == null || category.trim().equals("")) && (bValue == null || bValue.trim().equals(""))) {
 //					카테고리x 게시판분류 x
-					sql = "select * from tblBoard order by ref desc, pos limit ?, ?";
+					sql = "select * from tblBoard order by ref desc, pos  limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, start);
 					pstmt.setInt(2, cnt);
-				}else if(bValue != null && categori != null) {
-//					카테고리o 게시판분류o
-					sql = "select * from tblBoard where type_cat=? and type_board=? order by ref desc, pos limit ?, ?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, categori);
-					pstmt.setString(2, bValue);
-					pstmt.setInt(3, start);
-					pstmt.setInt(4, cnt);
-				}else if(categori != null && bValue == null){
-//					카테고리o 게시판분류x
-					sql = "select * from tblBoard where type_cat=? order by ref desc, pos limit ?, ?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, categori);
-					pstmt.setInt(2, start);
-					pstmt.setInt(3, cnt);
-				}else if(categori == null && bValue != null) {
+				}else if((category == null || category.trim().equals("")) && bValue != null) {
 //					카테고리x 게시판분류o
 					sql = "select * from tblBoard where type_board=? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, bValue);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, cnt);
+				}else if(category != null && (bValue == null || bValue.trim().equals(""))){
+//					카테고리o 게시판분류x
+					sql = "select * from tblBoard where type_cat=? order by ref desc, pos limit ?, ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, category);
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, cnt);
+				}else if(bValue != null  &&  category != null) {
+//					카테고리o 게시판분류o
+					sql = "select * from tblBoard where type_cat=? and type_board=? order by ref desc, pos limit ?, ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, category);
+					pstmt.setString(2, bValue);
+					pstmt.setInt(3, start);
+					pstmt.setInt(4, cnt);
 				}
 			}else if(keyWord != null || !keyWord.trim().equals("")) {
 //				검색o
-				if(categori == null && bValue == null) {
+				if((category == null || category.trim().equals("")) && (bValue == null || bValue.trim().equals(""))) {
 //					카테고리x 게시판분류 x
 					sql = "select * from tblBoard where " + keyField + " like ? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, "%" + keyWord + "%");
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, cnt);
-				}else if(bValue != null && categori != null) {
-//					카테고리o 게시판분류 o
-					sql = "select * from tblBoard where " + keyField + " like ? and type_cat=? and type_board=? order by ref desc, pos limit ?, ?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, "%" + keyWord + "%");
-					pstmt.setString(2, categori);
-					pstmt.setString(3, bValue);
-					pstmt.setInt(4, start);
-					pstmt.setInt(5, cnt);
-				
-				}else if(categori != null && bValue == null){
-//					카테고리o 게시판분류 x
-					sql = "select * from tblBoard where " + keyField + " like ? and type_cat=? order by ref desc, pos limit ?, ?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, "%" + keyWord + "%");
-					pstmt.setString(2, categori);
-					pstmt.setInt(3, start);
-					pstmt.setInt(4, cnt);
-					
-				}else if(categori == null && bValue != null) {
+				}else if((category == null || category.trim().equals("")) && bValue != null) {
 //					카테고리x 게시판분류 o
 					sql = "select * from tblBoard where " + keyField + " like ? and type_board=? order by ref desc, pos limit ?, ?";
 					pstmt = con.prepareStatement(sql);
@@ -322,6 +303,23 @@ public class BoardMgr {
 					pstmt.setString(2, bValue);
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, cnt);
+				}else if(category != null && (bValue == null || bValue.trim().equals(""))){
+//					카테고리o 게시판분류 x
+					sql = "select * from tblBoard where " + keyField + " like ? and type_cat=? order by ref desc, pos limit ?, ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + keyWord + "%");
+					pstmt.setString(2, category);
+					pstmt.setInt(3, start);
+					pstmt.setInt(4, cnt);
+				}else if(bValue != null  &&  category != null) {
+//					카테고리o 게시판분류 o
+					sql = "select * from tblBoard where " + keyField + " like ? and type_cat=? and type_board=? order by ref desc, pos limit ?, ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + keyWord + "%");
+					pstmt.setString(2, category);
+					pstmt.setString(3, bValue);
+					pstmt.setInt(4, start);
+					pstmt.setInt(5, cnt);
 				}
 			}
 			rs = pstmt.executeQuery();
@@ -349,7 +347,7 @@ public class BoardMgr {
 		return vlist;
 	}
 //	카테고리 + 게시판분류 별 게시글 목록 검색기능의 총 게시물 수(count)
-	public int getBoardCount(String keyField, String keyWord, String categori, String Bvalue){
+	public int getBoardCount(String keyField, String keyWord, String category, String bValue){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -359,55 +357,54 @@ public class BoardMgr {
 			con = pool.getConnection();
 			if(keyWord == null || keyWord.trim().equals("")) {
 //				검색x
-				if(categori == null && Bvalue == null) {
+				if((category == null || category.trim().equals("")) && (bValue == null || bValue.trim().equals(""))) {
 //					카테고리x 게시판분류 x
 					sql = "select count(*) from tblBoard";
 					pstmt = con.prepareStatement(sql);
-				}else if(Bvalue != null && categori != null) {
+				}else if((category == null || category.trim().equals("")) && bValue != null){
+//					카테고리x 게시판분류o
+					sql = "select count(*) from tblBoard where type_board=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, bValue);
+				}else if(category != null && (bValue == null || bValue.trim().equals(""))){
+//					카테고리o 게시판분류x
+					sql = "select count(*) from tblBoard where type_cat=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, category);
+				}else if(bValue != null  &&  category != null) {
 //					카테고리o 게시판분류o
 					sql = "select count(*) from tblBoard where type_cat=? and type_board=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, categori);
-					pstmt.setString(2, Bvalue);
-				}else if(categori != null && Bvalue == null){
-//					카테고리o 게시판분류x
-					sql = "select * from tblBoard where type_cat=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, categori);
-				}else if(categori == null && Bvalue != null) {
-//					카테고리x 게시판분류o
-					sql = "select * from tblBoard where type_board=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, Bvalue);
+					pstmt.setString(1, category);
+					pstmt.setString(2, bValue);
 				}
 			}else if(keyWord != null || !keyWord.trim().equals("")) {
 //				검색o
-				if(categori == null && Bvalue == null) {
+				if((category == null || category.trim().equals("")) && (bValue == null || bValue.trim().equals(""))) {
 //					카테고리x 게시판분류 x
-					sql = "select * from tblBoard where " + keyField + " like ?";
+					sql = "select count(*) from tblBoard where " + keyField + " like ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, "%" + keyWord + "%");
-				}else if(Bvalue != null && categori != null) {
-//					카테고리o 게시판분류 o
-					sql = "select * from tblBoard where " + keyField + " like ? and type_cat=? and type_board=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, "%" + keyWord + "%");
-					pstmt.setString(2, categori);
-					pstmt.setString(3, Bvalue);
-					
-				}else if(categori != null && Bvalue == null){
-//					카테고리o 게시판분류 x
-					sql = "select * from tblBoard where " + keyField + " like ? and type_cat=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, "%" + keyWord + "%");
-					pstmt.setString(2, categori);
-					
-				}else if(categori == null && Bvalue != null) {
+				}else if((category == null || category.trim().equals("")) && bValue != null){
 //					카테고리x 게시판분류 o
-					sql = "select * from tblBoard where " + keyField + " like ? and type_board=? ";
+					sql = "select count(*) from tblBoard where " + keyField + " like ? and type_board=? ";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, "%" + keyWord + "%");
-					pstmt.setString(2, Bvalue);
+					pstmt.setString(2, bValue);
+				}else if(category != null && (bValue == null || bValue.trim().equals(""))){
+//					카테고리o 게시판분류 x
+					sql = "select count(*) from tblBoard where " + keyField + " like ? and type_cat=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + keyWord + "%");
+					pstmt.setString(2, category);
+				}else if(bValue != null && category != null) {
+//					카테고리o 게시판분류 o
+					sql = "select count(*) from tblBoard where " + keyField + " like ? and type_cat=? and type_board=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + keyWord + "%");
+					pstmt.setString(2, category);
+					pstmt.setString(3, bValue);
+					
 				}
 			}
 			rs = pstmt.executeQuery();
