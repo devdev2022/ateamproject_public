@@ -2265,12 +2265,12 @@ rotate(
 		<div class="board-btns-top w-row">
 			<div class="column w-col w-col-10 w-col-small-10 w-col-tiny-10">
 				<a href="javascript:setcategory('')" class="category-btn w-button">전체</a>
-				<a href="javascript:setcategory('music')" class="category-btn w-button">음악</a>
+				<a href="javascript:setcategory('음악')" class="category-btn w-button">음악</a>
 				<a href="javascript:setcategory('리뷰')" class="category-btn w-button">리뷰</a>
 				<a href="javascript:setcategory('가사해석')" class="category-btn w-button">가사해석</a>
 				<a href="javascript:setcategory('인증/후기')" class="category-btn w-button">인증/후기</a>
 				<a href="javascript:setcategory('그림/아트웍')" class="category-btn w-button">그림/아트웍</a>
-				<a href="javascript:setcategory('1')" class="category-btn w-button">일반</a>
+				<a href="javascript:setcategory('일반')" class="category-btn w-button">일반</a>
 				<a href="javascript:setcategory('공지')" class="category-btn w-button">공지</a>
 			</div>
 		<form name="npFrm" method="post">
