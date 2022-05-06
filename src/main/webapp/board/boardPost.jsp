@@ -49,6 +49,7 @@
   grid-template-columns: 1fr 1fr;
   -ms-grid-rows: auto auto;
   grid-template-rows: auto auto;
+  margin-bottom: 1.5vw;
 }
 
 .layout-lower-bottom {
