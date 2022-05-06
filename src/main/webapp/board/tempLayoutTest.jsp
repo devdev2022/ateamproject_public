@@ -1,9 +1,14 @@
+<%@page contentType="text/html; charset=EUC-KR"%>
+<%
+	
+%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
-<title>EDM Listener's Guidebook</title>
+<title>Site Title</title>
 <link rel="stylesheet" href="jsplayout/css/genre.css">
 <link rel="stylesheet" href="jsplayout/css/templayout.css">
 </head>
@@ -41,13 +46,13 @@
 			</aside>
 
 			<div id="article">
-				<!-- ==========ë³¸ë¬¸ ì˜ì—­ ì‹œìž‘============= -->
+				<!-- ==========º»¹® ¿µ¿ª ½ÃÀÛ============= -->
 	
 
 				
 
 
-				<!-- ==========ë³¸ë¬¸ ì˜ì—­ ë============= -->
+				<!-- ==========º»¹® ¿µ¿ª ³¡============= -->
 			</div>
 
 			<aside id="bar_right">

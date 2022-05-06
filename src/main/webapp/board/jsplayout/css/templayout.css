@@ -336,9 +336,7 @@ nav ul li *{
 
 #bar_right {
 	display: none;
-    z-index: 1;
-    min-height: 200px;
-}
+	}
 
 #ver_banner{
     display: none;
