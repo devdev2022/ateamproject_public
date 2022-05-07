@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%
 
 %>
@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <head>
 
-<!-- ��Ʈ��Ʈ�� ��� -->
+<!-- 부트스트랩 요소 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -18,7 +18,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
-<!-- webflow ��� -->
+<!-- webflow 요소 -->
 <style>
 
 .layout-top {
@@ -270,20 +270,20 @@
 </head>
 <body class="page">
 	<div class="layout-top w-container">
-		<div><b>[�Խ��� �̸�]</b> <font color="#E83038">�Խñ� ����</font></div>
-		<div><h2>�Խñ� �����Դϴ�.<h2></h2></div>
-		<div><img src="icon/profile_def.png" width="20vw"> Username | �ۼ� �ð� | ��ȸ�� 00 | ��� 0</div>
+		<div><b>[게시판 이름]</b> <font color="#E83038">게시글 유형</font></div>
+		<div><h2>게시글 제목입니다.<h2></h2></div>
+		<div><img src="icon/profile_def.png" width="20vw"> Username | 작성 시간 | 조회수 00 | 댓글 0</div>
 	</div>
 	<div class="post-main w-container">
-		�� ���� �ۼ��մϴ�.<br>
-		�� ���� �ۼ��մϴ�.<br>
-		�� ���� �ۼ��մϴ�.<br>
-		�� ���� �ۼ��մϴ�.<br>
-		�� ���� �ۼ��մϴ�.<br>
-		�� ���� �ۼ��մϴ�.<br>
-		�� ���� �ۼ��մϴ�.<br>
-		�� ���� �ۼ��մϴ�.<br>
-		�� ���� �ۼ��մϴ�.<br>
+		새 글을 작성합니다.<br>
+		새 글을 작성합니다.<br>
+		새 글을 작성합니다.<br>
+		새 글을 작성합니다.<br>
+		새 글을 작성합니다.<br>
+		새 글을 작성합니다.<br>
+		새 글을 작성합니다.<br>
+		새 글을 작성합니다.<br>
+		새 글을 작성합니다.<br>
 	</div>
 	<div class="layout-upper-bottom w-container">
 		<ul role="list" class="list-2 w-list-unstyled">
@@ -321,12 +321,12 @@
 	</div>
 	
 	<div class="layout-lower-bottom w-container">
-		<button id="replybtn" type="button" class="btn btn-dark">���</button>
-		<button id="listbtn" type="button" class="btn btn-dark">���</button>
+		<button id="replybtn" type="button" class="btn btn-dark">답글</button>
+		<button id="listbtn" type="button" class="btn btn-dark">목록</button>
 	</div>
 	
 		<div class="comment-section-header w-container">
-		<div>��� [0]</div>
+		<div>댓글 [0]</div>
 	</div>
 	<div class="post-comment w-container">
 		<ul role="list" class="post-comment-container">
@@ -342,13 +342,13 @@
 				</ul>
 				<ul role="list" class="comment-data w-list-unstyled">
 					<li class="list-item-2"><img src="icon/like_gray.png">&nbsp;1</li>
-					<li>�ۼ� �ð�</li>
+					<li>작성 시간</li>
 				</ul></li>
-			<li class="comment-contents">��� �����Դϴ�.</li>
+			<li class="comment-contents">댓글 내용입니다.</li>
 		</ul>
 	</div>
 	<div class="comment-write-header w-container">
-		<div><b>��� �ޱ�</b></div>
+		<div><b>댓글 달기</b></div>
 	</div>
 	<div class="comment-write-container w-container">
 		<div class="input-group mb-3">
@@ -356,7 +356,7 @@
 				placeholder="Recipient's username" aria-label="Recipient's username"
 				aria-describedby="button-addon2">
 			<button class="btn btn-outline-secondary" type="button"
-				id="button-addon2">���</button>
+				id="button-addon2">등록</button>
 		</div>
 	</div>
 

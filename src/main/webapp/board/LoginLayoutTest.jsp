@@ -1,8 +1,9 @@
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%
 
 
 %>
+
 
 
 <!DOCTYPE html>
@@ -19,11 +20,11 @@
 		<%@ include file="jsplayout/left.jsp" %>
 		
 		<div class="ateam_contents w-col w-col-8">
-			<!-- ==============º»¹® ³»¿ë ½ÃÀÛ============= -->
+			<!-- ==============ë³¸ë¬¸ ë‚´ìš© ì‹œìž‘============= -->
 			
-			<%@ include file="jspLogin/login.jsp" %>
+			<%@ include file="jsplogin/login.jsp" %>
 			
-			<!-- ==============º»¹® ³»¿ë ³¡============== -->
+			<!-- ==============ë³¸ë¬¸ ë‚´ìš© ë============== -->
 		</div>
 		
 		<%@ include file="jsplayout/right.jsp" %>
