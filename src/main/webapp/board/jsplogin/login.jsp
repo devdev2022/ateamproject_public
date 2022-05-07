@@ -1,14 +1,7 @@
 <!DOCTYPE html>
-<!-- This site was created in Webflow. http://www.webflow.com -->
-<!-- Last Published: Thu May 05 2022 12:27:47 GMT+0000 (Coordinated Universal Time) -->
 
 <head>
 <style>
-/* Generated on: Thu May 05 2022 12:27:47 GMT+0000 (Coordinated Universal Time) */
-/* ==========================================================================
-   normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
-   ========================================================================== */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
 	font-family: sans-serif;
 	-ms-text-size-adjust: 100%;
