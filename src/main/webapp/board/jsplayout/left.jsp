@@ -18,7 +18,7 @@
 				style="background-image: url(icon/edit_gray.png); background-repeat: no-repeat"></div>
 			<div class="side_profile_likeicon w-col w-col-4"
 				style="background-image: url(icon/like_gray.png); background-repeat: no-repeat"></div>
-			<div class="side_profile_saveicon w-col w-col-4"
+			<div class="side_profile_saveicon w-col w-col-4" 
 				style="background-image: url(icon/save_gray.png); background-repeat: no-repeat"></div>
 		</div>
 		<div class="side_chart" style="background-color: ivory"></div>

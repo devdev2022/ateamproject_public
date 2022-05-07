@@ -1,14 +1,9 @@
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%
 
 %>
 
-<!DOCTYPE html>
-<!-- This site was created in Webflow. http://www.webflow.com -->
-<!-- Last Published: Wed May 04 2022 00:05:18 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain="6832s-radical-site.webflow.io"
-	data-wf-page="626f3913f1df6544fbc8a736"
-	data-wf-site="626f3913f1df6551bec8a735">
+
 <head>
 
 <style>
@@ -218,22 +213,26 @@
 <body class="body">
 	<div class="text-block">MyPage</div>
 	<div class="columns w-row">
-		<div
-			class="column w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
+		
+		<div class="column w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="div-block"></div>
-			<div class="text-block-5">È¸¿øÁ¤º¸ ¼öÁ¤</div>
+			<a href=""><div class="text-block-5">íšŒì›ì •ë³´ ìˆ˜ì •</div></a>
 		</div>
+		
+		
 		<div
 			class="column-2 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="div-block-2"></div>
-			<div class="text-block-3">³»°¡ ÁÁ¾ÆÇÑ °Ô½Ã¹°</div>
+			<div class="text-block-3">ë‚´ê°€ ì¢‹ì•„í•œ ê²Œì‹œë¬¼</div>
 		</div>
+
+
 		<div
 			class="column-3 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="div-block-3"></div>
-			<div class="text-block-4">ÀúÀåÇÑ °Ô½Ã¹°</div>
+			<div class="text-block-4">ì €ìž¥í•œ ê²Œì‹œë¬¼</div>
 		</div>
+
 	</div>
 	
 </body>
-</html>

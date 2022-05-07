@@ -95,7 +95,7 @@
 		<div class="ateam_contents w-col w-col-8" style="overflow:auto">
 			<!-- ==============본문 내용 시작============= -->
 			
-			<%@ include file="jspjoin/join.jsp" %>
+			<%@ include file="myPageIndex.jsp" %>
 
 			<!-- ==============본문 내용 끝============== -->
 		</div>
