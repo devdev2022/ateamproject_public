@@ -22,7 +22,7 @@
 		<div class="ateam_contents w-col w-col-8">
 			<!-- ==============본문 내용 시작============= -->
 			
-			<%@ include file="jsplogin/login.jsp" %>
+			<%@ include file="jspLogin/logintest.jsp" %>
 			
 			<!-- ==============본문 내용 끝============== -->
 		</div>
