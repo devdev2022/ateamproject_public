@@ -294,21 +294,6 @@
 		%>
 				<img src="../uploadimg/<%=fBean.getFilename()%>">
 		<%} %>
-		<div><b>[게시판 이름]</b> <font color="#E83038">게시글 유형</font></div>
-		<div><h2>게시글 제목입니다.<h2></h2></div>
-		<div><img src="icon/profile_def.png" width="20vw"> Username | 작성 시간 | 조회수 00 | 댓글 0</div>
-	</div>
-	<div class="post-main w-container">
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-		새 글을 작성합니다.<br>
-	</div>
 	<div class="layout-upper-bottom w-container">
 		<ul role="list" class="list-2 w-list-unstyled">
 			<li>
