@@ -19,12 +19,11 @@ public class LikesMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "insert tbllikes (num, id, likes) values(?, ?, ?) where num=?";
+			sql = "insert tbllikes (num, id, likes) values(?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, bean.getNum());
 			pstmt.setString(2, bean.getId());
-			pstmt.setInt(3, bean.getLikes());
-			pstmt.setInt(4, bean.getNum());
+			pstmt.setInt(3, 1);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,14 +33,14 @@ public class LikesMgr {
 		return;
 	}
 	
-//	좋아요 값1로 저장
+//	좋아요 삭제
 	public void deleteLikes(int num, String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "delete tbllikes where num=? and id=?";
+			sql = "delete from tbllikes where num=? and id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, id);
@@ -54,6 +53,7 @@ public class LikesMgr {
 		return;
 	}
 	
+//	해당게시물에 아이디 좋아요 유무 확인
 	public boolean selectLikes(int num, String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -62,7 +62,7 @@ public class LikesMgr {
 		boolean flag = false;
 		try {
 			con = pool.getConnection();
-			sql = "select * from tbllikes where num=? id=?";
+			sql = "select * from tbllikes where num=? and id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, id);
@@ -76,6 +76,30 @@ public class LikesMgr {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		return flag;
+	}
+	
+//	한게시물의 좋아요 총수량
+	public int countLike(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int totalCount = 0;
+		try {
+			con = pool.getConnection();
+			sql = "select count(num) from tbllikes where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return totalCount;
 	}
 	
 	

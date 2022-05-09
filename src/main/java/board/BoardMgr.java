@@ -59,7 +59,7 @@ public class BoardMgr {
 			sql = "insert tblboard(id, subject, content, ref, pos, depth, regdate, ip, count, type_board, type_cat) "
 					+ "values(?, ?, ?, ?, 0, 0, now(), ?, 0, ?, ?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, multi.getParameter("id"));
+			pstmt.setString(1, multi.getParameter("loginId"));
 			pstmt.setString(2, multi.getParameter("subject"));
 			pstmt.setString(3, multi.getParameter("content"));
 			pstmt.setInt(4, ref);

@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <%
-	String id = "aaa";
+	String loginId = "aaa";
 %>
 
 <!DOCTYPE html>
@@ -236,7 +236,7 @@
 		<a href="javascript:location.href='boardList.jsp'"><button type="button" class="btn btn-dark">리스트</button></a>
 	</div>
 	<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
-	<input type="hidden" name="id" value="<%=id%>">
+	<input type="hidden" name="loginId" value="<%=loginId%>">
 	</form>
 </body>
 </html>

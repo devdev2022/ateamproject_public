@@ -5,11 +5,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
-	String id = "aaa";
+	String loginId = "aaa";
 	
 %>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <jsp:useBean id="cMgr" class="board.CommentMgr"/>
+<jsp:useBean id="lMgr" class="board.LikesMgr"/>
+<jsp:useBean id="cLMgr" class="board.CmtLikesMgr"/>
+
 
 
 <!DOCTYPE html>
@@ -26,10 +29,20 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 	
-<script>
+<script type="text/javascript">
 	function down(filename) {
 		document.downFrm.filename.value=filename;
 		document.downFrm.submit();
+	}
+	
+	function insertLike(insertLikes) {
+		document.likeFrm.action = insertLikes;
+		document.likeFrm.submit();
+	}
+	
+	function deleteLike(deleteLikes) {
+		document.likeFrm.action = deleteLikes;
+		document.likeFrm.submit();
 	}
 </script>
 
@@ -328,14 +341,23 @@
 	<div class="layout-upper-bottom w-container">
 		<ul role="list" class="list-2 w-list-unstyled">
 			<li>
-				<table>
-					<tr>
-						<td><img src="icon/like_post.png"></td>
-					</tr>
-					<tr>
-						<td align="center">0</td>
-					</tr>
-				</table>	
+				<form name="likeFrm" action="" method="post">
+					<table>
+						<tr>
+						<%if(!lMgr.selectLikes(num, loginId)){	%>
+							<td><a href="javascript:insertLike('insertLikes')"><img src="icon/like_before.jpg"></a></td>
+						<%}else{ %>
+							<td><a href="javascript:deleteLike('deleteLikes')"><img src="icon/like_after.jpg"></a></td>
+						<%} %>
+						</tr>
+						<tr>
+							<% int totalLike = lMgr.countLike(num);	%>
+							<td align="center"><%=totalLike %></td>
+						</tr>
+					</table>
+					<input type="hidden" name="loginId" value="<%=loginId%>">
+					<input type="hidden" name="num" value=<%=num %>>	
+				</form>
 			</li>
 			<li>
 				<table>
@@ -362,7 +384,7 @@
 	
 	<div class="layout-lower-bottom w-container">
 		<button id="replybtn" type="button" class="btn btn-dark">답글</button>
-		<button id="listbtn" type="button" class="btn btn-dark">목록</button>
+		<button id="listbtn" type="button" class="btn btn-dark" onclick="javascript:location.href='boardList.jsp'">목록</button>
 	</div>
 	<%
 		Vector<CommentBean> cVlist = cMgr.commentList(num);
@@ -374,37 +396,61 @@
 	<%
 		for(int i=0; i<cCount; i++){
 			CommentBean cBean = cVlist.get(i);
-		
 	%>
+	<script type="text/javascript">
+		function insertCmtLike(insertCmtLikes) {
+			document.cmtLikeFrm<%=i%>.action = insertCmtLikes;
+			document.cmtLikeFrm<%=i%>.submit();
+		}
+		
+		function deleteCmtLike(deleteCmtLikes) {
+			document.cmtLikeFrm<%=i%>.action = deleteCmtLikes;
+			document.cmtLikeFrm<%=i%>.submit();
+		}
+	</script>
 	<div class="post-comment w-container">
 		<ul role="list" class="post-comment-container">
 			<li class="list-item"><ul role="list" class="comment-user-info w-list-unstyled">
-					<li class="list-item-3">
+				<li class="list-item-3">
 						<img src="icon/profile_def.png" width="20vw">
-					</li>
-					<li>
-						<%=id %>
-					</li>
-					<li></li>
-				</ul>
-				<ul role="list" class="comment-data w-list-unstyled">
-					<li class="list-item-2"><img src="icon/like_gray.png">&nbsp;1</li>
-					<li><%=cBean.getRegdate() %></li>
-				</ul></li>
+				</li>
+				<li>
+					<%=loginId %>
+				</li>
+				<li></li>
+			</ul>
+				<form name="cmtLikeFrm<%=i%>"action="" method="post">
+					<ul role="list" class="comment-data w-list-unstyled">
+						<%int totalCmtLikes = cLMgr.countCmtLikes(num, cBean.getCnum()); %>
+						<%if(!cLMgr.selectCmtLikes(num, cBean.getCnum(), loginId)){	%>
+							<li><a href="javascript:insertCmtLike('insertCmtLikes')"><img src="icon/like_before.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
+						<%}else{ %>
+							<li><a href="javascript:deleteCmtLike('deleteCmtLikes')"><img src="icon/like_after.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
+						<%} %>
+						<li><%=cBean.getRegdate() %></li>
+						
+					</ul>
+					<input type="hidden" name="loginId" value="<%=loginId%>">
+					<input type="hidden" name="num" value=<%=num %>>
+					<input type="hidden" name="cnum" value=<%=cBean.getCnum() %>>
+				</form>
+			</li>
+				
 			<li class="comment-contents"><%=cBean.getComment() %></li>
 		</ul>
+		
 	</div>
 	<%} %>
 	<form name="commentFrm" action="commentPost" method="post">
 		<div class="comment-write-header w-container">
 			<div>
-				<b>댓글</b> ex) id : aaa
+				<b>댓글</b> ex) loginId : aaa
 			</div>
 			
 			<div class="input-group mb-3">
 				<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" name="cComment">
 				<input class="btn btn-outline-secondary" type="submit" id="button-addon2" value="등록">
-				<input type="hidden" name="cid" value="aaa">
+				<input type="hidden" name="loginId" value="aaa">
 				<input type="hidden" name="num" value=<%=num %>>
 			</div>
 		</div>

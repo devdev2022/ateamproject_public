@@ -41,7 +41,7 @@ public class SavePostMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "delete tblsavepost where num=? and id=?";
+			sql = "delete from tblsavepost where num=? and id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, id);
