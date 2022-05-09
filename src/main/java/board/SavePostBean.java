@@ -1,10 +1,10 @@
 package board;
 
-public class LikesBean {
-	
+public class SavePostBean {
+
 	private int num;
 	private String id;
-	private int likes;
+	private int savePost;
 	
 	public int getNum() {
 		return num;
@@ -18,13 +18,13 @@ public class LikesBean {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getLikes() {
-		return likes;
+	public int getSavePost() {
+		return savePost;
 	}
-	public void setLikes(int likes) {
-		this.likes = likes;
+	public void setSavePost(int savePost) {
+		this.savePost = savePost;
 	}
-
+	
 	
 	
 }

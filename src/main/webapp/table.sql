@@ -54,11 +54,21 @@ CREATE TABLE tblcomment (
   FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE
 )
 
-/*tblBlikes : 게시글 좋아요+게시글 저장 테이블*/
-CREATE TABLE tblLikes (
+/*tblBlikes : 게시글 좋아요 테이블*/
+CREATE TABLE tbllikes (
   num INT(10) NOT NULL,									/*게시글 번호*/
-  id varchar(20) NOT NULL UNIQUE,					/*이용자 ID*/
-  type smallint unsigned DEFAULT NULL,				/*0: 좋아요, 1: 게시글 저장*/
+  id varchar(20) NOT NULL,									/*이용자 ID*/
+  likes INT(1) DEFAULT 0,									/*0: 없음, 1: 좋아요*/
+  PRIMARY KEY (num),
+  FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE,
+  FOREIGN KEY (id) REFERENCES tblmember(id)
+)
+
+/*tblBlikes : 게시글 저장 테이블*/
+CREATE TABLE tblsavepost (
+  num INT(10) NOT NULL,									/*게시글 번호*/
+  id varchar(20) NOT NULL,									/*이용자 ID*/
+  savepost INT(1) DEFAULT 0, 								/*0: 없음, 1: 게시글 저장*/
   PRIMARY KEY (num),
   FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE,
   FOREIGN KEY (id) REFERENCES tblmember(id)

@@ -4,26 +4,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class LikesMgr {
+public class SavePostMgr {
 	
 	DBConnectionMgr pool;
 	
-	public LikesMgr() {
+	public SavePostMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
-	
-//	좋아요 처음 저장
-	public void insertLikes(LikesBean bean) {
+
+//	게시물 저장
+	public void insertSavePost(SavePostBean bean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "insert tbllikes (num, id, likes) values(?, ?, ?) where num=?";
+			sql = "insert tblsavepost (num, id, savePost) values(?, ?, ?) where num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, bean.getNum());
 			pstmt.setString(2, bean.getId());
-			pstmt.setInt(3, bean.getLikes());
+			pstmt.setInt(3, bean.getSavePost());
 			pstmt.setInt(4, bean.getNum());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -34,14 +34,14 @@ public class LikesMgr {
 		return;
 	}
 	
-//	좋아요 값1로 저장
-	public void deleteLikes(int num, String id) {
+//	게시물 저장 삭제
+	public void deleteSavePost(int num, String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "delete tbllikes where num=? and id=?";
+			sql = "delete tblsavepost where num=? and id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, id);
@@ -54,7 +54,8 @@ public class LikesMgr {
 		return;
 	}
 	
-	public boolean selectLikes(int num, String id) {
+//	게시물 저장 유무 찾기
+	public boolean selectSavePost(int num, String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -62,7 +63,7 @@ public class LikesMgr {
 		boolean flag = false;
 		try {
 			con = pool.getConnection();
-			sql = "select * from tbllikes where num=? id=?";
+			sql = "select * from tblsavepost where num=? id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, id);
@@ -77,6 +78,7 @@ public class LikesMgr {
 		}
 		return flag;
 	}
+	
 	
 	
 }
