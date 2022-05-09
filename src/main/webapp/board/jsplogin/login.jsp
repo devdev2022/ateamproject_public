@@ -1,7 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
 
-
 %>
 
 <!DOCTYPE html>
@@ -2181,270 +2180,296 @@ rotate(
 /* ==========================================================================
    Start of custom Webflow CSS
    ========================================================================== */
-.container {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	padding-bottom: 100px;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	-ms-flex-direction: row;
-	flex-direction: row;
+.form-block {
+	width: 400px;
 }
 
 .div-block {
-	position: fixed;
-	left: 30%;
-	top: 25%;
-	right: auto;
-	bottom: auto;
-	width: 450px;
-	height: 300px;
-	padding-right: 0px;
-}
-
-.loginbutton {
-	position: absolute;
-	left: 70%;
-	top: 35%;
-	right: auto;
-	bottom: auto;
-	display: inline-block;
-	width: 80px;
-	height: 90px;
-	font-weight: 400;
-	text-align: center;
-	text-decoration: none;
-	-o-object-fit: fill;
-	object-fit: fill;
-}
-
-.body {
-	background-color: #fff;
-	text-align: center;
-}
-
-.logincontainer {
-	position: fixed;
-	right: 500px;
-	bottom: 246.333px;
-}
-
-.div-block-2 {
-	position: fixed;
-	right: 200px;
-	bottom: 100px;
-	display: inline-block;
-	width: 500px;
-	height: 300px;
-	grid-auto-columns: 1fr;
-	grid-column-gap: 16px;
-	grid-row-gap: 16px;
-	-ms-grid-columns: 1fr 1fr;
-	grid-template-columns: 1fr 1fr;
-	-ms-grid-rows: auto auto;
-	grid-template-rows: auto auto;
-}
-
-.login-button {
-	position: absolute;
-	left: 364px;
-	top: 19%;
-	right: 0%;
-	bottom: auto;
-	width: 100px;
-	height: 115px;
-	text-align: center;
-}
-
-.text-field {
-	width: 300px;
-}
-
-.text-field-2 {
-	width: 300px;
+	margin-top: 0px;
+	margin-right: 270px;
+	margin-left: 330px;
 }
 
 .form {
-	position: absolute;
-	left: 300px;
-	top: 150px;
-	right: 200px;
-	bottom: 125px;
-	width: 450px;
+	margin-top: 50px;
+	margin-right: 112px;
+	margin-bottom: 50px;
+	padding-top: 14px;
+	padding-bottom: 0px;
 }
 
-.button {
-	position: absolute;
-	right: 20px;
-	bottom: 81.3333px;
+.text-field {
+	width: 270px;
+	margin-top: 0px;
 }
 
-.form-2 {
-	position: absolute;
-	right: 270px;
-	bottom: 130px;
-	display: block;
-	width: 420px;
-	height: 290px;
-	background-color: #fdfdfd;
+.text-field-2 {
+	width: 270px;
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
-.text-field-3 {
-	position: absolute;
-	right: 120px;
-	bottom: 93px;
-	width: 280px;
-}
-
-.text-field-4 {
-	position: absolute;
-	right: 120px;
-	bottom: 185px;
-	width: 280px;
-}
-
-.field-label {
-	position: absolute;
-	right: 378px;
-	bottom: 140px;
-}
-
-.field-label-2 {
-	position: absolute;
-	right: 380px;
-	bottom: 232px;
-	width: 20px;
-}
-
-.button-2 {
-	position: absolute;
-	right: 10px;
-	bottom: 95px;
-	width: 100px;
-	height: 120px;
-	background-color: #f3f3f3;
-	color: #070606;
-}
-
-.button-3 {
-	position: absolute;
-	right: 12px;
-	bottom: 102px;
-	width: 100px;
-	height: 132px;
-	background-color: #f9fbfd;
-	font-family: Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal,
-		sans-serif;
-	color: #2c2b2b;
-	text-decoration: none;
-}
-
-.pw {
-	position: absolute;
-	right: 120px;
-	bottom: 93px;
-	width: 280px;
-}
-
-.id {
-	position: absolute;
-	right: 120px;
-	bottom: 185px;
-	width: 280px;
-}
-
-.id-pw {
-	position: absolute;
-	left: auto;
-	right: 550px;
-	bottom: 175px;
-	width: 80px;
-	height: 20px;
-	color: #353535;
-}
-
-.sign_up {
-	position: absolute;
-	left: 170px;
-	bottom: 45px;
-	width: 80px;
-	color: #313131;
-}
-
-.utility-page-wrap {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	width: 100vw;
-	height: 100vh;
-	max-height: 100%;
-	max-width: 100%;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;
-}
-
-.utility-page-content {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	width: 260px;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
+.div-block-2 {
+	height: auto;
 	text-align: center;
 }
 
-@media screen and (max-width: 991px) {
-	.loginbutton {
-		left: 75%;
-		top: 20%;
-		display: inline;
-		width: 75px;
-		height: 85px;
-		text-align: center;
-		text-decoration: none;
-		text-transform: none;
-	}
-	.body {
-		text-align: center;
-	}
+.link {
+	margin-left: 30px;
+	color: #070606;
+	text-decoration: none;
+}
+
+.link-2 {
+	margin-left: 61px;
+	color: #141212;
+	text-decoration: none;
+}
+
+.submit-button {
+	position: static;
+	top: 290px;
+	right: 300px;
+	bottom: auto;
+	width: 85px;
+	height: 85px;
+	margin-top: 12px;
+	margin-bottom: 28px;
+	margin-left: 299px;
+	background-color: #f3f3f3;
+	color: #0e0d0d;
+}
+
+.body {
+	text-align: center;
+}
+
+.div-block-3 {
+	padding-top: 0px;
+}
+
+.column {
+	margin-top: 65px;
+	padding-left: 0px;
+}
+
+.submit-button-2 {
+	width: 85px;
+	height: 85px;
+}
+
+.column-2 {
+	padding-right: 0px;
+}
+
+.columns {
+	width: 99%;
+	height: 99%;
+}
+
+.link-3 {
+	margin-left: -90px;
+	padding-right: 170px;
+	padding-left: 0px;
+	text-align: center;
+}
+
+.link-4 {
+	margin-left: -132px;
+	padding-right: 0px;
+	padding-left: 0px;
+	text-align: center;
+}
+
+.div-block-4 {
+	margin-top: 100px;
+	margin-right: 200px;
+	margin-left: 200px;
+}
+
+.form-2 {
+	width: 90px;
+	height: 90px;
+	margin-top: 0px;
+	text-align: left;
+}
+
+.submit-button-3 {
+	width: 90px;
+	height: 87px;
+	background-color: #f7f7f7;
+	color: #0f0e0e;
+}
+
+.column-3 {
+	height: auto;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	padding-right: 0px;
+	padding-bottom: 90px;
+	padding-left: 87px;
+	text-align: right;
+}
+
+.column-4 {
+	padding-left: 0px;
+}
+
+.form-3 {
+	width: 270px;
+	height: 100px;
+	text-align: center;
+}
+
+.form-block-2 {
+	width: 300px;
+	margin-left: 101px;
+	text-align: left;
+}
+
+.div-block-5 {
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.text-field-3 {
+	width: 250px;
+}
+
+.text-field-4 {
+	width: 250px;
+}
+
+.link-5 {
+	padding-right: 38px;
+	color: #0f0e0e;
+	text-decoration: none;
+}
+
+.link-6 {
+	padding-right: 26px;
+	color: #0c0b0b;
+	text-decoration: none;
+}
+
+.div-block-6 {
+	margin-top: 70px;
+	margin-left: 120px;
+}
+
+.columns-2 {
+	width: auto;
+}
+
+.div-block-7 {
+	height: 220px;
+}
+
+.text-field-5 {
+	width: 220px;
+	text-align: left;
+}
+
+.text-field-6 {
+	width: 220px;
+}
+
+.form-4 {
+	width: 220px;
+	margin-bottom: 28px;
+	margin-left: 35px;
+}
+
+.link-7 {
+	margin-right: 30px;
+	color: #141313;
+	text-decoration: none;
+}
+
+.link-8 {
+	margin-right: -55px;
+	color: #110f0f;
+	text-decoration: none;
+}
+
+.div-block-8 {
+	width: 400px;
+	height: 250px;
+	margin-top: 70px;
+	margin-bottom: 0px;
+	margin-left: 149px;
+	padding-top: 44px;
+	border: 1px solid #000;
+}
+
+.account-form {
+	width: 220px;
+	margin-left: 0px;
+}
+
+.login-form {
+	width: 90px;
+	height: 90px;
+	margin-bottom: 0px;
+}
+
+.button {
+	position: relative;
+	top: -115px;
+	right: -60px;
+	width: 87px;
+	height: 87px;
+	background-color: #f0f0f0;
+	color: #161515;
+	text-align: center;
+}
+
+.div-block-9 {
+	margin-left: 280px;
+	text-align: left;
 }
 </style>
-
-
 </head>
 <body class="body">
-	<div class="w-form">
-		<form id="email-form" name="email-form" data-name="Email Form"
-			method="get" class="form-2">
-			<label for="name" class="field-label-2">ID</label><a href="#"
-				class="button-3 w-button"><br/>
-			<br/>로그인</a><label for="field" class="field-label">PW</label><input
-				type="text" class="id w-input" maxlength="256" name="field"
-				data-name="Field" placeholder="Example Text" id="field" required="" /><input
-				type="text" class="pw w-input" maxlength="256" name="field-2"
-				data-name="Field 2" placeholder="Example Text" id="field-2"
-				required="" /><a href="#" class="sign_up">회원가입</a>
-		</form>
-		<div class="w-form-done">
-			<div>Thank you! Your submission has been received!</div>
+	<div class="div-block-5">
+		<div>
+			<div class="div-block-9">
+				<img
+					src="https://uploads-ssl.webflow.com/6278ab2dac94b83cce052a1c/6278c31b11ba11728c56991d_img.png"
+					loading="lazy" width="99" alt="" />
+			</div>
 		</div>
-		<a href="#" class="id-pw">ID/PW찾기</a>
-		<div class="w-form-fail">
-			<div>Oops! Something went wrong while submitting the form.</div>
+		<div class="div-block-8">
+			<div class="account-form w-form">
+				<form id="email-form-3" name="email-form-3" data-name="Email Form 3"
+					method="get" class="form-4">
+					<input type="text" class="text-field-5 w-input" maxlength="256"
+						name="name" data-name="Name" placeholder="" id="name" /><input
+						type="email" class="text-field-6 w-input" maxlength="256"
+						name="email" data-name="Email" placeholder="" id="email"
+						required="" />
+				</form>
+				<div class="w-form-done">
+					<div>Thank you! Your submission has been received!</div>
+				</div>
+				<div class="w-form-fail">
+					<div>Oops! Something went wrong while submitting the form.</div>
+				</div>
+			</div>
+			<a href="#" class="link-7">ID/PW 찾기</a><a href="#" class="link-8">회원가입</a><a
+				href="#" class="button w-button"><br />로그인</a>
 		</div>
 	</div>
+	<script
+		src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6278ab2dac94b83cce052a1c"
+		type="text/javascript"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://uploads-ssl.webflow.com/6278ab2dac94b83cce052a1c/js/webflow.a46a2f8e7.js"
+		type="text/javascript"></script>
+	<!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
+</html>
