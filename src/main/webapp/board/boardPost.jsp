@@ -1,6 +1,6 @@
 <%@page import="java.util.Vector"%>
 <%@page import="board.BoardBean"%>
-<%@page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <%
 	String id = "aaa";
@@ -32,6 +32,30 @@
 	
 	function setBValue(bValue) {
 		document.postFrm.bValue.value = bValue;
+	}
+
+	function check() {
+		if(document.postFrm.bValue.value=="게시판을 선택하세요." ){
+			alert("게시판을 선택하세요.");
+			document.postFrm.bValue.focus();
+			return;
+		}
+		if(document.postFrm.subject.value =="" || document.postFrm.subject.value == null){
+			alert("제목을 입력하세요.");
+			document.postFrm.subject.focus();
+			return;
+		}
+		if(document.postFrm.category.value=="카테고리를 선택하세요."){
+			alert("카테고리를 선택하세요.");
+			document.postFrm.category.focus();
+			return;
+		}
+		if(document.postFrm.content.value =="" || document.postFrm.content.value == null){
+			alert("내용을 입력하세요.");
+			document.postFrm.content.focus();
+			return;
+		}
+		document.postFrm.submit();
 	}
 </script>
 <!-- webflow 요소 -->
@@ -207,7 +231,7 @@
 		</div>
 	</div>
 	<div class="layout-lower-bottom w-container">
-		<input type="submit" value="저장" class="btn btn-dark">
+		<input type="button" value="저장" class="btn btn-dark" onclick="javascript:check()">
 		<a href="javascript:history.back()"><button type="button" class="btn btn-dark">취소</button></a>
 		<a href="javascript:location.href='boardList.jsp'"><button type="button" class="btn btn-dark">리스트</button></a>
 	</div>

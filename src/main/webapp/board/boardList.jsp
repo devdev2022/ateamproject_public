@@ -2,10 +2,11 @@
 <%@page import="board.UpFileBean"%>
 <%@page import="board.BoardBean"%>
 <%@page import="java.util.Vector"%>
-<%@page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <jsp:useBean id="cMgr" class="board.CommentMgr"/>
 <jsp:useBean id="fMgr" class="board.UpFileBean"/>
+
 <%
 	int totalRecord = 0; //총 게시물 수
 	int numPerPage = 10; //페이지당 레코드 개수(5, 10, 15, 20, 25, 30)
@@ -2302,6 +2303,7 @@ rotate(
 			<tr>
 				<td align="center" colspan="2">
 					<%
+						
 						Vector<BoardBean> Bvlist = bMgr.getBoardList(keyField, keyWord, start, cnt, category, bValue);
 						int listSize = Bvlist.size(); //마지막페이지 개수 고려
 						if(Bvlist.isEmpty()){
@@ -2356,6 +2358,9 @@ rotate(
 												<a href="javascript:read('<%=num %>')"><%=subject %></a>
 												<%if(filename != null && !filename.equals("")) {%>
 													<img src="icon/icon_file.gif" align="middle">
+												<%} %>
+												<%if(bcount > 0) {%>
+														<font color="red">[<%=bcount %>]</font>
 												<%} %>
 											</td>
 											<td align="center"><%=id %></td>

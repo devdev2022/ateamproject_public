@@ -22,7 +22,7 @@ public class CommentMgr {
 			con = pool.getConnection();
 			sql = "insert tblcomment(num, id, comment, regdate) values(?, ?, ?, now())";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, bean.getNum());
+			pstmt.setInt(1, bean.getNum()); //게시판 넘버
 			pstmt.setString(2, bean.getId()); //댓글쓴 사람
 			pstmt.setString(3, bean.getComment()); //댓글 내용
 			pstmt.executeUpdate();

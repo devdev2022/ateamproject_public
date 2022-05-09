@@ -15,7 +15,7 @@ public class BoardMgr {
 
 	DBConnectionMgr pool;
 	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/uploadimg/";
-	public static final String ENCODING = "EUC-KR";
+	public static final String ENCODING = "UTF-8";
 	public static final int MAXSIZE = 1024*1024*10; // 10mb
 	
 	public BoardMgr() {

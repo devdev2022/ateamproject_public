@@ -14,11 +14,11 @@ public class CommentPostServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CommentMgr cMgr = new CommentMgr();
 		CommentBean cBean = new CommentBean();
-		cBean.setCnum(Integer.parseInt(request.getParameter("num")));
+		cBean.setNum(Integer.parseInt(request.getParameter("num")));
 		cBean.setId(request.getParameter("cid"));
 		cBean.setComment(request.getParameter("cComment"));
 		cMgr.commentInsert(cBean);
-		
+		response.sendRedirect("boardRead.jsp?num=" + request.getParameter("num"));
 	}
 
 }

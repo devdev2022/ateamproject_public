@@ -1,13 +1,15 @@
+<%@page import="board.CommentBean"%>
 <%@page import="java.util.Vector"%>
 <%@page import="board.UpFileBean"%>
 <%@page import="board.BoardBean"%>
-<%@page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
-	
+	String id = "aaa";
 	
 %>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
+<jsp:useBean id="cMgr" class="board.CommentMgr"/>
 
 
 <!DOCTYPE html>
@@ -23,6 +25,13 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+	
+<script>
+	function down(filename) {
+		document.downFrm.filename.value=filename;
+		document.downFrm.submit();
+	}
+</script>
 
 <!-- webflow 요소 -->
 <style>
@@ -284,8 +293,29 @@
 	<div class="layout-top w-container">
 		<div><b><%=bBean.getType_board() %></b> <font color="#E83038"><%=bBean.getType_cat() %></font></div>
 		<div><h2><%=bBean.getSubject() %></h2></div>
-		<div><img src="icon/profile_def.png" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | <%=bBean.getCount() %> | ��� 0</div>
+		<div><img src="icon/profile_def.png" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
 	</div>
+	<!-- 첨부파일영역 -->
+	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
+		<div class="dropdown" align="right">
+			<input class="btn btn-outline-secondary dropdown-toggle" type="text" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" name="numPerPage" value="첨부파일 (<%=fCount %>)" size="10">
+			<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+			<%	
+				for(int i=0; i<fCount; i++){ 
+					
+					UpFileBean fBean = fVlist.get(i);
+					String fileN = fBean.getFilename();
+			%>
+					<%if(fileN != null && !fileN.equals("")){ %>
+							<li><a class="dropdown-item active" href="javascript:down('<%=fBean.getFilename()%>')"><%= fBean.getFilename()%></a></li>
+					<%}else{ %>
+							<li>첨부파일이 없습니다.</li>
+					<%} %>
+			<%} %>
+			</ul>
+		</div>
+	</div>
+	<!-- 첨부파일영역 -->
 	<div class="post-main w-container">
 		<%=bBean.getContent() %>
 		<%	
@@ -294,6 +324,7 @@
 		%>
 				<img src="../uploadimg/<%=fBean.getFilename()%>">
 		<%} %>
+	</div>
 	<div class="layout-upper-bottom w-container">
 		<ul role="list" class="list-2 w-list-unstyled">
 			<li>
@@ -333,10 +364,18 @@
 		<button id="replybtn" type="button" class="btn btn-dark">답글</button>
 		<button id="listbtn" type="button" class="btn btn-dark">목록</button>
 	</div>
-	
+	<%
+		Vector<CommentBean> cVlist = cMgr.commentList(num);
+		int cCount = cVlist.size();
+	%>
 		<div class="comment-section-header w-container">
-		<div>댓글 [0]</div>
+		<div>댓글 [<%=cCount %>]</div>
 	</div>
+	<%
+		for(int i=0; i<cCount; i++){
+			CommentBean cBean = cVlist.get(i);
+		
+	%>
 	<div class="post-comment w-container">
 		<ul role="list" class="post-comment-container">
 			<li class="list-item"><ul role="list" class="comment-user-info w-list-unstyled">
@@ -344,38 +383,34 @@
 						<img src="icon/profile_def.png" width="20vw">
 					</li>
 					<li>
-						Username00000
+						<%=id %>
 					</li>
 					<li></li>
 				</ul>
 				<ul role="list" class="comment-data w-list-unstyled">
 					<li class="list-item-2"><img src="icon/like_gray.png">&nbsp;1</li>
-					<li>작성 시간</li>
+					<li><%=cBean.getRegdate() %></li>
 				</ul></li>
-			<li class="comment-contents">댓글 내용입니다.</li>
+			<li class="comment-contents"><%=cBean.getComment() %></li>
 		</ul>
 	</div>
+	<%} %>
 	<form name="commentFrm" action="commentPost" method="post">
 		<div class="comment-write-header w-container">
-			<div><b>댓글</b> ex) id : aaa</div>
-	<div class="comment-write-header w-container">
-		<div><b>댓글 달기</b></div>
-	</div>
-	<div class="comment-write-container w-container">
-		<div class="input-group mb-3">
-			<input type="text" class="form-control"
-				placeholder="Recipient's username" aria-label="Recipient's username"
-				aria-describedby="button-addon2">
-			<button class="btn btn-outline-secondary" type="button"
-				id="button-addon2">등록</button>
-		</div>
-		<div class="comment-write-container w-container">
+			<div>
+				<b>댓글</b> ex) id : aaa
+			</div>
+			
 			<div class="input-group mb-3">
 				<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" name="cComment">
-				<input class="btn btn-outline-secondary" type="submit" id="button-addon2" value="���">
+				<input class="btn btn-outline-secondary" type="submit" id="button-addon2" value="등록">
 				<input type="hidden" name="cid" value="aaa">
+				<input type="hidden" name="num" value=<%=num %>>
 			</div>
 		</div>
+	</form>
+	<form method="post" name="downFrm" action="download.jsp">
+		<input type="hidden" name="filename">
 	</form>
 
 </body>
