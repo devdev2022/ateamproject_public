@@ -2,23 +2,23 @@
 <%@page import="board.UpFileBean"%>
 <%@page import="board.BoardBean"%>
 <%@page import="java.util.Vector"%>
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <jsp:useBean id="cMgr" class="board.CommentMgr"/>
 <jsp:useBean id="fMgr" class="board.UpFileBean"/>
 <%
-	int totalRecord = 0; //ÃÑ °Ô½Ã¹° ¼ö
-	int numPerPage = 10; //ÆäÀÌÁö´ç ·¹ÄÚµå °³¼ö(5, 10, 15, 20, 25, 30)
-	int pagePerBlock = 10; //ºí·°´ç ÆäÀÌÁö °³¼ö
-	int totalPage = 0; //ÃÑ ÆäÀÌÁö °³¼ö
-	int totalBlock = 0; //ÃÑ ºí·° °³¼ö
-	int nowPage = 1; //ÇöÀç ÆäÀÌÁö
-	int nowBlock = 1; //ÇöÀç ºí·°
+	int totalRecord = 0; //ì´ ê²Œì‹œë¬¼ ìˆ˜
+	int numPerPage = 10; //íŽ˜ì´ì§€ë‹¹ ë ˆì½”ë“œ ê°œìˆ˜(5, 10, 15, 20, 25, 30)
+	int pagePerBlock = 10; //ë¸”ëŸ­ë‹¹ íŽ˜ì´ì§€ ê°œìˆ˜
+	int totalPage = 0; //ì´ íŽ˜ì´ì§€ ê°œìˆ˜
+	int totalBlock = 0; //ì´ ë¸”ëŸ­ ê°œìˆ˜
+	int nowPage = 1; //í˜„ìž¬ íŽ˜ì´ì§€
+	int nowBlock = 1; //í˜„ìž¬ ë¸”ëŸ­
 	
 	if(request.getParameter("numPerPage")!=null){
 		numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
 	}
-//	 °Ë»ö¿¡ ÇÊ¿äÇÑ º¯¼ö
+//	 ê²€ìƒ‰ì— í•„ìš”í•œ ë³€ìˆ˜
 	String keyField = "";
 	String keyWord = "";
 	String category = "";
@@ -31,16 +31,16 @@
 		bValue = request.getParameter("bValue");
 	}
 	
-//	ÆäÀÌÁö Å¬¸¯ ¶Ç´Â ´Ù¸¥ÆäÀÌÁö ¿¡¼­ È£Ãâ
+//	íŽ˜ì´ì§€ í´ë¦­ ë˜ëŠ” ë‹¤ë¥¸íŽ˜ì´ì§€ ì—ì„œ í˜¸ì¶œ
 	if(request.getParameter("nowPage")!=null){
 		nowPage = Integer.parseInt(request.getParameter("nowPage"));
 	}
 
-// SQL¹® limit¿¡ µé¾î°¡´Â º¯¼ö ¼±¾ð
+// SQLë¬¸ limitì— ë“¤ì–´ê°€ëŠ” ë³€ìˆ˜ ì„ ì–¸
 	int start = (nowPage * numPerPage) - numPerPage;
-	int cnt = numPerPage; //µðÆúÆ®°ª = 10
+	int cnt = numPerPage; //ë””í´íŠ¸ê°’ = 10
 			
-//	°Ë»ö ÈÄ¿¡ ´Ù½Ã Ã³À½ ¸®½ºÆ® ¿äÃ»
+//	ê²€ìƒ‰ í›„ì— ë‹¤ì‹œ ì²˜ìŒ ë¦¬ìŠ¤íŠ¸ ìš”ì²­
 	if(request.getParameter("reload")!=null && request.getParameter("reload").equals("true")){
 		keyField = "";
 		keyWord = "";
@@ -48,11 +48,11 @@
 
 	totalRecord = bMgr.getBoardCount(keyField, keyWord, category, bValue);
 	
-// ÀüÃ¼ ÆäÀÌÁö °³¼ö
+// ì „ì²´ íŽ˜ì´ì§€ ê°œìˆ˜
 	totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
-//	ÀüÃ¼ ºí·° °³¼ö
+//	ì „ì²´ ë¸”ëŸ­ ê°œìˆ˜
 	totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
-// ÇöÀç ºí·°
+// í˜„ìž¬ ë¸”ëŸ­
 	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
 
 	
@@ -62,7 +62,7 @@
 <!DOCTYPE html>
 <head>
 
-<!-- ºÎÆ®½ºÆ®·¦ ¿ä¼Ò -->
+<!-- ë¶€íŠ¸ìŠ¤íŠ¸ëž© ìš”ì†Œ -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -98,12 +98,12 @@ function read(num) {
 
 function check() {
 	if(document.searchFrm.keyWord.value=="" || document.searchFrm.keyWord.value==null){
-		alert("°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•˜ì„¸ìš”.");
 		document.searchFrm.keyWord.focus();
 		return;
 	}
-	if(document.searchFrm.keyField.value=="¼±ÅÃ"){
-		alert("°Ë»öÁÖÁ¦¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+	if(document.searchFrm.keyField.value=="ì„ íƒ"){
+		alert("ê²€ìƒ‰ì£¼ì œë¥¼ ìž…ë ¥í•˜ì„¸ìš”.");
 		document.searchFrm.keyField.focus();
 		return;
 	}
@@ -131,7 +131,7 @@ function setviewCount(numPerPage) {
 
 </script>
 
-<!-- webflow ¿ä¼Ò -->
+<!-- webflow ìš”ì†Œ -->
 <style>
 @font-face {
 	font-family: 'webflow-icons';
@@ -2254,37 +2254,37 @@ rotate(
 
 </head>
 <body>
-	<!-- »ó´Ü ¿µ¿ª ½ÃÀÛ -->
+	<!-- ìƒë‹¨ ì˜ì—­ ì‹œìž‘ -->
 	<div class="board-top-container w-container">
 		<div class="board-category wf-section">
 			<div class="div-block">
-				<div class="text-block">°Ô½ÃÆÇ Á¦¸ñ</div>
+				<div class="text-block">ê²Œì‹œíŒ ì œëª©</div>
 				<div>Total : <%=totalRecord %> Articles( <%=nowPage + " / " + totalPage %> Pages)</div>
 			</div>
 		</div>
 		<div class="board-btns-top w-row">
 			<div class="column w-col w-col-10 w-col-small-10 w-col-tiny-10">
-				<a href="javascript:setcategory('')" class="category-btn w-button">ÀüÃ¼</a>
-				<a href="javascript:setcategory('À½¾Ç')" class="category-btn w-button">À½¾Ç</a>
-				<a href="javascript:setcategory('¸®ºä')" class="category-btn w-button">¸®ºä</a>
-				<a href="javascript:setcategory('°¡»çÇØ¼®')" class="category-btn w-button">°¡»çÇØ¼®</a>
-				<a href="javascript:setcategory('ÀÎÁõ/ÈÄ±â')" class="category-btn w-button">ÀÎÁõ/ÈÄ±â</a>
-				<a href="javascript:setcategory('±×¸²/¾ÆÆ®¿÷')" class="category-btn w-button">±×¸²/¾ÆÆ®¿÷</a>
-				<a href="javascript:setcategory('ÀÏ¹Ý')" class="category-btn w-button">ÀÏ¹Ý</a>
-				<a href="javascript:setcategory('°øÁö')" class="category-btn w-button">°øÁö</a>
+				<a href="javascript:setcategory('')" class="category-btn w-button">ì „ì²´</a>
+				<a href="javascript:setcategory('ìŒì•…')" class="category-btn w-button">ìŒì•…</a>
+				<a href="javascript:setcategory('ë¦¬ë·°')" class="category-btn w-button">ë¦¬ë·°</a>
+				<a href="javascript:setcategory('ê°€ì‚¬í•´ì„')" class="category-btn w-button">ê°€ì‚¬í•´ì„</a>
+				<a href="javascript:setcategory('ì¸ì¦/í›„ê¸°')" class="category-btn w-button">ì¸ì¦/í›„ê¸°</a>
+				<a href="javascript:setcategory('ê·¸ë¦¼/ì•„íŠ¸ì›')" class="category-btn w-button">ê·¸ë¦¼/ì•„íŠ¸ì›</a>
+				<a href="javascript:setcategory('ì¼ë°˜')" class="category-btn w-button">ì¼ë°˜</a>
+				<a href="javascript:setcategory('ê³µì§€')" class="category-btn w-button">ê³µì§€</a>
 			</div>
 		<form name="npFrm" method="post">
 			<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
 				<div class="dropdown">
 					<input class="btn btn-outline-secondary dropdown-toggle" type="text"
 						id="dropdownMenuButton2" data-bs-toggle="dropdown"
-						aria-expanded="false" value="10" name="numPerPage" size="1">°³¾¿º¸±â
+						aria-expanded="false" value="10" name="numPerPage" size="1">ê°œì”©ë³´ê¸°
 						
 						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-							<li><a class="dropdown-item active" href="javascript:setviewCount(5)">5°³¾¿ º¸±â</a></li>
-							<li><a class="dropdown-item" href="javascript:setviewCount(10)">10°³¾¿ º¸±â</a></li>
-							<li><a class="dropdown-item" href="javascript:setviewCount(15)">15°³¾¿ º¸±â</a></li>
-							<li><a class="dropdown-item" href="javascript:setviewCount(20)">20°³¾¿ º¸±â</a></li>
+							<li><a class="dropdown-item active" href="javascript:setviewCount(5)">5ê°œì”© ë³´ê¸°</a></li>
+							<li><a class="dropdown-item" href="javascript:setviewCount(10)">10ê°œì”© ë³´ê¸°</a></li>
+							<li><a class="dropdown-item" href="javascript:setviewCount(15)">15ê°œì”© ë³´ê¸°</a></li>
+							<li><a class="dropdown-item" href="javascript:setviewCount(20)">20ê°œì”© ë³´ê¸°</a></li>
 						</ul>
 				</div>
 			</div>
@@ -2293,29 +2293,29 @@ rotate(
 
 		</div>
 	</div>
-	<!-- »ó´Ü ¿µ¿ª ³¡ -->
+	<!-- ìƒë‹¨ ì˜ì—­ ë -->
 
 
-	<!-- °Ô½ÃÆÇ ¿µ¿ª ½ÃÀÛ -->
+	<!-- ê²Œì‹œíŒ ì˜ì—­ ì‹œìž‘ -->
 	<div class="board-main-container w-container" >
 		<table witdh="100%">
 			<tr>
 				<td align="center" colspan="2">
 					<%
 						Vector<BoardBean> Bvlist = bMgr.getBoardList(keyField, keyWord, start, cnt, category, bValue);
-						int listSize = Bvlist.size(); //¸¶Áö¸·ÆäÀÌÁö °³¼ö °í·Á
+						int listSize = Bvlist.size(); //ë§ˆì§€ë§‰íŽ˜ì´ì§€ ê°œìˆ˜ ê³ ë ¤
 						if(Bvlist.isEmpty()){
 					%>
 						<table cellspacing="0">
 								<tr align="center" bgcolor="#D0D0D0">
-									<td width="100">¹ø È£</td>
-									<td width="250">Á¦ ¸ñ</td>
-									<td width="100">¾ÆÀÌµð</td>
-									<td width="150">³¯ Â¥</td>
-									<td width="100">Á¶È¸¼ö</td>
+									<td width="100">ë²ˆ í˜¸</td>
+									<td width="250">ì œ ëª©</td>
+									<td width="100">ì•„ì´ë””</td>
+									<td width="150">ë‚  ì§œ</td>
+									<td width="100">ì¡°íšŒìˆ˜</td>
 								</tr>
 								<tr>
-									<td colspan="5" align="center">µî·ÏµÈ °Ô½Ã¹°ÀÌ ¾ø½À´Ï´Ù.</td>
+									<td colspan="5" align="center">ë“±ë¡ëœ ê²Œì‹œë¬¼ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 								</tr>
 							</table>
 					<%
@@ -2324,11 +2324,11 @@ rotate(
 					%>		
 							<table cellspacing="0">
 								<tr align="center" bgcolor="#D0D0D0">
-									<td width="100">¹ø È£</td>
-									<td width="250">Á¦ ¸ñ</td>
-									<td width="100">¾ÆÀÌµð</td>
-									<td width="150">³¯ Â¥</td>
-									<td width="100">Á¶È¸¼ö</td>
+									<td width="100">ë²ˆ í˜¸</td>
+									<td width="250">ì œ ëª©</td>
+									<td width="100">ì•„ì´ë””</td>
+									<td width="150">ë‚  ì§œ</td>
+									<td width="100">ì¡°íšŒìˆ˜</td>
 								</tr>
 								<%
 									for(int i=0; i<numPerPage; i++){
@@ -2342,12 +2342,12 @@ rotate(
 										String regdate = Bbean.getRegdate();
 										int depth = Bbean.getDepth();
 										int count = Bbean.getCount();
-//										ÆÄÀÏ
+//										íŒŒì¼
 										UpFileBean Fbean = bMgr.getBoardFile(num);
 										int Fnum = Fbean.getNum();
 										String filename = Fbean.getFilename();
 										int filesize = Fbean.getFilesize();
-//										´ñ±Û ¼ö
+//										ëŒ“ê¸€ ìˆ˜
 										int bcount = cMgr.getBCommentCount(num);
 								%>
 										<tr>
@@ -2370,9 +2370,9 @@ rotate(
 			</tr>
 		</table>
 	</div>
-	<!-- °Ô½ÃÆÇ ¿µ¿ª ³¡ -->
+	<!-- ê²Œì‹œíŒ ì˜ì—­ ë -->
 
-	<!-- ÇÏ´Ü ¿µ¿ª ½ÃÀÛ -->
+	<!-- í•˜ë‹¨ ì˜ì—­ ì‹œìž‘ -->
 	<div class="board-bottom-container w-container">
 		<table>
 			<tr>
@@ -2380,11 +2380,11 @@ rotate(
 					<div class="board-bottom-container w-container">
 						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 							<div class="btn-group me-2" role="group" aria-label="Second group">
-								<!-- ÀÌÀüºí·Ï -->
+								<!-- ì´ì „ë¸”ë¡ -->
 								<% if(nowBlock > 1) {%>
 									<a href="javascript:block('<%=nowBlock - 1%>')"><input type="text" class="btn btn-secondary" value="<" size="1"></a>
 								<%}	%>
-								<!-- ºí·Ï¹øÈ£ -->
+								<!-- ë¸”ë¡ë²ˆí˜¸ -->
 								<%
 									int pageStart = (nowBlock - 1) * pagePerBlock + 1;
 									int pageEnd = (pageStart + pagePerBlock) < totalPage ? pageStart + pagePerBlock : totalPage + 1; 
@@ -2394,7 +2394,7 @@ rotate(
 									<input type="text" class="btn btn-secondary" value="<%=pageStart %>" size="1">
 								</a>
 								<%} %>
-								<!-- ´ÙÀ½ºí·Ï -->
+								<!-- ë‹¤ìŒë¸”ë¡ -->
 								<% if(nowBlock < totalBlock) {%>
 									<a href="javascript:block('<%=nowBlock + 1%>')">
 										<input type="text" class="btn btn-secondary" value=">" size="1"> 
@@ -2405,8 +2405,8 @@ rotate(
 					</div>
 				</td>
 				<td align="right">
-					<a style="color: white;" href="boardPost.jsp"><button type="button" class="btn btn-dark">±Û¾²±â</button></a> 
-					<a href="javascript:list()"><button type="button" class="btn btn-light">Ã³À½À¸·Î</button></a>
+					<a style="color: white;" href="boardPost.jsp"><button type="button" class="btn btn-dark">ê¸€ì“°ê¸°</button></a> 
+					<a href="javascript:list()"><button type="button" class="btn btn-light">ì²˜ìŒìœ¼ë¡œ</button></a>
 				</td>
 			</tr>
 		</table>
@@ -2420,14 +2420,14 @@ rotate(
 				<td align="center">
 					<div class="input-group mb-3">
 						<input class="btn btn-outline-secondary dropdown-toggle"
-							type="text" data-bs-toggle="dropdown" aria-expanded="false" name="keyField" value="¼±ÅÃ" size="1">
+							type="text" data-bs-toggle="dropdown" aria-expanded="false" name="keyField" value="ì„ íƒ" size="1">
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="javascript:setkeyField('id')">¾ÆÀÌµð</a></li>
-							<li><a class="dropdown-item" href="javascript:setkeyField('subject')">Á¦¸ñ</a></li>
-							<li><a class="dropdown-item" href="javascript:setkeyField('content')">³»¿ë</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('id')">ì•„ì´ë””</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('subject')">ì œëª©</a></li>
+							<li><a class="dropdown-item" href="javascript:setkeyField('content')">ë‚´ìš©</a></li>
 						</ul>
-						<input type="text" class="form-control" placeholder="°Ë»ö Å°¿öµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä." aria-label="Recipient's username" aria-describedby="button-addon2" name="keyWord" >
-						<button class="btn btn-outline-secondary" type="button" id="button-addon2" value="" onclick="check()">°Ë»ö</button>
+						<input type="text" class="form-control" placeholder="ê²€ìƒ‰ í‚¤ì›Œë“œë¥¼ ìž…ë ¥í•˜ì„¸ìš”." aria-label="Recipient's username" aria-describedby="button-addon2" name="keyWord" >
+						<button class="btn btn-outline-secondary" type="button" id="button-addon2" value="" onclick="check()">ê²€ìƒ‰</button>
 						<input type="hidden" name="nowPage" value="<%=nowPage%>">
 						<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
 						<input type="hidden" name="category" value="<%=category%>">
@@ -2453,7 +2453,7 @@ rotate(
 			<input type="hidden" name="num" >
 		</form>
 	</div>
-	<!-- ÇÏ´Ü ¿µ¿ª ³¡ -->
+	<!-- í•˜ë‹¨ ì˜ì—­ ë -->
 </body>
 </html>
 

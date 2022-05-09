@@ -1,6 +1,6 @@
 <%@page import="java.util.Vector"%>
 <%@page import="board.BoardBean"%>
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <%
 	String id = "aaa";
@@ -15,7 +15,7 @@
 <head>
 
 
-<!-- ºÎÆ®½ºÆ®·¦ ¿ä¼Ò -->
+<!-- ë¶€íŠ¸ìŠ¤íŠ¸ëž© ìš”ì†Œ -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -34,7 +34,7 @@
 		document.postFrm.bValue.value = bValue;
 	}
 </script>
-<!-- webflow ¿ä¼Ò -->
+<!-- webflow ìš”ì†Œ -->
 <style>
 #post-title{
 	margin-top: 5vw;
@@ -149,24 +149,24 @@
 
 </head>
 <body>
-	<div id="post-title"><h2>»õ °Ô½Ã±Û ÀÛ¼º</h2></div>
+	<div id="post-title"><h2>ìƒˆ ê²Œì‹œê¸€ ìž‘ì„±</h2></div>
 	<form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data">
 		<div class="layout-top w-container">
 			<div class="post-subject">
-				<input class="form-control" type="text" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä." aria-label="default input example" name="subject" size="150">
+				<input class="form-control" type="text" placeholder="ì œëª©ì„ ìž…ë ¥í•˜ì„¸ìš”." aria-label="default input example" name="subject" size="150">
 				<div class="post-type">
 					<%
 						Vector<BoardBean> bVVlist = bMgr.getbValue();
-						int bVSize = bVVlist.size(); //¸¶Áö¸·ÆäÀÌÁö °³¼ö °í·Á
+						int bVSize = bVVlist.size(); //ë§ˆì§€ë§‰íŽ˜ì´ì§€ ê°œìˆ˜ ê³ ë ¤
 					%>
 					
 					<div class="dropdown">
-						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="°Ô½ÃÆÇÀ» ¼±ÅÃÇÏ¼¼¿ä." name="bValue">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="ê²Œì‹œíŒì„ ì„ íƒí•˜ì„¸ìš”." name="bValue">
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						<%
 							for(int i=0; i<bVSize; i++){
 								BoardBean caBean = bVVlist.get(i);
-								String bValue = caBean.getType_cat();//°Ô½ÃÆÇ °³¼ö °í·Á
+								String bValue = caBean.getType_cat();//ê²Œì‹œíŒ ê°œìˆ˜ ê³ ë ¤
 							%>
 								<li><a class="dropdown-item" href="javascript:setBValue('<%=bValue %>')"><%=bValue %></a></li>
 							<%} %>
@@ -174,10 +174,10 @@
 					</div>
 					<%
 						Vector<BoardBean> caVlist = bMgr.getCategory();
-						int caSize = caVlist.size(); //Ä«Å×°í¸® °³¼ö °í·Á
+						int caSize = caVlist.size(); //ì¹´í…Œê³ ë¦¬ ê°œìˆ˜ ê³ ë ¤
 					%>
 					<div class="dropdown">
-						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="Ä«Å×°í¸®¸¦ ¼±ÅÃÇÏ¼¼¿ä." name="category">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="ì¹´í…Œê³ ë¦¬ë¥¼ ì„ íƒí•˜ì„¸ìš”." name="category">
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<%
 									for(int i=0; i<caSize; i++){
@@ -194,7 +194,7 @@
 		</div>
 	<div class="post-main w-container">
 		<div class="mb-3">
-			³»¿ë
+			ë‚´ìš©
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="12" name="content"></textarea>
 		</div>
 	</div>
@@ -202,14 +202,14 @@
 	<div class="layout-upper-bottom w-container">
 		<div id="fileupload" class="mb-3">
 			<label for="formFile" class="form-label">
-				Ã·ºÎÆÄÀÏ
+				ì²¨ë¶€íŒŒì¼
 			</label> <input class="form-control" type="file" id="formFile" name="filename">
 		</div>
 	</div>
 	<div class="layout-lower-bottom w-container">
-		<input type="submit" value="ÀúÀå" class="btn btn-dark">
-		<a href="javascript:history.back()"><button type="button" class="btn btn-dark">Ãë¼Ò</button></a>
-		<a href="javascript:location.href='boardList.jsp'"><button type="button" class="btn btn-dark">¸®½ºÆ®</button></a>
+		<input type="submit" value="ì €ìž¥" class="btn btn-dark">
+		<a href="javascript:history.back()"><button type="button" class="btn btn-dark">ì·¨ì†Œ</button></a>
+		<a href="javascript:location.href='boardList.jsp'"><button type="button" class="btn btn-dark">ë¦¬ìŠ¤íŠ¸</button></a>
 	</div>
 	<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
 	<input type="hidden" name="id" value="<%=id%>">

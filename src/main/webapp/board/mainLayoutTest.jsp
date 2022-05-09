@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%
 
 
@@ -93,11 +93,11 @@
 		<%@ include file="jsplayout/left.jsp" %>
 		
 		<div class="ateam_contents w-col w-col-8" style="overflow:auto">
-			<!-- ==============º»¹® ³»¿ë ½ÃÀÛ============= -->
+			<!-- ==============ë³¸ë¬¸ ë‚´ìš© ì‹œìž‘============= -->
 			
-			<%@ include file="jsplogin/login.jsp" %>
-			
-			<!-- ==============º»¹® ³»¿ë ³¡============== -->
+			<%@ include file="myPageIndex.jsp" %>
+
+			<!-- ==============ë³¸ë¬¸ ë‚´ìš© ë============== -->
 		</div>
 		
 		<%@ include file="jsplayout/right.jsp" %>
