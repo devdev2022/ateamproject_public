@@ -213,6 +213,7 @@ public class BoardMgr {
 				bean.setSubject(rs.getString("subject"));
 				bean.setPos(rs.getInt("pos"));
 				bean.setRef(rs.getInt("ref"));
+				bean.setDepth(rs.getInt("depth"));
 				bean.setRegdate(rs.getString("regdate"));
 				bean.setIp(rs.getString("ip"));
 				bean.setContent(rs.getString("content"));

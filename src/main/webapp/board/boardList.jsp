@@ -2355,6 +2355,10 @@ rotate(
 										<tr>
 											<td align="center"><%=totalRecord - start - i %></td>
 											<td >
+												<%
+													for(int j=0;j<depth;j++){
+														out.println("&nbsp;&nbsp;&nbsp;");
+													}%>
 												<a href="javascript:read('<%=num %>')"><%=subject %></a>
 												<%if(filename != null && !filename.equals("")) {%>
 													<img src="icon/icon_file.gif" align="middle">

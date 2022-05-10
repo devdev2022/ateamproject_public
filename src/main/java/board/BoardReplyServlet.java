@@ -14,13 +14,7 @@ public class BoardReplyServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardMgr mgr = new BoardMgr();
-		int ref = Integer.parseInt(request.getParameter("ref"));
-		int pos = Integer.parseInt(request.getParameter("pos"));
-		
-		mgr.replyUpBoard(ref, pos);
 		mgr.replyBoard(request);
-		
-		
 		response.sendRedirect("boardList.jsp");
 	}
 

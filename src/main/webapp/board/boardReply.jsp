@@ -2,11 +2,16 @@
 <%@page import="board.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
+<jsp:useBean id="bBean" class="board.BoardBean"/>
 <%
 	String loginId = "aaa";
 	String oriBValue = request.getParameter("bValue");
 	String oriCategory = request.getParameter("category");
 	int num = Integer.parseInt(request.getParameter("num"));
+	bBean = bMgr.getBoard(num);
+	out.print(bBean.getRef());
+	out.print(bBean.getPos());
+	out.print(bBean.getDepth());
 %>
 
 <!DOCTYPE html>
@@ -178,11 +183,7 @@
 </head>
 <body>
 	<div id="post-title"><h2>답변글 작성</h2></div>
-	<form name="replyFrm" method="post" action="boardPost"  onsubmit="return false;" enctype="multipart/form-data">
-		<%
-			BoardBean bean = new BoardBean();
-			bMgr.getBoard(num);
-		%>
+	<form name="replyFrm" method="post" action="boardReply" enctype="multipart/form-data">
 		<div class="layout-top w-container">
 			<div class="post-subject">
 				<input class="form-control" type="text" placeholder="제목을 입력하세요." aria-label="default input example" name="subject" size="150" value="└ ">
@@ -251,9 +252,9 @@
 	
 	<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
 	<input type="hidden" name="id" value="<%=loginId%>">
- 	<input type="hidden" name="ref" value="<%=bean.getRef()%>">
- 	<input type="hidden" name="pos" value="<%=bean.getPos()%>">
- 	<input type="hidden" name="depth" value="<%=bean.getDepth()%>">
+ 	<input type="hidden" name="ref" value="<%=bBean.getRef()%>">
+ 	<input type="hidden" name="pos" value="<%=bBean.getPos()%>">
+ 	<input type="hidden" name="depth" value="<%=bBean.getDepth()%>">
 	</form>
 </body>
 </html>
