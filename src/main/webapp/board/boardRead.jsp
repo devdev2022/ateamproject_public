@@ -12,6 +12,7 @@
 <jsp:useBean id="cMgr" class="board.CommentMgr"/>
 <jsp:useBean id="lMgr" class="board.LikesMgr"/>
 <jsp:useBean id="cLMgr" class="board.CmtLikesMgr"/>
+<jsp:useBean id="sMgr" class="board.SavePostMgr"/>
 
 
 
@@ -30,19 +31,58 @@
 	crossorigin="anonymous"></script>
 	
 <script type="text/javascript">
+
+// 공유하기
+url_default_ks = "https://story.kakao.com/share?url="; 
+var url_default_fb = "https://www.facebook.com/sharer/sharer.php?u="; 
+var url_default_tw_txt = "https://twitter.com/intent/tweet?text="; 
+var url_default_tw_url = "&url="; 
+var url_default_band = "http://band.us/plugin/share?body="; 
+var url_route_band = "&route="; 
+var url_default_naver = "http://share.naver.com/web/shareView.nhn?url="; 
+var title_default_naver = "&title="; 
+
+var url_this_page = location.href; 
+var title_this_page = document.title; 
+
+var url_combine_ks = url_default_ks + url_this_page; 
+var url_combine_fb = url_default_fb + url_this_page; 
+var url_combine_tw = url_default_tw_txt + document.title + url_default_tw_url + url_this_page; 
+var url_combine_band = url_default_band + encodeURI(url_this_page)+ '%0A' + encodeURI(title_this_page)+'%0A' + '&route=tistory.com'; 
+var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_default_naver + encodeURI(title_this_page);
+
+
 	function down(filename) {
 		document.downFrm.filename.value=filename;
 		document.downFrm.submit();
 	}
 	
-	function insertLike(insertLikes) {
-		document.likeFrm.action = insertLikes;
+	function insertLike() {
+		document.likeFrm.action = "insertLikes";
 		document.likeFrm.submit();
 	}
 	
-	function deleteLike(deleteLikes) {
-		document.likeFrm.action = deleteLikes;
+	function deleteLike() {
+		document.likeFrm.action = "deleteLikes";
 		document.likeFrm.submit();
+	}
+	function insertSavePost() {
+		document.savePostFrm.action = "insertSavePost";
+		document.savePostFrm.submit();
+	}
+	
+	function deleteSavePost() {
+		document.savePostFrm.action = "deleteSavePost";
+		document.savePostFrm.submit();
+	}
+	
+	function insertComment() {
+		if(document.commentFrm.cComment.value == "" || document.commentFrm.cComment.value == null){
+			alert("댓글을 입력하세요.");
+			document.commentFrm.cComment.focus();
+			return;
+		}
+		document.commentFrm.submit();
 	}
 </script>
 
@@ -311,7 +351,7 @@
 	<!-- 첨부파일영역 -->
 	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
 		<div class="dropdown" align="right">
-			<input class="btn btn-outline-secondary dropdown-toggle" type="text" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" name="numPerPage" value="첨부파일 (<%=fCount %>)" size="10">
+			<input class="btn btn-outline-secondary dropdown-toggle" type="text" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" value="첨부파일 (<%=fCount %>)" size="10">
 			<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
 			<%	
 				for(int i=0; i<fCount; i++){ 
@@ -322,7 +362,7 @@
 					<%if(fileN != null && !fileN.equals("")){ %>
 							<li><a class="dropdown-item active" href="javascript:down('<%=fBean.getFilename()%>')"><%= fBean.getFilename()%></a></li>
 					<%}else{ %>
-							<li>첨부파일이 없습니다.</li>
+							<li><a class="dropdown-item active" href="#">파일이 없습니다.</a></li>
 					<%} %>
 			<%} %>
 			</ul>
@@ -345,9 +385,9 @@
 					<table>
 						<tr>
 						<%if(!lMgr.selectLikes(num, loginId)){	%>
-							<td><a href="javascript:insertLike('insertLikes')"><img src="icon/like_before.jpg"></a></td>
+							<td><a href="javascript:insertLike()"><img src="icon/like_before.jpg"></a></td>
 						<%}else{ %>
-							<td><a href="javascript:deleteLike('deleteLikes')"><img src="icon/like_after.jpg"></a></td>
+							<td><a href="javascript:deleteLike()"><img src="icon/like_after.jpg"></a></td>
 						<%} %>
 						</tr>
 						<tr>
@@ -360,20 +400,42 @@
 				</form>
 			</li>
 			<li>
-				<table>
-					<tr>
-						<td><img src="icon/save_post.png"></td>
-					</tr>
-					<tr>
-						<td align="center">0</td>
-					</tr>
-				</table>	
+				<form name="savePostFrm" action="" method="post">
+					<table>
+						<tr>
+						<%if(!sMgr.selectSavePost(num, loginId)){	%>
+								<td><a href="javascript:insertSavePost()"><img src="icon/save_post_before.png"></a></td>
+							<%}else{ %>
+								<td><a href="javascript:deleteSavePost()"><img src="icon/save_post_after.png"></a></td>
+							<%} %>
+						</tr>
+						<tr>
+							<%int sCount = sMgr.countSavePost(num); %>
+							<td align="center"><%=sCount %></td>
+						</tr>
+					</table>
+					<input type="hidden" name="loginId" value="<%=loginId%>">
+					<input type="hidden" name="num" value=<%=num %>>	
+				</form>	
 			</li>
 			<li>
 				<table>
-					<tr>
-						<td><img src="icon/share_post.png"></td>
-					</tr>
+					<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
+						<div class="dropdown" align="right">
+							<img src="icon/share_post.png" class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+							<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+								 <!-- 페이스북 공유 버튼 --> 
+								<li><a href="" onclick="window.open(url_combine_fb, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://download-hub.com/wp-content/uploads/2021/01/Facebook_icon.png" title="페이스북" class="sharebtn_custom" style="width: 32px;"></a>
+								  <!-- 트위터 공유 버튼 --> 
+								 <a href="" onclick="window.open(url_combine_tw, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://play-lh.googleusercontent.com/8sc6LSo3dRf54GaLdQR8UZfzd_fgHgWMJlNxGLP1HWPEU7YY4UxkyHc8-qCNwtyiqO55=s180-rw" title="트위터" class="sharebtn_custom" style="width: 32px;"></a>
+								  <!-- 카카오 스토리 공유 버튼 --> 
+								  <a href="" onclick="window.open(url_combine_ks, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://download.beer/wp-content/uploads/2021/03/kakaostory-logo-0x0.png" title="카카오스토리" class="sharebtn_custom" style="width: 32px;"></a>
+								  <!-- 밴드 공유 버튼 --> 
+								  <a href="" onclick="window.open(url_combine_band, '', 'scrollbars=no, width=584, height=635'); return false;"><img src="https://play-lh.googleusercontent.com/hvpSrKnGiK0h-GnDofFmj6y5mLqqB7vDpsV9kWYebCEvMuZp3dsRNDqJANnk6eNHqlA=s180-rw" title="밴드" class="sharebtn_custom" style="width: 32px;"></a></li>
+								  <!-- SNS버튼 끝 -->
+							</ul>
+						</div>
+					</div>
 					<tr>
 						<td></td>
 					</tr>
@@ -398,13 +460,15 @@
 			CommentBean cBean = cVlist.get(i);
 	%>
 	<script type="text/javascript">
-		function insertCmtLike(insertCmtLikes) {
-			document.cmtLikeFrm<%=i%>.action = insertCmtLikes;
+		function insertCmtLike(cnum) {
+			document.cmtLikeFrm<%=i%>.action = "insertCmtLikes";
+			document.cmtLikeFrm<%=i%>.cnum.value = cnum ;
 			document.cmtLikeFrm<%=i%>.submit();
 		}
 		
-		function deleteCmtLike(deleteCmtLikes) {
-			document.cmtLikeFrm<%=i%>.action = deleteCmtLikes;
+		function deleteCmtLike(cnum) {
+			document.cmtLikeFrm<%=i%>.action = "deleteCmtLikes";
+			document.cmtLikeFrm<%=i%>.cnum.value = cnum ;
 			document.cmtLikeFrm<%=i%>.submit();
 		}
 	</script>
@@ -423,16 +487,16 @@
 					<ul role="list" class="comment-data w-list-unstyled">
 						<%int totalCmtLikes = cLMgr.countCmtLikes(num, cBean.getCnum()); %>
 						<%if(!cLMgr.selectCmtLikes(num, cBean.getCnum(), loginId)){	%>
-							<li><a href="javascript:insertCmtLike('insertCmtLikes')"><img src="icon/like_before.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
+							<li><a href="javascript:insertCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_before.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
 						<%}else{ %>
-							<li><a href="javascript:deleteCmtLike('deleteCmtLikes')"><img src="icon/like_after.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
+							<li><a href="javascript:deleteCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_after.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
 						<%} %>
 						<li><%=cBean.getRegdate() %></li>
 						
 					</ul>
 					<input type="hidden" name="loginId" value="<%=loginId%>">
 					<input type="hidden" name="num" value=<%=num %>>
-					<input type="hidden" name="cnum" value=<%=cBean.getCnum() %>>
+					<input type="hidden" name="cnum" value="">
 				</form>
 			</li>
 				
@@ -449,7 +513,7 @@
 			
 			<div class="input-group mb-3">
 				<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" name="cComment">
-				<input class="btn btn-outline-secondary" type="submit" id="button-addon2" value="등록">
+				<input class="btn btn-outline-secondary" type="button" id="button-addon2" value="등록" onclick="insertComment()">
 				<input type="hidden" name="loginId" value="aaa">
 				<input type="hidden" name="num" value=<%=num %>>
 			</div>
