@@ -2446,9 +2446,9 @@ rotate(
 				<form id="email-form-3" name="email-form-3" data-name="Email Form 3"
 					method="get" class="form-4">
 					<input type="text" class="text-field-5 w-input" maxlength="256"
-						name="name" data-name="Name" placeholder="" id="name" /><input
+						name="name" data-name="Name" placeholder="아이디" id="name" /><input
 						type="email" class="text-field-6 w-input" maxlength="256"
-						name="email" data-name="Email" placeholder="" id="email"
+						name="email" data-name="Email" placeholder="비밀번호" id="email"
 						required="" />
 				</form>
 				<div class="w-form-done">
