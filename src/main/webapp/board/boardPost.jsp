@@ -222,14 +222,22 @@
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="12" name="content"></textarea>
 		</div>
 	</div>
-
+	
 	<div class="layout-upper-bottom w-container">
-		<div id="fileupload" class="mb-3">
-			<label for="formFile" class="form-label">
-				첨부파일
-			</label> <input class="form-control" type="file" id="formFile" name="filename">
+			<div id="fileupload" class="mb-3">
+				<label for="formFile" class="form-label"> 첨부파일 </label> 
+				<div class="insert">
+				<form method="POST" onsubmit="return false;"
+					enctype="multipart/form-data">
+					<input type="file" onchange="addFile(this);" multiple />
+					<div class="file-list"></div>
+				</form>
+			</div>
+			</div>
+
+			
+
 		</div>
-	</div>
 	<div class="layout-lower-bottom w-container">
 		<input type="button" value="저장" class="btn btn-dark" onclick="javascript:check()">
 		<a href="javascript:history.back()"><button type="button" class="btn btn-dark">취소</button></a>
