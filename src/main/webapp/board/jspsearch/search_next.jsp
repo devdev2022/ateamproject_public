@@ -2180,65 +2180,60 @@ rotate(
 /* ==========================================================================
    Start of custom Webflow CSS
    ========================================================================== */
-.form-block {
-	width: 400px;
+.column {
+	border-right: 1px none #000;
+	border-left: 1px solid #000;
 }
 
 .div-block {
-	margin-top: 0px;
-	margin-right: 270px;
-	margin-left: 330px;
+	width: auto;
+	height: 100px;
+	margin-top: 70px;
+	margin-bottom: 0px;
+	padding-bottom: 126px;
+	border-bottom: 1px solid #000;
 }
 
-.form {
-	margin-top: 50px;
-	margin-right: 112px;
-	margin-bottom: 50px;
-	padding-top: 14px;
-	padding-bottom: 0px;
-}
-
-.text-field {
-	width: 270px;
-	margin-top: 0px;
-}
-
-.text-field-2 {
-	width: 270px;
-	margin-top: 0px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-}
-
-.div-block-2 {
-	height: auto;
+.heading {
+	padding-top: 25px;
+	font-size: 45px;
 	text-align: center;
 }
 
+.column-2 {
+	border-right: 1px none #000;
+	border-left: 1px none #000;
+}
+
 .link {
-	margin-left: 30px;
-	color: #070606;
-	text-decoration: none;
+	font-size: 20px;
 }
 
 .link-2 {
-	margin-left: 61px;
-	color: #141212;
+	color: #0e0d0d;
+	font-size: 28px;
+	text-align: left;
 	text-decoration: none;
 }
 
-.submit-button {
-	position: static;
-	top: 290px;
-	right: 300px;
-	bottom: auto;
-	width: 85px;
-	height: 85px;
-	margin-top: 12px;
-	margin-bottom: 28px;
-	margin-left: 299px;
-	background-color: #f3f3f3;
+.div-block-2 {
+	width: auto;
+	height: 100px;
+	padding-top: 35px;
+	padding-left: 0px;
+	border-bottom: 1px solid #000;
+	text-align: center;
+}
+
+.link-3 {
+	font-size: 30px;
+}
+
+.link-4 {
 	color: #0e0d0d;
+	font-size: 30px;
+	text-align: center;
+	text-decoration: none;
 }
 
 .body {
@@ -2246,220 +2241,189 @@ rotate(
 }
 
 .div-block-3 {
-	padding-top: 0px;
-}
-
-.column {
-	margin-top: 65px;
-	padding-left: 0px;
-}
-
-.submit-button-2 {
-	width: 85px;
-	height: 85px;
-}
-
-.column-2 {
-	padding-right: 0px;
-}
-
-.columns {
-	width: 99%;
-	height: 99%;
-}
-
-.link-3 {
-	margin-left: -90px;
-	padding-right: 170px;
-	padding-left: 0px;
-	text-align: center;
-}
-
-.link-4 {
-	margin-left: -132px;
-	padding-right: 0px;
-	padding-left: 0px;
+	height: 100px;
+	padding-top: 35px;
+	border-bottom: 1px solid #000;
 	text-align: center;
 }
 
 .div-block-4 {
-	margin-top: 100px;
-	margin-right: 200px;
-	margin-left: 200px;
-}
-
-.form-2 {
-	width: 90px;
-	height: 90px;
-	margin-top: 0px;
-	text-align: left;
-}
-
-.submit-button-3 {
-	width: 90px;
-	height: 87px;
-	background-color: #f7f7f7;
-	color: #0f0e0e;
-}
-
-.column-3 {
-	height: auto;
-	margin-top: 0px;
-	margin-bottom: 20px;
-	padding-right: 0px;
-	padding-bottom: 90px;
-	padding-left: 87px;
-	text-align: right;
-}
-
-.column-4 {
-	padding-left: 0px;
-}
-
-.form-3 {
-	width: 270px;
 	height: 100px;
-	text-align: center;
-}
-
-.form-block-2 {
-	width: 300px;
-	margin-left: 101px;
-	text-align: left;
-}
-
-.div-block-5 {
-	margin-top: auto;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-.text-field-3 {
-	width: 250px;
-}
-
-.text-field-4 {
-	width: 250px;
+	padding-top: 35px;
+	border-bottom: 1px solid #000;
 }
 
 .link-5 {
-	padding-right: 38px;
-	color: #0f0e0e;
-	text-decoration: none;
+	width: 30px;
 }
 
 .link-6 {
-	padding-right: 26px;
-	color: #0c0b0b;
+	color: #191919;
+	font-size: 30px;
 	text-decoration: none;
 }
 
-.div-block-6 {
-	margin-top: 70px;
-	margin-left: 120px;
+.link-7 {
+	color: #070706;
+	font-size: 30px;
+	text-decoration: none;
 }
 
-.columns-2 {
-	width: auto;
+.form {
+	text-align: left;
 }
 
-.div-block-7 {
-	height: 220px;
+.text-field {
+	width: 300px;
+	margin-bottom: 10px;
+}
+
+.submit-button {
+	width: 120px;
+	background-color: #eceef0;
+	color: #0e0d0d;
+}
+
+.heading-2 {
+	font-size: 25px;
+	text-align: left;
+}
+
+.id {
+	height: 290px;
+	margin-top: 100px;
+	margin-bottom: 0px;
+	margin-left: 15px;
+	padding-bottom: 0px;
+	border: 1px none #000;
+}
+
+.text-field-2 {
+	width: 200px;
+}
+
+.text-field-3 {
+	width: 200px;
+}
+
+.text-field-4 {
+	width: 15%;
+}
+
+.pw {
+	margin-top: 30px;
+	margin-bottom: 40px;
+	margin-left: 15px;
+	text-align: left;
 }
 
 .text-field-5 {
-	width: 220px;
+	width: 300px;
+}
+
+.submit-button-2 {
+	width: 120px;
+	background-color: #eceef0;
+	color: #141313;
+	text-align: center;
+}
+
+.form-2 {
+	text-align: left;
+}
+
+.heading-3 {
+	font-size: 25px;
+	text-align: left;
+}
+
+.heading-4 {
+	font-size: 25px;
 	text-align: left;
 }
 
 .text-field-6 {
-	width: 220px;
-}
-
-.form-4 {
-	width: 220px;
-	margin-bottom: 28px;
-	margin-left: 35px;
-}
-
-.link-7 {
-	margin-right: 30px;
-	color: #141313;
-	text-decoration: none;
-}
-
-.link-8 {
-	margin-right: -55px;
-	color: #110f0f;
-	text-decoration: none;
-}
-
-.div-block-8 {
-	width: 400px;
-	height: 250px;
-	margin-top: 70px;
-	margin-bottom: 0px;
-	margin-left: 149px;
-	padding-top: 44px;
-	border: 1px solid #000;
-}
-
-.account-form {
-	width: 220px;
-	margin-left: 0px;
-}
-
-.login-form {
-	width: 90px;
-	height: 90px;
-	margin-bottom: 0px;
+	width: 200px;
 }
 
 .button {
-	position: relative;
-	top: -115px;
-	right: -60px;
-	width: 87px;
-	height: 87px;
-	background-color: #f0f0f0;
-	color: #161515;
-	text-align: center;
+	position: fixed;
+	left: 0%;
+	top: auto;
+	right: 0%;
+	bottom: 0%;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 47px;
 }
 
-.div-block-9 {
-	margin-left: 280px;
-	text-align: left;
+.text-field-7 {
+	width: 150px;
+	margin-top: 20px;
+}
+
+.text-field-8 {
+	width: 150px;
+	margin-top: 25px;
+	margin-bottom: -5px;
+}
+
+.button-2 {
+	margin-top: 15px;
+	background-color: #eceef0;
+	color: #0c0b0b;
+}
+
+.button-3 {
+	background-color: #eceef0;
+	color: #0e0d0d;
+}
+
+.button-4 {
+	background-color: #eceef0;
+	color: #2c2c2c;
 }
 </style>
 </head>
 <body class="body">
-	<div class="div-block-5">
-		<div>
-			<div class="div-block-9">
-				<img
-					src="https://uploads-ssl.webflow.com/6278ab2dac94b83cce052a1c/6278c31b11ba11728c56991d_img.png"
-					loading="lazy" width="99" alt="" />
+	<div class="w-row">
+		<div class="column-2 w-col w-col-3">
+			<div class="div-block">
+				<h1 class="heading">회원</h1>
+			</div>
+			<div class="div-block-2">
+				<a href="#" class="link-4">로그인</a>
+			</div>
+			<div class="div-block-3">
+				<a href="#" class="link-6">회원가입</a>
+			</div>
+			<div class="div-block-4">
+				<a href="#" class="link-7">ID/PW찾기</a>
 			</div>
 		</div>
-		<div class="div-block-8">
-			<div class="account-form w-form">
-				<form id="email-form-3" name="email-form-3" data-name="Email Form 3"
-					method="get" class="form-4">
-					<input type="text" class="text-field-5 w-input" maxlength="256"
-						name="name" data-name="Name" placeholder="" id="name" /><input
-						type="email" class="text-field-6 w-input" maxlength="256"
-						name="email" data-name="Email" placeholder="" id="email"
-						required="" />
-				</form>
-				<div class="w-form-done">
-					<div>Thank you! Your submission has been received!</div>
+		<div class="column w-col w-col-9">
+			<div class="id">
+				<div>
+					<h1 class="heading-2">PW 찾기</h1>
 				</div>
-				<div class="w-form-fail">
-					<div>Oops! Something went wrong while submitting the form.</div>
+				<div>
+					<div class="w-form">
+						<form id="email-form" name="email-form" data-name="Email Form"
+							method="get" class="form">
+							<input type="text" class="text-field w-input" maxlength="256"
+								name="name" data-name="Name" placeholder="이메일 주소" id="name" /><input
+								type="submit" value="비밀번호 발송" data-wait="Please wait..."
+								class="submit-button w-button" />
+						</form>
+						<div class="w-form-done">
+							<div>Thank you! Your submission has been received!</div>
+						</div>
+						<div class="w-form-fail">
+							<div>Oops! Something went wrong while submitting the form.</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<a href="#" class="link-7">ID/PW 찾기</a><a href="#" class="link-8">회원가입</a><a
-				href="#" class="button w-button"><br />로그인</a>
 		</div>
 	</div>
 	<!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
