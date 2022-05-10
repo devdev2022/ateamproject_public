@@ -1,11 +1,13 @@
 package board;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -53,7 +55,6 @@ public class BoardMgr {
 		
 		try {
 			MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
-			
 			int ref = getMaxNum() + 1;
 			con = pool.getConnection();
 			sql = "insert tblboard(id, subject, content, ref, pos, depth, regdate, ip, count, type_board, type_cat) "
@@ -75,6 +76,9 @@ public class BoardMgr {
 						dir.mkdirs();
 					}
 					String filename = multi.getFilesystemName("filename");
+					if(filename == null || filename.trim().equals("")) {
+						return;
+					}
 					File f = multi.getFile("filename");
 					int filesize = (int)f.length();
 					sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
@@ -95,6 +99,64 @@ public class BoardMgr {
 		return;
 	}
 	
+//	파일 등록
+	public void insertFileOnly(HttpServletRequest req) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
+			int ref = getMaxNum() + 1;
+			con = pool.getConnection();
+			File dir = new File(SAVEFOLDER);
+			if(!dir.exists()) {
+				dir.mkdirs();
+			}
+			String filename = multi.getFilesystemName("filename");
+			File f = multi.getFile("filename");
+			int filesize = (int)f.length();
+			sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ref);
+			pstmt.setString(2, filename);
+			pstmt.setInt(3, filesize);
+			pstmt.executeUpdate();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+			pool.freeConnection(con, pstmt);
+			}
+			return;
+		}
+	
+//	게시글 등록
+	public void insertBoardOnly(BoardBean bean) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			int ref = getMaxNum() + 1;
+			con = pool.getConnection();
+			sql = "insert tblboard(id, subject, content, ref, pos, depth, regdate, ip, count, type_board, type_cat) "
+					+ "values(?, ?, ?, ?, 0, 0, now(), ?, 0, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bean.getId());
+			pstmt.setString(2, bean.getSubject());
+			pstmt.setString(3, bean.getContent());
+			pstmt.setInt(4, ref);
+			pstmt.setString(5, bean.getIp());
+			pstmt.setString(6, bean.getType_board());
+			pstmt.setString(7, bean.getType_cat());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return;
+	}
 //	Count Up : 조회수 증가.
 	public void upCount(int num) {
 		Connection con = null;
@@ -450,28 +512,29 @@ public class BoardMgr {
 	}
 	
 //	답변글 입력
-	public void replyBoard(BoardBean bean, HttpServletRequest req) {
+	public void replyBoard(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		int ref = getMaxNum() + 1;
 		try {
+			MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
 			con = pool.getConnection();
 			sql = "insert tblboard(id, subject, content, ref, pos, depth, regdate, ip, count, type_board, type_cat) "
 					+ "values(?, ?, ?, ?, ?, ?, now(), ?, 0, ?, ?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bean.getId());
-			pstmt.setString(2, bean.getSubject());
-			pstmt.setString(3, bean.getContent());
+			pstmt.setString(1, multi.getParameter("id"));
+			pstmt.setString(2, multi.getParameter("subject"));
+			pstmt.setString(3, multi.getParameter("content"));
 //			ref : 답변 글들의 그룹컬럼
-			pstmt.setInt(4, bean.getRef()); //원글과 같은 Ref
+			pstmt.setInt(4, Integer.parseInt(multi.getParameter("ref"))); //원글과 같은 Ref
 //			pos : 답변 글들의 정렬값
-			pstmt.setInt(5, bean.getPos() + 1); //원글의 Pos + 1
+			pstmt.setInt(5, Integer.parseInt(multi.getParameter("pos")) + 1); //원글의 Pos + 1
 //			depth : 답변의 깊이 원글=0, 답변=1, 답변에답변=2
-			pstmt.setInt(6, bean.getDepth() + 1); //원글의 Depth + 1
-			pstmt.setString(7, bean.getIp());
-			pstmt.setString(8, bean.getType_board());
-			pstmt.setString(9, bean.getType_cat());
+			pstmt.setInt(6, Integer.parseInt(multi.getParameter("depth")) + 1); //원글의 Depth + 1
+			pstmt.setString(7, multi.getParameter("ip"));
+			pstmt.setString(8, multi.getParameter("bValue"));
+			pstmt.setString(9, multi.getParameter("category"));
 			int cnt = pstmt.executeUpdate();
 			pstmt.close();
 			if(cnt == 1) {
@@ -480,7 +543,6 @@ public class BoardMgr {
 					if(!dir.exists()) {
 						dir.mkdirs();
 					}
-					MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
 					String filename = multi.getFilesystemName("filename");
 					File f = multi.getFile("filename");
 					int filesize = (int)f.length();

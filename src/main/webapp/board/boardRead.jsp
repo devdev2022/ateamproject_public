@@ -5,7 +5,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
+	String keyField = request.getParameter("keyField");
+	String keyWord = request.getParameter("keyWord");
+	String category = request.getParameter("category");
+	String bValue = request.getParameter("bValue");
+	
 	String loginId = "aaa";
+	
 	
 %>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
@@ -445,8 +451,8 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	</div>
 	
 	<div class="layout-lower-bottom w-container">
-		<button id="replybtn" type="button" class="btn btn-dark">답글</button>
-		<button id="listbtn" type="button" class="btn btn-dark" onclick="javascript:location.href='boardList.jsp'">목록</button>
+		<input id="replybtn" type="button" class="btn btn-dark" value="답글" onclick="javascript:location.href='boardReply.jsp?num=<%=num%>&category=<%=bBean.getType_cat()%>&bValue=<%=bBean.getType_board()%>'">
+		<a id="listbtn" type="button" class="btn btn-dark" href="javascript:location.href='boardList.jsp'">목록</a>
 	</div>
 	<%
 		Vector<CommentBean> cVlist = cMgr.commentList(num);
@@ -522,6 +528,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	<form method="post" name="downFrm" action="download.jsp">
 		<input type="hidden" name="filename">
 	</form>
+	
 
 </body>
 </html>
