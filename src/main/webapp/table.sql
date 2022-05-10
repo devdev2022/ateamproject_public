@@ -59,9 +59,9 @@ CREATE TABLE tbllikes (
   num INT(10) NOT NULL,									/*게시글 번호*/
   id varchar(20) NOT NULL,									/*이용자 ID*/
   likes INT(1) DEFAULT 0,									/*0: 없음, 1: 좋아요*/
-  PRIMARY KEY (num),
+  PRIMARY KEY (num, id),
   FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE,
-  FOREIGN KEY (id) REFERENCES tblmember(id)
+  FOREIGN KEY (id) REFERENCES tblmember(id) ON DELETE CASCADE
 )
 
 /*tblBlikes : 게시글 저장 테이블*/
@@ -69,20 +69,19 @@ CREATE TABLE tblsavepost (
   num INT(10) NOT NULL,									/*게시글 번호*/
   id varchar(20) NOT NULL,									/*이용자 ID*/
   savepost INT(1) DEFAULT 0, 								/*0: 없음, 1: 게시글 저장*/
-  PRIMARY KEY (num),
-  FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE,
-  FOREIGN KEY (id) REFERENCES tblmember(id)
-)
-
-/*코멘트 좋아요 테이블*/
-CREATE TABLE tblCmtLikes (
-  cnum INT(10) NOT NULL,								/*댓글별 고유 번호*/
-  num INT(10) NOT NULL,									/*게시글 번호*/
-  id CHAR(20) NOT NULL,									/*이용자 ID*/
-  PRIMARY KEY (num),
-  FOREIGN KEY (cnum) REFERENCES tblcomment(cnum) ON DELETE CASCADE,
+  PRIMARY KEY (num, id),
   FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE,
   FOREIGN KEY (id) REFERENCES tblmember(id) ON DELETE CASCADE
 )
 
+/*ateamdb코멘트 좋아요 테이블*/
+CREATE TABLE tblcmtlikes (
+	cnum INT(10) NOT NULL,									/*댓글별 고유 번호*/
+	num INT(10) NOT NULL,									/*게시글 번호*/
+	id CHAR(20) NOT NULL,									/*이용자 ID*/
+	PRIMARY KEY (cnum, id, num),
+	FOREIGN KEY (cnum) REFERENCES tblcomment(cnum) ON DELETE CASCADE,
+	FOREIGN KEY (id) REFERENCES tblmember(id) ON DELETE CASCADE,
+	FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE
+)
 
