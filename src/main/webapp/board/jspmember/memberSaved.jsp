@@ -143,7 +143,7 @@
 </head>
 <div class="panel" style="display:flex; flex-direction: column; margin-top: 5vw; margin-bottom: 5vw;  margin-left: 3vw; margin-right: 3vw; ">
 
-	<div><h3>내가 좋아한 게시글<img src="icon/like_post.png"></h3> <hr> 총 n개의 게시물</div>
+	<div><h3>내가 저장한 게시글 <img src="icon/save_post_before.png"></h3> <hr> 총 n개의 게시물</div>
 
 	<div class="w-layout-grid grid_main">
 		<div class="grid_item">
