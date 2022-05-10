@@ -19,12 +19,11 @@ public class SavePostMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "insert tblsavepost (num, id, savePost) values(?, ?, ?) where num=?";
+			sql = "insert tblsavepost (num, id, savePost) values(?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, bean.getNum());
 			pstmt.setString(2, bean.getId());
 			pstmt.setInt(3, bean.getSavePost());
-			pstmt.setInt(4, bean.getNum());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,7 +62,7 @@ public class SavePostMgr {
 		boolean flag = false;
 		try {
 			con = pool.getConnection();
-			sql = "select * from tblsavepost where num=? id=?";
+			sql = "select * from tblsavepost where num=? and id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, id);
@@ -79,6 +78,29 @@ public class SavePostMgr {
 		return flag;
 	}
 	
+//	게시물 저장한 총 수량
+	public int countSavePost(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int totalCount = 0;
+		try {
+			con = pool.getConnection();
+			sql = "select count(num) from tblsavepost where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return totalCount;
+	}
 	
 	
 }

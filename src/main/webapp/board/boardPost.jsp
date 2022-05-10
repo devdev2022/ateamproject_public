@@ -174,7 +174,7 @@
 </head>
 <body>
 	<div id="post-title"><h2>새 게시글 작성</h2></div>
-	<form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data">
+	<form name="postFrm" method="post" action="boardPost"  onsubmit="return false;" enctype="multipart/form-data">
 		<div class="layout-top w-container">
 			<div class="post-subject">
 				<input class="form-control" type="text" placeholder="제목을 입력하세요." aria-label="default input example" name="subject" size="150">
@@ -227,11 +227,8 @@
 			<div id="fileupload" class="mb-3">
 				<label for="formFile" class="form-label"> 첨부파일 </label> 
 				<div class="insert">
-				<form method="POST" onsubmit="return false;"
-					enctype="multipart/form-data">
-					<input type="file" onchange="addFile(this);" multiple />
+					<input type="file" onchange="addFile(this);" multiple  name="filename"/>
 					<div class="file-list"></div>
-				</form>
 			</div>
 			</div>
 
