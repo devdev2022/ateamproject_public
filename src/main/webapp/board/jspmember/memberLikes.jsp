@@ -3,10 +3,10 @@
 <%@page import="board.LikesBean"%>
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html; charset=UTF-8"%>
-<jsp:useBean id="lMgr" class="board.LikesMgr"/>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
+<jsp:useBean id="lMgr" class="board.LikesMgr"/>
 <%
-	String loginId="aaa";
+	String loginId = "aaa";
 %>
 
 
@@ -148,86 +148,55 @@
 
 </head>
 <div class="panel" style="display:flex; flex-direction: column; margin-top: 5vw; margin-bottom: 5vw;  margin-left: 3vw; margin-right: 3vw; ">
-
-	<%
-		Vector<LikesBean> lVlist = lMgr.getAllNumLikes(loginId);
-		int likeCount = lVlist.size();
-	%>
-
-	<div><h3>내가 좋아하는 게시글<img src="icon/like_after.png"></h3> <hr> 총 <%=likeCount %>개의 게시물</div>
 	
+	<%Vector<LikesBean> lVlist = lMgr.getAllNumLikes(loginId);%>
+	<div><h3>내가 저장한 게시글 <img src="icon/save_post_before.png"></h3> <hr> 총 <%=lVlist.size() %>개의 게시물</div>
+
+	<div class="w-layout-grid grid_main">
 	<%
-		for(int i=0; i<likeCount; i++){
+		for(int i=0; i<lVlist.size(); i++){
 			LikesBean lBean = lVlist.get(i);
 			int num = lBean.getNum();
-			int bLCount= lMgr.countLike(num);
-			BoardBean bBean= bMgr.getAllBoardByNum(num);
+			BoardBean bBean = bMgr.getAllBoardByNum(num);
+			String subject = bBean.getSubject();
+			int count = bBean.getCount();
+			String id = bBean.getId();
 			UpFileBean fBean = bMgr.getBoardFile(num);
 			String filename = fBean.getFilename();
-			String subject = bBean.getSubject();
-			String id = bBean.getId();
-			int count = bBean.getCount();
-		
-	%>
+			int bLCount = lMgr.countLike(num);
+			
+	%>		
+	<%	if(lVlist.isEmpty()){%>
+				<div>게시물이 없습니다</div>
+	</div>
+			
+	<%	}else{%>
 	
-	<%if(lVlist.isEmpty()){ %>
-		<div align="center">게시물이 없습니다.</div>	
-	<%}else{ %>
-	<div class="w-layout-grid grid_main">
 		<div class="grid_item">
-			<div class="grid_upper" style="background-image: url('test/1.jpg')">
+			<%if(filename == null){ %>
+				<div class="grid_upper" style="background-image: url('test/1.jpg')">
+			<%}else{ %>
+				<div class="grid_upper" style="background-image: url('uploadimg/<%=fBean.getFilename()%>')">
+			<%} %>
 			</div>
 			<div class="grid_lower">
 				<table>
 					<tr>
-						<td><%=subject %></td>
+						<td><font color="white"><%=subject %></font></td>
 					</tr>
 					<tr>
-						<td><%=id %></td>
+						<td><font color="white"><%=id %></font></td>
 					</tr>
 					<tr>
-						<td><img src="./board/icon/like_before.jpg"><%=bLCount %> | <%=count %></td>
+						<td><img src="../icon/like_after.jpg"><font color="white"><%=bLCount%>| 조회수 <%= count%></font></td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		<%} %>
-		</div>
 	<%} %>
-
-		<div class="grid_item">
-			<div class="grid_upper"></div>
-			<div class="grid_lower"></div>
-		</div>
-		<div class="grid_item">
-			<div class="grid_upper"></div>
-			<div class="grid_lower"></div>
-		</div>
-		<div class="grid_item">
-			<div class="grid_upper"></div>
-			<div class="grid_lower"></div>
-		</div>
-		<div class="grid_item">
-			<div class="grid_upper"></div>
-			<div class="grid_lower"></div>
-		</div>
-		<div class="grid_item">
-			<div class="grid_upper"></div>
-			<div class="grid_lower"></div>
-		</div>
-		<div class="grid_item">
-			<div class="grid_upper"></div>
-			<div class="grid_lower"></div>
-		</div>
-		<div class="grid_item">
-			<div class="grid_upper"></div>
-			<div class="grid_lower"></div>
-		</div>
-		<div class="grid_item">
-			<div class="grid_upper"></div>
-			<div class="grid_lower"></div>
-		</div>
 	</div>
+		
 
 
 
