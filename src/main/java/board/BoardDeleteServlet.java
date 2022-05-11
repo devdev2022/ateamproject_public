@@ -16,6 +16,7 @@ public class BoardDeleteServlet extends HttpServlet {
 		int num = Integer.parseInt(request.getParameter("num"));
 		System.out.println(num);
 		mgr.deleteBoard(num);
+		
 		response.sendRedirect("boardList.jsp");
 	}
 
