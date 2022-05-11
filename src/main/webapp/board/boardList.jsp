@@ -15,6 +15,7 @@
 	int totalBlock = 0; //총 블럭 개수
 	int nowPage = 1; //현재 페이지
 	int nowBlock = 1; //현재 블럭
+	String loginId = "aaa";
 	
 	if(request.getParameter("numPerPage")!=null){
 		numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
@@ -130,6 +131,14 @@ function setviewCount(numPerPage) {
 }
 
 
+</script>
+
+<script type="text/javascript">
+	function deleteBoard(num) {
+		document.boardFrm.action = "boardDelete";
+		document.boardFrm.num.value = num ;
+		document.boardFrm.submit();
+	}	
 </script>
 
 <!-- webflow 요소 -->
@@ -2299,23 +2308,24 @@ rotate(
 
 	<!-- 게시판 영역 시작 -->
 	<div class="board-main-container w-container" >
+	<form name="boardFrm" method="post" action="">
 		<table witdh="100%">
 			<tr>
 				<td align="center" colspan="2">
+					<table cellspacing="0">
+									<tr align="center" bgcolor="#D0D0D0">
+										<td width="100">번 호</td>
+										<td width="250">제 목</td>
+										<td width="100">아이디</td>
+										<td width="150">날 짜</td>
+										<td width="100">조회수</td>
+									</tr>
 					<%
 						
 						Vector<BoardBean> Bvlist = bMgr.getBoardList(keyField, keyWord, start, cnt, category, bValue);
 						int listSize = Bvlist.size(); //마지막페이지 개수 고려
 						if(Bvlist.isEmpty()){
 					%>
-						<table cellspacing="0">
-								<tr align="center" bgcolor="#D0D0D0">
-									<td width="100">번 호</td>
-									<td width="250">제 목</td>
-									<td width="100">아이디</td>
-									<td width="150">날 짜</td>
-									<td width="100">조회수</td>
-								</tr>
 								<tr>
 									<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
 								</tr>
@@ -2323,37 +2333,35 @@ rotate(
 					<%
 								
 						}else{
-					%>		
-							<table cellspacing="0">
-								<tr align="center" bgcolor="#D0D0D0">
-									<td width="100">번 호</td>
-									<td width="250">제 목</td>
-									<td width="100">아이디</td>
-									<td width="150">날 짜</td>
-									<td width="100">조회수</td>
-								</tr>
-								<%
-									for(int i=0; i<numPerPage; i++){
-										if(i == listSize){
-											break;
-										}
-										BoardBean Bbean = Bvlist.get(i);
-										int num = Bbean.getNum();
-										String subject = Bbean.getSubject();
-										String id = Bbean.getId();
-										String regdate = Bbean.getRegdate();
-										int depth = Bbean.getDepth();
-										int count = Bbean.getCount();
-//										파일
-										UpFileBean Fbean = bMgr.getBoardFile(num);
-										int Fnum = Fbean.getNum();
-										String filename = Fbean.getFilename();
-										int filesize = Fbean.getFilesize();
-//										댓글 수
-										int bcount = cMgr.getBCommentCount(num);
+							
+					%>	
+					<%
+							for(int i=0; i<numPerPage; i++){
+								if(i == listSize){
+									break;
+								}
+								BoardBean Bbean = Bvlist.get(i);
+								int num = Bbean.getNum();
+								String subject = Bbean.getSubject();
+								String id = Bbean.getId();
+								String regdate = Bbean.getRegdate();
+								int depth = Bbean.getDepth();
+								int count = Bbean.getCount();
+//								파일
+								UpFileBean Fbean = bMgr.getBoardFile(num);
+								int Fnum = Fbean.getNum();
+								String filename = Fbean.getFilename();
+								int filesize = Fbean.getFilesize();
+//								댓글 수
+								int bcount = cMgr.getBCommentCount(num);
 								%>
 										<tr>
-											<td align="center"><%=totalRecord - start - i %></td>
+											<td align="center">
+												<%=totalRecord - start - i %>
+												<%if(loginId.trim().equals(id) || loginId == id){ %>
+												<a href="javascript:deleteBoard('<%=num%>')"><font color="red">X</font></a>
+												<%} %>
+											</td>
 											<td >
 												<%
 													for(int j=0;j<depth;j++){
@@ -2378,6 +2386,8 @@ rotate(
 				</td>
 			</tr>
 		</table>
+		<input type="hidden" value="" name="num">
+		</form>
 	</div>
 	<!-- 게시판 영역 끝 -->
 

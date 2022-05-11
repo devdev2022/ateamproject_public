@@ -7,18 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/commentPost")
-public class CommentPostServlet extends HttpServlet {
+@WebServlet("/board/deleteComment")
+public class CommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CommentMgr cMgr = new CommentMgr();
-		CommentBean cBean = new CommentBean();
-		cBean.setNum(Integer.parseInt(request.getParameter("num")));
-		cBean.setId(request.getParameter("loginId"));
-		cBean.setComment(request.getParameter("cComment"));
-		cMgr.commentInsert(cBean);
-		response.sendRedirect("boardRead.jsp?num=" + request.getParameter("num"));
+		int cnum = Integer.parseInt(request.getParameter("cnum"));
+		int num = Integer.parseInt(request.getParameter("num"));
+		System.out.println(cnum);
+		cMgr.commentDelete(cnum);
+		
+		response.sendRedirect("boardRead.jsp?num=" + num);
 	}
 
 }
