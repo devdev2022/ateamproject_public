@@ -1,18 +1,69 @@
+<%@page import="board.SavePostBean"%>
 <%@page import="board.UpFileBean"%>
 <%@page import="board.BoardBean"%>
 <%@page import="board.LikesBean"%>
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
-<jsp:useBean id="lMgr" class="board.LikesMgr"/>
+<jsp:useBean id="sMgr" class="board.SavePostMgr"/>
 <%
 	String loginId = "aaa";
+
+	int totalRecord = 0; //총 게시물 수
+	int numPerPage = 8; //페이지당 레코드 개수
+	int pagePerBlock = 10; //블럭당 페이지 개수
+	int totalPage = 0; //총 페이지 개수
+	int totalBlock = 0; //총 블럭 개수
+	int nowPage = 1; //현재 페이지
+	int nowBlock = 1; //현재 블럭
+	
+	Vector<SavePostBean> sCVlist = sMgr.getAllNumSavePost(loginId);
+	totalRecord = sCVlist.size();
+	
+	//페이지 클릭 또는 다른페이지 에서 호출
+	if(request.getParameter("nowPage")!=null){
+		nowPage = Integer.parseInt(request.getParameter("nowPage"));
+	}
+	
+	// SQL문 limit에 들어가는 변수 선언
+	int start = (nowPage * numPerPage) - numPerPage;
+	int cnt = numPerPage; 
+	
+// 전체 페이지 개수
+	totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
+//	전체 블럭 개수
+	totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
+// 현재 블럭
+	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
+
+	if(request.getParameter("numPerPage")!=null){
+		numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
+	}
+	
 %>
 
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+function block(block) {
+	document.readFrm.nowPage.value=<%=pagePerBlock%>*(block - 1) + 1;
+	document.readFrm.submit();
+}
+
+function pageing(page) {
+	document.readFrm.nowPage.value=page;
+	document.readFrm.submit();
+}
+
+function openBoardRead(num) {
+	url = "boardRead.jsp?num=" + num;
+	window.open(url, "boardRead.jsp?num="+num,"width=1000,height=1000,scrollbars=yes");
+}
+</script>
 
 <style>
 .grid-upper {
@@ -149,13 +200,16 @@
 </head>
 <div class="panel" style="display:flex; flex-direction: column; margin-top: 5vw; margin-bottom: 5vw;  margin-left: 3vw; margin-right: 3vw; ">
 	
-	<%Vector<LikesBean> lVlist = lMgr.getAllNumLikes(loginId);%>
-	<div><h3>내가 저장한 게시글 <img src="icon/save_post_before.png"></h3> <hr> 총 <%=lVlist.size() %>개의 게시물</div>
+	<%Vector<SavePostBean> sVlist = sMgr.getAllNumSavePostBoard(loginId, start, cnt);%>
+	<div><h3>내가 저장한 게시글 <img src="icon/save_post_after.png"></h3> <hr> 총 <%=totalRecord %>개의 게시물</div>
 
 	<div class="w-layout-grid grid_main">
 	<%
-		for(int i=0; i<lVlist.size(); i++){
-			LikesBean lBean = lVlist.get(i);
+		for(int i=0; i<sVlist.size(); i++){
+			if(i == sVlist.size()){
+				break;
+			}
+			SavePostBean lBean = sVlist.get(i);
 			int num = lBean.getNum();
 			BoardBean bBean = bMgr.getAllBoardByNum(num);
 			String subject = bBean.getSubject();
@@ -163,32 +217,34 @@
 			String id = bBean.getId();
 			UpFileBean fBean = bMgr.getBoardFile(num);
 			String filename = fBean.getFilename();
-			int bLCount = lMgr.countLike(num);
+			int bLCount = sMgr.countSavePost(num);
 			
 	%>		
-	<%	if(lVlist.isEmpty()){%>
+	<%	if(sVlist.isEmpty()){%>
 				<div>게시물이 없습니다</div>
 	</div>
 			
 	<%	}else{%>
-	
+		
 		<div class="grid_item">
 			<%if(filename == null){ %>
-				<div class="grid_upper" style="background-image: url('test/1.jpg')">
+				<div class="grid_upper">
+					<img src="test/1.jpg" style="width: 100%; height: 100%">
 			<%}else{ %>
-				<div class="grid_upper" style="background-image: url('uploadimg/<%=fBean.getFilename()%>')">
+				<div class="grid_upper">
+					<img src="../uploadimg/<%=filename%>" style="width: 100%; height: 100%">
 			<%} %>
 			</div>
 			<div class="grid_lower">
 				<table>
 					<tr>
-						<td><font color="white"><%=subject %></font></td>
+						<td><font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=subject %></a></font></td>
 					</tr>
 					<tr>
-						<td><font color="white"><%=id %></font></td>
+						<td><font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=id %></a></font></td>
 					</tr>
 					<tr>
-						<td><img src="../icon/like_after.jpg"><font color="white"><%=bLCount%>| 조회수 <%= count%></font></td>
+						<td><img src="icon/save_post_after.png"><font color="white"><a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%>| 조회수 <%= count%></font></td>
 					</tr>
 				</table>
 			</div>
@@ -196,6 +252,7 @@
 		<%} %>
 	<%} %>
 	</div>
+		
 
 
 
@@ -203,24 +260,36 @@
 		aria-label="Toolbar with button groups" style="margin-top: 3vw; display: flex;
   justify-content: center;">
 		<div class="btn-group me-2" role="group" aria-label="First group">
-			<button type="button" class="btn btn-secondary"><</button>
+		<!-- 이전블록 -->
+			<% if(nowBlock > 1) {%>
+				<a href="javascript:block('<%=nowBlock - 1%>')"><input type="text" class="btn btn-secondary" value="<" size="1"></a>
+			<%}	%>
 		</div>
 		<div class="btn-group me-2" role="group" aria-label="Second group">
-			<button type="button" class="btn btn-dark">1</button>
-			<button type="button" class="btn btn-dark">2</button>
-			<button type="button" class="btn btn-dark">3</button>
-			<button type="button" class="btn btn-dark">4</button>
-			<button type="button" class="btn btn-dark">5</button>
-			<button type="button" class="btn btn-dark">6</button>
-			<button type="button" class="btn btn-dark">7</button>
-			<button type="button" class="btn btn-dark">8</button>
-			<button type="button" class="btn btn-dark">9</button>
-			<button type="button" class="btn btn-dark">10</button>
+			<!-- 블록번호 -->
+			<%
+				int pageStart = (nowBlock - 1) * pagePerBlock + 1;
+				int pageEnd = (pageStart + pagePerBlock) < totalPage ? pageStart + pagePerBlock : totalPage + 1; 
+				for(;pageStart<pageEnd;pageStart++){
+			%>
+				<a href="javascript:pageing('<%=pageStart%>')">
+				<input type="text" class="btn btn-secondary" value="<%=pageStart %>" size="1">
+				</a>
+			<%} %>
 		</div>
 		<div class="btn-group me-2" role="group" aria-label="Third group">
-			<button type="button" class="btn btn-secondary">></button>
+			<!-- 다음블록 -->
+			<% if(nowBlock < totalBlock) {%>
+					<a href="javascript:block('<%=nowBlock + 1%>')">
+						<input type="text" class="btn btn-secondary" value=">" size="1"> 
+					</a>
+			<%}	%>
 		</div>
 	</div>
-
+		<form name="readFrm" method="get">
+			<input type="hidden" name="nowPage" value="<%=nowPage%>">
+			<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
+			<input type="hidden" name="num" >
+		</form>
 
 </div>

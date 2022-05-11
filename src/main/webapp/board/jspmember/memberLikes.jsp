@@ -200,7 +200,7 @@ function openBoardRead(num) {
 <div class="panel" style="display:flex; flex-direction: column; margin-top: 5vw; margin-bottom: 5vw;  margin-left: 3vw; margin-right: 3vw; ">
 	
 	<%Vector<LikesBean> lVlist = lMgr.getAllNumLikesBoard(loginId, start, cnt);%>
-	<div><h3>내가 좋아하는 게시글 <img src="icon/like_after.png"></h3> <hr> 총 <%=lVlist.size() %>개의 게시물</div>
+	<div><h3>내가 좋아하는 게시글 <img src="icon/like_after.png"></h3> <hr> 총 <%=totalRecord %>개의 게시물</div>
 
 	<div class="w-layout-grid grid_main">
 	<%

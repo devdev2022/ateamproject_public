@@ -3,6 +3,7 @@ package board;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 public class SavePostMgr {
 	
@@ -102,5 +103,64 @@ public class SavePostMgr {
 		return totalCount;
 	}
 	
+//	로그인한 아이디가 저장한 게시물 번호
+	public Vector<SavePostBean> getAllNumSavePost(String id){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<SavePostBean> vlist = new Vector<SavePostBean>();
+		try {
+			con = pool.getConnection();
+			sql = "select * from tblsavepost where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				SavePostBean bean = new SavePostBean();
+				bean.setId(rs.getString("id"));
+				bean.setSavePost(rs.getInt("savepost"));
+				bean.setNum(rs.getInt("num"));
+				vlist.addElement(bean);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	
+//	로그인한 아이디가 저장한 게시물 번호 게시판 불러오기
+	public Vector<SavePostBean> getAllNumSavePostBoard(String id, int start, int cnt){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<SavePostBean> vlist = new Vector<SavePostBean>();
+		try {
+			con = pool.getConnection();
+			sql = "select * from tblsavepost where id=? limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, cnt);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				SavePostBean bean = new SavePostBean();
+				bean.setId(rs.getString("id"));
+				bean.setSavePost(rs.getInt("savepost"));
+				bean.setNum(rs.getInt("num"));
+				vlist.addElement(bean);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
 	
 }
