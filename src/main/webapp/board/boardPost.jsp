@@ -227,7 +227,7 @@
 			<div id="fileupload" class="mb-3">
 				<label for="formFile" class="form-label"> 첨부파일 </label> 
 				<div class="insert">
-					<input type="file" onchange="addFile(this);" multiple  name="filename"/>
+					<input type="file" onchange="addFile(this);" name="filename"/>
 					<div class="file-list"></div>
 			</div>
 			</div>
