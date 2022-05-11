@@ -2347,6 +2347,7 @@ rotate(
 								String regdate = Bbean.getRegdate();
 								int depth = Bbean.getDepth();
 								int count = Bbean.getCount();
+								String Type_cat = Bbean.getType_cat();
 //								파일
 								UpFileBean Fbean = bMgr.getBoardFile(num);
 								int Fnum = Fbean.getNum();
@@ -2374,6 +2375,7 @@ rotate(
 												<%if(bcount > 0) {%>
 														<font color="red">[<%=bcount %>]</font>
 												<%} %>
+												&nbsp;&nbsp;<font color="red">[<%=Type_cat %>]</font>
 											</td>
 											<td align="center"><%=id %></td>
 											<td align="center"><%=regdate %></td>

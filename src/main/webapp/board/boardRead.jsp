@@ -376,7 +376,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	</div>
 	<!-- 첨부파일영역 -->
 	<div class="post-main w-container">
-		<%=bBean.getContent() %>
+		<%=bBean.getContent() %><br>
 		<%	
 			for(int i=0; i<fCount; i++){ 
 				UpFileBean fBean = fVlist.get(i);
