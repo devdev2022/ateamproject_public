@@ -198,7 +198,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block {
   position: absolute;
-  bottom: 110px;
+  bottom: 58px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -227,7 +227,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block2 {
   position: absolute;
-  bottom: 110px;
+  bottom: 58px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -236,7 +236,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block3 {
   position: absolute;
-  bottom: 110px;
+  bottom: 58px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -245,7 +245,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block4 {
   position: absolute;
-  bottom: -112px;
+  bottom: -164px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -254,7 +254,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block5 {
   position: absolute;
-  bottom: -112px;
+  bottom: -164px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -263,7 +263,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block6 {
   position: absolute;
-  bottom: -112px;
+  bottom: -164px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -272,7 +272,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block7 {
   position: absolute;
-  bottom: -333px;
+  bottom: -385px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -281,7 +281,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block8 {
   position: absolute;
-  bottom: -333px;
+  bottom: -385px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -290,7 +290,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .trans_block9 {
   position: absolute;
-  bottom: -333px;
+  bottom: -385px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
