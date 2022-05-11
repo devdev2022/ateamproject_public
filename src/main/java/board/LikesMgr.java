@@ -3,6 +3,7 @@ package board;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 public class LikesMgr {
 	
@@ -100,6 +101,34 @@ public class LikesMgr {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		return totalCount;
+	}
+//	로그인한 아이디가 좋아요 눌린 번호
+	public Vector<LikesBean> getAllNumLikes(String id){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<LikesBean> vlist = new Vector<LikesBean>();
+		try {
+			con = pool.getConnection();
+			sql = "select * from tbllikes where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				LikesBean bean = new LikesBean();
+				bean.setId(rs.getString("id"));
+				bean.setLikes(rs.getInt("likes"));
+				bean.setNum(rs.getInt("num"));
+				vlist.addElement(bean);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
 	}
 	
 	

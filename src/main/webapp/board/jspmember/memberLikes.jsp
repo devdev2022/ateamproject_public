@@ -1,6 +1,12 @@
+<%@page import="board.UpFileBean"%>
+<%@page import="board.BoardBean"%>
+<%@page import="board.LikesBean"%>
+<%@page import="java.util.Vector"%>
 <%@page contentType="text/html; charset=UTF-8"%>
+<jsp:useBean id="lMgr" class="board.LikesMgr"/>
+<jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <%
-
+	String loginId="aaa";
 %>
 
 
@@ -143,8 +149,30 @@
 </head>
 <div class="panel" style="display:flex; flex-direction: column; margin-top: 5vw; margin-bottom: 5vw;  margin-left: 3vw; margin-right: 3vw; ">
 
-	<div><h3>내가 좋아한 게시글<img src="icon/like_post.png"></h3> <hr> 총 n개의 게시물</div>
+	<%
+		Vector<LikesBean> lVlist = lMgr.getAllNumLikes(loginId);
+		int likeCount = lVlist.size();
+	%>
 
+	<div><h3>내가 좋아하는 게시글<img src="icon/like_after.png"></h3> <hr> 총 <%=likeCount %>개의 게시물</div>
+	
+	<%
+		for(int i=0; i<likeCount; i++){
+			LikesBean lBean = lVlist.get(i);
+			int num = lBean.getNum();
+			int bLCount= lMgr.countLike(num);
+			BoardBean bBean= bMgr.getAllBoardByNum(num);
+			UpFileBean fBean = bMgr.getBoardFile(num);
+			String filename = fBean.getFilename();
+			String subject = bBean.getSubject();
+			String id = bBean.getId();
+			int count = bBean.getCount();
+		
+	%>
+	
+	<%if(lVlist.isEmpty()){ %>
+		<div align="center">게시물이 없습니다.</div>	
+	<%}else{ %>
 	<div class="w-layout-grid grid_main">
 		<div class="grid_item">
 			<div class="grid_upper" style="background-image: url('test/1.jpg')">
@@ -152,68 +180,20 @@
 			<div class="grid_lower">
 				<table>
 					<tr>
-						<td>게시글 제목</td>
+						<td><%=subject %></td>
 					</tr>
 					<tr>
-						<td>작성자</td>
+						<td><%=id %></td>
 					</tr>
 					<tr>
-						<td>♡ 12 | 조회수 100</td>
+						<td><img src="./board/icon/like_before.jpg"><%=bLCount %> | <%=count %></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-		<div class="grid_item">
-			<div class="grid_upper" style="background-image: url('test/2.jpg')">
-			</div>
-			<div class="grid_lower">
-				<table>
-					<tr>
-						<td>게시글 제목</td>
-					</tr>
-					<tr>
-						<td>작성자</td>
-					</tr>
-					<tr>
-						<td>♡ 12 | 조회수 100</td>
-					</tr>
-				</table>
-			</div>
+		<%} %>
 		</div>
-		<div class="grid_item">
-			<div class="grid_upper" style="background-image: url('test/3.jpg')">
-			</div>
-			<div class="grid_lower">
-				<table>
-					<tr>
-						<td>게시글 제목</td>
-					</tr>
-					<tr>
-						<td>작성자</td>
-					</tr>
-					<tr>
-						<td>♡ 12 | 조회수 100</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<div class="grid_item">
-			<div class="grid_upper" style="background-image: url('test/noImg.jpg')">
-			</div>
-			<div class="grid_lower">
-				<table>
-					<tr>
-						<td>게시글 제목</td>
-					</tr>
-					<tr>
-						<td>작성자</td>
-					</tr>
-					<tr>
-						<td>♡ 12 | 조회수 100</td>
-					</tr>
-				</table>
-			</div>
-		</div>
+	<%} %>
 
 		<div class="grid_item">
 			<div class="grid_upper"></div>
