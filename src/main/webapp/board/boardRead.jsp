@@ -381,7 +381,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 			for(int i=0; i<fCount; i++){ 
 				UpFileBean fBean = fVlist.get(i);
 		%>
-				<img src="../uploadimg/<%=fBean.getFilename()%>">
+				<div align="center"><img src="../uploadimg/<%=fBean.getFilename()%>" ></div>
 		<%} %>
 	</div>
 	<div class="layout-upper-bottom w-container">
@@ -514,7 +514,10 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 						<input type="hidden" name="cnum" value="">
 				</li>
 					
-				<li class="comment-contents"><%=cBean.getComment() %></li>
+				<li class="comment-contents">
+					
+					<%=cBean.getComment() %>
+				</li>
 			</ul>
 			
 		</div>
