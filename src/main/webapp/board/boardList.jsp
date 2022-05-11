@@ -2375,7 +2375,7 @@ rotate(
 												<%if(bcount > 0) {%>
 														<font color="red">[<%=bcount %>]</font>
 												<%} %>
-												&nbsp;&nbsp;<font color="red">[<%=Type_cat %>]</font>
+												&nbsp;&nbsp;<font color="green">[<%=Type_cat %>]</font>
 											</td>
 											<td align="center"><%=id %></td>
 											<td align="center"><%=regdate %></td>

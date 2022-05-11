@@ -131,5 +131,36 @@ public class LikesMgr {
 		return vlist;
 	}
 	
+//	로그인한 아이디가 좋아요 눌린 번호
+	public Vector<LikesBean> getAllNumLikesBoard(String id, int start, int cnt){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<LikesBean> vlist = new Vector<LikesBean>();
+		try {
+			con = pool.getConnection();
+			sql = "select * from tbllikes where id=? limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, cnt);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				LikesBean bean = new LikesBean();
+				bean.setId(rs.getString("id"));
+				bean.setLikes(rs.getInt("likes"));
+				bean.setNum(rs.getInt("num"));
+				vlist.addElement(bean);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	
 	
 }

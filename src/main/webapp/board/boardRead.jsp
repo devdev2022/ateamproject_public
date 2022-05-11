@@ -393,7 +393,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 						<%if(!lMgr.selectLikes(num, loginId)){	%>
 							<td><a href="javascript:insertLike()"><img src="icon/like_before.jpg"></a></td>
 						<%}else{ %>
-							<td><a href="javascript:deleteLike()"><img src="icon/like_after.jpg"></a></td>
+							<td><a href="javascript:deleteLike()"><img src="icon/like_after.png"></a></td>
 						<%} %>
 						</tr>
 						<tr>
@@ -504,7 +504,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 							<%if(!cLMgr.selectCmtLikes(num, cBean.getCnum(), loginId)){	%>
 								<li><a href="javascript:insertCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_before.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
 							<%}else{ %>
-								<li><a href="javascript:deleteCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_after.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
+								<li><a href="javascript:deleteCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_after.png"></a>&nbsp;<%=totalCmtLikes %>개</li>
 							<%} %>
 							<li><%=cBean.getRegdate() %></li>
 							
