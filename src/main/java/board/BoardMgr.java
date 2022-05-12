@@ -73,7 +73,7 @@ public class BoardMgr {
 			if(cnt == 1) {
 				try {
 					File dir = new File(SAVEFOLDER);
-					if(!dir.exists()) { //폴더가 없다면
+					if(!dir.exists()) { 
 						dir.mkdirs(); 
 					}
 					Enumeration<String> files = multi.getFileNames();
