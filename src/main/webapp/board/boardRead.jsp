@@ -380,8 +380,18 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		<%	
 			for(int i=0; i<fCount; i++){ 
 				UpFileBean fBean = fVlist.get(i);
+				String filename = fBean.getFilename();
 		%>
-				<div align="center"><img src="../uploadimg/<%=fBean.getFilename()%>" ></div>
+		<%
+//				파일 확장자 구분
+				int point = filename.lastIndexOf( "." );
+				String ext = filename.substring(point + 1 );
+		%>	
+				<%if(ext.trim().equals("jpg") || ext.trim().equals("gif") || ext.trim().equals("jpeg") || ext.trim().equals("bmp") || ext.trim().equals("png") || ext.trim().equals("tif") || ext.trim().equals("tga") || ext.trim().equals("rle") || ext.trim().equals("dib") || ext.trim().equals("tiff") || ext.trim().equals("raw")){ %>
+					<div align="center"><img src="../uploadimg/<%=filename%>" ></div>
+				<%}else if(ext.trim().equals("mp3") || ext.trim().equals("mp4") || ext.trim().equals("avi") || ext.trim().equals("wms") || ext.trim().equals("mwa") || ext.trim().equals("asf") || ext.trim().equals("mpg") || ext.trim().equals("mpeg") || ext.trim().equals("ts") || ext.trim().equals("mkv") || ext.trim().equals("mov") || ext.trim().equals("3gp") || ext.trim().equals("3g2") || ext.trim().equals("webm")) { %>
+					<div align="center"><iframe sandbox="allow-scripts" src="../uploadimg/<%=filename%>" width="600px" height="350px" seamless="seamless" name="iframe<%=i%>"></iframe></div>
+				<%}	%>
 		<%} %>
 	</div>
 	<div class="layout-upper-bottom w-container">
