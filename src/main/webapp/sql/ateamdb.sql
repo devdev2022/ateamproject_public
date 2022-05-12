@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `tblsavepost` (
 CREATE TABLE IF NOT EXISTS `tblupfile` (
   `fnum` int NOT NULL AUTO_INCREMENT,
   `num` int NOT NULL,
-  `filename` char(40) NOT NULL,
+  `filename` char(100) NOT NULL,
   `filesize` int NOT NULL,
   PRIMARY KEY (`fnum`,`num`),
   KEY `num` (`num`),
