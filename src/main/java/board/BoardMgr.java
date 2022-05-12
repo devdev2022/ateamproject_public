@@ -17,7 +17,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class BoardMgr {
 
 	DBConnectionMgr pool;
-	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/uploadfiles/";
+	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/UpLoadFiles/";
 	public static final String ENCODING = "UTF-8";
 	public static final int MAXSIZE = 1024*1024*10; // 10mb
 	
@@ -55,6 +55,10 @@ public class BoardMgr {
 		String sql = null;
 		
 		try {
+			File dir = new File(SAVEFOLDER);
+			if(!dir.exists()) { 
+				dir.mkdirs(); 
+			}
 			MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
 			int ref = getMaxNum() + 1;
 			con = pool.getConnection();
@@ -72,10 +76,6 @@ public class BoardMgr {
 			pstmt.close();
 			if(cnt == 1) {
 				try {
-					File dir = new File(SAVEFOLDER);
-					if(!dir.exists()) { 
-						dir.mkdirs(); 
-					}
 					Enumeration<String> files = multi.getFileNames();
 					while(files.hasMoreElements()){
 						String item = files.nextElement();
@@ -526,6 +526,10 @@ public class BoardMgr {
 		String sql = null;
 		int ref = getMaxNum() + 1;
 		try {
+			File dir = new File(SAVEFOLDER);
+			if(!dir.exists()) {
+				dir.mkdirs();
+			}
 			MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
 			con = pool.getConnection();
 			sql = "insert tblboard(id, subject, content, ref, pos, depth, regdate, ip, count, type_board, type_cat) "
@@ -547,10 +551,6 @@ public class BoardMgr {
 			pstmt.close();
 			if(cnt == 1) {
 				try {
-					File dir = new File(SAVEFOLDER);
-					if(!dir.exists()) {
-						dir.mkdirs();
-					}
 					Enumeration<String> files = multi.getFileNames();
 					while(files.hasMoreElements()){
 						String item = files.nextElement();

@@ -232,7 +232,7 @@ function openBoardRead(num) {
 					<img src="test/1.jpg" style="width: 100%; height: 100%">
 			<%}else{ %>
 				<div class="grid_upper">
-					<img src="../uploadfiles/<%=filename%>" style="width: 100%; height: 100%">
+					<img src="../UpLoadFiles/<%=filename%>" style="width: 100%; height: 100%">
 			<%} %>
 			</div>
 			<div class="grid_lower">
