@@ -2277,13 +2277,13 @@ rotate(
 		<div class="board-btns-top w-row">
 			<div class="column w-col w-col-10 w-col-small-10 w-col-tiny-10">
 				<a href="javascript:setCategory('')" class="category-btn w-button">전체</a>
-				<a href="javascript:setCategory('music')" class="category-btn w-button">음악</a>
-				<a href="javascript:setCategory('review')" class="category-btn w-button">리뷰</a>
-				<a href="javascript:setCategory('Lyrics interpretation')" class="category-btn w-button">가사해석</a>
-				<a href="javascript:setCategory('certification/review')" class="category-btn w-button">인증/후기</a>
-				<a href="javascript:setCategory('painting/artwork')" class="category-btn w-button">그림/아트웍</a>
-				<a href="javascript:setCategory('nomal')" class="category-btn w-button">일반</a>
-				<a href="javascript:setCategory('notice')" class="category-btn w-button">공지</a>
+				<a href="javascript:setCategory('음악')" class="category-btn w-button">음악</a>
+				<a href="javascript:setCategory('리뷰')" class="category-btn w-button">리뷰</a>
+				<a href="javascript:setCategory('가사해석')" class="category-btn w-button">가사해석</a>
+				<a href="javascript:setCategory('인증/후기')" class="category-btn w-button">인증/후기</a>
+				<a href="javascript:setCategory('그림/아트웍')" class="category-btn w-button">그림/아트웍</a>
+				<a href="javascript:setCategory('일반')" class="category-btn w-button">일반</a>
+				<a href="javascript:setCategory('공지')" class="category-btn w-button">공지</a>
 			</div>
 		<form name="npFrm" method="post">
 			<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
@@ -2427,10 +2427,13 @@ rotate(
 						</div>
 					</div>
 				</td>
+			<form name="btnFrm" action="boardPost.jsp">
 				<td align="right">
-					<a style="color: white;" href="boardPost.jsp"><button type="button" class="btn btn-dark">글쓰기</button></a> 
+					<a style="color: white;" href="javascript:document.btnFrm.submit()"><button type="button" class="btn btn-dark">글쓰기</button></a> 
 					<a href="javascript:list()"><button type="button" class="btn btn-light">처음으로</button></a>
+					<input type="hidden" name="bValue" value="<%=bValue%>">
 				</td>
+			</form>
 			</tr>
 		</table>
 

@@ -37,11 +37,14 @@ CREATE TABLE tblboard (
 
 /*파일 업로드*/
 CREATE TABLE tblupfile(
+	fnum INT NOT NULL AUTO_INCREMENT,
 	num INT NOT NULL,										/*게시판 번호*/
 	filename CHAR(40) NOT NULL, 						/*파일이름*/
 	filesize INT(40) NOT NULL,							/*파일크기*/
+	PRIMARY KEY (fnum, num),
 	FOREIGN KEY (num) REFERENCES tblboard(num) ON DELETE CASCADE
 )
+
 
 /*댓글 데이터 테이블*/
 CREATE TABLE tblcomment (	
