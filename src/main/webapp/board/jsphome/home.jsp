@@ -56,7 +56,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .banner_-block {
   width: 100%;
   height: 10%;
-  margin-bottom: 60px;
+  margin-bottom: 160px;
 }
 
 .work-grid {
@@ -248,117 +248,9 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
   background-size: cover;
 }
 
-.trans_block-copy {
-  position: absolute;
-  bottom: 48px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-copy5 {
-  position: absolute;
-  bottom: 48px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-copy3 {
-  position: absolute;
-  bottom: 48px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-copy4 {
-  position: absolute;
-  bottom: 48px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-copy-copy {
-  position: absolute;
-  bottom: 48px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-copy7 {
-  position: absolute;
-  bottom: 48px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
 .div-block-5 {
   position: absolute;
   bottom: 248px;
-}
-
-.trans_block-copy6 {
-  position: absolute;
-  bottom: -173px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-copy8 {
-  position: absolute;
-  bottom: -173px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-copy9 {
-  position: absolute;
-  bottom: -173px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-10 {
-  position: absolute;
-  bottom: -393px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-11 {
-  position: absolute;
-  bottom: -393px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-}
-
-.trans_block-12 {
-  position: absolute;
-  bottom: -393px;
-  width: 200px;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
 }
 
 .trans_block2 {
