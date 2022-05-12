@@ -4,7 +4,7 @@
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <jsp:useBean id="bBean" class="board.BoardBean"/>
 <%
-	String loginId = "aaa";
+	String loginId = (String)session.getAttribute("idKey");
 	String oriBValue = request.getParameter("bValue");
 	String oriCategory = request.getParameter("category");
 	int num = Integer.parseInt(request.getParameter("num"));

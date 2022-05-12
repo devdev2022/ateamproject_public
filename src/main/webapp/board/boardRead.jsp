@@ -10,7 +10,7 @@
 	String category = request.getParameter("category");
 	String bValue = request.getParameter("bValue");
 	
-	String loginId = "aaa";
+	String loginId = (String)session.getAttribute("idKey");
 	
 	
 %>
@@ -376,12 +376,12 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	</div>
 	<!-- 첨부파일영역 -->
 	<div class="post-main w-container">
-		<%=bBean.getContent() %>
+		<%=bBean.getContent() %><br>
 		<%	
 			for(int i=0; i<fCount; i++){ 
 				UpFileBean fBean = fVlist.get(i);
 		%>
-				<img src="../uploadimg/<%=fBean.getFilename()%>">
+				<div align="center"><img src="../uploadimg/<%=fBean.getFilename()%>" ></div>
 		<%} %>
 	</div>
 	<div class="layout-upper-bottom w-container">
@@ -393,7 +393,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 						<%if(!lMgr.selectLikes(num, loginId)){	%>
 							<td><a href="javascript:insertLike()"><img src="icon/like_before.jpg"></a></td>
 						<%}else{ %>
-							<td><a href="javascript:deleteLike()"><img src="icon/like_after.jpg"></a></td>
+							<td><a href="javascript:deleteLike()"><img src="icon/like_after.png"></a></td>
 						<%} %>
 						</tr>
 						<tr>
@@ -454,6 +454,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		<input id="replybtn" type="button" class="btn btn-dark" value="답글" onclick="javascript:location.href='boardReply.jsp?num=<%=num%>&category=<%=bBean.getType_cat()%>&bValue=<%=bBean.getType_board()%>'">
 		<a id="listbtn" type="button" class="btn btn-dark" href="javascript:location.href='boardList.jsp'">목록</a>
 	</div>
+	
 	<%
 		Vector<CommentBean> cVlist = cMgr.commentList(num);
 		int cCount = cVlist.size();
@@ -461,60 +462,71 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		<div class="comment-section-header w-container">
 		<div>댓글 [<%=cCount %>]</div>
 	</div>
+	
 	<%
 		for(int i=0; i<cCount; i++){
 			CommentBean cBean = cVlist.get(i);
 	%>
-	<script type="text/javascript">
-		function insertCmtLike(cnum) {
-			document.cmtLikeFrm<%=i%>.action = "insertCmtLikes";
-			document.cmtLikeFrm<%=i%>.cnum.value = cnum ;
-			document.cmtLikeFrm<%=i%>.submit();
-		}
-		
-		function deleteCmtLike(cnum) {
-			document.cmtLikeFrm<%=i%>.action = "deleteCmtLikes";
-			document.cmtLikeFrm<%=i%>.cnum.value = cnum ;
-			document.cmtLikeFrm<%=i%>.submit();
-		}
-	</script>
-	<div class="post-comment w-container">
-		<ul role="list" class="post-comment-container">
-			<li class="list-item"><ul role="list" class="comment-user-info w-list-unstyled">
-				<li class="list-item-3">
-						<img src="icon/profile_def.png" width="20vw">
+	<form name="cmtFrm<%=i%>"action="" method="post">
+		<script type="text/javascript">
+			function insertCmtLike(cnum) {
+				document.cmtFrm<%=i%>.action = "insertCmtLikes";
+				document.cmtFrm<%=i%>.cnum.value = cnum ;
+				document.cmtFrm<%=i%>.submit();
+			}
+			
+			function deleteCmtLike(cnum) {
+				document.cmtFrm<%=i%>.action = "deleteCmtLikes";
+				document.cmtFrm<%=i%>.cnum.value = cnum ;
+				document.cmtFrm<%=i%>.submit();
+			}
+			function deleteComment(cnum) {
+				document.cmtFrm<%=i%>.action = "deleteComment";
+				document.cmtFrm<%=i%>.cnum.value = cnum ;
+				document.cmtFrm<%=i%>.submit();
+			}
+		</script>
+			<div class="post-comment w-container">
+				<ul role="list" class="post-comment-container" style="list-style: none;">
+					<li class="list-item" style="list-style: none;"><ul role="list" class="comment-user-info w-list-unstyled">
+					<li class="list-item-3" style="list-style: none;">
+							<img src="icon/profile_def.png" width="20vw">
+					</li>
+					<li style="list-style: none;">
+						<%=cBean.getId() %>
+					</li>
+				</ul>
+						<ul role="list" class="comment-data w-list-unstyled">
+							<%if(bBean.getId() == loginId || loginId.trim().equals(bBean.getId())) { %>
+								<li style="list-style: none;"><a href="javascript:deleteComment('<%=cBean.getCnum() %>')">[삭제]</a></li>
+							<%} %>
+							<%int totalCmtLikes = cLMgr.countCmtLikes(num, cBean.getCnum()); %>
+							<%if(!cLMgr.selectCmtLikes(num, cBean.getCnum(), loginId)){	%>
+								<li><a href="javascript:insertCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_before.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
+							<%}else{ %>
+								<li><a href="javascript:deleteCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_after.png"></a>&nbsp;<%=totalCmtLikes %>개</li>
+							<%} %>
+							<li><%=cBean.getRegdate() %></li>
+							
+						</ul>
+						<input type="hidden" name="loginId" value="<%=loginId%>">
+						<input type="hidden" name="num" value=<%=num %>>
+						<input type="hidden" name="cnum" value="">
 				</li>
-				<li>
-					<%=loginId %>
+					
+				<li class="comment-contents">
+					
+					<%=cBean.getComment() %>
 				</li>
-				<li></li>
 			</ul>
-				<form name="cmtLikeFrm<%=i%>"action="" method="post">
-					<ul role="list" class="comment-data w-list-unstyled">
-						<%int totalCmtLikes = cLMgr.countCmtLikes(num, cBean.getCnum()); %>
-						<%if(!cLMgr.selectCmtLikes(num, cBean.getCnum(), loginId)){	%>
-							<li><a href="javascript:insertCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_before.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
-						<%}else{ %>
-							<li><a href="javascript:deleteCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_after.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
-						<%} %>
-						<li><%=cBean.getRegdate() %></li>
-						
-					</ul>
-					<input type="hidden" name="loginId" value="<%=loginId%>">
-					<input type="hidden" name="num" value=<%=num %>>
-					<input type="hidden" name="cnum" value="">
-				</form>
-			</li>
-				
-			<li class="comment-contents"><%=cBean.getComment() %></li>
-		</ul>
-		
-	</div>
+			
+		</div>
+	</form>
 	<%} %>
 	<form name="commentFrm" action="commentPost" method="post">
 		<div class="comment-write-header w-container">
 			<div>
-				<b>댓글</b> ex) loginId : aaa
+				<b>댓글</b> ex) loginId : <%=loginId %>
 			</div>
 			
 			<div class="input-group mb-3">

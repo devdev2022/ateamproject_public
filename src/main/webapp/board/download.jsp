@@ -1,4 +1,4 @@
-<%@page contentType="application; charset=EUC-KR"%>
+<%@page contentType="application; charset=UTF-8"%>
 <%@page import="java.io.BufferedOutputStream"%>
 <%@page import="java.io.FileInputStream"%>
 <%@page import="java.io.BufferedInputStream"%>

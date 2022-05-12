@@ -585,7 +585,7 @@ public class BoardMgr {
 	}
 	
 //	모든 카테고리 가져오기
-	public Vector<BoardBean> getCategory(){
+	public Vector<BoardBean> getCategory(String bValue){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -593,8 +593,9 @@ public class BoardMgr {
 		Vector<BoardBean> vlist = new Vector<BoardBean>();
 		try {
 			con = pool.getConnection();
-			sql = "select distinct type_cat from tblboard";
+			sql = "select distinct type_cat from tblboard where type_board=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bValue);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BoardBean bBean = new BoardBean();
@@ -633,5 +634,39 @@ public class BoardMgr {
 		return vlist;
 	}
 
+//	게시판 다가져오기 아이디로
+	public BoardBean getAllBoardByNum(int num){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		BoardBean bean = new BoardBean();
+		try {
+			con = pool.getConnection();
+			sql = "select * from tblboard where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				bean.setNum(rs.getInt("num"));
+				bean.setId(rs.getString("id"));
+				bean.setSubject(rs.getString("subject"));
+				bean.setContent(rs.getString("content"));
+				bean.setPos(rs.getInt("pos"));
+				bean.setRef(rs.getInt("ref"));
+				bean.setDepth(rs.getInt("depth"));
+				bean.setRegdate(rs.getString("regdate"));
+				bean.setIp(rs.getString("ip"));
+				bean.setCount(rs.getInt("count"));
+				bean.setType_board(rs.getString("type_board"));
+				bean.setType_cat(rs.getString("type_cat"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return bean;
+	}
 	
 }
