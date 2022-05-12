@@ -8,8 +8,10 @@
 
 
 	<div class="sidebar w-col w-col-2">
+		<!-- 로그인 정보 받아오기. -->
 		<div class="side_profile_img"
 			style="background-image: url(icon/profile_def.png); background-size: cover; background-repeat: no-repeat"></div>
+			
 		<div class="side_profile_text" style="text-align: center"><%=sampleid%>님,
 			환영합니다.
 		</div>

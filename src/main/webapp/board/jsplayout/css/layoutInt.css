@@ -29,12 +29,10 @@ audio:not([controls]) {
 	display: none
 }
 
-a {
-	background-color: transparent
-}
 
-a:active, a:hover {
-	outline: 0
+a, a:link, a:visited, a:hover, a:focus, a:active {
+	text-decoration: none;
+	color: inherit;
 }
 
 abbr[title] {
