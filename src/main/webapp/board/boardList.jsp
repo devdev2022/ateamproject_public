@@ -2,7 +2,7 @@
 <%@page import="board.UpFileBean"%>
 <%@page import="board.BoardBean"%>
 <%@page import="java.util.Vector"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <jsp:useBean id="cMgr" class="board.CommentMgr"/>
 <jsp:useBean id="fMgr" class="board.UpFileBean"/>

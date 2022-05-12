@@ -3,19 +3,8 @@
 
 %>
 
-
-
-
-
-
 <!DOCTYPE html>
-<script type="text/javascript">
-  function emailFn(){
-	  document.emailFrm.submit();
- }
-  </script>
-  
-
+<html>
 <head>
 <style>
 html {
@@ -2191,60 +2180,65 @@ rotate(
 /* ==========================================================================
    Start of custom Webflow CSS
    ========================================================================== */
-.column {
-	border-right: 1px none #000;
-	border-left: 1px solid #000;
+.form-block {
+	width: 400px;
 }
 
 .div-block {
-	width: auto;
-	height: 100px;
-	margin-top: 70px;
-	margin-bottom: 0px;
-	padding-bottom: 126px;
-	border-bottom: 1px solid #000;
+	margin-top: 0px;
+	margin-right: 270px;
+	margin-left: 330px;
 }
 
-.heading {
-	padding-top: 25px;
-	font-size: 45px;
-	text-align: center;
+.form {
+	margin-top: 50px;
+	margin-right: 112px;
+	margin-bottom: 50px;
+	padding-top: 14px;
+	padding-bottom: 0px;
 }
 
-.column-2 {
-	border-right: 1px none #000;
-	border-left: 1px none #000;
+.text-field {
+	width: 270px;
+	margin-top: 0px;
 }
 
-.link {
-	font-size: 20px;
-}
-
-.link-2 {
-	color: #0e0d0d;
-	font-size: 28px;
-	text-align: left;
-	text-decoration: none;
+.text-field-2 {
+	width: 270px;
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
 .div-block-2 {
-	width: auto;
-	height: 100px;
-	padding-top: 35px;
-	padding-left: 0px;
-	border-bottom: 1px solid #000;
+	height: auto;
 	text-align: center;
 }
 
-.link-3 {
-	font-size: 30px;
-}
-
-.link-4 {
-	color: #0e0d0d;
-	font-size: 30px;
-	text-align: center;
+.link {
+	margin-left: 30px;
+	color: #070606;
 	text-decoration: none;
+}
+
+.link-2 {
+	margin-left: 61px;
+	color: #141212;
+	text-decoration: none;
+}
+
+.submit-button {
+	position: static;
+	top: 290px;
+	right: 300px;
+	bottom: auto;
+	width: 85px;
+	height: 85px;
+	margin-top: 12px;
+	margin-bottom: 28px;
+	margin-left: 299px;
+	background-color: #f3f3f3;
+	color: #0e0d0d;
 }
 
 .body {
@@ -2252,228 +2246,242 @@ rotate(
 }
 
 .div-block-3 {
-	height: 100px;
-	padding-top: 35px;
-	border-bottom: 1px solid #000;
+	padding-top: 0px;
+}
+
+.column {
+	margin-top: 65px;
+	padding-left: 0px;
+}
+
+.submit-button-2 {
+	width: 85px;
+	height: 85px;
+}
+
+.column-2 {
+	padding-right: 0px;
+}
+
+.columns {
+	width: 99%;
+	height: 99%;
+}
+
+.link-3 {
+	margin-left: -90px;
+	padding-right: 170px;
+	padding-left: 0px;
+	text-align: center;
+}
+
+.link-4 {
+	margin-left: -132px;
+	padding-right: 0px;
+	padding-left: 0px;
 	text-align: center;
 }
 
 .div-block-4 {
-	height: 100px;
-	padding-top: 35px;
-	border-bottom: 1px solid #000;
-}
-
-.link-5 {
-	width: 30px;
-}
-
-.link-6 {
-	color: #191919;
-	font-size: 30px;
-	text-decoration: none;
-}
-
-.link-7 {
-	color: #070706;
-	font-size: 30px;
-	text-decoration: none;
-}
-
-.form {
-	text-align: left;
-}
-
-.text-field {
-	width: 300px;
-	margin-bottom: 10px;
-}
-
-.submit-button {
-	width: 120px;
-	background-color: #eceef0;
-	color: #0e0d0d;
-}
-
-.heading-2 {
-	font-size: 25px;
-	text-align: left;
-}
-
-.id {
-	height: 290px;
-	margin-bottom: 0px;
-	margin-left: 15px;
-	padding-bottom: 0px;
-	border-bottom: 1px solid #000;
-}
-
-.text-field-2 {
-	width: 200px;
-}
-
-.text-field-3 {
-	width: 200px;
-}
-
-.text-field-4 {
-	width: 15%;
-}
-
-.pw {
-	margin-top: 30px;
-	margin-bottom: 40px;
-	margin-left: 15px;
-	text-align: left;
-}
-
-.text-field-5 {
-	width: 300px;
-}
-
-.submit-button-2 {
-	width: 120px;
-	background-color: #eceef0;
-	color: #141313;
-	text-align: center;
+	margin-top: 100px;
+	margin-right: 200px;
+	margin-left: 200px;
 }
 
 .form-2 {
+	width: 90px;
+	height: 90px;
+	margin-top: 0px;
 	text-align: left;
 }
 
-.heading-3 {
-	font-size: 25px;
+.submit-button-3 {
+	width: 90px;
+	height: 87px;
+	background-color: #f7f7f7;
+	color: #0f0e0e;
+}
+
+.column-3 {
+	height: auto;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	padding-right: 0px;
+	padding-bottom: 90px;
+	padding-left: 87px;
+	text-align: right;
+}
+
+.column-4 {
+	padding-left: 0px;
+}
+
+.form-3 {
+	width: 270px;
+	height: 100px;
+	text-align: center;
+}
+
+.form-block-2 {
+	width: 300px;
+	margin-left: 101px;
 	text-align: left;
 }
 
-.heading-4 {
-	font-size: 25px;
+.div-block-5 {
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.text-field-3 {
+	width: 250px;
+}
+
+.text-field-4 {
+	width: 250px;
+}
+
+.link-5 {
+	padding-right: 38px;
+	color: #0f0e0e;
+	text-decoration: none;
+}
+
+.link-6 {
+	padding-right: 26px;
+	color: #0c0b0b;
+	text-decoration: none;
+}
+
+.div-block-6 {
+	margin-top: 70px;
+	margin-left: 120px;
+}
+
+.columns-2 {
+	width: auto;
+}
+
+.div-block-7 {
+	height: 220px;
+}
+
+.text-field-5 {
+	width: 220px;
 	text-align: left;
 }
 
 .text-field-6 {
-	width: 200px;
+	width: 220px;
+}
+
+.form-4 {
+	width: 220px;
+	margin-bottom: 28px;
+	margin-left: 35px;
+}
+
+.link-7 {
+	margin-right: 30px;
+	color: #141313;
+	text-decoration: none;
+}
+
+.link-8 {
+	margin-right: -55px;
+	color: #110f0f;
+	text-decoration: none;
+}
+
+.div-block-8 {
+	width: 400px;
+	height: 250px;
+	margin-top: 70px;
+	margin-bottom: 0px;
+	margin-left: 149px;
+	padding-top: 44px;
+	border: 1px solid #000;
+}
+
+.account-form {
+	width: 220px;
+	margin-left: 0px;
+}
+
+.login-form {
+	width: 90px;
+	height: 90px;
+	margin-bottom: 0px;
 }
 
 .button {
-	position: fixed;
-	left: 0%;
-	top: auto;
-	right: 0%;
-	bottom: 0%;
-	margin-top: 10px;
-	margin-bottom: 0px;
-	margin-left: 47px;
+	position: relative;
+	top: -115px;
+	right: -60px;
+	width: 87px;
+	height: 87px;
+	background-color: #f0f0f0;
+	color: #161515;
+	text-align: center;
 }
 
-.text-field-7 {
-	width: 150px;
-	margin-top: 20px;
-}
-
-.text-field-8 {
-	width: 150px;
-	margin-top: 25px;
-	margin-bottom: -5px;
-}
-
-.button-2 {
-	margin-top: 15px;
-	background-color: #eceef0;
-	color: #0c0b0b;
-}
-
-.button-3 {
-	background-color: #eceef0;
-	color: #0e0d0d;
-}
-
-.button-4 {
-	background-color: #eceef0;
-	color: #2c2c2c;
+.div-block-9 {
+	margin-left: 280px;
+	text-align: left;
 }
 </style>
+<script type="text/javascript">
+	function loginFn() {
+		document.loginFrm.submit();
+	}
+</script>
 </head>
 <body class="body">
-	<div class="w-row">
-		<div class="column-2 w-col w-col-3">
-			<div class="div-block">
-				<h1 class="heading">회원</h1>
-			</div>
-			<div class="div-block-2">
-				<a href="#" class="link-4">로그인</a>
-			</div>
-			<div class="div-block-3">
-				<a href="#" class="link-6">회원가입</a>
-			</div>
-			<div class="div-block-4">
-				<a href="#" class="link-7">ID/PW찾기</a>
+	<div class="div-block-5">
+		<div>
+			<div class="div-block-9">
+				<img
+					src="https://uploads-ssl.webflow.com/6278ab2dac94b83cce052a1c/6278c31b11ba11728c56991d_img.png"
+					loading="lazy" width="99" alt="" />
 			</div>
 		</div>
-		<div class="column w-col w-col-9">
-			<div class="id">
-				<div>
-					<h1 class="heading-2">ID 찾기</h1>
-				</div>
-				<div>
+		
+		<div class="div-block-8">
+			<div class="account-form w-form">
+			
+				<form id="email-form-3" name="loginFrm" data-name="Email Form 3"
+					method="post" class="form-4" action="loginProc.jsp">
+					
+					<input class="text-field-5 w-input" maxlength="256"
+						name="id" data-name="Name" placeholder="아이디를 입력하세요!"  />
+					
+					<input	type="password" class="text-field-6 w-input" maxlength="256"
+						name="pwd" data-name="Email" placeholder="비밀번호를 입력하세요!" />
+			<!-- 	<input type="button" value="로그인"> -->
 				
-				<div class="w-form">
-					<form name="emailFrm" data-name="Email Form" method="get" action="../jspmember/findidProc.jsp">
-						
-					<input class="text-field w-input" maxlength="256"
-						name="emailaddr" data-name="Name" placeholder="이메일 주소" id="name" />
-								
-					<input	type="submit" value="인증메일 발송" name="sendemail"data-wait="Please wait..." 
-				    	onclick="emailFn()" class="submit-button w-button" />
-							
-					<input 	name="numfield" class="text-field-7 w-input" maxlength="256" 
-							data-name="Field 6" placeholder="인증번호" id="field-6"/>
-				    	<a ref="javascript:location.conNumProc.jsp" class="button-3 w-button">확인</a>
-						</form>
-						
-						<div class="w-form-done">
-							<div>Thank you! Your submission has been received!</div>
-						</div>
-						<div class="w-form-fail">
-							<div>Oops! Something went wrong while submitting the form.</div>
-						</div>
-					</div>
+				<div class="w-form-done">
+					<div>Thank you! Your submission has been received!</div>
+				</div>
+				<div class="w-form-fail">
+					<div>Oops! Something went wrong while submitting the form.</div>
 				</div>
 			</div>
-			<div class="pw">
-				<div>
-					<h1 class="heading-4">PW찾기</h1>
-				</div>
-				<div class="w-form">
-					<form id="email-form-2" name="email-form-2"
-						data-name="Email Form 2" method="get" class="form-2">
-						<input type="text" class="text-field-2 w-input" maxlength="256"
-							name="name-2" data-name="Name 2" placeholder="ID" id="name-2" /><input
-							type="email" class="text-field-3 w-input" maxlength="256"
-							name="email" data-name="Email" placeholder="이름" id="email"
-							required="" /><input type="text" class="text-field-6 w-input"
-							maxlength="256" name="field" data-name="" placeholder="생년월일(8자리)"
-							id="field-5" required="" /><input type="text"
-							class="text-field-5 w-input" maxlength="256" name="field-2"
-							data-name="Field 2" placeholder="이메일 주소" id="field-2" required="" /><input
-							type="submit" value="인증메일 발송" data-wait="Please wait..."
-							class="submit-button-2 w-button" /><input type="text"
-							class="text-field-8 w-input" maxlength="256" name="field"
-							data-name="" placeholder="인증번호" id="field-9" required="" />
-					</form>
-					<a href="#" class="button-2 w-button">확인</a>
-					<div class="w-form-done">
-						<div>Thank you! Your submission has been received!</div>
-					</div>
-					<div class="w-form-fail">
-						<div>Oops! Something went wrong while submitting the form.</div>
-					</div>
-				</div>
-				<a href="#" class="button-4 w-button">다음 단계</a>
-			</div>
+			<a href="javascript:location.href='../jspsearch/search.jsp'" class="link-7">ID/PW 찾기</a>
+			<a href="javascript:location.href='join.jsp'" class="link-8">회원가입</a>			
+			<a class="button w-button" onclick="loginFn()"><br />로그인</a>
 		</div>
+		</form>
 	</div>
+	
+	<script
+		src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6278ab2dac94b83cce052a1c"
+		type="text/javascript"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://uploads-ssl.webflow.com/6278ab2dac94b83cce052a1c/js/webflow.a46a2f8e7.js"
+		type="text/javascript"></script>
 	<!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
 </html>

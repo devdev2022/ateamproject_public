@@ -1,8 +1,44 @@
+
 <%@page contentType="text/html; charset=UTF-8"%>
+
+<jsp:useBean id="mgr" class="member.MemberMgr"/>
+
 <%
+ String id=request.getParameter("id");
+ String pwd=request.getParameter("pwd");
+ String pwdchk=request.getParameter("pwdchk");
+boolean result=mgr.loginMember(id, pwd);
 
 %>
 
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
+
+ function idCheck(id){
+	 	 
+	if(id==""){
+		 alert("아이디를 입력하셈")
+		 document.regFrm.id.focus();
+		 return;
+	  }
+	 url="idCheck.jsp?id="+id;
+	 window.open(url, "ID중복체크",
+			 "width=400, height=350");
+     }
+  
+ 
+  function inputCheck(pwd){
+	  pwdchk = document.regFrm.pwdchk.value;
+   if(pwd!=pwdchk){
+		  alert("비밀번호가 일치 하지 않습니다!!")
+		  document.regFrm.pwdchk.focus();
+		  return;
+	  }
+   document.regFrm.submit();
+  } 
+  
+ 
+</script>
 <head>
 <!-- 부트스트랩 영역-->
 <link
@@ -203,6 +239,7 @@
 }
 </style>
 </head>
+
 <div class="joinbody">
 	<div class="side_tab">
 		<div class="tablbl">
@@ -214,11 +251,14 @@
 	</div>
 	
 	<div class="form_block">
+	 <form name="regFrm" method="post" action="joinProc.jsp" enctype="multipart/form-data">
+	 <!-- <form name="regFrm" method="post" action="joinProc.jsp"> -->
+	 
 		<div class="memberlbl"><h3>회원가입</h3></div>
 		<div class="join_form_block">
 			<div style="margin-top: 2vw;"></div>
 			<div class="col-auto profile_div" width="10vw" height="10vw" >	
-				<img src="icon/profile_def.png">
+				<img src="../icon/profile_def.png">
 			</div>
 
 			<div style="margin-top: 2vw;"></div>
@@ -227,59 +267,74 @@
 
 				<div>아이디*</div>
 				<div class="col-auto col-md-4">
-					<input type="text" id="id" class="form-control">
+					<input name="id" value="aaa"class="form-control">
 				</div>
-
-				<button class="btn btn-dark col-auto">중복확인</button>
-
-
+<!--  -->
+				<input type="button" value="중복확인" class="btn btn-dark col-auto" 
+				onclick="idCheck(this.form.id.value)">
 
 				<div>비밀번호*</div>
 				<div class="col-auto col-md-4">
-					<input type="text" id="id" class="form-control">
+					<input name="pwd" value="1234" class="form-control">
 				</div>
 				<div>비밀번호 확인*</div>
 				<div class="col-auto col-md-4">
-					<input type="text" id="id" class="form-control">
+					<input type="text" name="pwdchk" class="form-control">
 				</div>
-				<div>닉네임*</div>
+				<div>이름*</div>
 				<div class="col-auto col-md-4">
-					<input type="text" id="id" class="form-control">
+					<input name="name" class="form-control">
 				</div>
+
+				<div>프로필 사진*</div>
+				<div class="col-auto col-md-3">
+					<input type="file" name="imgname" class="form-control">
+				</div>
+				
+				<input type="button" value="찾기" class="btn btn-dark col-auto">
 
 
 
 				<div>이메일*</div>
 				<div class="col-auto col-md-3">
-					<input type="text" id="email_id" class="form-control">
+					<input name="email1" value="abc"class="form-control">
 				</div>
 				<div class="col-auto">@</div>
 				<div class="col-auto col-md-3">
-					<input type="text" id="email_domain" class="form-control">
+					<input name="email2" value="naver.com"class="form-control">
 				</div>
-				<button class="btn btn-dark col-auto">중복확인</button>
+				<input type="button" value="중복확인" class="btn btn-dark col-auto">
+				
 				<div>휴대폰 번호*</div>
 				<div class="col-auto col-md-2">
-					<input type="text" id="phone_corp" class="form-control">
+				<select name=phonecorp>
+				  <option value="0" selected>선택하세요
+				  <option value="SKT" >SKT
+				  <option value="KT" >KT
+				  <option value="알뜰폰" >알뜰폰
+			
+				</select>
+		
 				</div>
 				<div class="col-auto col-md-2">
-					<input type="text" id="phone_1" class="form-control">
+					<input name="phone1" value="010" class="form-control">
 				</div>
 				<div class="col-auto col-md-2">
-					<input type="text" id="phone_2" class="form-control">
+					<input name="phone2" value="2555"class="form-control">
 				</div>
 				<div class="col-auto col-md-2">
-					<input type="text" id="phone_3" class="form-control">
+					<input name="phone3" value="9875"class="form-control">
 				</div>
 				<div style="margin-top: 3vw;"></div>
 			</div>
+			
 			<div style="display: flex; justify-content: center; margin-bottom: 3vw;">
-				<button type="button" class="btn btn-lg btn-dark">가입하기</button>
+				<button type="button" class="btn btn-lg btn-dark" 
+				onclick="inputCheck(this.form.pwd.value)">가입하기</button>
+				
 				<button type="button" class="btn btn-secondary btn-lg">취소</button>
 			</div>
-
-
 		</div>
 	</div>
-	
 </div>
+</form>
