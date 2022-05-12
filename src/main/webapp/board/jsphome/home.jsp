@@ -77,16 +77,17 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .link-block {
   width: 200px;
   height: 200px;
+  padding-top: 135px;
   background-image: url("https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png");
   background-position: 0px 0px;
   background-size: cover;
   -webkit-transition: opacity 200ms ease;
   transition: opacity 200ms ease;
+  text-decoration: none;
 }
 
 .title_block {
   height: 40px;
-  margin-top:170px;
   margin-bottom: 20px;
 }
 
@@ -109,9 +110,11 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .link-block-3 {
   width: 200px;
   height: 200px;
+  padding-top: 135px;
   background-image: url("https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/627a04f077060c2175639052_2.png");
   background-position: 0px 0px;
   background-size: auto;
+  text-decoration: none;
 }
 
 .link-block-4 {
@@ -122,49 +125,62 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .link-block-5 {
   width: 200px;
   height: 200px;
+  padding-top: 135px;
   background-image: url("https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png");
   background-position: 0px 0px;
   background-size: cover;
+  text-decoration: none;
 }
 
 .link-block-6 {
   width: 200px;
   height: 200px;
+  padding-top: 135px;
   background-image: url("https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/627a04f077060c2175639052_2.png");
   background-position: 0px 0px;
   background-size: cover;
+  text-decoration: none;
 }
 
 .link-block-7 {
   width: 200px;
   height: 200px;
+  padding-top: 135px;
   background-image: url("https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/627a050b1591452df0099b12_3.png");
   background-position: 0px 0px;
   background-size: cover;
+  text-decoration: none;
 }
 
 .link-block-8 {
   width: 200px;
   height: 200px;
+  padding-top: 135px;
   background-image: url("https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png");
   background-position: 0px 0px;
   background-size: cover;
+  text-decoration: none;
 }
 
 .link-block-9 {
+  position: static;
   width: 200px;
   height: 200px;
+  padding-top: 135px;
   background-image: url("https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/627a04f077060c2175639052_2.png");
   background-position: 0px 0px;
   background-size: cover;
+  text-decoration: none;
 }
 
 .link-block-10 {
   width: 200px;
   height: 200px;
+  padding-top: 135px;
   background-image: url("https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/627a050b1591452df0099b12_3.png");
   background-position: 0px 0px;
   background-size: cover;
+  text-decoration: none;
 }
 
 .text-block {
@@ -195,18 +211,30 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
   color: #f3f0f0;
 }
 
-
 .trans_block {
-  position: absolute;
-  bottom: 58px;
+  position: static;
+  left: auto;
+  top: auto;
+  right: auto;
+  bottom: 105px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
   color: #fff;
-} 
+  text-decoration: none;
+}
+
+.text-block-4 {
+  font-size: 11px;
+}
+
+.text-block-5 {
+  font-size: 14px;
+}
 
 .text-block-6 {
   font-size: 12px;
+  text-decoration: none;
 }
 
 .link-block-11 {
@@ -220,32 +248,142 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
   background-size: cover;
 }
 
+.trans_block-copy {
+  position: absolute;
+  bottom: 48px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-copy5 {
+  position: absolute;
+  bottom: 48px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-copy3 {
+  position: absolute;
+  bottom: 48px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-copy4 {
+  position: absolute;
+  bottom: 48px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-copy-copy {
+  position: absolute;
+  bottom: 48px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-copy7 {
+  position: absolute;
+  bottom: 48px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
 .div-block-5 {
   position: absolute;
   bottom: 248px;
 }
 
-.trans_block2 {
+.trans_block-copy6 {
   position: absolute;
-  bottom: 58px;
+  bottom: -173px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
   color: #fff;
+}
+
+.trans_block-copy8 {
+  position: absolute;
+  bottom: -173px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-copy9 {
+  position: absolute;
+  bottom: -173px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-10 {
+  position: absolute;
+  bottom: -393px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-11 {
+  position: absolute;
+  bottom: -393px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block-12 {
+  position: absolute;
+  bottom: -393px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.trans_block2 {
+  position: static;
+  bottom: 105px;
+  width: 200px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-decoration: none;
 }
 
 .trans_block3 {
-  position: absolute;
-  bottom: 58px;
+  position: static;
+  bottom: 105px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
   color: #fff;
+  text-decoration: none;
 }
 
 .trans_block4 {
-  position: absolute;
-  bottom: -164px;
+  position: static;
+  bottom: -118px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -253,8 +391,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 }
 
 .trans_block5 {
-  position: absolute;
-  bottom: -164px;
+  position: static;
+  bottom: -118px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -262,8 +400,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 }
 
 .trans_block6 {
-  position: absolute;
-  bottom: -164px;
+  position: static;
+  bottom: -118px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -271,8 +409,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 }
 
 .trans_block7 {
-  position: absolute;
-  bottom: -385px;
+  position: static;
+  bottom: -338px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -280,8 +418,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 }
 
 .trans_block8 {
-  position: absolute;
-  bottom: -385px;
+  position: static;
+  bottom: -395px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -289,8 +427,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 }
 
 .trans_block9 {
-  position: absolute;
-  bottom: -385px;
+  position: static;
+  bottom: -395px;
   width: 200px;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -338,97 +476,102 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 		<div class="w-layout-grid board_grid">
 			<div id="w-node-b052e812-24e7-8858-cef8-bd1f2dfc6522-ec96aae4"
 				class="div-block-2">
-				<a href="#" class="link-block w-inline-block"></a>
-				<div class="trans_block">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block w-inline-block"><div
+						class="trans_block">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 			<div>
-				<a href="#" class="link-block-3 w-inline-block"></a>
-				<div class="trans_block2">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block-3 w-inline-block"><div
+						class="trans_block2">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 			<div>
-				<a href="#" class="link-block-4 link-block-3 w-inline-block"></a>
-				<div class="trans_block3">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block-4 link-block-3 w-inline-block"><div
+						class="trans_block3">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 			<div>
-				<a href="#" class="link-block-5 w-inline-block"></a>
-				<div class="trans_block4">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block-5 w-inline-block"><div
+						class="trans_block4">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 			<div>
-				<a href="#" class="link-block-6 w-inline-block"></a>
-				<div class="trans_block5">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block-6 w-inline-block"><div
+						class="trans_block5">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 			<div>
-				<a href="#" class="link-block-7 w-inline-block"></a>
-				<div class="trans_block6">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block-7 w-inline-block"><div
+						class="trans_block6">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 			<div>
-				<a href="#" class="link-block-8 w-inline-block"></a>
-				<div class="trans_block7">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block-8 w-inline-block"><div
+						class="trans_block7">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 			<div>
-				<a href="#" class="link-block-9 w-inline-block"></a>
-				<div class="trans_block8">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block-9 w-inline-block"><div
+						class="trans_block8">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 			<div>
-				<a href="#" class="link-block-10 w-inline-block"></a>
-				<div class="trans_block9">
-					<div>
-						<div class="text-block-6">
-							게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+				<a href="#" class="link-block-10 w-inline-block"><div
+						class="trans_block9">
+						<div>
+							<div class="text-block-6">
+								게시글 제목<br />작성자명 / 게시판 구분 / 게시판 내 카테고리 구분
+							</div>
 						</div>
-					</div>
-				</div>
+					</div></a>
 			</div>
 		</div>
 	</div>
 </div>
-</body>
+<script
+	src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6279d2a8b52679164d96aae3"
+	type="text/javascript"
+	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+	crossorigin="anonymous"></script>
+	</body>
 </html>
