@@ -17,7 +17,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class BoardMgr {
 
 	DBConnectionMgr pool;
-	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/uploadimg/";
+	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/UpLoadFiles/";
 	public static final String ENCODING = "UTF-8";
 	public static final int MAXSIZE = 1024*1024*10; // 10mb
 	
@@ -73,9 +73,13 @@ public class BoardMgr {
 			if(cnt == 1) {
 				try {
 					File dir = new File(SAVEFOLDER);
-					if(!dir.exists()) {
-						dir.mkdirs();
-					}
+						if(!dir.exists()) {
+							try{
+								dir.mkdirs();
+							}catch(Exception g){
+							g.getStackTrace();
+							}
+						}
 					Enumeration<String> files = multi.getFileNames();
 					while(files.hasMoreElements()){
 						String item = files.nextElement();
@@ -98,8 +102,8 @@ public class BoardMgr {
 					e.printStackTrace();
 				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception f) {
+			f.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt);
 		}
