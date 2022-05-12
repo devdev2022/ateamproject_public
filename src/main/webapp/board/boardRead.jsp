@@ -10,7 +10,7 @@
 	String category = request.getParameter("category");
 	String bValue = request.getParameter("bValue");
 	
-	String loginId = "aaa";
+	String loginId = (String)session.getAttribute("idKey");
 	
 	
 %>

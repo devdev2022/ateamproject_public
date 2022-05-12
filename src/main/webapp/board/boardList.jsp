@@ -15,7 +15,9 @@
 	int totalBlock = 0; //총 블럭 개수
 	int nowPage = 1; //현재 페이지
 	int nowBlock = 1; //현재 블럭
+	
 	String loginId = "aaa";
+	session.setAttribute("idKey", loginId);
 	
 	if(request.getParameter("numPerPage")!=null){
 		numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
