@@ -4,6 +4,7 @@
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <%
 	String loginId = (String)session.getAttribute("idKey");
+	String bValue = request.getParameter("bValue");
 %>
 
 <!DOCTYPE html>
@@ -185,19 +186,19 @@
 					%>
 					
 					<div class="dropdown">
-						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="게시판을 선택하세요." name="bValue">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="<%=bValue %>" name="bValue">
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						<%
 							for(int i=0; i<bVSize; i++){
 								BoardBean caBean = bVVlist.get(i);
-								String bValue = caBean.getType_cat();//게시판 개수 고려
+								bValue = caBean.getType_cat();//게시판 개수 고려
 							%>
 								<li><a class="dropdown-item" href="javascript:setBValue('<%=bValue %>')"><%=bValue %></a></li>
 							<%} %>
 						</ul>
 					</div>
 					<%
-						Vector<BoardBean> caVlist = bMgr.getCategory();
+						Vector<BoardBean> caVlist = bMgr.getCategory(bValue);
 						int caSize = caVlist.size(); //카테고리 개수 고려
 					%>
 					<div class="dropdown">
@@ -227,7 +228,7 @@
 			<div id="fileupload" class="mb-3">
 				<label for="formFile" class="form-label"> 첨부파일 </label> 
 				<div class="insert">
-					<input type="file" onchange="addFile(this);" name="filename"/>
+					<input type="file" onchange="addFile(this);" multiple name="filename"/>
 					<div class="file-list"></div>
 			</div>
 			</div>

@@ -585,7 +585,7 @@ public class BoardMgr {
 	}
 	
 //	모든 카테고리 가져오기
-	public Vector<BoardBean> getCategory(){
+	public Vector<BoardBean> getCategory(String bValue){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -593,8 +593,9 @@ public class BoardMgr {
 		Vector<BoardBean> vlist = new Vector<BoardBean>();
 		try {
 			con = pool.getConnection();
-			sql = "select distinct type_cat from tblboard";
+			sql = "select distinct type_cat from tblboard where type_board=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bValue);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BoardBean bBean = new BoardBean();
