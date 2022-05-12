@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Enumeration;
 import java.util.Vector;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -75,18 +76,24 @@ public class BoardMgr {
 					if(!dir.exists()) {
 						dir.mkdirs();
 					}
-					String filename = multi.getFilesystemName("filename");
-					if(filename == null || filename.trim().equals("")) {
-						return;
+					Enumeration<String> files = multi.getFileNames();
+					while(files.hasMoreElements()){
+						String item = files.nextElement();
+						String filename = multi.getFilesystemName(item);
+						if(filename != null){
+							File file = multi.getFile(item);
+							if(file.exists()){
+								int filesize  = (int)file.length();
+								sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
+								pstmt = con.prepareStatement(sql);
+								pstmt.setInt(1, ref);
+								pstmt.setString(2, filename);
+								pstmt.setInt(3, filesize);
+								pstmt.executeUpdate();
+							}
+						}
+						
 					}
-					File f = multi.getFile("filename");
-					int filesize = (int)f.length();
-					sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, ref);
-					pstmt.setString(2, filename);
-					pstmt.setInt(3, filesize);
-					pstmt.executeUpdate();
 				}catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -544,15 +551,24 @@ public class BoardMgr {
 					if(!dir.exists()) {
 						dir.mkdirs();
 					}
-					String filename = multi.getFilesystemName("filename");
-					File f = multi.getFile("filename");
-					int filesize = (int)f.length();
-					sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, ref);
-					pstmt.setString(2, filename);
-					pstmt.setInt(3, filesize);
-					pstmt.executeUpdate();
+					Enumeration<String> files = multi.getFileNames();
+					while(files.hasMoreElements()){
+						String item = files.nextElement();
+						String filename = multi.getFilesystemName(item);
+						if(filename != null){
+							File file = multi.getFile(item);
+							if(file.exists()){
+								int filesize  = (int)file.length();
+								sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
+								pstmt = con.prepareStatement(sql);
+								pstmt.setInt(1, ref);
+								pstmt.setString(2, filename);
+								pstmt.setInt(3, filesize);
+								pstmt.executeUpdate();
+							}
+						}
+						
+					}
 				}catch (Exception e) {
 					e.printStackTrace();
 				}
