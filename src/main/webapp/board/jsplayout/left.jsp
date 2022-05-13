@@ -24,12 +24,18 @@
 			<%}%>
 		</div>
 		<div class="side_profile_iconbar w-row">
+			<a href="#">
 			<div class="side_profile_editicon w-col w-col-4"
 				style="background-image: url(../icon/edit_gray.png); background-repeat: no-repeat"></div>
+				</a>
+			<a href="../jspmember/memberLikes.jsp">
 			<div class="side_profile_likeicon w-col w-col-4"
 				style="background-image: url(../icon/like_gray.png); background-repeat: no-repeat"></div>
+			</a>
+			<a href="../jspmember/memberSaved.jsp">
 			<div class="side_profile_saveicon w-col w-col-4" 
 				style="background-image: url(../icon/save_gray.png); background-repeat: no-repeat"></div>
+			</a>
 		</div>
 		<div class="side_chart" style="background-color: ivory"></div>
 	</div>
