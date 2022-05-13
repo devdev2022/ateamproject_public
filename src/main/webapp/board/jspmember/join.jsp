@@ -245,9 +245,9 @@ boolean result=mgr.loginMember(id, pwd);
 		<div class="tablbl">
 			회원<br/>‍
 		</div>
-		<div class="tab_item">로그인</div>
-		<div class="tab_item">회원가입</div>
-		<div class="tab_item">ID/PW찾기</div>
+		<div class="tab_item" onclick="location.href='login.jsp';">로그인</div>
+		<div class="tab_item" onclick="location.href='join.jsp';">회원가입</div>
+		<div class="tab_item" onclick="location.href='../jspsearch/search.jsp';">ID/PW찾기</div>
 	</div>
 	
 	<div class="form_block">

@@ -1,21 +1,29 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%
-
-%>
-
-
-
-
-
 
 <!DOCTYPE html>
+<html>
+<head>
 <script type="text/javascript">
+
   function emailFn(){
 	  document.emailFrm.submit();
  }
+  
+  function numfieldFn(){
+	  document.numFrm.submit();
+  }
+  
+  function numfield2Fn(){
+	  document.numFrm2.submit();
+  }
+  
+  function joinFn(){
+	  //document.div-block-3.action="../jspmember/join.jsp";
+	  submit();
+  }
+  
   </script>
   
-
 <head>
 <style>
 html {
@@ -2401,36 +2409,42 @@ rotate(
 			<div class="div-block">
 				<h1 class="heading">회원</h1>
 			</div>
+		<form>
 			<div class="div-block-2">
-				<a href="#" class="link-4">로그인</a>
+				<a href="#" onclick="location.href='../jspmember/login.jsp';" class="link-4">로그인</a>
 			</div>
 			<div class="div-block-3">
-				<a href="#" class="link-6">회원가입</a>
+				<a href="#" onclick="location.href='../jspmember/join.jsp';"class="link-6">회원가입</a>
 			</div>
 			<div class="div-block-4">
-				<a href="#" class="link-7">ID/PW찾기</a>
+				<a href="#" onclick="location.href='../jspsearch/search.jsp';" class="link-7">ID/PW찾기</a>
 			</div>
+			</form>	
 		</div>
 		<div class="column w-col w-col-9">
 			<div class="id">
 				<div>
-					<h1 class="heading-2">ID 찾기</h1>
+<h1 class="heading-2">ID 찾기</h1>
 				</div>
 				<div>
 				
 				<div class="w-form">
-					<form name="emailFrm" data-name="Email Form" method="get" action="../jspmember/findidProc.jsp">
+			
+				<form name="emailFrm" data-name="Email Form" method="post" 
+				action="../jspmember/findidProc.jsp">
 						
 					<input class="text-field w-input" maxlength="256"
 						name="emailaddr" data-name="Name" placeholder="이메일 주소" id="name" />
 								
-					<input	type="submit" value="인증메일 발송" name="sendemail"data-wait="Please wait..." 
+					<input	type="button" value="인증메일 발송" name="sendemail" data-wait="Please wait..." 
 				    	onclick="emailFn()" class="submit-button w-button" />
-							
+				</form>
+				
+				<form name="numFrm" method="get" action="conNumProc.jsp">			
 					<input 	name="numfield" class="text-field-7 w-input" maxlength="256" 
 							data-name="Field 6" placeholder="인증번호" id="field-6"/>
-				    	<a ref="javascript:location.conNumProc.jsp" class="button-3 w-button">확인</a>
-						</form>
+				    	<a href="#"  onclick="numfieldFn()" class="button-3 w-button">확인</a>
+			 	</form>
 						
 						<div class="w-form-done">
 							<div>Thank you! Your submission has been received!</div>
@@ -2443,34 +2457,38 @@ rotate(
 			</div>
 			<div class="pw">
 				<div>
-					<h1 class="heading-4">PW찾기</h1>
+<h1 class="heading-4">PASSWORD 찾기</h1>
 				</div>
 				<div class="w-form">
-					<form id="email-form-2" name="email-form-2"
-						data-name="Email Form 2" method="get" class="form-2">
+				<form name="emailFrm2" data-name="Email Form" 
+					      method="post" action="../jspmember/findpwProc.jsp">
+					      
 						<input type="text" class="text-field-2 w-input" maxlength="256"
-							name="name-2" data-name="Name 2" placeholder="ID" id="name-2" /><input
-							type="email" class="text-field-3 w-input" maxlength="256"
-							name="email" data-name="Email" placeholder="이름" id="email"
-							required="" /><input type="text" class="text-field-6 w-input"
-							maxlength="256" name="field" data-name="" placeholder="생년월일(8자리)"
-							id="field-5" required="" /><input type="text"
-							class="text-field-5 w-input" maxlength="256" name="field-2"
-							data-name="Field 2" placeholder="이메일 주소" id="field-2" required="" /><input
-							type="submit" value="인증메일 발송" data-wait="Please wait..."
-							class="submit-button-2 w-button" /><input type="text"
-							class="text-field-8 w-input" maxlength="256" name="field"
-							data-name="" placeholder="인증번호" id="field-9" required="" />
-					</form>
-					<a href="#" class="button-2 w-button">확인</a>
+							name="findid" data-name="Name 2" placeholder="ID" id="name-2" />
+							
+						<input name="emailaddr2" class="text-field-5 w-input" maxlength="256" name="field-2"
+							data-name="Field 2" placeholder="이메일 주소" id="field-2" >
+							
+						<input	type="submit" value="인증메일 발송" data-wait="Please wait..."
+							class="submit-button-2 w-button" />
+				</form>	
+					
+						
+					<form name="numFrm2" method="get" action="conNumProc1.jsp">	
+						<input name="numfield2"	class="text-field-8 w-input" maxlength="256" 
+							data-name="" placeholder="인증번호" id="field-9" >
+					
+					
+					<a href="#" onclick="numfield2Fn()" class="button-2 w-button">확인</a>
 					<div class="w-form-done">
 						<div>Thank you! Your submission has been received!</div>
 					</div>
+					</form>
 					<div class="w-form-fail">
 						<div>Oops! Something went wrong while submitting the form.</div>
 					</div>
 				</div>
-				<a href="#" class="button-4 w-button">다음 단계</a>
+				
 			</div>
 		</div>
 	</div>

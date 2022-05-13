@@ -11,20 +11,21 @@
 	String pwd=request.getParameter("pwd");
 	
 	boolean result=mgr.loginMember(id, pwd);
-	out.println(result);
+	//out.println(result);
 	
 	String msg="로그인에 실패하였습니다.!!";
+	
 	if(result){
 		//세션에 ("idKey", id); <--idKey라는 '이름'으로 id의 '값'을 저장하는 것.
 		
 		session.setAttribute("idKey", id);
-		msg="로그인에 성공!!";
+		msg="로그인이 되었습니다.";
 	}
 %>
 
 <script>
  alert("<%=msg%>");
- <!--  location.href="login.jsp"; -->
+ location.href="../jsphome/home.jsp"; 
 
 </script>
 

@@ -28,12 +28,7 @@ public class MemberMgr1 {
 	
 	
 
-public boolean sendNum(String emailaddr) { //MailSend.java
-	boolean flag=false;
-	MemberMgr1 mgr=new MemberMgr1();
-	Boolean fullemail=mgr.findId(emailaddr);
-		
-	if(fullemail=true) {
+public int sendNum(String emailaddr) { //MailSend.java
 		Random r = new Random();
 		int n = r.nextInt(9000)+999;
 		String num= Integer.toString(n);
@@ -42,9 +37,7 @@ public boolean sendNum(String emailaddr) { //MailSend.java
 		String content="인증번호는 "+num+"입니다";
 		//String content="인증번호는 789입니다";
 		GmailSend.send(title, content, emailaddr);
-		flag=true;
-			}
-			return flag;
+		return n;
 		}
 		
 //public static void main(String[] args) {
@@ -109,6 +102,69 @@ public boolean sendNum(String emailaddr) { //MailSend.java
 	}
 	return flag;	
 	}
+	
+	
+	//-------------- id 보여주기---------------
+	public String showId(String emailaddr) {
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = null;
+	//boolean flag = false;
+	int idx = emailaddr.indexOf('@');
+	String e1 = emailaddr.substring(0, idx);
+	String e2 = emailaddr.substring(idx+1);
+	String id=null;
+	//MemberBean1 bean=new MemberBean1();
+	try {
+		con = pool.getConnection();
+		sql = "select id from tblmember where email1=? and email2=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, e1);
+		pstmt.setString(2, e2);
+		rs = pstmt.executeQuery();
+		if(rs.next()) //rs.next()은 다음 행이 있으면 true,없으면 false 반환하므로, 
+	// 여기서는 if(rs.next())는 if(true)와 동일
+			id=rs.getString(1);
+			
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		pool.freeConnection(con, pstmt, rs);
+	}
+	return id;	
+	}
+	
+	//-------------- id 보여주기---------------
+	public String showPwd(String emailaddr) {
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = null;
+	//boolean flag = false;
+	int idx = emailaddr.indexOf('@');
+	String e1 = emailaddr.substring(0, idx);
+	String e2 = emailaddr.substring(idx+1);
+	String pwd=null;
+	//MemberBean1 bean=new MemberBean1();
+	try {
+		con = pool.getConnection();
+		sql = "select pwd from tblmember where email1=? and email2=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, e1);
+		pstmt.setString(2, e2);
+		rs = pstmt.executeQuery();
+		if(rs.next())
+			pwd=rs.getString(1);
+			
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		pool.freeConnection(con, pstmt, rs);
+	}
+	return pwd;	
+	}
+	
 
 	// ------------- �α��� Ȯ���ϱ� -------------
 	public boolean loginMember(String id, String pwd) {
@@ -135,6 +191,10 @@ public boolean sendNum(String emailaddr) { //MailSend.java
 		}
 		return flag;
 	}
+	
+	
+// show id
+	//public String showId(email1, email2)
 	
 	//회원정보 가져오기
 	public MemberBean1 getMember(String id) {

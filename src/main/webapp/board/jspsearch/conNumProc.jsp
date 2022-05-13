@@ -1,26 +1,24 @@
 <%@page contentType="text/html; charset=EUC-KR"%>
-
+<jsp:useBean id="mgr" class="member.MemberMgr1"/>
 <%
-	boolean flag=false;
-		String num1=(String)session.getAttribute("conNum");
-		out.println(num1);
+		boolean flag=false;
+		String numfield = request.getParameter("numfield");
 		
-		if(num1!=null) 
-			flag=true;
-		else
-			response.sendRedirect("login.jsp");
-		
-		String msg1="인증번호를 잘못 입력했습니다";
-		String num=request.getParameter("numfield");
-		//out.println(num);
-		if(num !=null){
-			session.setAttribute("conNum", num);
+		String emailaddr = (String)session.getAttribute("emailaddr");
+		String num = (String)session.getAttribute("conNum");
+		String id = "";
+		String msg ="인증번호를 잘못 입력했습니다";
+		if(numfield.equals(num)){ 
+			msg = ": 회원님의 아이디입니다.";
+			id=mgr.showId(emailaddr);
 		}
-		else
-			response.sendRedirect("login.jsp"	);
+		//else
+			//response.sendRedirect("search.jsp");
 %>
 
 <script type="text/javascript">
- 	alert("인증번호가 맞습니다!!");
+ 	//alert("<%=id + " : "+ msg%>");
+ 	alert("<%=id%> <%=msg%>");
+ 	location.href = "../jspmember/login.jsp";
 </script>
 
