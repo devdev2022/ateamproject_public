@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- SNS share websites --> 
+<script type="text/javascript" async> 
+var url_default_ks = "https://story.kakao.com/share?url=";
+var url_default_fb = "https://www.facebook.com/sharer/sharer.php?u=";
+var url_default_tw_txt = "https://twitter.com/intent/tweet?text="; 
+var url_default_tw_url = "&url="; 
+var url_default_naver = "http://share.naver.com/web/shareView.nhn?url="; 
+var title_default_naver = "&title="; 
+var url_this_page = location.href; 
+var title_this_page = document.title; 
+var url_combine_ks = url_default_ks + url_this_page; 
+var url_combine_fb = url_default_fb + url_this_page; 
+var url_combine_tw = url_default_tw_txt + document.title + url_default_tw_url + url_this_page; 
+var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_default_naver + encodeURI(title_this_page); 
+</script>
+
+</head>
+<body>
+<a href="https://songsong.dev/entry/kakao-link-api%EB%A1%9C-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EA%B3%B5%EC%9C%A0%ED%95%98%EA%B8%B0">
+카카오톡 예제
+</a>
+
+<!-- SNS share buttons --> 
+<div style="width: 100%; text-align: center; margin-bottom: 64px;"> 
+<!-- Facebook share button --> 
+<a href="" onclick="window.open(url_combine_fb, '', 'scrollbars=no, width=600, height=600'); return false;">
+<img src="https://imgur.com/2pxqHxt.png" title="페이스북으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a> 
+<!-- Twitter share button --> 
+<a href="" onclick="window.open(url_combine_tw, '', 'scrollbars=no, width=600, height=600'); return false;">
+<img src="https://imgur.com/z7V4qga.png" title="트위터로 공유하기" class="sharebtn_custom" style="width: 48px;"></a> 
+<!-- Naver share button --> 
+<a href="" onclick="window.open(url_combine_naver, '', 'scrollbars=no, width=600, height=600'); return false;">
+<img src="https://imgur.com/AYqtESo.png" title="네이버로 공유하기" class="sharebtn_custom" style="width: 48px;"></a> 
+<!-- Kakao story share button --> 
+<a href="" onclick="window.open(url_combine_ks, '', 'scrollbars=no, width=600, height=600'); return false;">
+<img src="https://imgur.com/mIW39pd.jpg" title="카카오스토리로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+</div>
+
+</body>
+</html>
