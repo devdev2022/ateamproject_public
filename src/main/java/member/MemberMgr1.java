@@ -17,7 +17,7 @@ public class MemberMgr1 {
 	private DBConnectionMgr pool;
 
 	
-	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/ateamweb/src/main/webapp/board/photo/";
+	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/board/photo/";
 
 	public static final String ENCODING = "UTF-8";
 	public static final int MAXSIZE = 1024 * 1024 * 10; // 10MB

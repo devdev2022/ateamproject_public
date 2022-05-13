@@ -1,7 +1,7 @@
 
 <%@page contentType="text/html; charset=UTF-8"%>
 
-<jsp:useBean id="mgr" class="member.MemberMgr"/>
+<jsp:useBean id="mgr" class="member.MemberMgr1"/>
 <jsp:useBean id="bean" class="member.MemberBean1"/>
 
 <%
@@ -273,7 +273,7 @@ boolean result=mgr.loginMember(id, pwd);
 
 				<div>아이디*</div>
 				<div class="col-auto col-md-4">
-					<input name="id" value="<%=bean.get%>"class="form-control">
+					<input name="id" value="<%=bean.getI%>"class="form-control">
 				</div>
 <!--  -->
 				<input type="button" value="중복확인" class="btn btn-dark col-auto" 
