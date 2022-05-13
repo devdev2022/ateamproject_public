@@ -20,12 +20,15 @@
 		
 		session.setAttribute("idKey", id);
 		msg="로그인이 되었습니다.";
-	}
-%>
+		response.sendRedirect("../jsphome/home.jsp");
+		return;
+		}
+		%>
+	
 
 <script>
  alert("<%=msg%>");
- location.href="../jsphome/home.jsp"; 
+ location.href="login.jsp"; 
 
 </script>
 
