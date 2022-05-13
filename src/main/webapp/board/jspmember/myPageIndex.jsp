@@ -225,7 +225,7 @@
 		
 		<div class="column w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="div-block"></div>
-			<a href=""><div class="navLabel">회원정보 수정</div></a>
+			<div class="navLabel"><a href="">회원정보 수정</a></div>
 		</div>
 		
 		
