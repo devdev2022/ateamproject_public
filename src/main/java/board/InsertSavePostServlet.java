@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/insertSavePost")
+@WebServlet("/board/jspboard/insertSavePost")
 public class InsertSavePostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

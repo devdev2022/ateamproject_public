@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/board/boardReply")
+@WebServlet("/board/jspboard/boardReply")
 public class BoardReplyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

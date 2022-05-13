@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/deleteComment")
+@WebServlet("/board/jspboard/deleteComment")
 public class CommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

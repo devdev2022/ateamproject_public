@@ -2372,7 +2372,7 @@ rotate(
 													}%>
 												<a href="javascript:read('<%=num %>')"><%=subject %></a>
 												<%if(filename != null && !filename.equals("")) {%>
-													<img src="icon/icon_file.gif" align="middle">
+													<img src="../icon/icon_file.gif" align="middle">
 												<%} %>
 												<%if(bcount > 0) {%>
 														<font color="red">[<%=bcount %>]</font>

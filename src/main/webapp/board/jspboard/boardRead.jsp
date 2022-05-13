@@ -388,9 +388,9 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 				String ext = filename.substring(point + 1 );
 		%>	
 				<%if(ext.trim().equals("jpg") || ext.trim().equals("gif") || ext.trim().equals("jpeg") || ext.trim().equals("bmp") || ext.trim().equals("png") || ext.trim().equals("tif") || ext.trim().equals("tga") || ext.trim().equals("rle") || ext.trim().equals("dib") || ext.trim().equals("tiff") || ext.trim().equals("raw")){ %>
-					<div align="center"><img src="../UpLoadFiles/<%=filename%>" ></div>
+					<div align="center"><img src="../../UpLoadFiles/<%=filename%>" ></div>
 				<%}else if(ext.trim().equals("mp3") || ext.trim().equals("mp4") || ext.trim().equals("avi") || ext.trim().equals("wms") || ext.trim().equals("mwa") || ext.trim().equals("asf") || ext.trim().equals("mpg") || ext.trim().equals("mpeg") || ext.trim().equals("ts") || ext.trim().equals("mkv") || ext.trim().equals("mov") || ext.trim().equals("3gp") || ext.trim().equals("3g2") || ext.trim().equals("webm")) { %>
-					<div align="center"><iframe sandbox="allow-scripts" src="../UpLoadFiles/<%=filename%>" width="600px" height="350px" seamless="seamless" name="iframe<%=i%>"></iframe></div>
+					<div align="center"><iframe sandbox="allow-scripts" src="../../UpLoadFiles/<%=filename%>" width="600px" height="350px" seamless="seamless" name="iframe<%=i%>"></iframe></div>
 				<%}	%>
 		<%} %>
 	</div>
@@ -401,9 +401,9 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 					<table>
 						<tr>
 						<%if(!lMgr.selectLikes(num, loginId)){	%>
-							<td><a href="javascript:insertLike()"><img src="icon/like_before.jpg"></a></td>
+							<td><a href="javascript:insertLike()"><img src="../icon/like_before.jpg"></a></td>
 						<%}else{ %>
-							<td><a href="javascript:deleteLike()"><img src="icon/like_after.png"></a></td>
+							<td><a href="javascript:deleteLike()"><img src="../icon/like_after.png"></a></td>
 						<%} %>
 						</tr>
 						<tr>
@@ -420,9 +420,9 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 					<table>
 						<tr>
 						<%if(!sMgr.selectSavePost(num, loginId)){	%>
-								<td><a href="javascript:insertSavePost()"><img src="icon/save_post_before.png"></a></td>
+								<td><a href="javascript:insertSavePost()"><img src="../icon/save_post_before.png"></a></td>
 							<%}else{ %>
-								<td><a href="javascript:deleteSavePost()"><img src="icon/save_post_after.png"></a></td>
+								<td><a href="javascript:deleteSavePost()"><img src="../icon/save_post_after.png"></a></td>
 							<%} %>
 						</tr>
 						<tr>
@@ -438,7 +438,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 				<table>
 					<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
 						<div class="dropdown" align="right">
-							<img src="icon/share_post.png" class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="../icon/share_post.png" class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
 							<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
 								 <!-- 페이스북 공유 버튼 --> 
 								<li><a href="" onclick="window.open(url_combine_fb, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://download-hub.com/wp-content/uploads/2021/01/Facebook_icon.png" title="페이스북" class="sharebtn_custom" style="width: 32px;"></a>
@@ -512,9 +512,9 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 							<%} %>
 							<%int totalCmtLikes = cLMgr.countCmtLikes(num, cBean.getCnum()); %>
 							<%if(!cLMgr.selectCmtLikes(num, cBean.getCnum(), loginId)){	%>
-								<li><a href="javascript:insertCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_before.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
+								<li><a href="javascript:insertCmtLike('<%=cBean.getCnum() %>')"><img src="../icon/like_before.jpg"></a>&nbsp;<%=totalCmtLikes %>개</li>
 							<%}else{ %>
-								<li><a href="javascript:deleteCmtLike('<%=cBean.getCnum() %>')"><img src="icon/like_after.png"></a>&nbsp;<%=totalCmtLikes %>개</li>
+								<li><a href="javascript:deleteCmtLike('<%=cBean.getCnum() %>')"><img src="../icon/like_after.png"></a>&nbsp;<%=totalCmtLikes %>개</li>
 							<%} %>
 							<li><%=cBean.getRegdate() %></li>
 							

@@ -228,11 +228,11 @@
 			<div id="fileupload" class="mb-3">
 				<label for="formFile" class="form-label"> 첨부파일 </label> 
 				<div class="insert" align="left">
-					<input type="file" onchange="addFile(this);" multiple  name="filename1"/><br>
-					<input type="file" onchange="addFile(this);" multiple  name="filename2"/><br>
-					<input type="file" onchange="addFile(this);" multiple  name="filename3"/><br>
-					<input type="file" onchange="addFile(this);" multiple  name="filename4"/><br>
-					<input type="file" onchange="addFile(this);" multiple  name="filename5"/><br>
+					<input type="file" onchange="addFile(this);"  name="filename1"/><br>
+					<input type="file" onchange="addFile(this);"  name="filename2"/><br>
+					<input type="file" onchange="addFile(this);"  name="filename3"/><br>
+					<input type="file" onchange="addFile(this);"  name="filename4"/><br>
+					<input type="file" onchange="addFile(this);"  name="filename5"/><br>
 				</div>
 			</div>
 
