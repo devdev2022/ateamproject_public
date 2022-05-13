@@ -2440,12 +2440,13 @@ rotate(
 				    	onclick="emailFn()" class="submit-button w-button" />
 				</form>
 				
+			
 				<form name="numFrm" method="get" action="conNumProc.jsp">			
 					<input 	name="numfield" class="text-field-7 w-input" maxlength="256" 
 							data-name="Field 6" placeholder="인증번호" id="field-6"/>
 				    	<a href="#"  onclick="numfieldFn()" class="button-3 w-button">확인</a>
 			 	</form>
-						
+					
 						<div class="w-form-done">
 							<div>Thank you! Your submission has been received!</div>
 						</div>

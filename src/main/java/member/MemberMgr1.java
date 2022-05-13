@@ -44,6 +44,16 @@ public int sendNum(String emailaddr) { //MailSend.java
 //	MemberMgr1 mgr=new MemberMgr1();
 //	mgr.sendNum("aaa@naver.com");
 //}
+
+//public static void main(String[] args) {
+//	Random r = new Random();
+//	
+//	for (int i = 0; i < 100; i++) {
+//		int n = r.nextInt(9000)+999;
+//		System.out.println(n);
+//	}//--for
+//}
+
 	
 	//-------------- id찾기 이것 아님(매개변수 2개)---------------
 	public String findId(String email1, String email2) {
@@ -94,7 +104,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 		pstmt.setString(1, e1);
 		pstmt.setString(2, e2);
 		rs = pstmt.executeQuery();
-		flag = rs.next();
+		flag = rs.next();  //rs.next();가 true아니면 false여서, flag에 대입 가능.
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
@@ -115,25 +125,33 @@ public int sendNum(String emailaddr) { //MailSend.java
 	String e1 = emailaddr.substring(0, idx);
 	String e2 = emailaddr.substring(idx+1);
 	String id=null;
+	String name=null;
 	//MemberBean1 bean=new MemberBean1();
 	try {
 		con = pool.getConnection();
-		sql = "select id from tblmember where email1=? and email2=?";
+		sql = "select id, name from tblmember where email1=? and email2=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, e1);
 		pstmt.setString(2, e2);
 		rs = pstmt.executeQuery();
 		if(rs.next()) //rs.next()은 다음 행이 있으면 true,없으면 false 반환하므로, 
 	// 여기서는 if(rs.next())는 if(true)와 동일
-			id=rs.getString(1);
-			
+			id=rs.getString(1);  //DB에 담긴 값을 가져오려면, getter가 필요하다.
+			name=rs.getString(2);
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
 		pool.freeConnection(con, pstmt, rs);
 	}
-	return id;	
+	return name;	
 	}
+	
+//	public static void main(String[] args) {
+//		//String a=null;
+//		MemberMgr1 mgr=new MemberMgr1();
+//		String a=mgr.showId("kim@naver.com");
+//		System.out.println(a);  //주진모 출력됨.
+//	}
 	
 	//-------------- id 보여주기---------------
 	public String showPwd(String emailaddr) {
@@ -290,15 +308,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 //	}
 	
 	
-	public static void main(String[] args) {
-		Random r = new Random();
-		
-		for (int i = 0; i < 100; i++) {
-			int n = r.nextInt(9000)+999;
-			System.out.println(n);
-		}//--for
-	}
-	
+
 	
 	
 	

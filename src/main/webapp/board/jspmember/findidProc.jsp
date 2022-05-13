@@ -8,7 +8,8 @@
 		
 		String msg="이메일주소를 잘못 입력했습니다";
 		if(result){
-	//mgr.sendNum(emailaddr);의 리턴은 int형이므로, 여기서도 int형으로 대입 받아야	
+	//mgr.sendNum(emailaddr);의 리턴은 int형이므로, 여기서도 int형으로 대입 받아야
+		
 			int num = mgr.sendNum(emailaddr);  //mgr.sendNum
 			session.setAttribute("conNum", Integer.toString(num));
 			session.setAttribute("emailaddr", emailaddr);
