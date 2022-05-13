@@ -1,21 +1,23 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
 	String id = (String)session.getAttribute("idKey");
-	
-
 %>
 
-
-
-
-
 	<div class="sidebar w-col w-col-2">
-		<!-- 로그인 정보 받아오기. -->
-		<div class="side_profile_img"
-			style="background-image: url(../icon/profile_def.png); background-size: cover; background-repeat: no-repeat"></div>
+		
+		<%if(id==null){%> 
+			<div class="side_profile_img"
+				style="background-image: url(../icon/profile_def.png); background-size: cover; background-repeat: no-repeat">
+			</div>
+		<%}else{%>
+			<div class="side_profile_img"
+				style="background-image: url(../icon/profile_def.png); background-size: cover; background-repeat: no-repeat">
+			</div>	
+		<%}%>
+		
 			
 		<div class="side_profile_text" style="text-align: center; color: white;">
-			<%if(id==null){//로그인 안 된 상태에서 직접적으로 치고 들어온때%> 
+			<%if(id==null){%> 
 				로그인하세요.
 			<%}else{%>
 				<%=id%>님,환영합니다.	
