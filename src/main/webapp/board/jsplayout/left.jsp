@@ -1,11 +1,11 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
-	String id = (String)session.getAttribute("idKey");
+	String leftId = (String)session.getAttribute("idKey");
 %>
 
 	<div class="sidebar w-col w-col-2">
 		
-		<%if(id==null){%> 
+		<%if(leftId==null){%> 
 			<div class="side_profile_img"
 				style="background-image: url(../icon/profile_def.png); background-size: cover; background-repeat: no-repeat">
 			</div>
@@ -17,10 +17,10 @@
 		
 			
 		<div class="side_profile_text" style="text-align: center; color: white;">
-			<%if(id==null){%> 
+			<%if(leftId==null){%> 
 				로그인하세요.
 			<%}else{%>
-				<%=id%>님,환영합니다.	
+				<%=leftId%>님,환영합니다.	
 			<%}%>
 		</div>
 		<div class="side_profile_iconbar w-row">
