@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8" />
-<title>6832&#x27;s Superb Site</title>
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <meta content="Webflow" name="generator" />
 

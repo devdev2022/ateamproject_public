@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Enumeration;
 import java.util.Vector;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -16,7 +17,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class BoardMgr {
 
 	DBConnectionMgr pool;
-	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/uploadimg/";
+	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/UpLoadFiles/";
 	public static final String ENCODING = "UTF-8";
 	public static final int MAXSIZE = 1024*1024*10; // 10mb
 	
@@ -54,6 +55,10 @@ public class BoardMgr {
 		String sql = null;
 		
 		try {
+			File dir = new File(SAVEFOLDER);
+			if(!dir.exists()) { 
+				dir.mkdirs(); 
+			}
 			MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
 			int ref = getMaxNum() + 1;
 			con = pool.getConnection();
@@ -71,28 +76,30 @@ public class BoardMgr {
 			pstmt.close();
 			if(cnt == 1) {
 				try {
-					File dir = new File(SAVEFOLDER);
-					if(!dir.exists()) {
-						dir.mkdirs();
+					Enumeration<String> files = multi.getFileNames();
+					while(files.hasMoreElements()){
+						String item = files.nextElement();
+						String filename = multi.getFilesystemName(item);
+						if(filename != null){
+							File file = multi.getFile(item);
+							if(file.exists()){
+								int filesize  = (int)file.length();
+								sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
+								pstmt = con.prepareStatement(sql);
+								pstmt.setInt(1, ref);
+								pstmt.setString(2, filename);
+								pstmt.setInt(3, filesize);
+								pstmt.executeUpdate();
+							}
+						}
+						
 					}
-					String filename = multi.getFilesystemName("filename");
-					if(filename == null || filename.trim().equals("")) {
-						return;
-					}
-					File f = multi.getFile("filename");
-					int filesize = (int)f.length();
-					sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, ref);
-					pstmt.setString(2, filename);
-					pstmt.setInt(3, filesize);
-					pstmt.executeUpdate();
 				}catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception f) {
+			f.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt);
 		}
@@ -519,6 +526,10 @@ public class BoardMgr {
 		String sql = null;
 		int ref = getMaxNum() + 1;
 		try {
+			File dir = new File(SAVEFOLDER);
+			if(!dir.exists()) {
+				dir.mkdirs();
+			}
 			MultipartRequest multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING, new DefaultFileRenamePolicy());
 			con = pool.getConnection();
 			sql = "insert tblboard(id, subject, content, ref, pos, depth, regdate, ip, count, type_board, type_cat) "
@@ -540,19 +551,24 @@ public class BoardMgr {
 			pstmt.close();
 			if(cnt == 1) {
 				try {
-					File dir = new File(SAVEFOLDER);
-					if(!dir.exists()) {
-						dir.mkdirs();
+					Enumeration<String> files = multi.getFileNames();
+					while(files.hasMoreElements()){
+						String item = files.nextElement();
+						String filename = multi.getFilesystemName(item);
+						if(filename != null){
+							File file = multi.getFile(item);
+							if(file.exists()){
+								int filesize  = (int)file.length();
+								sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
+								pstmt = con.prepareStatement(sql);
+								pstmt.setInt(1, ref);
+								pstmt.setString(2, filename);
+								pstmt.setInt(3, filesize);
+								pstmt.executeUpdate();
+							}
+						}
+						
 					}
-					String filename = multi.getFilesystemName("filename");
-					File f = multi.getFile("filename");
-					int filesize = (int)f.length();
-					sql = "insert tblupfile(num, filename, filesize) values(?, ?, ?)";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, ref);
-					pstmt.setString(2, filename);
-					pstmt.setInt(3, filesize);
-					pstmt.executeUpdate();
 				}catch (Exception e) {
 					e.printStackTrace();
 				}

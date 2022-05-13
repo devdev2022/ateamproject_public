@@ -17,8 +17,7 @@
 
 
 <!-- 부트스트랩 요소 -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
@@ -34,6 +33,7 @@
 	function setBValue(bValue) {
 		document.postFrm.bValue.value = bValue;
 	}
+	
 
 	function check() {
 		if(document.postFrm.bValue.value=="게시판을 선택하세요." ){
@@ -227,10 +227,13 @@
 	<div class="layout-upper-bottom w-container">
 			<div id="fileupload" class="mb-3">
 				<label for="formFile" class="form-label"> 첨부파일 </label> 
-				<div class="insert">
-					<input type="file" onchange="addFile(this);" multiple name="filename"/>
-					<div class="file-list"></div>
-			</div>
+				<div class="insert" align="left">
+					<input type="file" onchange="addFile(this);" multiple  name="filename1"/><br>
+					<input type="file" onchange="addFile(this);" multiple  name="filename2"/><br>
+					<input type="file" onchange="addFile(this);" multiple  name="filename3"/><br>
+					<input type="file" onchange="addFile(this);" multiple  name="filename4"/><br>
+					<input type="file" onchange="addFile(this);" multiple  name="filename5"/><br>
+				</div>
 			</div>
 
 			
