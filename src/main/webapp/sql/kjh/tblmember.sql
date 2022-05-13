@@ -29,7 +29,17 @@ CREATE TABLE IF NOT EXISTS `tblmember` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 ateamDB.tblmember:~7 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `tblmember` DISABLE KEYS */;
+INSERT INTO `tblmember` (`id`, `pwd`, `name`, `email1`, `email2`, `phonecorp`, `phone1`, `phone2`, `phone3`, `grade`, `imgname`, `imgsize`) VALUES
+	('aaa', '1234', '주진모', 'choryee', 'naver.com', 'skt', '8', '2568', '1586', '1', NULL, NULL),
+	('aaa1', '1234', '김세경', 'abc', 'naver.com', 'SKT', '010', '2555', '9875', '0', 'tech014.jpg', 360623),
+	('aaa2', '1234', '김세경', 'simba222', 'naver.com', 'SKT', '010', '2555', '9875', '0', 'tech01.jpg', 360623),
+	('admin', '1234', '주진모', 'kim', 'naver.com', 'skt', '8', '2568', '1586', '1', 'hah.jsp', 454),
+	('bbb', '1234', '김세경', 'takga123', 'naver.com', 'SKT', '10', '1111', '2222', '0', NULL, NULL),
+	('ccc', '1234', '홍길동11', 'abc', 'naver.com', 'SKT', '010', '2555', '9875', NULL, '입실 qr.jpg', 176088),
+	('eee', '1234', '민주222', 'abc', 'naver.com', '0', '010', '2555', '9875', NULL, NULL, 0);
+/*!40000 ALTER TABLE `tblmember` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
