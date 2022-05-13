@@ -125,7 +125,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 	String e1 = emailaddr.substring(0, idx);
 	String e2 = emailaddr.substring(idx+1);
 	String id=null;
-	String name=null;
+	//String name=null;
 	//MemberBean1 bean=new MemberBean1();
 	try {
 		con = pool.getConnection();
@@ -137,13 +137,13 @@ public int sendNum(String emailaddr) { //MailSend.java
 		if(rs.next()) //rs.next()은 다음 행이 있으면 true,없으면 false 반환하므로, 
 	// 여기서는 if(rs.next())는 if(true)와 동일
 			id=rs.getString(1);  //DB에 담긴 값을 가져오려면, getter가 필요하다.
-			name=rs.getString(2);
+			//name=rs.getString(2);
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
 		pool.freeConnection(con, pstmt, rs);
 	}
-	return name;	
+	return id;	
 	}
 	
 //	public static void main(String[] args) {
