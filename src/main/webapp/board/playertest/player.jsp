@@ -22,7 +22,7 @@
 		<div class="info">
 
 			<div class="left">
-				<a href="javascript:;" class="icon-shuffle"></a> 
+				<a href="javascript:;" class="icon-shuffle"></a>
 			</div>
 
 			<div class="center">
