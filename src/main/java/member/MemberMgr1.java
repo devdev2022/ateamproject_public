@@ -160,7 +160,8 @@ public int sendNum(String emailaddr) { //MailSend.java
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, e1);
 		pstmt.setString(2, e2);
-		rs = pstmt.executeQuery();
+		rs = pstmt.executeQuery(); 
+//int cnt = pstmt.executeUpdate(); 	<=pstmt.executeUpdate(); update는 그 결과가 int형 1로 나옴.
 		if(rs.next()) //rs.next()은 다음 행이 있으면 true,없으면 false 반환하므로, 
 	// 여기서는 if(rs.next())는 if(true)와 동일
 			id=rs.getString(1);  //DB에 담긴 값을 가져오려면, getter가 필요하다.
@@ -238,9 +239,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 	}
 	
 	
-// show id
-	//public String showId(email1, email2)
-	
+
 	//회원정보 가져오기
 	public MemberBean1 getMember(String id) {
 	Connection con = null;
@@ -325,14 +324,63 @@ public int sendNum(String emailaddr) { //MailSend.java
 		}
 		return flag;
 	}
-
 //	public static void main(String[] args) {
-//		String emailaddr = "aaa@abc.com";
-//		int idx = emailaddr.indexOf('@');
-//		String e1 = emailaddr.substring(0, idx);
-//		String e2 = emailaddr.substring(idx+1);
-//		System.out.println(e1 + " : " + e2);
-//	}
+//	String emailaddr = "aaa@abc.com";
+//	int idx = emailaddr.indexOf('@');
+//	String e1 = emailaddr.substring(0, idx);
+//	String e2 = emailaddr.substring(idx+1);
+//	System.out.println(e1 + " : " + e2);
+//}
+	
+	
+	// ------------- �����ϱ� -------------
+	public boolean updateMember(HttpServletRequest req) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		boolean flag = false;
+		try {
+	//req는 각 요소에 file로 넘어온 것을 처리할 수 있는 객체. 그것을 바로 밑처럼 한 후에는 비어 있으므로,
+	// 103라인 처럼, 이제 그 객체안에 채워 넣는 것.		
+			MultipartRequest multi=
+					new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCODING
+						, new DefaultFileRenamePolicy());
+			String imgname=null;
+			int imgsize=0;
+			if(multi.getFilesystemName("imgname")!=null) {
+				imgname=multi.getFilesystemName("imgname");
+				imgsize=(int)multi.getFile("imgname").length(); 
+				//System.out.println(multi.getParameter("id")+":"+multi.getParameter("pwd"));
+		}
+			con = pool.getConnection();
+			sql="update tblmember set pwd =?, name=?, email1=?, email2=?, phonecorp=?, "
+					+ "phone1=?, phone2=?, phone3=?, imgname=?, imgsize=? where id=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, multi.getParameter("pwd"));
+			pstmt.setString(2, multi.getParameter("name"));
+			pstmt.setString(3, multi.getParameter("email1"));
+			pstmt.setString(4, multi.getParameter("email2"));
+			pstmt.setString(5, multi.getParameter("phonecorp"));
+			pstmt.setString(6, multi.getParameter("phone1"));
+			pstmt.setString(7, multi.getParameter("phone2"));
+			pstmt.setString(8, multi.getParameter("phone3"));
+			pstmt.setString(9, imgname);
+			pstmt.setInt(11, imgsize);
+			pstmt.setString(12, multi.getParameter("id"));
+			
+			int cnt = pstmt.executeUpdate();
+			if (cnt == 1)	
+				flag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}	
+	
+
 	
 	
 
