@@ -1,13 +1,13 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
-	String id = (String)session.getAttribute("idKey");
+	String topId = (String)session.getAttribute("idKey");
 %>
 
 
 	<header class="header_title wf-section">
 		<div class="ateam_header_div"></div>
 		<div class="ateam_header_btns w-row">
-		<%if(id==null){%> 
+		<%if(topId==null){%> 
 			<div class="w-col w-col-6"><a href="../jspmember/login.jsp">LOGIN</a></div>
 			<div class="w-col w-col-6"><a href="../jspmember/join.jsp">JOIN</a></div>
 			<%}else{%>
