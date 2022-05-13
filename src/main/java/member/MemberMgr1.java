@@ -113,6 +113,33 @@ public int sendNum(String emailaddr) { //MailSend.java
 	return flag;	
 	}
 	
+	//-------------- id찾기2 ---------------
+	public boolean findId2(String id, String emailaddr) {
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = null;
+	boolean flag = false;
+	int idx = emailaddr.indexOf('@');
+	//String id="";
+	String e1 = emailaddr.substring(0, idx);
+	String e2 = emailaddr.substring(idx+1);
+	try {
+		con = pool.getConnection();
+		sql = "select id from tblmember where id=? and email1=? and email2=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		pstmt.setString(2, e1);
+		pstmt.setString(3, e2);
+		rs = pstmt.executeQuery();
+		flag = rs.next();  //rs.next();가 true아니면 false여서, flag에 대입 가능.
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		pool.freeConnection(con, pstmt, rs);
+	}
+	return flag;	
+	}	
 	
 	//-------------- id 보여주기---------------
 	public String showId(String emailaddr) {

@@ -3,6 +3,7 @@
 <%
 		boolean flag=false;
 		String numfield2 = request.getParameter("numfield2");
+		
 		String emailaddr2 = (String)session.getAttribute("emailaddr2");
 		String num = (String)session.getAttribute("conNum2");
 		String pwd = "";

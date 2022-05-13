@@ -2458,6 +2458,7 @@ rotate(
 			</div>
 			<div class="pw">
 				<div>
+				
 <h1 class="heading-4">PASSWORD 찾기</h1>
 				</div>
 				<div class="w-form">
