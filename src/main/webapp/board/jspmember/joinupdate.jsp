@@ -1,20 +1,13 @@
-
+<%@page import="member.MemberBean1"%>
 <%@page contentType="text/html; charset=UTF-8"%>
-
 <jsp:useBean id="mgr" class="member.MemberMgr1"/>
-<jsp:useBean id="bean" class="member.MemberBean1"/>
-
 <%
- String id=(String)session.getAttribute("idKey");
-if(id==null){
-	response.sendRedirect("login.jsp");
-	return;
-}
-
- String pwd=request.getParameter("pwd");
- String pwdchk=request.getParameter("pwdchk");
-boolean result=mgr.loginMember(id, pwd);
-
+	 	String id=(String)session.getAttribute("idKey");
+		if(id==null){
+			response.sendRedirect("login.jsp");
+		return;
+		}
+		MemberBean1 bean = mgr.getMember(id);
 %>
 
 <script type="text/javascript" src="script.js"></script>
@@ -273,7 +266,7 @@ boolean result=mgr.loginMember(id, pwd);
 
 				<div>아이디*</div>
 				<div class="col-auto col-md-4">
-					<input name="id" value="<%=bean.getI%>"class="form-control">
+					<input name="id" value="<%=bean.getId()%>" class="form-control">
 				</div>
 <!--  -->
 				<input type="button" value="중복확인" class="btn btn-dark col-auto" 
@@ -281,7 +274,7 @@ boolean result=mgr.loginMember(id, pwd);
 
 				<div>비밀번호*</div>
 				<div class="col-auto col-md-4">
-					<input name="pwd" value="1234" class="form-control">
+					<input name="pwd" value="<%=bean.getPwd()%>" class="form-control">
 				</div>
 				<div>비밀번호 확인*</div>
 				<div class="col-auto col-md-4">
@@ -289,12 +282,12 @@ boolean result=mgr.loginMember(id, pwd);
 				</div>
 				<div>이름*</div>
 				<div class="col-auto col-md-4">
-					<input name="name" class="form-control">
+					<input name="name" value="<%=bean.getName()%>" class="form-control">
 				</div>
 
 				<div>프로필 사진*</div>
 				<div class="col-auto col-md-3">
-					<input type="file" name="imgname" class="form-control">
+					<input type="file" name="imgname" value="<%=bean.getImgname()%>" class="form-control">
 				</div>
 				
 				<input type="button" value="찾기" class="btn btn-dark col-auto">
@@ -303,11 +296,11 @@ boolean result=mgr.loginMember(id, pwd);
 
 				<div>이메일*</div>
 				<div class="col-auto col-md-3">
-					<input name="email1" value="abc"class="form-control">
+					<input name="email1" value="<%=bean.getEmail1()%>" class="form-control">
 				</div>
 				<div class="col-auto">@</div>
 				<div class="col-auto col-md-3">
-					<input name="email2" value="naver.com"class="form-control">
+					<input name="email2" value="<%=bean.getEmail2()%>"  class="form-control">
 				</div>
 				<input type="button" value="중복확인" class="btn btn-dark col-auto">
 				
@@ -323,24 +316,26 @@ boolean result=mgr.loginMember(id, pwd);
 		
 				</div>
 				<div class="col-auto col-md-2">
-					<input name="phone1" value="010" class="form-control">
+					<input name="phone1" value="<%=bean.getPhone1()%>"  class="form-control">
 				</div>
 				<div class="col-auto col-md-2">
-					<input name="phone2" value="2555"class="form-control">
+					<input name="phone2" value="<%=bean.getPhone2()%>"  class="form-control">
 				</div>
 				<div class="col-auto col-md-2">
-					<input name="phone3" value="9875"class="form-control">
+					<input name="phone3" value="<%=bean.getPhone3()%>"  class="form-control">
 				</div>
 				<div style="margin-top: 3vw;"></div>
 			</div>
 			
 			<div style="display: flex; justify-content: center; margin-bottom: 3vw;">
 				<button type="button" class="btn btn-lg btn-dark" 
-				onclick="inputCheck(this.form.pwd.value)">가입하기</button>
+				onclick="inputCheck(this.form.pwd.value)">수정완료</button>
 				
 				<button type="button" class="btn btn-secondary btn-lg">취소</button>
 			</div>
+			
 		</div>
 	</div>
+	</form>
 </div>
-</form>
+

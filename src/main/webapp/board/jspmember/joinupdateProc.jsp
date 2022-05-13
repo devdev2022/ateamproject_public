@@ -20,6 +20,7 @@
 		// 회원가입과 동시에 로그인이 되는 것.밑
 		
 		session.setAttribute("idKey", bean.getId());
+		return;
 	}
 %>
 

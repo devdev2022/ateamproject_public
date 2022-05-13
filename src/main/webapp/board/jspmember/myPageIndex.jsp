@@ -1,9 +1,4 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%
-
-%>
-
-
 <head>
 <link href="../jsplayout/css/layoutInt.css" rel="stylesheet">
 <style>
@@ -215,7 +210,7 @@
 <body class="body">
 <%@ include file="../jsplayout/top.jsp" %>
 	<div class="ateam_columns">
-		<%@ include file="../jsplayout/left.jsp" %>
+		<%@ include file="../jsplayout/left.jsp"%>
 		
 		<div class="ateam_contents w-col w-col-8" style="overflow:auto">
 			<!-- ==============페이지 내용 시작============= -->
@@ -225,7 +220,8 @@
 		
 		<div class="column w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="div-block"></div>
-			<a href=""><div class="navLabel">회원정보 수정</div></a>
+		<form name	></form>
+			<a href="joinupdate.jsp"><div class="navLabel" >회원정보 수정</div></a>
 		</div>
 		
 		
