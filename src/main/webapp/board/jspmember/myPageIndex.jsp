@@ -221,7 +221,7 @@
 			<!-- ==============페이지 내용 시작============= -->
 			
 			<div class="text-block">MyPage</div>
-	<div class="columns w-row">
+		<div class="columns w-row">
 		
 		<div class="column w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="div-block"></div>
@@ -232,14 +232,14 @@
 		<div
 			class="column-2 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="div-block-2"></div>
-			<div class="text-block-3">내가 좋아한 게시물</div>
+			<div class="text-block-3"><a href="../jspmember/memberLikes.jsp">내가 좋아한 게시물</a></div>
 		</div>
 
 
 		<div
 			class="column-3 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="div-block-3"></div>
-			<div class="text-block-4">저장한 게시물</div>
+			<div class="text-block-4"><a href="../jspmember/memberSaved.jsp">저장한 게시물</a></div>
 		</div>
 
 	</div>
