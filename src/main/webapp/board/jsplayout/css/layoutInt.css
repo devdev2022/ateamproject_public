@@ -287,27 +287,29 @@ td, th {
 }
 
 
-.sidebar {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  justify-contents: center;
-
-  min-height: 800px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-
+.ateam_header_navbar {
+  min-height: 50px;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  background-color: #3b3838;
+  font-family: Oswald, sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 800px;
   background-color: #1a1919;
 }
 
@@ -330,22 +332,6 @@ td, th {
 }
 
 
-.ateam_header_navbar {
-  min-height: 50px;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: auto;
-  grid-template-rows: auto;
-  background-color: #3b3838;
-  font-family: Oswald, sans-serif;
-  color: #fff;
-  text-align: center;
-}
-
 .side_profile_img {
   width: 100%;
   height: auto;
@@ -363,21 +349,13 @@ td, th {
 
 .side_profile_iconbar {
   width: 80%;
-  display: flex;
-  
-  height: auto;
   margin-top: 10px;
+  
+  text-align: center;
   color: #f0f0f0;
-  line-height: 10px;
 }
 
-.side_profile_likeicon {
-  height: 50px;
-}
 
-.side_profile_editicon {
-  height: 50px;
-}
 
 .side_profile_text {
   width: 100%;

@@ -9,7 +9,6 @@
 		<div class="ateam_header_btns w-row">
 		<%if(topId==null){%> 
 			<div class="w-col w-col-6"><a href="../jspmember/login.jsp">LOGIN</a></div>
-			<div class="w-col w-col-6"> | </div>
 			<div class="w-col w-col-6"><a href="../jspmember/join.jsp">JOIN</a></div>
 			<%}else{%>
 			<div class="w-col w-col-6"><a href="../jspmember/logout.jsp">LOGOUT</a></div>
