@@ -23,18 +23,22 @@
 				<%=leftId%>님,환영합니다.	
 			<%}%>
 		</div>
-		<div class="side_profile_iconbar w-row">
+		
+		<div class="side_profile_iconbar">
 			<a href="#">
-			<div class="side_profile_editicon w-col w-col-4"
-				style="background-image: url(../icon/edit_gray.png); background-repeat: no-repeat"></div>
-				</a>
+				<div class="side_profile_editicon w-col w-col-4">
+					<img src= "../icon/edit_gray.png">
+				</div>
+			</a>
 			<a href="../jspmember/memberLikes.jsp">
-			<div class="side_profile_likeicon w-col w-col-4"
-				style="background-image: url(../icon/like_gray.png); background-repeat: no-repeat"></div>
+				<div class="side_profile_likeicon w-col w-col-4">
+						<img src= "../icon/like_gray.png">
+				</div>
 			</a>
 			<a href="../jspmember/memberSaved.jsp">
-			<div class="side_profile_saveicon w-col w-col-4" 
-				style="background-image: url(../icon/save_gray.png); background-repeat: no-repeat"></div>
+				<div class="side_profile_saveicon w-col w-col-4">
+					<img src= "../icon/save_gray.png">
+				</div>
 			</a>
 		</div>
 		<div class="side_chart" style="background-color: ivory"></div>

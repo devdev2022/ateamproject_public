@@ -16,7 +16,7 @@
 		<div class="ateam_contents w-col w-col-8" style="overflow:auto">
 			<!-- ==============페이지 내용 시작============= -->
 			
-			<%@ include file="../jsphome/homeAlt.jsp" %>
+			<%@ include file="../jsphome/homeContents.jsp" %>
 
 			<!-- ==============페이지 내용 끝============== -->
 		</div>

@@ -293,6 +293,7 @@ td, th {
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
+  justify-contents: center;
 
   min-height: 800px;
   -webkit-box-orient: vertical;
@@ -352,7 +353,6 @@ td, th {
   margin-bottom: 10px;
   padding-top: 100%;
   color: #f8f8f8;
-  font-size: 20px;
 }
 
 .side_profile_saveicon {
@@ -363,8 +363,8 @@ td, th {
 
 .side_profile_iconbar {
   width: 80%;
-  display: inline-block;
-  text-align: center;
+  display: flex;
+  
   height: auto;
   margin-top: 10px;
   color: #f0f0f0;
