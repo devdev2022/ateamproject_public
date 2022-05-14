@@ -1,7 +1,11 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
-
+	String Id = (String)session.getAttribute("idKey");
+	if(Id==null){ 
+		response.sendRedirect("login.jsp");
+	}
 %>
+
 
 
 <head>
@@ -224,21 +228,21 @@
 		<div class="columns w-row">
 		
 		<div class="column w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
-			<div class="div-block"></div>
+			<div class="info-block"></div>
 			<div class="navLabel"><a href="">회원정보 수정</a></div>
 		</div>
 		
 		
 		<div
 			class="column-2 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
-			<div class="div-block-2"></div>
+			<div class="like-block"></div>
 			<div class="text-block-3"><a href="../jspmember/memberLikes.jsp">내가 좋아한 게시물</a></div>
 		</div>
 
 
 		<div
 			class="column-3 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
-			<div class="div-block-3"></div>
+			<div class="saved-block"></div>
 			<div class="text-block-4"><a href="../jspmember/memberSaved.jsp">저장한 게시물</a></div>
 		</div>
 
