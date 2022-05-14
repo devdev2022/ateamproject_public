@@ -48,13 +48,12 @@
 					src="https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg"
 					alt="" class="footer-image" /></a>
 				<div>
-					<h2 class="ateam_footer_heading">Heading Label</h2>
+					<h2 class="ateam_footer_heading">Board</h2>
 					<ul role="list" class="w-list-unstyled">
-						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
-						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
-						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
-						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
-						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Hip-Hop</a></li>
+						<li><a href="#" class="ateam_footer-link">R&B</a></li>
+						<li><a href="#" class="ateam_footer-link">POP</a></li>
+						<li><a href="#" class="ateam_footer-link">EDM</a></li>
 					</ul>
 				</div>
 				<div>
@@ -65,30 +64,21 @@
 					</ul>
 				</div>
 				<div>
-					<h2 class="ateam_footer_heading">Heading Label</h2>
+					<h2 class="ateam_footer_heading">My Page</h2>
 					<ul role="list" class="w-list-unstyled">
-						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
-						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
-						<li><a href="#" class="ateam_footer-link">Text Link</a></li>
+						<li><a href="#" class="ateam_footer-link">Profile</a></li>
+						<li><a href="#" class="ateam_footer-link">Likes</a></li>
+						<li><a href="#" class="ateam_footer-link">Saves</a></li>
 					</ul>
 				</div>
 			</div>
-			<div>Copyright 2020 My Company. All rights reserved.</div>
+			<div>Copyright 2022 Java SW Ateam. All rights reserved.</div>
 		</div>
 	</footer>
 
 
 <!-- =============================================================================================== -->
 
-	<script
-		src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=626e3140a5f90ae6560b2381"
-		type="text/javascript"
-		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-		crossorigin="anonymous"></script>
-	<script
-		src="https://uploads-ssl.webflow.com/626e3140a5f90ae6560b2381/js/webflow.7f033afae.js"
-		type="text/javascript"></script>
-	<!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </html>
 
 
