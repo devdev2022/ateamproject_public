@@ -5,7 +5,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Koulen&family=Roboto&display=swap" rel="stylesheet">
 
 	
 	<header class="header_title wf-section" style="font-family: 'Roboto', sans-serif;">
@@ -22,8 +22,8 @@
 			<%}%>
 		</div>
 	</header>
-	<header class="ateam_headbar wf-section" style="font-family: 'Roboto', sans-serif;">
-		<div class="ateam_header_navbar" style="display: flex; justify-content: space-evenly;">
+	<header class="ateam_headbar wf-section" style="font-family: 'Koulen', cursive;">
+		<div class="ateam_header_navbar" style="font-family: 'Koulen', cursive; display: flex; justify-content: space-evenly;">
 			<div class="ateam_header_nav_btn"></div>
 			<div class="ateam_header_nav_btn"><a href="../jsphome/home.jsp">HOME</a></div>
 			<div class="ateam_header_nav_btn">About</div>
