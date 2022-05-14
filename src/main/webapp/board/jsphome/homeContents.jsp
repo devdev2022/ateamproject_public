@@ -2300,14 +2300,6 @@ rotate(
 	text-decoration: none;
 }
 
-.text-block-4 {
-	font-size: 11px;
-}
-
-.text-block-5 {
-	font-size: 14px;
-}
-
 .text-label {
 	padding-left: 0.3vw;
 	font-size: 0.3vw;
