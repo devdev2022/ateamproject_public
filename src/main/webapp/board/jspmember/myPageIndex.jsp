@@ -218,21 +218,21 @@ String Id = (String)session.getAttribute("idKey");
 		<div class="columns w-row">
 		
 		<div class="column w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
-			<div class="info-block"></div>
+			<a class="info-block" href=""></a>
 			<div class="navLabel"><a href="">회원정보 수정</a></div>
 		</div>
 		
 		
 		<div
 			class="column-2 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
-			<div class="like-block"></div>
+			<a class="like-block" href="../jspmember/memberLikes.jsp"></a>
 			<div class="navLabel"><a href="../jspmember/memberLikes.jsp">내가 좋아한 게시물</a></div>
 		</div>
 
 
 		<div
 			class="column-3 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
-			<div class="saved-block"></div>
+			<a class="saved-block" href="../jspmember/memberSaved.jsp"></a>
 			<div class="navLabel"><a href="../jspmember/memberSaved.jsp">저장한 게시물</a></div>
 		</div>
 
