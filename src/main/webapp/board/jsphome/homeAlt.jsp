@@ -60,6 +60,9 @@
 }
 
 .banner_block {
+	background-image:
+		url("banner.jpg");
+	background-size: cover;
   width: 100%;
   height: 20vw;
   margin-bottom: 60px;
@@ -191,8 +194,6 @@
 <body class="panel">
 	<div class="frame_block">
 		<div class="banner_block">
-			<a href="#" class="link-block-2 w-inline-block">
-			</a>
 		</div>
 		<div class="board_block">
 			<div class="title_block">
