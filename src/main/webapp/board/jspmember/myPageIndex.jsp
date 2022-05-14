@@ -1,12 +1,13 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
-	String Id = (String)session.getAttribute("idKey");
+	
+%>
+<!-- 
+String Id = (String)session.getAttribute("idKey");
 	if(Id==null){ 
 		response.sendRedirect("login.jsp");
 	}
-%>
-
-
+	 -->
 
 <head>
 <link href="../jsplayout/css/layoutInt.css" rel="stylesheet">
@@ -124,44 +125,33 @@
   border: 1px none #000;
 }
 
-.div-block {
+.info-block {
    width: 50%;
   padding-top: 50%;
-  background-color: #2b1f1f;
+  background-image: url("../icon/info_large.jpg");
+  background-size: cover;
 }
 
-.div-block-2 {
+.like-block {
   width: 50%;
   padding-top: 50%;
-  background-color: #2b1f1f;
+  background-image: url("../icon/like_large.png");
+  background-size: cover;
 }
 
-.div-block-3 {
+.saved-block {
   width: 50%;
   padding-top: 50%;
-  background-color: #693c3c;
+  background-image: url("../icon/save_large.png");
+  background-size: cover;
 }
 
-.text-block-2 {
+.navLabel {
   width: auto;
-  font-size: 3.2vw;
+  font-size: max(2vw, 14px);
   font-weight: 400;
 }
 
-.text-block-3 {
-  width: 100%;
-  text-align: center;
-}
-
-.text-block-4 {
-  width: 100%;
-  text-align: center;
-}
-
-.text-block-5 {
-  width: 100%;
-  text-align: center;
-}
 
 @media screen and (max-width: 991px) {
   .grid {
@@ -236,14 +226,14 @@
 		<div
 			class="column-2 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="like-block"></div>
-			<div class="text-block-3"><a href="../jspmember/memberLikes.jsp">내가 좋아한 게시물</a></div>
+			<div class="navLabel"><a href="../jspmember/memberLikes.jsp">내가 좋아한 게시물</a></div>
 		</div>
 
 
 		<div
 			class="column-3 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
 			<div class="saved-block"></div>
-			<div class="text-block-4"><a href="../jspmember/memberSaved.jsp">저장한 게시물</a></div>
+			<div class="navLabel"><a href="../jspmember/memberSaved.jsp">저장한 게시물</a></div>
 		</div>
 
 	</div>
