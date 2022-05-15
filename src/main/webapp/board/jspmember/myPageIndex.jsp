@@ -1,12 +1,15 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
 String Id = (String) session.getAttribute("idKey");
-if (Id == null) {
-	
-	out.println("<script>alert('로그인이 필요합니다.');</script>");
-	response.sendRedirect("login.jsp");
-}
-%>
+if (Id == null) {%>
+<script>
+	{
+		alert("로그인이 필요합니다.");
+		window.location = "login.jsp";
+	}
+</script>
+
+<%}%>
 
 
 
@@ -203,6 +206,8 @@ if (Id == null) {
   }
 }
 </style>
+
+
 
 </head>
 

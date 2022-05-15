@@ -2187,7 +2187,7 @@ rotate(
 .div-block {
 	margin-top: 0px;
 	margin-right: 270px;
-	margin-left: 330px;
+	margin-left: 10vw;
 }
 
 .form {
@@ -2245,9 +2245,7 @@ rotate(
 	text-align: center;
 }
 
-.div-block-3 {
-	padding-top: 0px;
-}
+
 
 .column {
 	margin-top: 65px;
@@ -2283,9 +2281,9 @@ rotate(
 }
 
 .div-block-4 {
-	margin-top: 100px;
+	margin-top: 5vw;
 	margin-right: 200px;
-	margin-left: 200px;
+	margin-left: 8vw;
 }
 
 .form-2 {
@@ -2355,8 +2353,8 @@ rotate(
 }
 
 .div-block-6 {
-	margin-top: 70px;
-	margin-left: 120px;
+	margin-top: 5vw;
+	margin-left: 5vw;
 }
 
 .columns-2 {
@@ -2399,7 +2397,7 @@ rotate(
 	height: 250px;
 	margin-top: 70px;
 	margin-bottom: 0px;
-	margin-left: 149px;
+	margin-left: 7vw;
 	padding-top: 44px;
 	border: 1px solid #000;
 }
@@ -2426,8 +2424,8 @@ rotate(
 	text-align: center;
 }
 
-.div-block-9 {
-	margin-left: 280px;
+.div-logo {
+	margin-left: 10vw;
 	text-align: left;
 }
 </style>
@@ -2440,10 +2438,10 @@ rotate(
 <body class="body">
 	<div class="div-block-5">
 		<div>
-			<div class="div-block-9">
+			<div class="div-logo" style="margin-top: 5vw;">
 				<img
-					src="https://uploads-ssl.webflow.com/6278ab2dac94b83cce052a1c/6278c31b11ba11728c56991d_img.png"
-					loading="lazy" width="99" alt="" />
+					src="../icon/logo_black.png"
+					loading="lazy" width="100px" alt="" />
 			</div>
 		</div>
 		
@@ -2454,10 +2452,10 @@ rotate(
 					method="post" class="form-4" action="loginProc.jsp">
 					
 					<input class="text-field-5 w-input" maxlength="256"
-						name="id" data-name="Name" placeholder="아이디를 입력하세요!"  />
+						name="id" data-name="Name" placeholder="아이디를 입력하세요."  />
 					
 					<input	type="password" class="text-field-6 w-input" maxlength="256"
-						name="pwd" data-name="Email" placeholder="비밀번호를 입력하세요!" />
+						name="pwd" data-name="Email" placeholder="비밀번호를 입력하세요." />
 			<!-- 	<input type="button" value="로그인"> -->
 				
 				<div class="w-form-done">
