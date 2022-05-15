@@ -1,13 +1,14 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
+String Id = (String) session.getAttribute("idKey");
+if (Id == null) {
 	
+	out.println("<script>alert('로그인이 필요합니다.');</script>");
+	response.sendRedirect("login.jsp");
+}
 %>
-<!-- 
-String Id = (String)session.getAttribute("idKey");
-	if(Id==null){ 
-		response.sendRedirect("login.jsp");
-	}
-	 -->
+
+
 
 <head>
 <link href="../jsplayout/css/layoutInt.css" rel="stylesheet">

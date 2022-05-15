@@ -6,12 +6,11 @@
 	<div class="sidebar w-col w-col-2">
 		
 		<%if(leftId==null){%> 
-			<div class="side_profile_img"
-				style="background-image: url(../icon/profile_def.png); background-size: cover; background-repeat: no-repeat">
+			<div class="side_profile_img"style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
 			</div>
 		<%}else{%>
-			<div class="side_profile_img"
-				style="background-image: url(../icon/profile_def.png); background-size: cover; background-repeat: no-repeat">
+			<div class="side_profile_img"style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
+				
 			</div>	
 		<%}%>
 		
