@@ -1,5 +1,6 @@
 <%@page import="member.MemberBean1"%>
 <%@page contentType="text/html; charset=UTF-8"%>
+
 <jsp:useBean id="mgr" class="member.MemberMgr1"/>
 <%
 	 	String id=(String)session.getAttribute("idKey");
@@ -7,6 +8,8 @@
 			response.sendRedirect("login.jsp");
 		return;
 		}
+		//mgr.getMember(id); id를 넣어 getMemebr메소드 실행한 결과(리턴)가, bean이고
+		//이것을 빈 MemberBean1의 bean에 대입하는 것.
 		MemberBean1 bean = mgr.getMember(id);
 %>
 
