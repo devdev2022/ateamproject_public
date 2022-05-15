@@ -10,7 +10,7 @@
 	
 	<header class="header_title wf-section" style="font-family: 'Roboto', sans-serif;">
 		<div class="ateam_header_div">
-			<img src="../icons/like_gray.png">
+			<img src="../icon/logo.png" style="max-height: 5vh;">
 		</div>
 		<div class="ateam_header_btns w-row">
 		<%if(topId==null){%> 

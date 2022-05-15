@@ -9,9 +9,7 @@
 	<footer id="ateam_footer" class="ateam_footer wf-section">
 		<div class="w-container">
 			<div class="footer-flex-container">
-				<a href="#" class="footer-logo-link"> <img
-					src="https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg"
-					alt="" class="footer-image" /></a>
+				<a href="#" class="footer-logo-link"> <img src="../icon/logo.png" alt="" class="footer-image"/></a>
 				<div>
 					<h2 class="ateam_footer_heading">Board</h2>
 					<ul role="list" class="w-list-unstyled">

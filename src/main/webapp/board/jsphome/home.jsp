@@ -3,7 +3,6 @@
 
 
 %>
-
 <head>
 <link href="../jsplayout/css/layoutInt.css" rel="stylesheet">
 </head>
