@@ -11,7 +11,7 @@
 	String bValue = request.getParameter("bValue");
 	
 	String loginId = (String)session.getAttribute("idKey");
-	
+	session.setAttribute("bValue", bValue);
 	
 %>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>

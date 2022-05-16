@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/board/jspboard/boardReply")
@@ -15,7 +16,10 @@ public class BoardReplyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardMgr mgr = new BoardMgr();
 		mgr.replyBoard(request);
-		response.sendRedirect("boardList.jsp");
+		
+		HttpSession session = request.getSession();
+		String bValue = (String)session.getAttribute("bValue");
+		response.sendRedirect("boardList.jsp?bValue=" + bValue);
 	}
 
 }

@@ -90,7 +90,7 @@ function pageing(page) {
 }
 
 function list() {
-	document.listFrm.action = "boardList.jsp";
+	document.listFrm.action = "boardList.jsp?";
 	document.listFrm.submit();
 }
 
@@ -2468,6 +2468,7 @@ rotate(
 		<form name="listFrm" method="post">
 			<input type="hidden" name="reload" value="ture">
 			<input type="hidden" name="nowPage" value="1">
+			<input type="hidden" name="bValue" value="<%=bValue%>">
 		</form>
 		<form name="readFrm" method="get">
 			<input type="hidden" name="nowPage" value="<%=nowPage%>">
