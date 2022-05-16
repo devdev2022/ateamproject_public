@@ -293,7 +293,7 @@
 					<input type="file" name="imgname" value="<%=bean.getImgname()%>" class="form-control">
 				</div>
 				
-				<input type="button" value="찾기" class="btn btn-dark col-auto">
+				
 
 
 
