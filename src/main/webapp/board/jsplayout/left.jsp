@@ -3,12 +3,7 @@
 <jsp:useBean id="bean" class="member.MemberBean1"/>
 <%
 	String leftId = (String)session.getAttribute("idKey");
-	bean = mgr.getMember(leftId);
-	if(leftId != null){
-		System.out.println(bean);
-		System.out.println(bean.getImgname());
-	}
-	
+	bean = mgr.getMember(leftId);	
 %>
 
 	<div class="sidebar w-col w-col-2">
@@ -16,10 +11,7 @@
 		System.out.println(bean.getImgname()!=null);
 		if(imgFound){
 			String url = "../photo/" + bean.getImgname();%> 
-			<!-- <a href="#" class="side_profile_img"style="background-image: url('');  background-size: cover; background-repeat: no-repeat">
-				
-			</a> -->
-			<img class = "side_profile_img" src ="<%=url%>">
+			<a href="#" class="side_profile_img" style="background-image: url('<%=url%>'); border-color: white; border-width: thick; border-radius: 70%; background-size: cover; background-repeat: no-repeat"></a>
 		<%}else{%>
 			<div class="side_profile_img" style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
 			</div>
