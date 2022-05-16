@@ -1,15 +1,15 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<jsp:useBean id="mgr" class="member.MemberMgr1"/>
-<jsp:useBean id="bean" class="member.MemberBean1"/>
+<jsp:useBean id="leftMgr" class="member.MemberMgr1"/>
+<jsp:useBean id="leftBean" class="member.MemberBean1"/>
 <%
 	String leftId = (String)session.getAttribute("idKey");
-	bean = mgr.getMember(leftId);	
+	leftBean = leftMgr.getMember(leftId);	
 %>
 
 	<div class="sidebar w-col w-col-2">
-		<%boolean imgFound = (bean.getImgname()!=null);
+		<%boolean imgFound = (leftBean.getImgname()!=null);
 		if(imgFound){
-			String url = "../photo/" + bean.getImgname();%> 
+			String url = "../photo/" + leftBean.getImgname();%> 
 			<a href="#" class="side_profile_img" style="background-image: url('<%=url%>'); border-color: white; border-width: thick; border-radius: 70%; background-size: cover; background-repeat: no-repeat"></a>
 		<%}else{%>
 			<div class="side_profile_img" style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">

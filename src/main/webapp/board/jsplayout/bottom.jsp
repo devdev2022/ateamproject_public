@@ -3,9 +3,6 @@
 %>
 
 
-
-
-
 	<footer id="ateam_footer" class="ateam_footer wf-section">
 		<div class="w-container">
 			<div class="footer-flex-container">
