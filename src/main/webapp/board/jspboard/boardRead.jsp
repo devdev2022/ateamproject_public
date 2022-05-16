@@ -361,7 +361,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	<div class="layout-top w-container">
 		<div><b><%=bBean.getType_board() %></b> <font color="#E83038"><%=bBean.getType_cat() %></font></div>
 		<div><h2><%=bBean.getSubject() %></h2></div>
-		<div><img src="icon/info_large.jpg" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
+		<div><img src="../icon/info_large.jpg" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
 	</div>
 	<!-- 첨부파일영역 -->
 	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2" style="margin-bottom:4vx;">
@@ -509,7 +509,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 				<ul role="list" class="post-comment-container" style="list-style: none;">
 					<li class="list-item" style="list-style: none;"><ul role="list" class="comment-user-info w-list-unstyled">
 					<li class="list-item-3" style="list-style: none;">
-							<img src="icon/profile_def.png" width="20vw">
+							<img src="../icon/info_large.png" width="20vw">
 					</li>
 					<li style="list-style: none;">
 						<%=cBean.getId() %>
@@ -556,7 +556,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 			</div>
 		</div>
 	</form>
-	<form method="post" name="downFrm" action="download.jsp">
+	<form method="post" name="downFrm" action="../download.jsp">
 		<input type="hidden" name="filename">
 	</form>
 	
