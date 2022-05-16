@@ -321,13 +321,13 @@ public Vector<MemberBean1> listMember(){
 	return vlist;
 	
 }
-public static void main(String[] args) {
-	Vector<MemberBean1> vlist=new Vector<MemberBean1>();
-	MemberMgr1 mgr=new MemberMgr1();
-	vlist=mgr.listMember();
-	System.out.println(vlist.size()); //출력됨. tblmember에 있는 총 행 갯수 출력함.
-	
-}
+//public static void main(String[] args) {
+//	Vector<MemberBean1> vlist=new Vector<MemberBean1>();
+//	MemberMgr1 mgr=new MemberMgr1();
+//	vlist=mgr.listMember();
+//	System.out.println(vlist.size()); //출력됨. tblmember에 있는 총 행 갯수 출력함.
+//	
+//}
 	
 	
 	// ------------- �����ϱ� -------------
@@ -354,8 +354,8 @@ public static void main(String[] args) {
 					+ "phonecorp, phone1, phone2, phone3, imgname, imgsize)"
 					+ "values(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
+			
 			pstmt.setString(1, multi.getParameter("id"));
-			//밑에 똑같이 받으면 됩니다.
 			pstmt.setString(2, multi.getParameter("pwd"));
 			pstmt.setString(3, multi.getParameter("name"));
 			pstmt.setString(4, multi.getParameter("email1"));
@@ -399,10 +399,11 @@ public static void main(String[] args) {
 						, new DefaultFileRenamePolicy());
 			String imgname=null;
 			int imgsize=0;
+			System.out.println("123 : " + multi.getFilesystemName("imgname"));
 			if(multi.getFilesystemName("imgname")!=null) {
 				imgname=multi.getFilesystemName("imgname");
 				imgsize=(int)multi.getFile("imgname").length(); 
-				//System.out.println(multi.getParameter("id")+":"+multi.getParameter("pwd"));
+				System.out.println(multi.getParameter("id")+":"+multi.getParameter("pwd"));
 		}
 			con = pool.getConnection();
 			sql="update tblmember set pwd =?, name=?, email1=?, email2=?, phonecorp=?, "
@@ -418,8 +419,8 @@ public static void main(String[] args) {
 			pstmt.setString(7, multi.getParameter("phone2"));
 			pstmt.setString(8, multi.getParameter("phone3"));
 			pstmt.setString(9, imgname);
-			pstmt.setInt(11, imgsize);
-			pstmt.setString(12, multi.getParameter("id"));
+			pstmt.setInt(10, imgsize);
+			pstmt.setString(11, multi.getParameter("id"));
 			
 			int cnt = pstmt.executeUpdate();
 			if (cnt == 1)	

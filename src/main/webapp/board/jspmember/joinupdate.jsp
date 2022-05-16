@@ -305,7 +305,7 @@
 				<div class="col-auto col-md-3">
 					<input name="email2" value="<%=bean.getEmail2()%>"  class="form-control">
 				</div>
-				<input type="button" value="중복확인" class="btn btn-dark col-auto">
+			
 				
 				<div>휴대폰 번호*</div>
 				<div class="col-auto col-md-2">
