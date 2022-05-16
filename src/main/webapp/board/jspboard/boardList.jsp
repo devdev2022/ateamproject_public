@@ -65,6 +65,7 @@
 
 <!DOCTYPE html>
 <head>
+<link href="../jsplayout/css/layout.css" rel="stylesheet">
 
 <!-- 부트스트랩 요소 -->
 <link
@@ -2265,12 +2266,19 @@ rotate(
 
 
 </head>
-<body>
+<body class="body">
+	
+<% request.setCharacterEncoding("UTF-8"); %>
+<%@ include file="../jsplayout/top.jsp" %>
+	<div class="ateam_columns">
+		<%@ include file="../jsplayout/left.jsp" %>
+		
+		<div class="ateam_contents w-col w-col-8" style="overflow:auto">
 	<!-- 상단 영역 시작 -->
 	<div class="board-top-container w-container">
 		<div class="board-category wf-section">
 			<div class="div-block">
-				<div class="text-block">게시판 제목</div>
+				<div class="text-block"><%=bValue%></div>
 				<div>Total : <%=totalRecord %> Articles( <%=nowPage + " / " + totalPage %> Pages)</div>
 			</div>
 		</div>
@@ -2427,7 +2435,7 @@ rotate(
 						</div>
 					</div>
 				</td>
-			<form name="btnFrm" action="boardPost.jsp">
+			<form name="btnFrm" action="boardPost.jsp?bvValue=<%=bValue%>">
 				<td align="right">
 					<a style="color: white;" href="javascript:document.btnFrm.submit()"><button type="button" class="btn btn-dark">글쓰기</button></a> 
 					<a href="javascript:list()"><button type="button" class="btn btn-light">처음으로</button></a>
@@ -2481,8 +2489,16 @@ rotate(
 		</form>
 	</div>
 	<!-- 하단 영역 끝 -->
+</div>
+		
+		<%@ include file="../jsplayout/right.jsp" %>
+		
+	</div>
+<%@ include file="../jsplayout/bottom.jsp" %>
+	
 </body>
 </html>
+
 
 
 

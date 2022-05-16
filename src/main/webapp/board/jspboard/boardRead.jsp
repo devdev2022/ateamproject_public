@@ -24,7 +24,7 @@
 
 <!DOCTYPE html>
 <head>
-
+<link href="../jsplayout/css/layout.css" rel="stylesheet">
 <!-- 부트스트랩 요소 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -342,7 +342,16 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 </style>
 
 </head>
-<body class="page">
+<body class="body">
+<% request.setCharacterEncoding("UTF-8"); %>
+<%@ include file="../jsplayout/top.jsp" %>
+	<div class="ateam_columns">
+		<%@ include file="../jsplayout/left.jsp" %>
+		
+		<div class="ateam_contents w-col w-col-8" style="overflow:auto">
+			<!-- ==============페이지 내용 시작============= -->
+			
+<div class="page">
 	<%
 		bMgr.upCount(num);
 		BoardBean bBean = bMgr.getBoard(num);
@@ -352,8 +361,9 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	<div class="layout-top w-container">
 		<div><b><%=bBean.getType_board() %></b> <font color="#E83038"><%=bBean.getType_cat() %></font></div>
 		<div><h2><%=bBean.getSubject() %></h2></div>
-		<div><img src="icon/profile_def.png" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
+		<div><img src="../icon/info_large.jpg" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
 	</div>
+	
 	<!-- 첨부파일영역 -->
 	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
 		<div class="dropdown" align="right">
@@ -375,6 +385,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		</div>
 	</div>
 	<!-- 첨부파일영역 -->
+	
 	<div class="post-main w-container">
 		<%=bBean.getContent() %><br>
 		<%	
@@ -462,7 +473,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	
 	<div class="layout-lower-bottom w-container">
 		<input id="replybtn" type="button" class="btn btn-dark" value="답글" onclick="javascript:location.href='boardReply.jsp?num=<%=num%>&category=<%=bBean.getType_cat()%>&bValue=<%=bBean.getType_board()%>'">
-		<a id="listbtn" type="button" class="btn btn-dark" href="javascript:location.href='boardList.jsp'">목록</a>
+		<a id="listbtn" type="button" class="btn btn-white" "href="javascript:location.href='boardList.jsp'">목록</a>
 	</div>
 	
 	<%
@@ -500,7 +511,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 				<ul role="list" class="post-comment-container" style="list-style: none;">
 					<li class="list-item" style="list-style: none;"><ul role="list" class="comment-user-info w-list-unstyled">
 					<li class="list-item-3" style="list-style: none;">
-							<img src="icon/profile_def.png" width="20vw">
+							<img src="../icon/info_large.jpg" width="20vw">
 					</li>
 					<li style="list-style: none;">
 						<%=cBean.getId() %>
@@ -536,21 +547,31 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	<form name="commentFrm" action="commentPost" method="post">
 		<div class="comment-write-header w-container">
 			<div>
-				<b>댓글</b> ex) loginId : <%=loginId %>
+				<b>댓글 작성</b> | <img src="../icon/info_large.jpg" width="20vw"> <%=loginId %>
 			</div>
 			
 			<div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" name="cComment">
+				<input type="text" class="form-control" placeholder="댓글을 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2" name="cComment">
 				<input class="btn btn-outline-secondary" type="button" id="button-addon2" value="등록" onclick="insertComment()">
 				<input type="hidden" name="loginId" value="aaa">
 				<input type="hidden" name="num" value=<%=num %>>
 			</div>
 		</div>
 	</form>
-	<form method="post" name="downFrm" action="download.jsp">
+	<form method="post" name="downFrm" action="../download.jsp">
 		<input type="hidden" name="filename">
 	</form>
 	
 
+</div>
+	<!-- ==============페이지 내용 끝============== -->
+		</div>
+		
+		<%@ include file="../jsplayout/right.jsp" %>
+		
+	</div>
+<%@ include file="../jsplayout/bottom.jsp" %>
+	
 </body>
 </html>
+
