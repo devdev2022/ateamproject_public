@@ -26,7 +26,7 @@
 	String keyField = "";
 	String keyWord = "";
 	String category = "";
-	String bValue = "board1";
+	String bValue = request.getParameter("bValue");
 	
 	if(request.getParameter("keyWord")!=null){
 		keyField = request.getParameter("keyField");
