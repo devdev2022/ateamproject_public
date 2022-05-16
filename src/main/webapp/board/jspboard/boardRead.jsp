@@ -24,7 +24,7 @@
 
 <!DOCTYPE html>
 <head>
-
+<link href="../jsplayout/css/layout.css" rel="stylesheet">
 <!-- 부트스트랩 요소 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -342,7 +342,16 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 </style>
 
 </head>
-<body class="page">
+<body class="body">
+<% request.setCharacterEncoding("UTF-8"); %>
+<%@ include file="../jsplayout/top.jsp" %>
+	<div class="ateam_columns">
+		<%@ include file="../jsplayout/left.jsp" %>
+		
+		<div class="ateam_contents w-col w-col-8" style="overflow:auto">
+			<!-- ==============페이지 내용 시작============= -->
+			
+<div class="page">
 	<%
 		bMgr.upCount(num);
 		BoardBean bBean = bMgr.getBoard(num);
@@ -352,10 +361,10 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	<div class="layout-top w-container">
 		<div><b><%=bBean.getType_board() %></b> <font color="#E83038"><%=bBean.getType_cat() %></font></div>
 		<div><h2><%=bBean.getSubject() %></h2></div>
-		<div><img src="icon/profile_def.png" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
+		<div><img src="icon/info_large.jpg" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
 	</div>
 	<!-- 첨부파일영역 -->
-	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
+	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2" style="margin-bottom:4vx;">
 		<div class="dropdown" align="right">
 			<input class="btn btn-outline-secondary dropdown-toggle" type="text" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" value="첨부파일 (<%=fCount %>)" size="10">
 			<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
@@ -462,7 +471,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	
 	<div class="layout-lower-bottom w-container">
 		<input id="replybtn" type="button" class="btn btn-dark" value="답글" onclick="javascript:location.href='boardReply.jsp?num=<%=num%>&category=<%=bBean.getType_cat()%>&bValue=<%=bBean.getType_board()%>'">
-		<a id="listbtn" type="button" class="btn btn-dark" href="javascript:location.href='boardList.jsp'">목록</a>
+		<a id="listbtn" type="button" class="btn btn-white" "href="javascript:location.href='boardList.jsp'">목록</a>
 	</div>
 	
 	<%
@@ -552,5 +561,15 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	</form>
 	
 
+</div>
+	<!-- ==============페이지 내용 끝============== -->
+		</div>
+		
+		<%@ include file="../jsplayout/right.jsp" %>
+		
+	</div>
+<%@ include file="../jsplayout/bottom.jsp" %>
+	
 </body>
 </html>
+

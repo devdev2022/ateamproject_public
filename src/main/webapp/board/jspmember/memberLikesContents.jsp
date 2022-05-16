@@ -59,7 +59,7 @@ function pageing(page) {
 }
 
 function openBoardRead(num) {
-	url = "boardRead.jsp?num=" + num;
+	url = "../jspboard/boardRead.jsp?num=" + num;
 	window.open(url, "boardRead.jsp?num="+num,"width=1000,height=1000,scrollbars=yes");
 }
 </script>
@@ -200,7 +200,7 @@ function openBoardRead(num) {
 <div class="panel" style="display:flex; flex-direction: column; margin-top: 5vw; margin-bottom: 5vw;  margin-left: 3vw; margin-right: 3vw; ">
 	
 	<%Vector<LikesBean> lVlist = lMgr.getAllNumLikesBoard(loginId, start, cnt);%>
-	<div><h3>내가 좋아하는 게시글 <img src="icon/like_after.png"></h3> <hr> 총 <%=totalRecord %>개의 게시물</div>
+	<div><h3>내가 좋아하는 게시글 <img src="../icon/like_after.png"></h3> <hr> 총 <%=totalRecord %>개의 게시물</div>
 
 	<div class="w-layout-grid grid_main">
 	<%
@@ -228,7 +228,7 @@ function openBoardRead(num) {
 		<div class="grid_item">
 			<%if(filename == null){ %>
 				<div class="grid_upper">
-					<img src="test/1.jpg" style="width: 100%; height: 100%">
+					<img src="../photo/homeTest1.png" style="width: 100%; height: 100%">
 			<%}else{ %>
 				<div class="grid_upper">
 					<img src="../UpLoadFiles/<%=filename%>" style="width: 100%; height: 100%">
@@ -243,7 +243,7 @@ function openBoardRead(num) {
 						<td><font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=id %></a></font></td>
 					</tr>
 					<tr>
-						<td><img src="icon/like_after.png"><font color="white"><a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%>| 조회수 <%= count%></font></td>
+						<td><img src="../icon/like_after.png"><font color="white"><a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%>| 조회수 <%= count%></font></td>
 					</tr>
 				</table>
 			</div>

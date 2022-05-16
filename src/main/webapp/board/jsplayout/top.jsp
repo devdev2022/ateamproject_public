@@ -34,10 +34,10 @@
 			<div class="ateam_header_nav_btn"><a href="../jsphome/home.jsp">HOME</a></div>
 			<div class="ateam_header_nav_btn">About</div>
 			<form method="get" action="" name="boardListFrm">
-				<div class="ateam_header_nav_btn"><a href="javascript:boardListFrm('Hip-Hop')">Hip-Hop</a></div>
-				<div class="ateam_header_nav_btn"><a href="javascript:boardListFrm('R&B')">R&B</a></div>
-				<div class="ateam_header_nav_btn"><a href="javascript:boardListFrm('Pop')">Pop</a></div>
-				<div class="ateam_header_nav_btn"><a href="javascript:boardListFrm('EDM')">EDM</a></div>
+				<a style="padding-left:3vw;" href="javascript:boardListFrm('Hip-Hop')">Hip-Hop</a>
+				<a  style="padding-left:3vw;"  href="javascript:boardListFrm('RnB')">RnB</a>
+				<a  style="padding-left:3vw;"  href="javascript:boardListFrm('Pop')">Pop</a>
+				<a style="padding-left:3vw;"  href="javascript:boardListFrm('EDM')">EDM</a>
 				<input type="hidden" name="bValue" value="">
 			</form>
 			<div class="ateam_header_nav_btn"><a href="../jspmember/myPageIndex.jsp">My Page</a></div>

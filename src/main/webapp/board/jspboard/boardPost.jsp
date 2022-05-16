@@ -15,6 +15,7 @@
 	data-wf-page="6271f01e889d5b745d71a96b"
 	data-wf-site="6271f01e889d5b73f171a96a">
 <head>
+<link href="../jsplayout/css/layout.css" rel="stylesheet">
 
 
 <!-- 부트스트랩 요소 -->
@@ -174,7 +175,14 @@
 </style>
 
 </head>
-<body>
+<body class="body">
+<% request.setCharacterEncoding("UTF-8"); %>
+<%@ include file="../jsplayout/top.jsp" %>
+	<div class="ateam_columns">
+		<%@ include file="../jsplayout/left.jsp" %>
+		
+		<div class="ateam_contents w-col w-col-8" style="overflow:auto">
+			<!-- ==============페이지 내용 시작============= -->
 	<div id="post-title"><h2>새 게시글 작성</h2></div>
 	<form name="postFrm" method="post" action="boardPost"  onsubmit="return false;" enctype="multipart/form-data">
 		<div class="layout-top w-container">
@@ -250,5 +258,13 @@
 	<input type="hidden" name="bValue" value="<%=bValue%>">
 	
 	</form>
+<!-- ==============페이지 내용 끝============== -->
+		</div>
+		
+		<%@ include file="../jsplayout/right.jsp" %>
+		
+	</div>
+<%@ include file="../jsplayout/bottom.jsp" %>
+	
 </body>
 </html>
