@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/deleteLikes")
+@WebServlet("/board/jspboard/deleteLikes")
 public class DeleteLikesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

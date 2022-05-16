@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/insertCmtLikes")
+@WebServlet("/board/jspboard/insertCmtLikes")
 public class InsertCmtLikesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

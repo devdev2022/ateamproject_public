@@ -14,21 +14,19 @@ $(document).ready(function(){
 
 
 	  var playlist = [{
-	      title:"Hidden",
-	      artist:"Miaow",
-	      mp3:"http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
-	      oga:"http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
+		  /*제목, 아티스트, 음악*/
+	      title:"Ghetto funk Mix",
+	      artist:"DJ Todokki",
+	      mp3:"../sample/sample.mp3",
 	      poster: "https://i.imgur.com/sCbrzQa.png"
 	    },{
 	      title:"Cro Magnon Man",
 	      artist:"The Stark Palace",
 	      mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
-	      oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
 	      poster: "https://i.imgur.com/lXvsuBu.png"
 	    },{
 	      title:"Bubble",
 	      m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
-	      oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
 	      poster: "https://i.imgur.com/klJKSVZ.jpg"
 	  }];
 	  
@@ -97,10 +95,11 @@ $(document).ready(function(){
 	<a href="https://codepen.io/mustafaismail22/pen/Baqxbp">템플릿 원본</a>
 </div>
 
+<!-- 플레이어 시작 -->
 <div class="music-player">
 	<!-- 이미지 파일 위치 -->
 	<div
-		style="background-image: url(https://upload.wikimedia.org/wikipedia/en/a/a3/Tha-doggfather.jpg); background-size: cover;"
+		style="background-image: url(https://c0.wallpaperflare.com/preview/176/478/441/amplifier-close-up-console-control-thumbnail.jpg); background-repeat: no-repeat; background-size: auto;"
 		class="album">
 
 		<div class="info">
@@ -142,6 +141,9 @@ $(document).ready(function(){
 		</div>
 
 		<div id="jquery_jplayer" class="jp-jplayer"></div>
+		
 
 	</div>
 </div>
+<!-- 플레이어 끝 -->
+<a>timestamp</a>
