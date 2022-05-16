@@ -1,21 +1,33 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<jsp:useBean id="mgr" class="member.MemberMgr1"/>
+<jsp:useBean id="bean" class="member.MemberBean1"/>
 <%
 	String leftId = (String)session.getAttribute("idKey");
+	bean = mgr.getMember(leftId);
+	if(leftId != null){
+		System.out.println(bean);
+		System.out.println(bean.getImgname());
+	}
+	
 %>
 
 	<div class="sidebar w-col w-col-2">
-		
-		<%if(leftId==null){%> 
-			<div class="side_profile_img"style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
-			</div>
-		<%}else{%>
-			<div class="side_profile_img"style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
+		<%boolean imgFound = (bean.getImgname()!=null);
+		System.out.println(bean.getImgname()!=null);
+		if(imgFound){
+			String url = "../photo/" + bean.getImgname();%> 
+			<!-- <a href="#" class="side_profile_img"style="background-image: url('');  background-size: cover; background-repeat: no-repeat">
 				
-			</div>	
+			</a> -->
+			<img class = "side_profile_img" src ="<%=url%>">
+		<%}else{%>
+			<div class="side_profile_img" style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
+			</div>
 		<%}%>
 		
 			
 		<div class="side_profile_text" style="text-align: center; color: white;">
+			
 			<%if(leftId==null){%> 
 				로그인하세요.
 			<%}else{%>
