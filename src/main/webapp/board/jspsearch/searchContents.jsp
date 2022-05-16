@@ -2298,6 +2298,7 @@ rotate(
 }
 
 .submit-button {
+	margin-right: 800px;
 	width: 120px;
 	background-color: #eceef0;
 	color: #0e0d0d;
@@ -2393,6 +2394,7 @@ rotate(
 }
 
 .button-3 {
+	margin-right: 850px;
 	background-color: #eceef0;
 	color: #0e0d0d;
 }
