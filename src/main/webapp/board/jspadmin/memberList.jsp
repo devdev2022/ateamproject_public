@@ -37,9 +37,9 @@
 	crossorigin="anonymous">
 </head>
 <script>
-function deleteChk(){
+function deleteChk(id, name){
 	alert(
-			'정말로 다음 회원을 강제 탈퇴시키겠습니까?\nid: \n이용자명:'	);
+			'정말로 다음 회원을 강제 탈퇴시키겠습니까?\nid: '+ id + '\n이용자명:'+	name);
 	return false;
 }
 
@@ -49,23 +49,7 @@ function deleteChk(){
 	<h3>관리자 페이지입니다.</h3>
 	<hr>
 	<table class="table">
-		<% for (int i=0; i < vlist.size(); i++){
-				System.out.println(i+"번째 항목을 불러왔습니다.");
-				
-				/* BoardBean Bbean = Bvlist.get(i);
-				int num = Bbean.getNum();
-				String subject = Bbean.getSubject();
-				String id = Bbean.getId();
-				String regdate = Bbean.getRegdate();
-				int depth = Bbean.getDepth();
-				int count = Bbean.getCount();
-				String Type_cat = Bbean.getType_cat();
-				UpFileBean Fbean = bMgr.getBoardFile(num);
-				int Fnum = Fbean.getNum();
-				String filename = Fbean.getFilename();
-				int filesize = Fbean.getFilesize();
-				int bcount = cMgr.getBCommentCount(num); */
-			}%>
+		
 		<thead>
 			<tr>
 				<th scope="col">No.</th>
@@ -76,32 +60,30 @@ function deleteChk(){
 				<th scope="col"></th>
 			</tr>
 		</thead>
+		
 		<tbody>
+		<%for (int i=0; i < vlist.size(); i++){
+				MemberBean1 mbean = vlist.get(i);
+				int num = i;
+				String id = mbean.getId();
+				String name = mbean.getName();
+				String email = mbean.getEmail1() + "@" + mbean.getEmail2();
+				String phone = mbean.getPhone1() + "-" + mbean.getPhone2() + "-" + mbean.getPhone3();
+			%>
 			<tr>
-				<th scope="row">1</th>
-				<td>Mark</td>
-				<td>Mark</td>
-				<td>Mark</td>
-				<td>Otto</td>
+				<th scope="row"><%=num%></th>
+				<td><%=id%></td>
+				<td><%=name%></td>
+				<td><%=email%></td>
+				<td><%=phone%></td>
 				<td><a href="#"
-					onclick="deleteChk()">
+					onclick="deleteChk('<%=id%>','<%=name%>')">
 						<button type="button" class="btn btn-outline-danger">X</button>
 				</a></td>
 
 			</tr>
+			<%} %>
 			
-			<tr>
-				<th scope="row">2</th>
-				<td>Mark</td>
-				<td>Mark</td>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td><a href="#"
-					onclick="deleteChk()">
-						<button type="button" class="btn btn-outline-danger">X</button>
-				</a></td>
-
-			</tr>
 			
 			
 			
