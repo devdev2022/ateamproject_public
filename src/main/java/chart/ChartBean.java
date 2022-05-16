@@ -3,7 +3,7 @@ package chart;
 public class ChartBean {
 	
 	private int chnum;
-	private int ranking;
+	private String ranking;
 	private String artist;
 	private String title;
 	private String albumImg;
@@ -12,6 +12,8 @@ public class ChartBean {
 	private String menuId;
 	private String songId;
 	private String lyric;
+	private String video;
+	private String videoInfo;
 	
 	public int getChnum() {
 		return chnum;
@@ -19,10 +21,10 @@ public class ChartBean {
 	public void setChnum(int chnum) {
 		this.chnum = chnum;
 	}
-	public int getRanking() {
+	public String getRanking() {
 		return ranking;
 	}
-	public void setRanking(int ranking) {
+	public void setRanking(String ranking) {
 		this.ranking = ranking;
 	}
 	public String getArtist() {
@@ -73,6 +75,19 @@ public class ChartBean {
 	public void setSongId(String songId) {
 		this.songId = songId;
 	}
+	public String getVideo() {
+		return video;
+	}
+	public void setVideo(String video) {
+		this.video = video;
+	}
+	public String getVideoInfo() {
+		return videoInfo;
+	}
+	public void setVideoInfo(String videoInfo) {
+		this.videoInfo = videoInfo;
+	}
+	
 	
 	
 	
