@@ -1,8 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+
 <%
 
 
 %>
+
 <head>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 </head>
