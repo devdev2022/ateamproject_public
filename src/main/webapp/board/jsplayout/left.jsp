@@ -30,7 +30,7 @@
 		</div>
 		
 		<div class="side_profile_iconbar">
-			<a href="#">
+			<a href="../jspmember/joinupdate.jsp">
 				<div class="side_profile_editicon w-col w-col-4">
 					<img src= "../icon/edit_gray.png">
 				</div>
