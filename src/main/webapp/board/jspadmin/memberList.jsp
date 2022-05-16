@@ -13,11 +13,7 @@
 	if(abean.getGrade()=="1"){
 		System.out.println("관리자입니다.");	
 	}
-	
-	/*if (adminId!="aaa"){
-		response.sendRedirect("../jsphome/home.jsp");
-	} */ 
-	
+
 	
 	Vector<MemberBean1> vlist = new Vector<MemberBean1>(); 
 	vlist = mgr.listMember();
