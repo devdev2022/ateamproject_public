@@ -12,8 +12,8 @@
 	
 	if(result){
 		msg="회원 수정이 성공됐습니다.";
-		url="login.jsp";
-		response.sendRedirect(url);
+		//url="login.jsp";
+		//response.sendRedirect(url);
 	}
 %>
 
