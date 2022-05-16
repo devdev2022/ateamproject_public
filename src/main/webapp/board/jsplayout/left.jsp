@@ -4,6 +4,9 @@
 <%
 	String leftId = (String)session.getAttribute("idKey");
 	leftBean = leftMgr.getMember(leftId);	
+	String leftGrade = ""; 
+	if(leftId!=null)
+		leftGrade = (leftBean.getGrade()).trim(); 
 %>
 
 	<div class="sidebar w-col w-col-2">
@@ -23,7 +26,7 @@
 				로그인하세요.
 			<%}else{%>
 				<%=leftId%>님,환영합니다.
-				<%if(true){%>
+				<%if(leftGrade.equals("1")){%>
 					<br><u><a href="../jspadmin/memberList.jsp">회원 관리 페이지로 이동</a></u> 
 				<%}%>
 			<%}%>
