@@ -8,13 +8,13 @@
 	//<jsp:setProperty property="*" name="bean"/>
 	boolean result=mgr.updateMember(request);
 	String msg="회원 수정이 실패 했습니다.!!";
-	String url="joinupdate.jsp";
+	String url="myPageIndex.jsp";
 	
-	if(result){
+	if(result)
 		msg="회원 수정이 성공됐습니다.";
-		//url="login.jsp";
-		//response.sendRedirect(url);
-	}
+		else
+		response.sendRedirect(url);
+	
 %>
 
 <script>
