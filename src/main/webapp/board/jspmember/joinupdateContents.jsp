@@ -1,14 +1,16 @@
-
+<%@page import="member.MemberBean1"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 
-<jsp:useBean id="mgr" class="member.MemberMgr"/>
-
+<jsp:useBean id="mgr" class="member.MemberMgr1"/>
 <%
- String id=request.getParameter("id");
- String pwd=request.getParameter("pwd");
- String pwdchk=request.getParameter("pwdchk");
-boolean result=mgr.loginMember(id, pwd);
-
+	 	String id=(String)session.getAttribute("idKey");
+		if(id==null){
+			response.sendRedirect("login.jsp");
+		return;
+		}
+		//mgr.getMember(id); id를 넣어 getMemebr메소드 실행한 결과(리턴)가, bean이고
+		//이것을 빈 MemberBean1의 bean에 대입하는 것.
+		MemberBean1 bean = mgr.getMember(id);
 %>
 
 <script type="text/javascript" src="script.js"></script>
@@ -17,7 +19,7 @@ boolean result=mgr.loginMember(id, pwd);
  function idCheck(id){
 	 	 
 	if(id==""){
-		 alert("아이디를 입력하셈")
+		 alert("아이디를 입력하세요.")
 		 document.regFrm.id.focus();
 		 return;
 	  }
@@ -30,7 +32,7 @@ boolean result=mgr.loginMember(id, pwd);
   function inputCheck(pwd){
 	  pwdchk = document.regFrm.pwdchk.value;
    if(pwd!=pwdchk){
-		  alert("비밀번호가 일치 하지 않습니다!!")
+		  alert("비밀번호가 일치하지 않습니다.")
 		  document.regFrm.pwdchk.focus();
 		  return;
 	  }
@@ -251,10 +253,10 @@ boolean result=mgr.loginMember(id, pwd);
 	</div>
 	
 	<div class="form_block">
-	 <form name="regFrm" method="post" action="joinProc.jsp" enctype="multipart/form-data">
+	 <form name="regFrm" method="post" action="joinupdateProc.jsp" enctype="multipart/form-data">
 	 <!-- <form name="regFrm" method="post" action="joinProc.jsp"> -->
 	 
-		<div class="memberlbl"><h3>회원가입</h3></div>
+		<div class="memberlbl"><h3>회원수정</h3></div>
 		<div class="join_form_block">
 			<div style="margin-top: 2vw;"></div>
 			<div class="col-auto profile_div" width="10vw" height="10vw" >	
@@ -265,47 +267,44 @@ boolean result=mgr.loginMember(id, pwd);
 			<div class="row g-1 align-items-center">
 
 
-				<div>아이디*</div>
+				<div>아이디</div>
 				<div class="col-auto col-md-4">
-					<input name="id" value="aaa"class="form-control">
+					<input name="id" value="<%=bean.getId()%>" class="form-control" disabled>
 				</div>
-<!--  -->
-				<input type="button" value="중복확인" class="btn btn-dark col-auto" 
-				onclick="idCheck(this.form.id.value)">
 
 				<div>비밀번호*</div>
 				<div class="col-auto col-md-4">
-					<input name="pwd" value="1234" class="form-control">
+					<input name="pwd" value="<%=bean.getPwd()%>" class="form-control">
 				</div>
 				<div>비밀번호 확인*</div>
 				<div class="col-auto col-md-4">
 					<input type="text" name="pwdchk" class="form-control">
 				</div>
-				<div>이름*</div>
+				<div>이름</div>
 				<div class="col-auto col-md-4">
-					<input name="name" class="form-control">
+					<input name="name" value="<%=bean.getName()%>" class="form-control">
 				</div>
 
-				<div>프로필 사진*</div>
+				<div>프로필 사진</div>
 				<div class="col-auto col-md-3">
-					<input type="file" name="imgname" class="form-control">
+					<input type="file" name="imgname" value="<%=bean.getImgname()%>" class="form-control">
 				</div>
 				
-				<input type="button" value="찾기" class="btn btn-dark col-auto">
+				
 
 
 
-				<div>이메일*</div>
+				<div>이메일</div>
 				<div class="col-auto col-md-3">
-					<input name="email1" value="abc"class="form-control">
+					<input name="email1" value="<%=bean.getEmail1()%>" class="form-control">
 				</div>
 				<div class="col-auto">@</div>
 				<div class="col-auto col-md-3">
-					<input name="email2" value="naver.com"class="form-control">
+					<input name="email2" value="<%=bean.getEmail2()%>"  class="form-control">
 				</div>
+			
 				
-				
-				<div>휴대폰 번호*</div>
+				<div>휴대폰 번호</div>
 				<div class="col-auto col-md-2">
 				<select name=phonecorp>
 				  <option value="0" selected>선택하세요
@@ -317,24 +316,26 @@ boolean result=mgr.loginMember(id, pwd);
 		
 				</div>
 				<div class="col-auto col-md-2">
-					<input name="phone1" value="010" class="form-control">
+					<input name="phone1" value="<%=bean.getPhone1()%>"  class="form-control">
 				</div>
 				<div class="col-auto col-md-2">
-					<input name="phone2" value="2555"class="form-control">
+					<input name="phone2" value="<%=bean.getPhone2()%>"  class="form-control">
 				</div>
 				<div class="col-auto col-md-2">
-					<input name="phone3" value="9875"class="form-control">
+					<input name="phone3" value="<%=bean.getPhone3()%>"  class="form-control">
 				</div>
 				<div style="margin-top: 3vw;"></div>
 			</div>
 			
 			<div style="display: flex; justify-content: center; margin-bottom: 3vw;">
 				<button type="button" class="btn btn-lg btn-dark" 
-				onclick="inputCheck(this.form.pwd.value)">가입하기</button>
+				onclick="inputCheck(this.form.pwd.value)">수정완료</button>
 				
 				<button type="button" class="btn btn-secondary btn-lg">취소</button>
 			</div>
+			
 		</div>
 	</div>
+	</form>
 </div>
-</form>
+

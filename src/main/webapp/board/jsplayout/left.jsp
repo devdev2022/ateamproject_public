@@ -1,21 +1,24 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<jsp:useBean id="leftMgr" class="member.MemberMgr1"/>
+<jsp:useBean id="leftBean" class="member.MemberBean1"/>
 <%
 	String leftId = (String)session.getAttribute("idKey");
+	leftBean = leftMgr.getMember(leftId);	
 %>
 
 	<div class="sidebar w-col w-col-2">
-		
-		<%if(leftId==null){%> 
-			<div class="side_profile_img"style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
-			</div>
+		<%boolean imgFound = (leftBean.getImgname()!=null);
+		if(imgFound){
+			String url = "../photo/" + leftBean.getImgname();%> 
+			<a href="#" class="side_profile_img" style="background-image: url('<%=url%>'); border-color: white; border-width: thick; border-radius: 70%; background-size: cover; background-repeat: no-repeat"></a>
 		<%}else{%>
-			<div class="side_profile_img"style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
-				
-			</div>	
+			<div class="side_profile_img" style="background-image: url('../icon/profile_blank.png'); background-size: cover; background-repeat: no-repeat">
+			</div>
 		<%}%>
 		
 			
 		<div class="side_profile_text" style="text-align: center; color: white;">
+			
 			<%if(leftId==null){%> 
 				로그인하세요.
 			<%}else{%>
@@ -27,7 +30,7 @@
 		</div>
 		
 		<div class="side_profile_iconbar">
-			<a href="#">
+			<a href="../jspmember/joinupdate.jsp">
 				<div class="side_profile_editicon w-col w-col-4">
 					<img src= "../icon/edit_gray.png">
 				</div>

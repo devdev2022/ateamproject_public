@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Random;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -161,10 +162,12 @@ public int sendNum(String emailaddr) { //MailSend.java
 		pstmt.setString(1, e1);
 		pstmt.setString(2, e2);
 		rs = pstmt.executeQuery(); 
-//int cnt = pstmt.executeUpdate(); 	<=pstmt.executeUpdate(); update는 그 결과가 int형 1로 나옴.
+    //int cnt = pstmt.executeUpdate(); 	<=pstmt.executeUpdate(); update는 그 결과가 int형 1로 나옴.
 		if(rs.next()) //rs.next()은 다음 행이 있으면 true,없으면 false 반환하므로, 
 	// 여기서는 if(rs.next())는 if(true)와 동일
-			id=rs.getString(1);  //DB에 담긴 값을 가져오려면, getter가 필요하다.
+			//DB에 담긴 값을 가져오려면, getter가 필요하다.
+			//DB에 담긴 값을 셋하려면, setter가 필요하다.
+			id=rs.getString(1);  
 			//name=rs.getString(2);
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -240,7 +243,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 	
 	
 
-	//회원정보 가져오기
+	//회원정보 가져오기<-- 회원수정에서 기존 정보를 화면에 띄워줘야 해서.
 	public MemberBean1 getMember(String id) {
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -278,6 +281,55 @@ public int sendNum(String emailaddr) { //MailSend.java
 		
 	}
 	
+//회원 모두 가져오기
+public Vector<MemberBean1> listMember(){
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = null;
+	Vector<MemberBean1> vlist=new Vector<MemberBean1>();
+	try {
+		con = pool.getConnection();
+		sql = "select * from tblmember";
+		pstmt = con.prepareStatement(sql);
+
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			MemberBean1 bean=new MemberBean1();
+		
+			bean.setId(rs.getString("id"));
+			bean.setPwd(rs.getString("pwd"));
+			bean.setName(rs.getString("name"));
+			bean.setEmail1(rs.getString("email1"));
+			bean.setEmail2(rs.getString("email2"));
+			bean.setPhonecorp(rs.getString("phonecorp"));
+			bean.setPhone1(rs.getString("phone1"));
+			bean.setPhone2(rs.getString("phone2"));
+			bean.setPhone3(rs.getString("phone3"));
+			bean.setGrade(rs.getString("grade"));
+			bean.setImgname(rs.getString("imgname"));
+			bean.setImgsize(rs.getInt("imgsize"));
+			//System.out.println(rs.getString(bean));
+			vlist.addElement(bean);
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		pool.freeConnection(con, pstmt, rs);
+	}
+	return vlist;
+	
+}
+//public static void main(String[] args) {
+//	Vector<MemberBean1> vlist=new Vector<MemberBean1>();
+//	MemberMgr1 mgr=new MemberMgr1();
+//	vlist=mgr.listMember();
+//	System.out.println(vlist.size()); //출력됨. tblmember에 있는 총 행 갯수 출력함.
+//	
+//}
+	
+	
 	// ------------- �����ϱ� -------------
 	public boolean insertMember(HttpServletRequest req) {
 		Connection con = null;
@@ -302,8 +354,8 @@ public int sendNum(String emailaddr) { //MailSend.java
 					+ "phonecorp, phone1, phone2, phone3, imgname, imgsize)"
 					+ "values(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
+			
 			pstmt.setString(1, multi.getParameter("id"));
-			//밑에 똑같이 받으면 됩니다.
 			pstmt.setString(2, multi.getParameter("pwd"));
 			pstmt.setString(3, multi.getParameter("name"));
 			pstmt.setString(4, multi.getParameter("email1"));
@@ -347,6 +399,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 						, new DefaultFileRenamePolicy());
 			String imgname=null;
 			int imgsize=0;
+			//System.out.println("123 : " + multi.getFilesystemName("imgname"));
 			if(multi.getFilesystemName("imgname")!=null) {
 				imgname=multi.getFilesystemName("imgname");
 				imgsize=(int)multi.getFile("imgname").length(); 
@@ -366,8 +419,8 @@ public int sendNum(String emailaddr) { //MailSend.java
 			pstmt.setString(7, multi.getParameter("phone2"));
 			pstmt.setString(8, multi.getParameter("phone3"));
 			pstmt.setString(9, imgname);
-			pstmt.setInt(11, imgsize);
-			pstmt.setString(12, multi.getParameter("id"));
+			pstmt.setInt(10, imgsize);
+			pstmt.setString(11, multi.getParameter("id"));
 			
 			int cnt = pstmt.executeUpdate();
 			if (cnt == 1)	
@@ -380,7 +433,34 @@ public int sendNum(String emailaddr) { //MailSend.java
 		return flag;
 	}	
 	
-
+//회원 삭제----------
+	public boolean deleteMember(String id) {
+Connection con = null;
+PreparedStatement pstmt = null;
+String sql = null;
+boolean flag=false;
+try {
+	con = pool.getConnection();
+	sql = "delete from tblmember where id=?";
+	pstmt = con.prepareStatement(sql);
+	pstmt.setString(1, id);
+	int cnt=pstmt.executeUpdate();
+	if(cnt==1) flag=true;
+} catch (Exception e) {
+	e.printStackTrace();
+} finally {
+	pool.freeConnection(con, pstmt);
+}
+return flag;		
+		
+	}
+	
+	public static void main(String[] args) {
+		MemberMgr1 mgr=new MemberMgr1();
+		boolean a;
+		a=mgr.deleteMember("aaa1");
+		System.out.println(a);
+	}
 	
 	
 

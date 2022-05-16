@@ -13,7 +13,7 @@
 	boolean result=mgr.loginMember(id, pwd);
 	//out.println(result);
 	
-	String msg="로그인에 실패하였습니다.!!";
+	String msg="로그인에 실패하였습니다!!";
 	
 	if(result){
 		//세션에 ("idKey", id); <--idKey라는 '이름'으로 id의 '값'을 저장하는 것.

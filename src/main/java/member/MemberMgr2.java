@@ -4,6 +4,8 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -23,12 +25,12 @@ public class MemberMgr2 {
 	
 	
 	// ------------- �����ϱ� -------------
-	public boolean insertMember(MemberBean1 bean) {
+	public boolean insertMember(HttpServletRequest req) {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	String sql = null;
 	boolean flag=false;
-
+	/*
 	try {
 		//-------파일업로드----------
 		File dir=new File(SAVEFOLDER);
@@ -71,20 +73,9 @@ public class MemberMgr2 {
 	} finally {
 		pool.freeConnection(con, pstmt);
 	}
+	*/
 	return flag;	
 	}
 
-		
-		public static void main(String[] args) {
-		MemberMgr2 mgr=new MemberMgr2();
-		MemberBean1 bean=new MemberBean1("aaa", "1234", "주진모","kim", "naver.com",
-				"skt", 	010, 2568, 1586, 1, "hah.jsp", "454");
-		
-		boolean result=mgr.insertMember(bean);
-		
-		System.out.println(result);
-		
-		}
-	
 	
 }

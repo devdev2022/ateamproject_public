@@ -5,7 +5,7 @@
 %>
 
 <head>
-<link href="jsplayout/css/layoutInt.css" rel="stylesheet">
+<link href="jsplayout/css/layout.css" rel="stylesheet">
 </head>
 
 <body class="body">
