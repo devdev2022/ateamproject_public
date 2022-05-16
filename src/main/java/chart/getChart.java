@@ -91,19 +91,24 @@ public class getChart {
 					}
 					
 					Elements element3 = doc3.select("div#wrap");
-					if(element3.isEmpty()) {
-					}
+					
 //					비디오 =  videoPlyer.next().attr("src")
 					Iterator<Element> videoPlyer = element3.select("div.d_video_list button").iterator();
 //					비디오 =  videoPlyerInfo.next().text()
 					Iterator<Element> videoPlyerInfo = element3.select("div#d_video_summary_heightcheck").iterator();
-					bean.setVideo(videoPlyer.next().attr("data-video-no"));
-					bean.setVideoInfo(videoPlyerInfo.next().text());
+					try {
+						bean.setVideo(videoPlyer.next().attr("data-video-no"));
+						bean.setVideoInfo(videoPlyerInfo.next().text());
+					}catch(Exception e){
+						bean.setVideo("뮤비 정보가 없습니다.");
+						bean.setVideoInfo("뮤비 정보가 없습니다.");
+					}
 					mgr.insertVideo(bean.getVideo(), bean.getVideoInfo(), bean.getTitle());
 					
 				}
 			}
 		}
+		System.out.println("end!!");
 	}
 }
 

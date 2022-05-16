@@ -2,6 +2,8 @@ package chart;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Vector;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud.Update;
 
@@ -90,6 +92,64 @@ public class ChartMgr {
 		return flag;
 	}
 	
+	public Vector<ChartBean> getAllChart(){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector<ChartBean> vlist = new Vector<ChartBean>();
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "select * from tblChart order by chnum DESC, ranking ASC limit 100 ";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ChartBean bean = new ChartBean();
+				bean.setChnum(rs.getInt("chnum"));
+				bean.setRanking(rs.getString("ranking"));
+				bean.setArtist(rs.getString("artist"));
+				bean.setTitle(rs.getString("title"));
+				bean.setAlbumImg(rs.getString("albumimg"));
+				bean.setAlbumName(rs.getString("albumName"));
+				bean.setGetDate(rs.getString("getDate"));
+				bean.setMenuId(rs.getString("menuId"));
+				bean.setSongId(rs.getString("songId"));
+				bean.setLyric(rs.getString("lyric"));
+				bean.setVideo(rs.getString("video"));
+				bean.setVideoInfo(rs.getString("videoInfo"));
+				vlist.addElement(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
 	
+	public ChartBean getDetaile(String title) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ChartBean bean = new ChartBean();
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "select video, videoInfo, lyric from tblChart where title=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, title);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bean.setVideo(rs.getString(1));
+				bean.setVideoInfo(rs.getString(2));
+				bean.setLyric(rs.getString(3));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return bean;
+	}
 	
 }
