@@ -399,11 +399,11 @@ public Vector<MemberBean1> listMember(){
 						, new DefaultFileRenamePolicy());
 			String imgname=null;
 			int imgsize=0;
-			System.out.println("123 : " + multi.getFilesystemName("imgname"));
+			//System.out.println("123 : " + multi.getFilesystemName("imgname"));
 			if(multi.getFilesystemName("imgname")!=null) {
 				imgname=multi.getFilesystemName("imgname");
 				imgsize=(int)multi.getFile("imgname").length(); 
-				System.out.println(multi.getParameter("id")+":"+multi.getParameter("pwd"));
+				//System.out.println(multi.getParameter("id")+":"+multi.getParameter("pwd"));
 		}
 			con = pool.getConnection();
 			sql="update tblmember set pwd =?, name=?, email1=?, email2=?, phonecorp=?, "
@@ -433,7 +433,34 @@ public Vector<MemberBean1> listMember(){
 		return flag;
 	}	
 	
-
+//회원 삭제----------
+	public boolean deleteMember(String id) {
+Connection con = null;
+PreparedStatement pstmt = null;
+String sql = null;
+boolean flag=false;
+try {
+	con = pool.getConnection();
+	sql = "delete from tblmember where id=?";
+	pstmt = con.prepareStatement(sql);
+	pstmt.setString(1, id);
+	int cnt=pstmt.executeUpdate();
+	if(cnt==1) flag=true;
+} catch (Exception e) {
+	e.printStackTrace();
+} finally {
+	pool.freeConnection(con, pstmt);
+}
+return flag;		
+		
+	}
+	
+	public static void main(String[] args) {
+		MemberMgr1 mgr=new MemberMgr1();
+		boolean a;
+		a=mgr.deleteMember("aaa1");
+		System.out.println(a);
+	}
 	
 	
 
