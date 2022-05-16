@@ -123,6 +123,7 @@ function openBoardRead(num) {
 }
 
 .grid_item {
+	overflow: hidden;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -160,6 +161,7 @@ function openBoardRead(num) {
 	-webkit-flex-direction: column;
 	-ms-flex-direction: column;
 	flex-direction: column;
+	white-space: nowrap;
 	grid-auto-columns: 1fr;
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
@@ -228,10 +230,10 @@ function openBoardRead(num) {
 		<div class="grid_item">
 			<%if(filename == null){ %>
 				<div class="grid_upper">
-					<img src="../photo/homeTest1.png" style="width: 100%; height: 100%">
+					<img src="../icon/noimg_square.jpg" style="width: 100%; height: 100%; object-fit: cover;">
 			<%}else{ %>
 				<div class="grid_upper">
-					<img src="../UpLoadFiles/<%=filename%>" style="width: 100%; height: 100%">
+					<img src="../UpLoadFiles/<%=filename%>" style="width: 100%; height: 100%; object-fit: cover;">
 			<%} %>
 			</div>
 			<div class="grid_lower">
@@ -243,7 +245,7 @@ function openBoardRead(num) {
 						<td><font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=id %></a></font></td>
 					</tr>
 					<tr>
-						<td><img src="../icon/like_after.png"><font color="white"><a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%>| 조회수 <%= count%></font></td>
+						<td><img src="../icon/like_gray.png"><font color="white"><a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%>| 조회수 <%= count%></font></td>
 					</tr>
 				</table>
 			</div>

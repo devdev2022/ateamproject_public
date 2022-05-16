@@ -35,8 +35,8 @@
 			<div class="ateam_header_nav_btn">About</div>
 			<form method="get" action="" name="boardListFrm">
 				<a style="padding-left:3vw;" href="javascript:boardListFrm('Hip-Hop')">Hip-Hop</a>
-				<a  style="padding-left:3vw;"  href="javascript:boardListFrm('RnB')">RnB</a>
-				<a  style="padding-left:3vw;"  href="javascript:boardListFrm('Pop')">Pop</a>
+				<a style="padding-left:3vw;"  href="javascript:boardListFrm('RnB')">RnB</a>
+				<a style="padding-left:3vw;"  href="javascript:boardListFrm('Pop')">Pop</a>
 				<a style="padding-left:3vw;"  href="javascript:boardListFrm('EDM')">EDM</a>
 				<input type="hidden" name="bValue" value="">
 			</form>

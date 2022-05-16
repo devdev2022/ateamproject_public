@@ -363,8 +363,9 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		<div><h2><%=bBean.getSubject() %></h2></div>
 		<div><img src="../icon/info_large.jpg" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
 	</div>
+	
 	<!-- 첨부파일영역 -->
-	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2" style="margin-bottom:4vx;">
+	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
 		<div class="dropdown" align="right">
 			<input class="btn btn-outline-secondary dropdown-toggle" type="text" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" value="첨부파일 (<%=fCount %>)" size="10">
 			<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
@@ -384,6 +385,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		</div>
 	</div>
 	<!-- 첨부파일영역 -->
+	
 	<div class="post-main w-container">
 		<%=bBean.getContent() %><br>
 		<%	
