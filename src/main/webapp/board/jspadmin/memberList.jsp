@@ -1,9 +1,16 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.Vector" %>
+<%@ page import="member.MemberBean1" %>
+<jsp:useBean id="mgr" class="member.MemberMgr1"/>
+
 <%
-	/* String adminId = (String)session.getAttribute("idKey");
+	/*  String adminId = (String)session.getAttribute("idKey");
 	if (adminId!="aaa"){
 		response.sendRedirect("../jsphome/home.jsp");
-	} */
+	} */ 
+	
+	Vector<MemberBean1> vlist = new Vector<MemberBean1>(); 
+	vlist = mgr.listMember();
 %>
 
 <!doctype html>
@@ -26,10 +33,14 @@ function deleteChk(){
 }
 
 </script>
+
 <body style="padding: 5vw;">
 	<h3>관리자 페이지입니다.</h3>
 	<hr>
 	<table class="table">
+		<% for (int i=0; i < vlist.size(); i++){
+				System.out.println(i+"번째 항목을 불러왔습니다.");
+			}%>
 		<thead>
 			<tr>
 				<th scope="col">No.</th>

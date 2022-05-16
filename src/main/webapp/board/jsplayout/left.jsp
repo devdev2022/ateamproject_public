@@ -8,7 +8,6 @@
 
 	<div class="sidebar w-col w-col-2">
 		<%boolean imgFound = (bean.getImgname()!=null);
-		System.out.println(bean.getImgname()!=null);
 		if(imgFound){
 			String url = "../photo/" + bean.getImgname();%> 
 			<a href="#" class="side_profile_img" style="background-image: url('<%=url%>'); border-color: white; border-width: thick; border-radius: 70%; background-size: cover; background-repeat: no-repeat"></a>
