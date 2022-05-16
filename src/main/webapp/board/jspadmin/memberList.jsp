@@ -1,6 +1,9 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%
-	
+	/* String adminId = (String)session.getAttribute("idKey");
+	if (adminId!="aaa"){
+		response.sendRedirect("../jsphome/home.jsp");
+	} */
 %>
 
 <!doctype html>

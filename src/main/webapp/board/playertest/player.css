@@ -39,7 +39,7 @@
   color: rgba(225, 225, 225, 0.4);
 }
 .music-player .info .jp-playlist li a span {
-  font-size: 5vw; /* 14px; */
+  font-size: 14px; /* 14px; */
   display: block;
   margin-top: 10px;
 }

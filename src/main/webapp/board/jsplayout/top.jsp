@@ -27,10 +27,10 @@
 			<div class="ateam_header_nav_btn"></div>
 			<div class="ateam_header_nav_btn"><a href="../jsphome/home.jsp">HOME</a></div>
 			<div class="ateam_header_nav_btn">About</div>
-			<div class="ateam_header_nav_btn"><a href="../boardList.jsp">Hip-Hop</div></a>
-			<div class="ateam_header_nav_btn"><a href="../boardList.jsp">R&B</div></a>
-			<div class="ateam_header_nav_btn"><a href="../boardList.jsp">Pop</div></a>
-			<div class="ateam_header_nav_btn"><a href="../boardList.jsp">EDM</div></a>
+			<div class="ateam_header_nav_btn"><a href="../jspboard/boardList.jsp">Hip-Hop</div></a>
+			<div class="ateam_header_nav_btn"><a href="../jspboard/boardList.jsp">R&B</div></a>
+			<div class="ateam_header_nav_btn"><a href="../jspboard/boardList.jsp">Pop</div></a>
+			<div class="ateam_header_nav_btn"><a href="../jspboard/boardList.jsp">EDM</div></a>
 			<div class="ateam_header_nav_btn"><a href="../jspmember/myPageIndex.jsp">My Page</a></div>
 			<!-- 수정사항 : 로그인되어 있지 않으면, jsplogin/login.jsp로. 로그인되어 있으면, myPageIndex.jsp로.  -->
 			<div class="ateam_header_nav_btn"></div>
