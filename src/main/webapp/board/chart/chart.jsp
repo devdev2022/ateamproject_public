@@ -1,6 +1,6 @@
 <%@page import="chart.ChartBean"%>
 <%@page import="java.util.Vector"%>
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="chartMgr" class="chart.ChartMgr"/>
 
 <%
@@ -31,28 +31,28 @@
 <form action="" name="chartFrm" method="get">
 	<div align="center">
 		<table border="1" style="width: 80%" >
-			<caption>¿Œ±‚¬˜∆Æ 100</caption>
+			<caption>Ïù∏Í∏∞Ï∞®Ìä∏ 100</caption>
 			<colgroup>
-				<!-- º¯¿ß -->
+				<!-- ÏàúÏúÑ -->
 				<col style="width: 20px">
-				<!-- æŸπ¸ªÁ¡¯ -->
+				<!-- Ïï®Î≤îÏÇ¨ÏßÑ -->
 				<col style="width: 80px">
-				<!-- ≈∏¿Ã∆≤ -->
+				<!-- ÌÉÄÏù¥ÌãÄ -->
 				<col>
-				<!-- æ∆∆ºΩ∫∆Æ -->
+				<!-- ÏïÑÌã∞Ïä§Ìä∏ -->
 				<col style="width: 250px">
-				<!-- æŸπ¸∏Ì -->
+				<!-- Ïï®Î≤îÎ™Ö -->
 				<col style="width: 300px">
-				<!-- ∞°ªÁ -->
+				<!-- Í∞ÄÏÇ¨ -->
 				<col style="width: 100px">
-				<!-- ªÛºº¡§∫∏ -->
+				<!-- ÏÉÅÏÑ∏Ï†ïÎ≥¥ -->
 				<col style="width: 100px">
 			</colgroup>
 			<thead>
 				<tr>
 					<th scope="col">
 						<div>
-							<span>º¯¿ß</span>
+							<span>ÏàúÏúÑ</span>
 						</div>
 					</th>
 					<th scope="col">
@@ -62,27 +62,27 @@
 					</th>
 					<th scope="col">
 						<div>
-							<span>≈∏¿Ã∆≤</span>
+							<span>ÌÉÄÏù¥ÌãÄ</span>
 						</div>
 					</th>
 					<th scope="col">
 						<div>
-							<span>æ∆∆ºΩ∫∆Æ</span>
+							<span>ÏïÑÌã∞Ïä§Ìä∏</span>
 						</div>
 					</th>
 					<th scope="col" >
 						<div>
-							<span>æŸπ¸∏Ì</span>
+							<span>Ïï®Î≤îÎ™Ö</span>
 						</div>
 					</th>
 					<th scope="col">
 						<div>
-							<span>∞°ªÁ∫∏±‚</span>
+							<span>Í∞ÄÏÇ¨Î≥¥Í∏∞</span>
 						</div>
 					</th>
 					<th scope="col">
 						<div>
-							<span>ªÛºº¡§∫∏</span>
+							<span>ÏÉÅÏÑ∏Ï†ïÎ≥¥</span>
 						</div>
 					</th>
 				</tr>
@@ -93,32 +93,32 @@
 				<%for(int i=0; i<chartSize; i++){ %>
 				<%ChartBean chBean = chartVlist.get(i);%>
 					<tr>
-						<!-- º¯¿ß -->
+						<!-- ÏàúÏúÑ -->
 						<td>
 							<div align="center"><%=chBean.getRanking() %></div>
 						</td>
 						<td>
-							<!-- æŸπ¸ªÁ¡¯ -->
+							<!-- Ïï®Î≤îÏÇ¨ÏßÑ -->
 							<div align="center"><img src="<%=chBean.getAlbumImg() %>"></div>
 						</td>
 						<td>
-							<!-- ≈∏¿Ã∆≤ -->
+							<!-- ÌÉÄÏù¥ÌãÄ -->
 							<div align="center"><%=chBean.getTitle() %></div>
 						</td>
 						<td>
-							<!-- æ∆∆ºΩ∫∆Æ -->
+							<!-- ÏïÑÌã∞Ïä§Ìä∏ -->
 							<div align="center"><%=chBean.getArtist() %></div>
 						</td>
 						<td>
-							<!-- æŸπ¸∏Ì -->
+							<!-- Ïï®Î≤îÎ™Ö -->
 							<div align="center"><%=chBean.getAlbumName()%></div>
 						</td>
 						<td>
-							<!-- ∞°ªÁ -->
+							<!-- Í∞ÄÏÇ¨ -->
 							<div align="center"><a href="javascript:openchartLyric('<%=chBean.getTitle() %>')"><img src="../icon/detail.png"></a></div>
 						</td>
 						<td>
-							<!-- ªÛºº¡§∫∏ -->
+							<!-- ÏÉÅÏÑ∏Ï†ïÎ≥¥ -->
 							<div align="center"><a href="javascript:openchartDetaile('<%=chBean.getTitle() %>')"><img src="../icon/detail.png"></a></div>
 						</td>
 					</tr>

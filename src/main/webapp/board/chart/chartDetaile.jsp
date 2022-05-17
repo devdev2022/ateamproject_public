@@ -1,5 +1,5 @@
 <%@page import="chart.ChartBean"%>
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="chartMgr" class="chart.ChartMgr"/>
 <%
 	String title = request.getParameter("title");
@@ -19,7 +19,7 @@
 	out.print(bean.getVideo());	
 	if(bean.getVideo() == null){
 	%>
-	<div>╧баВ╨Я╣П©ю а╓╨╦╟║ ╬Ь╫ю╢о╢ы.</div>
+	<div>К╝╓Л╖│К╧└К■■Л≤╓ Л═∙КЁ╢Й╟─ Л≈├Л┼╣К▀┬К▀╓.</div>
 	<%}else{ %>
 	<div>
 		<iframe style="width:100%; height:100%; position : absolute;top:0; left:0" id="frame_video_" scrolling="no" src="https://www.melon.com/video/player.htm?mvId=<%=bean.getVideo() %>

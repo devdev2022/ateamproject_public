@@ -1,5 +1,5 @@
 <%@page import="chart.ChartBean"%>
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="chartMgr" class="chart.ChartMgr"/>
 <%
 	String title = request.getParameter("title");

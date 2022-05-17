@@ -15,7 +15,8 @@ import org.jsoup.select.Elements;
  * 멜론 https://www.melon.com/chart/index.htm
  */
 public class getChart {
-	public static void main(String[] args) {
+	
+		public getChart() {
 		String url= "https://www.melon.com/chart/index.htm";
 		
 		Document doc = null;

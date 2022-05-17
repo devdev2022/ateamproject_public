@@ -1,3 +1,4 @@
+<%@page import="org.apache.tomcat.util.bcel.Const"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="leftMgr" class="member.MemberMgr1"/>
 <jsp:useBean id="leftBean" class="member.MemberBean1"/>
@@ -49,7 +50,7 @@
 				</div>
 			</a>
 		</div>
-		<div class="side_chart" style="background-color: ivory"></div>
+			<a href="../chart/chart.jsp"><font size="25px" color="green">인기차트 100</font></a>
 	</div>
 
 
