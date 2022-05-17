@@ -257,8 +257,8 @@ boolean result=mgr.loginMember(id, pwd);
 		<div class="memberlbl"><h3>회원가입</h3></div>
 		<div class="join_form_block">
 			<div style="margin-top: 2vw;"></div>
-			<div class="col-auto profile_div" width="10vw" height="10vw" >	
-				<img src="../icon/profile_def.png">
+			<div class="col-auto profile_div">	
+				<img src="../icon/info_large.jpg" width="150vw">
 			</div>
 
 			<div style="margin-top: 2vw;"></div>

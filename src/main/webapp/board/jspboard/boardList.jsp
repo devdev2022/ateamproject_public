@@ -16,7 +16,7 @@
 	int nowPage = 1; //현재 페이지
 	int nowBlock = 1; //현재 블럭
 	
-	String loginId = "aaa";
+	String loginId = (String)session.getAttribute("idKey");
 	session.setAttribute("idKey", loginId);
 	
 	if(request.getParameter("numPerPage")!=null){

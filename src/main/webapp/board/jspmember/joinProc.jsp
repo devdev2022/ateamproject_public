@@ -10,10 +10,10 @@
 	// 나머지 모두 id, name, 11개가 모두 밑 하나로 됨.
 	//<jsp:setProperty property="*" name="bean"/>
 	boolean result=mgr.insertMember(request);
-	String msg="가입실패 했습니다.!!";
+	String msg="회원가입이 정상처리되지 못했습니다. 관리자에게 문의해주세요.";
 	String url="join.jsp";
 	if(result){
-		msg="가입성공됐네요.";
+		msg="가입을 환영합니다.";
 		url="login.jsp";
 		// 회원가입과 동시에 로그인이 되는 것.밑
 		session.setAttribute("idKey", bean.getId());
