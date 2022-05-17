@@ -2369,7 +2369,7 @@ rotate(
 										<tr>
 											<td align="center">
 												<%=totalRecord - start - i %>
-												<%if(loginId.trim().equals(id) || loginId == id){ %>
+												<%if(loginId == id){ %>
 												<a href="javascript:deleteBoard('<%=num%>')"><font color="red">X</font></a>
 												<%} %>
 											</td>

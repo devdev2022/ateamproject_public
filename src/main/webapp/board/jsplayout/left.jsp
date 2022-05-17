@@ -50,7 +50,11 @@
 				</div>
 			</a>
 		</div>
-			<a href="../chart/chart.jsp"><font size="25px" color="green">인기차트 100</font></a>
+			<div style="padding-top:3vw; display:flex; align-itmes: center;">
+				<a href="../chart/chart.jsp">
+				<img src= "../icon/melon.png" width="30vw">
+				<b><font size="3vw" color="green"> 인기차트 100</font></b></a>
+			</div>
 	</div>
 
 
