@@ -210,7 +210,51 @@
 			<div class="w-layout-grid board_grid">
 			
 				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../photo/homeTest3.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
 						<div class="trans_block">
 							<div>
 								<div class="text-label">
@@ -232,51 +276,7 @@
 					</a>
 				</div>
 				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
 						<div class="trans_block">
 							<div>
 								<div class="text-label">
