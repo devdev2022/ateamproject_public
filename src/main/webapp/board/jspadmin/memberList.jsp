@@ -34,8 +34,10 @@
 </head>
 <script>
 function deleteChk(id, name){
-	alert(
-			'정말로 다음 회원을 강제 탈퇴시키겠습니까?\nid: '+ id + '\n이용자명:'+	name);
+	var delMsg = confirm('정말로 다음 회원을 강제 탈퇴시키겠습니까?\nid: '+ id + '\n이용자명:'+	name);
+	if(delMsg){
+		memberDeleteProc.
+	}
 	return false;
 }
 
