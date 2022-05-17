@@ -45,15 +45,6 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div>
 		<%=bean.getVideoInfo() %>
 	</div>
