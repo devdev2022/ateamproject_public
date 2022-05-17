@@ -29,20 +29,21 @@
 		</div>
 	</header>
 	<header class="ateam_headbar wf-section" style="font-family: 'Koulen', cursive;">
+	<form style="margin: 0px;" method="get" action="../jspboard/boardList.jsp" name="boardListFrm">
 		<div class="ateam_header_navbar" style="font-family: 'Koulen', cursive; display: flex; justify-content: space-evenly;">
-			<div class="ateam_header_nav_btn"></div>
-			<div class="ateam_header_nav_btn"><a href="../jsphome/home.jsp">HOME</a></div>
-			<div class="ateam_header_nav_btn">About</div>
-			<form method="get" action="" name="boardListFrm">
-				<a style="padding-left:3vw;" href="javascript:boardListFrm('Hip-Hop')">Hip-Hop</a>
-				<a style="padding-left:3vw;"  href="javascript:boardListFrm('RnB')">RnB</a>
-				<a style="padding-left:3vw;"  href="javascript:boardListFrm('Pop')">Pop</a>
-				<a style="padding-left:3vw;"  href="javascript:boardListFrm('EDM')">EDM</a>
-				<input type="hidden" name="bValue" value="">
-			</form>
+				<div class="ateam_header_nav_btn"></div>
+				<div class="ateam_header_nav_btn"><a href="../jsphome/home.jsp">HOME</a></div>
+				<div class="ateam_header_nav_btn">About</div>
+				<div class="ateam_header_nav_btn"><a href="javascript:boardListFrm('Hip-Hop')">Hip-Hop</a></div>
+				<div class="ateam_header_nav_btn"><a href="javascript:boardListFrm('RnB')">RnB</a></div>
+				<div class="ateam_header_nav_btn"><a href="javascript:boardListFrm('Pop')">Pop</a></div>
+				<div class="ateam_header_nav_btn"><a href="javascript:boardListFrm('EDM')">EDM</a></div>
+			<input type="hidden" name="bValue" value="">
+			
 			<div class="ateam_header_nav_btn"><a href="../jspmember/myPageIndex.jsp">My Page</a></div>
 			<!-- 수정사항 : 로그인되어 있지 않으면, jsplogin/login.jsp로. 로그인되어 있으면, myPageIndex.jsp로.  -->
 			<div class="ateam_header_nav_btn"></div>
 		</div>
+		</form>
 	</header>
 
