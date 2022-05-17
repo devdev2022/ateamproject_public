@@ -27,13 +27,13 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<script>
+<script type="text/javascript">
 	function setCategory(category) {
 		document.postFrm.category.value = category;
 	}
 	
-	function setBValue(bValue) {
-		document.postFrm.bValue.value = bValue;
+	function setbValue(bValue) {
+		document.postFrm.bValue1.value = bValue;
 	}
 	
 
@@ -195,14 +195,14 @@
 					%>
 					
 					<div class="dropdown">
-						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="<%=bValue %>" name="bValue">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="<%=bValue %>" name="bValue1">
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						<%
 							for(int i=0; i<bVSize; i++){
 								BoardBean caBean = bVVlist.get(i);
 								bValue = caBean.getType_cat();//게시판 개수 고려
 							%>
-								<li><a class="dropdown-item" href="javascript:setBValue('<%=bValue %>')"><%=bValue %></a></li>
+								<li><a class="dropdown-item" href="javascript:setbValue('<%=bValue %>')"><%=bValue %></a></li>
 							<%} %>
 						</ul>
 					</div>
