@@ -251,7 +251,6 @@
 	<div class="layout-lower-bottom w-container">
 		<input type="button" value="저장" class="btn btn-dark" onclick="javascript:check()">
 		<a href="javascript:history.back()"><button type="button" class="btn btn-dark">취소</button></a>
-		<a href="javascript:location.href='boardList.jsp?bValue=<%=bValue%>'" ><button type="button" class="btn btn-dark">리스트</button></a>
 	</div>
 	<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
 	<input type="hidden" name="loginId" value="<%=loginId%>">

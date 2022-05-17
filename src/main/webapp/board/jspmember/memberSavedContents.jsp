@@ -227,12 +227,20 @@ function openBoardRead(num) {
 	<%	}else{%>
 		
 		<div class="grid_item">
+			<div class="grid_upper">
 			<%if(filename == null){ %>
-				<div class="grid_upper">
 					<img src="../icon/noimg_square.jpg" style="width: 100%; height: 100%; object-fit: cover;">
 			<%}else{ %>
-				<div class="grid_upper">
-					<img src="../../UpLoadFiles/<%=filename%>" style="width: 100%; height: 100%; object-fit: cover;">
+			<%
+//				파일 확장자 구분
+				int point = filename.lastIndexOf( "." );
+				String ext = filename.substring(point + 1 );
+			%>	
+					<%if(ext.trim().equals("jpg") || ext.trim().equals("gif") || ext.trim().equals("jpeg") || ext.trim().equals("bmp") || ext.trim().equals("png") || ext.trim().equals("tif") || ext.trim().equals("tga") || ext.trim().equals("rle") || ext.trim().equals("dib") || ext.trim().equals("tiff") || ext.trim().equals("raw")){ %>
+						<img src="../../UpLoadFiles/<%=filename%>" style="width: 100%; height: 100%; object-fit: cover;">
+				<%}else{ %>
+						<img src="../icon/noimg_square.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+				<%} %>
 			<%} %>
 			</div>
 			<div class="grid_lower">
