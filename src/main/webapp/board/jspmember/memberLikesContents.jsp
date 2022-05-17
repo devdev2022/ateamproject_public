@@ -171,7 +171,7 @@ function openBoardRead(num) {
 	grid-template-rows: auto auto auto;
 	background-color: #080808;
 	padding-left: 0.5vw;
-	font-size: 0.5vw;
+	font-size: 0.8vw;
 	color: white;
 }
 
@@ -237,17 +237,17 @@ function openBoardRead(num) {
 			<%} %>
 			</div>
 			<div class="grid_lower">
-				<table>
-					<tr>
-						<td><font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=subject %></a></font></td>
-					</tr>
-					<tr>
-						<td><font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=id %></a></font></td>
-					</tr>
-					<tr>
-						<td><img src="../icon/like_gray.png"><font color="white"><a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%>| 조회수 <%= count%></font></td>
-					</tr>
-				</table>
+				<ul style="list-style: none; padding: 0.3vw;">
+					<li>
+						<font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=subject %></a></font>
+					</li>
+					<li>
+						<font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=id %></a></font>
+					</li>
+					<li>
+						<img src="../icon/like_gray.png" width="12vw"><font color="white"><a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%>| 조회수 <%= count%></font>
+					</li>
+				</ul> 
 			</div>
 		</div>
 		<%} %>
