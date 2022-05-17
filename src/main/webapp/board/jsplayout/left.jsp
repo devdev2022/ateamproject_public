@@ -20,7 +20,7 @@
 		<%}%>
 		
 			
-		<div class="side_profile_text" style="text-align: center; color: white;">
+		<div class="side_profile_text" style="text-align: center; color: white; margin-bottom: 0.5vw; white-space: nowrap;">
 			
 			<%if(leftId==null){%> 
 				로그인하세요.
