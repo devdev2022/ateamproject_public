@@ -208,7 +208,7 @@
 						</ul>
 					</div>
 					<%
-						Vector<BoardBean> caVlist = bMgr.getCategory(oriBValue);
+						Vector<BoardBean> caVlist = bMgr.getCategory();
 						int caSize = caVlist.size(); //카테고리 개수 고려
 					%>
 					<div class="dropdown">

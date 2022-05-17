@@ -33,7 +33,7 @@
 	}
 	
 	function setbValue(bValue) {
-		document.postFrm.bValue1.value = bValue;
+		document.postFrm.bValue.value = bValue;
 	}
 	
 
@@ -195,7 +195,7 @@
 					%>
 					
 					<div class="dropdown">
-						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="<%=bValue %>" name="bValue1">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="<%=bValue %>" name="bValue">
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						<%
 							for(int i=0; i<bVSize; i++){
@@ -207,7 +207,7 @@
 						</ul>
 					</div>
 					<%
-						Vector<BoardBean> caVlist = bMgr.getCategory(bValue);
+						Vector<BoardBean> caVlist = bMgr.getCategory();
 						int caSize = caVlist.size(); //카테고리 개수 고려
 					%>
 					<div class="dropdown">
@@ -255,7 +255,6 @@
 	</div>
 	<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
 	<input type="hidden" name="loginId" value="<%=loginId%>">
-	<input type="hidden" name="bValue" value="<%=bValue%>">
 	
 	</form>
 <!-- ==============페이지 내용 끝============== -->
