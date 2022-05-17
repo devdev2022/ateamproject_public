@@ -1,7 +1,14 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@page import="board.BoardMgr"%>
+<%@page import="board.BoardBean"%>
+<%@page import="java.util.Vector"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<jsp:useBean id="bMgr" class="board.BoardMgr"/>
+<jsp:useBean id="cMgr" class="board.CommentMgr"/>
 
 <%
-
+	
+	/* Vector<BoardBean> vlist = bMgr.getBoardList(keyField, keyWord, start, cnt, null, null); */
 %>
 <head>
 <style>
