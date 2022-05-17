@@ -3,6 +3,9 @@ package chart;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.Vector;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud.Update;
@@ -68,7 +71,7 @@ public class ChartMgr {
 		return flag;
 	}
 	
-	public boolean insertVideo(String video, String videoInfo, String title) {
+	public boolean insertVideo(String video, String videoInfo, String Title) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -79,7 +82,7 @@ public class ChartMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, video);
 			pstmt.setString(2, videoInfo);
-			pstmt.setString(3, title);
+			pstmt.setString(3, Title);
 			int cnt = pstmt.executeUpdate();
 			if(cnt == 1) {
 				flag = true;
@@ -105,7 +108,7 @@ public class ChartMgr {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ChartBean bean = new ChartBean();
-				bean.setChnum(rs.getInt("chnum"));
+				bean.setChnum(rs.getString("chnum"));
 				bean.setRanking(rs.getString("ranking"));
 				bean.setArtist(rs.getString("artist"));
 				bean.setTitle(rs.getString("title"));
@@ -119,6 +122,7 @@ public class ChartMgr {
 				bean.setVideoInfo(rs.getString("videoInfo"));
 				vlist.addElement(bean);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
