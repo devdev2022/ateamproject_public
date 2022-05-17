@@ -258,7 +258,7 @@ boolean result=mgr.loginMember(id, pwd);
 		<div class="join_form_block">
 			<div style="margin-top: 2vw;"></div>
 			<div class="col-auto profile_div" width="10vw" height="10vw" >	
-				<img src="../icon/profile_def.png">
+				<img src="../icon/detail.png">
 			</div>
 
 			<div style="margin-top: 2vw;"></div>
@@ -267,7 +267,7 @@ boolean result=mgr.loginMember(id, pwd);
 
 				<div>아이디*</div>
 				<div class="col-auto col-md-4">
-					<input name="id" value="aaa"class="form-control">
+					<input name="id"  class="form-control">
 				</div>
 <!--  -->
 				<input type="button" value="중복확인" class="btn btn-dark col-auto" 
@@ -275,7 +275,7 @@ boolean result=mgr.loginMember(id, pwd);
 
 				<div>비밀번호*</div>
 				<div class="col-auto col-md-4">
-					<input name="pwd" value="1234" class="form-control">
+					<input name="pwd"  class="form-control">
 				</div>
 				<div>비밀번호 확인*</div>
 				<div class="col-auto col-md-4">
@@ -297,11 +297,11 @@ boolean result=mgr.loginMember(id, pwd);
 
 				<div>이메일*</div>
 				<div class="col-auto col-md-3">
-					<input name="email1" value="abc"class="form-control">
+					<input name="email1"  class="form-control">
 				</div>
 				<div class="col-auto">@</div>
 				<div class="col-auto col-md-3">
-					<input name="email2" value="naver.com"class="form-control">
+					<input name="email2"  class="form-control">
 				</div>
 				
 				
@@ -320,10 +320,10 @@ boolean result=mgr.loginMember(id, pwd);
 					<input name="phone1" value="010" class="form-control">
 				</div>
 				<div class="col-auto col-md-2">
-					<input name="phone2" value="2555"class="form-control">
+					<input name="phone2"  class="form-control">
 				</div>
 				<div class="col-auto col-md-2">
-					<input name="phone3" value="9875"class="form-control">
+					<input name="phone3" class="form-control">
 				</div>
 				<div style="margin-top: 3vw;"></div>
 			</div>
