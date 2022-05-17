@@ -473,7 +473,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	
 	<div class="layout-lower-bottom w-container">
 		<input id="replybtn" type="button" class="btn btn-dark" value="답글" onclick="javascript:location.href='boardReply.jsp?num=<%=num%>&category=<%=bBean.getType_cat()%>&bValue=<%=bBean.getType_board()%>'">
-		<a id="listbtn" type="button" class="btn btn-white" "href="javascript:location.href='boardList.jsp'">목록</a>
+		<input id="listbtn" type="button" class="btn btn-white" value="목록" onclick="javascript:location.href='boardList.jsp?bValue=<%=bValue%>'">
 	</div>
 	
 	<%

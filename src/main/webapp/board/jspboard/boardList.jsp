@@ -2435,7 +2435,7 @@ rotate(
 						</div>
 					</div>
 				</td>
-			<form name="btnFrm" action="boardPost.jsp?bvValue=<%=bValue%>">
+			<form name="btnFrm" action="boardPost.jsp?bValue=<%=bValue%>">
 				<td align="right">
 					<a style="color: white;" href="javascript:document.btnFrm.submit()"><button type="button" class="btn btn-dark">글쓰기</button></a> 
 					<a href="javascript:list()"><button type="button" class="btn btn-light">처음으로</button></a>
