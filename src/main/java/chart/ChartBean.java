@@ -2,7 +2,7 @@ package chart;
 
 public class ChartBean {
 	
-	private int chnum;
+	private String chnum;
 	private String ranking;
 	private String artist;
 	private String title;
@@ -15,10 +15,10 @@ public class ChartBean {
 	private String video;
 	private String videoInfo;
 	
-	public int getChnum() {
+	public String getChnum() {
 		return chnum;
 	}
-	public void setChnum(int chnum) {
+	public void setChnum(String chnum) {
 		this.chnum = chnum;
 	}
 	public String getRanking() {

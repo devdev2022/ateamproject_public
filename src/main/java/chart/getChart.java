@@ -79,7 +79,7 @@ public class getChart {
 				bean.setLyric(lyric.next().text());
 //				System.out.println(bean.getArtist());
 //				System.out.println(bean.getLyric());
-				if(mgr.insertLyric(bean.getLyric(), bean.getArtist(), bean.getTitle())) {			
+				mgr.insertLyric(bean.getLyric(), bean.getArtist(), bean.getTitle());
 //					뮤비 가져오는 크롤링
 					String url3 = "https://www.melon.com/video/detail2.htm?songId=";
 					url3 = url3 + bean.getSongId() + "&menuId=" + bean.getMenuId();
@@ -99,13 +99,13 @@ public class getChart {
 					try {
 						bean.setVideo(videoPlyer.next().attr("data-video-no"));
 						bean.setVideoInfo(videoPlyerInfo.next().text());
+						mgr.insertVideo(bean.getVideo(), bean.getVideoInfo(), bean.getTitle());
 					}catch(Exception e){
 						bean.setVideo("뮤비 정보가 없습니다.");
 						bean.setVideoInfo("뮤비 정보가 없습니다.");
+						mgr.insertVideo(bean.getVideo(), bean.getVideoInfo(), bean.getTitle());
 					}
-					mgr.insertVideo(bean.getVideo(), bean.getVideoInfo(), bean.getTitle());
 					
-				}
 			}
 		}
 		System.out.println("end!!");
