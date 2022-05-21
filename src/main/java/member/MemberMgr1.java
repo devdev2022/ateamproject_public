@@ -11,12 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-
-
 public class MemberMgr1 {
 
 	private DBConnectionMgr pool;
-
 	
 	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/board/photo/";
 
@@ -26,8 +23,7 @@ public class MemberMgr1 {
 	public MemberMgr1() {
 		pool = DBConnectionMgr.getInstance();
 	} 
-	
-	
+		
 
 public int sendNum(String emailaddr) { //MailSend.java
 		Random r = new Random();
@@ -184,7 +180,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 //		System.out.println(a);  //주진모 출력됨.
 //	}
 	
-	//-------------- id 보여주기---------------
+	//-------------- pwd 보여주기---------------
 	public String showPwd(String emailaddr) {
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -215,7 +211,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 	}
 	
 
-	// ------------- �α��� Ȯ���ϱ� -------------
+	// ------------- 로그인 확인 -------------
 	public boolean loginMember(String id, String pwd) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -243,7 +239,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 	
 	
 
-	//회원정보 가져오기<-- 회원수정에서 기존 정보를 화면에 띄워줘야 해서.
+	//---1명의 회원정보 가져오기----------<-- 회원수정에서 기존 정보를 화면에 띄워줘야 해서.
 	public MemberBean1 getMember(String id) {
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -281,7 +277,7 @@ public int sendNum(String emailaddr) { //MailSend.java
 		
 	}
 	
-//회원 모두 가져오기
+//------회원 모두 가져오기------------------------------
 public Vector<MemberBean1> listMember(){
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -330,7 +326,7 @@ public Vector<MemberBean1> listMember(){
 //}
 	
 	
-	// ------------- �����ϱ� -------------
+	// ------------- 회원 추가하기 -------------
 	public boolean insertMember(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -385,7 +381,7 @@ public Vector<MemberBean1> listMember(){
 //}
 	
 	
-	// ------------- �����ϱ� -------------
+	// ------------- 회원 수정하기 -------------
 	public boolean updateMember(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -433,7 +429,7 @@ public Vector<MemberBean1> listMember(){
 		return flag;
 	}	
 	
-//회원 삭제----------
+//-------------회원 삭제----------
 	public boolean deleteMember(String id) {
 Connection con = null;
 PreparedStatement pstmt = null;
@@ -462,10 +458,7 @@ return flag;
 		System.out.println(a);
 	}
 	
-	
-
-	
-	
+		
 	
 	
 }
