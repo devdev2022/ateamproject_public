@@ -60,8 +60,8 @@ function pageing(page) {
 }
 
 function openBoardRead(num) {
-	url = "boardRead.jsp?num=" + num;
-	window.open(url, "boardRead.jsp?num="+num,"width=1000,height=1000,scrollbars=yes");
+	url = "../jspboard/boardRead.jsp?num=" + num;
+	window.open(url, "../jspboard/boardRead.jsp?num="+num,"width=1000,height=1000,scrollbars=yes");
 }
 </script>
 
@@ -170,7 +170,7 @@ function openBoardRead(num) {
 	grid-template-rows: auto auto auto;
 	background-color: #080808;
 	padding-left: 0.5vw;
-	font-size: 0.5vw;
+	font-size: 0.8vw;
 	color: white;
 }
 
@@ -227,26 +227,34 @@ function openBoardRead(num) {
 	<%	}else{%>
 		
 		<div class="grid_item">
+			<div class="grid_upper">
 			<%if(filename == null){ %>
-				<div class="grid_upper">
 					<img src="../icon/noimg_square.jpg" style="width: 100%; height: 100%; object-fit: cover;">
 			<%}else{ %>
-				<div class="grid_upper">
-					<img src="../../UpLoadFiles/<%=filename%>" style="width: 100%; height: 100%; object-fit: cover;">
+			<%
+//				파일 확장자 구분
+				int point = filename.lastIndexOf( "." );
+				String ext = filename.substring(point + 1 );
+			%>	
+					<%if(ext.trim().equals("jpg") || ext.trim().equals("gif") || ext.trim().equals("jpeg") || ext.trim().equals("bmp") || ext.trim().equals("png") || ext.trim().equals("tif") || ext.trim().equals("tga") || ext.trim().equals("rle") || ext.trim().equals("dib") || ext.trim().equals("tiff") || ext.trim().equals("raw")){ %>
+						<img src="../../UpLoadFiles/<%=filename%>" style="width: 100%; height: 100%; object-fit: cover;">
+				<%}else{ %>
+						<img src="../icon/noimg_square.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+				<%} %>
 			<%} %>
 			</div>
 			<div class="grid_lower">
-				<table>
-					<tr>
-						<td><font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=subject %></a></font></td>
-					</tr>
-					<tr>
-						<td><font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=id %></a></font></td>
-					</tr>
-					<tr>
-						<td><img src="../icon/save_gray.png"><font color="white"> <a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%> | 조회수 <%= count%></font></td>
-					</tr>
-				</table>
+				<ul style="list-style: none; padding: 0.3vw;">
+					<li>
+						<font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=subject %></a></font>
+					</li>
+					<li>
+						<font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=id %></a></font>
+					</li>
+					<li>
+						<img src="../icon/save_gray.png" width="12vw"><font color="white"> <a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%> | 조회수 <%= count%></font>
+					</li>
+				</ul> 
 			</div>
 		</div>
 		<%} %>

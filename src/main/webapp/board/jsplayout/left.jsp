@@ -1,3 +1,4 @@
+<%@page import="org.apache.tomcat.util.bcel.Const"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="leftMgr" class="member.MemberMgr1"/>
 <jsp:useBean id="leftBean" class="member.MemberBean1"/>
@@ -20,7 +21,7 @@
 		<%}%>
 		
 			
-		<div class="side_profile_text" style="text-align: center; color: white;">
+		<div class="side_profile_text" style="text-align: center; color: white; margin-bottom: 0.5vw; white-space: nowrap;">
 			
 			<%if(leftId==null){%> 
 				로그인하세요.
@@ -49,7 +50,11 @@
 				</div>
 			</a>
 		</div>
-		<div class="side_chart" style="background-color: ivory"></div>
+			<div style="padding-top:3vw; display:flex; align-itmes: center;">
+				<a href="../chart/chart.jsp">
+				<img src= "../icon/melon.png" width="30vw">
+				<b><font size="3vw" color="green"> 인기차트 100</font></b></a>
+			</div>
 	</div>
 
 

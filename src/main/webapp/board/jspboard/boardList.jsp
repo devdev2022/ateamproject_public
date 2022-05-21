@@ -16,7 +16,7 @@
 	int nowPage = 1; //현재 페이지
 	int nowBlock = 1; //현재 블럭
 	
-	String loginId = "aaa";
+	String loginId = (String)session.getAttribute("idKey");
 	session.setAttribute("idKey", loginId);
 	
 	if(request.getParameter("numPerPage")!=null){
@@ -2369,7 +2369,7 @@ rotate(
 										<tr>
 											<td align="center">
 												<%=totalRecord - start - i %>
-												<%if(loginId.trim().equals(id) || loginId == id){ %>
+												<%if(loginId == id){ %>
 												<a href="javascript:deleteBoard('<%=num%>')"><font color="red">X</font></a>
 												<%} %>
 											</td>
@@ -2435,7 +2435,7 @@ rotate(
 						</div>
 					</div>
 				</td>
-			<form name="btnFrm" action="boardPost.jsp?bvValue=<%=bValue%>">
+			<form name="btnFrm" action="boardPost.jsp?bValue=<%=bValue%>">
 				<td align="right">
 					<a style="color: white;" href="javascript:document.btnFrm.submit()"><button type="button" class="btn btn-dark">글쓰기</button></a> 
 					<a href="javascript:list()"><button type="button" class="btn btn-light">처음으로</button></a>

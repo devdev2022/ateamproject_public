@@ -27,12 +27,12 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<script>
+<script type="text/javascript">
 	function setCategory(category) {
 		document.postFrm.category.value = category;
 	}
 	
-	function setBValue(bValue) {
+	function setbValue(bValue) {
 		document.postFrm.bValue.value = bValue;
 	}
 	
@@ -202,12 +202,12 @@
 								BoardBean caBean = bVVlist.get(i);
 								bValue = caBean.getType_cat();//게시판 개수 고려
 							%>
-								<li><a class="dropdown-item" href="javascript:setBValue('<%=bValue %>')"><%=bValue %></a></li>
+								<li><a class="dropdown-item" href="javascript:setbValue('<%=bValue %>')"><%=bValue %></a></li>
 							<%} %>
 						</ul>
 					</div>
 					<%
-						Vector<BoardBean> caVlist = bMgr.getCategory(bValue);
+						Vector<BoardBean> caVlist = bMgr.getCategory();
 						int caSize = caVlist.size(); //카테고리 개수 고려
 					%>
 					<div class="dropdown">
@@ -251,11 +251,9 @@
 	<div class="layout-lower-bottom w-container">
 		<input type="button" value="저장" class="btn btn-dark" onclick="javascript:check()">
 		<a href="javascript:history.back()"><button type="button" class="btn btn-dark">취소</button></a>
-		<a href="javascript:location.href='boardList.jsp?bValue=<%=bValue%>'" ><button type="button" class="btn btn-dark">리스트</button></a>
 	</div>
 	<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
 	<input type="hidden" name="loginId" value="<%=loginId%>">
-	<input type="hidden" name="bValue" value="<%=bValue%>">
 	
 	</form>
 <!-- ==============페이지 내용 끝============== -->

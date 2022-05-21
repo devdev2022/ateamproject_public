@@ -19,7 +19,7 @@ public class BoardMgr {
 	DBConnectionMgr pool;
 	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/UpLoadFiles/";
 	public static final String ENCODING = "UTF-8";
-	public static final int MAXSIZE = 1024*1024*10; // 10mb
+	public static final int MAXSIZE = 1024*1024*100; // 100mb
 	
 	public BoardMgr() {
 		pool = DBConnectionMgr.getInstance();
@@ -601,7 +601,7 @@ public class BoardMgr {
 	}
 	
 //	모든 카테고리 가져오기
-	public Vector<BoardBean> getCategory(String bValue){
+	public Vector<BoardBean> getCategory(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -609,9 +609,8 @@ public class BoardMgr {
 		Vector<BoardBean> vlist = new Vector<BoardBean>();
 		try {
 			con = pool.getConnection();
-			sql = "select distinct type_cat from tblboard where type_board=?";
+			sql = "select distinct type_cat from tblboard";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bValue);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BoardBean bBean = new BoardBean();
