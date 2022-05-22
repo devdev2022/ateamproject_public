@@ -69,7 +69,7 @@
 
 .banner_block {
 	background-image:
-		url("banner.jpg");
+		url("banner_2.jpg");
 	background-size: cover;
   width: 100%;
   height: 20vw;

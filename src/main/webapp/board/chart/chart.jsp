@@ -41,7 +41,7 @@
 			<table border="1" style="width: 80%">
 				<colgroup>
 					<!-- 순위 -->
-					<col style="width: 20px">
+					<col style="width: 50px">
 					<!-- 앨범사진 -->
 					<col style="width: 80px">
 					<!-- 타이틀 -->
@@ -64,7 +64,7 @@
 						</th>
 						<th scope="col">
 							<div>
-								<span></span>
+								<span>앨범 커버</span>
 							</div>
 						</th>
 						<th scope="col">
