@@ -15,6 +15,17 @@ if (leftId != null)
 	leftGrade = (leftBean.getGrade()).trim();
 %>
 
+<style>
+.left-chart tr td{
+	font-size: 0.5vw;
+	color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+}​
+</style>
+
 <div class="sidebar w-col w-col-2">
 	<%
 	boolean imgFound = (leftBean.getImgname() != null);
@@ -74,20 +85,17 @@ if (leftId != null)
 		</a>
 	</div>
 
-	<div style="padding-top: 3vw; display: flex; flex-direction: column;">
+	<div style="width:15vw; margin-top: 1vw; display: flex; flex-direction: column;">
 
 		<div style="display: flex; align-itmes: center;">
 			<a href="../chart/chart.jsp"> <img src="../icon/melon.png"
-				width="30vw"> <b><font size="3vw" color="green">인기차트
-						100</font></b></a>
+				width="30vw"> <b><font size="2vw" color="green">인기차트
+						TOP 10</font></b></a>
+			
 		</div>
 
-
-		<table border="1" style="width: 80%">
-			<thead>
-
-			</thead>
-			<tbody>
+		<table border="1"  style="margin-top: 1vw; max-width: 3vw;">
+			<tbody class="left-chart">
 				<%
 					Vector<ChartBean> chartVlist = leftChartMgr.getAllChart();
 					%>
@@ -105,13 +113,12 @@ if (leftId != null)
 					<td>
 						<div align="center"><%=chBean.getRanking()%></div>
 					</td>
-					<td>
-						<div align="center"><img src="<%=chBean.getAlbumImg() %>" width="100%"></div>
+					<td style="min-width:20px">
+						<div align="center"><img src="<%=chBean.getAlbumImg()%>"></div>
 					</td>
 					<td>
 						<!-- 아티스트 -->
-						<div width="2vw" align="center" style="white-space: nowrap; overflow:hidden;"><%=chBean.getArtist()%>
-							-
+						<div align="center"><%=chBean.getArtist()%><br>
 							<%=chBean.getTitle()%></div>
 					</td>
 
