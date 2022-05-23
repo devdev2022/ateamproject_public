@@ -2422,13 +2422,13 @@ rotate(
 									for(;pageStart<pageEnd;pageStart++){
 								%>
 								<a href="javascript:pageing('<%=pageStart%>')">
-									<input type="text" class="btn btn-secondary" value="<%=pageStart %>" size="1">
+									<input type="text" class="btn btn-secondary" value="<%=pageStart %>" size="1" readonly>
 								</a>
 								<%} %>
 								<!-- 다음블록 -->
 								<% if(nowBlock < totalBlock) {%>
 									<a href="javascript:block('<%=nowBlock + 1%>')">
-										<input type="text" class="btn btn-secondary" value=">" size="1"> 
+										<input type="text" class="btn btn-secondary" value=">" size="1" readonly> 
 									</a>
 								<%}	%>
 							</div>

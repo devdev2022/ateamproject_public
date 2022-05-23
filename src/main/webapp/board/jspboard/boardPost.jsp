@@ -195,7 +195,7 @@
 					%>
 					
 					<div class="dropdown">
-						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="<%=bValue %>" name="bValue">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="<%=bValue %>" name="bValue" readonly>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						<%
 							for(int i=0; i<bVSize; i++){
@@ -211,7 +211,7 @@
 						int caSize = caVlist.size(); //카테고리 개수 고려
 					%>
 					<div class="dropdown">
-						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="카테고리를 선택하세요." name="category">
+						<input class="btn btn-secondary dropdown-toggle" type="text" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="카테고리를 선택하세요." name="category" readonly>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<%
 									for(int i=0; i<caSize; i++){
