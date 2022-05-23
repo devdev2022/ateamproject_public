@@ -7,7 +7,8 @@
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <jsp:useBean id="sMgr" class="board.SavePostMgr"/>
 <%
-	String loginId = "aaa";
+	String loginId = (String)session.getAttribute("idKey");
+	session.setAttribute("idKey", loginId);
 
 	int totalRecord = 0; //총 게시물 수
 	int numPerPage = 8; //페이지당 레코드 개수
