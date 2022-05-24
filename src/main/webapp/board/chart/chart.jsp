@@ -18,7 +18,6 @@
 	}
 	
 	String DateTime = nowDate + " " + nowTime;
-	out.print(DateTime);
 %>
 <!DOCTYPE html>
 <html>
@@ -100,6 +99,10 @@
     transition:color 0.3s ease;
 }
 .navigation .children {
+	-ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+	overflow-y:scroll;
+	height:250px;
     position: absolute;
     top: 100%;
     z-index: 1000;
@@ -116,6 +119,9 @@
     transition: opacity 0.3s, -webkit-transform 0.3s;
     transition: transform 0.3s, opacity 0.3s;
     transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+}
+.navigation .children::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
 }
 .navigation ul li .children  {
     -webkit-transform-style: preserve-3d;
