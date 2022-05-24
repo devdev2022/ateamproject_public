@@ -9,15 +9,43 @@
 <%
 
 	Calendar cal = Calendar.getInstance();
-	SimpleDateFormat sdf = new SimpleDateFormat("HH");
-	String nowDate = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-"  +cal.get(Calendar.DATE);
+	SimpleDateFormat sdf = new SimpleDateFormat("MM");
+	
+	String year = Integer.toString(cal.get(Calendar.YEAR));
+	String month = Integer.toString(cal.get(Calendar.MONTH)+1);
+	String day = Integer.toString(cal.get(Calendar.DATE));
+	int maxDay = 31;
+	
+	
+	if(cal.get(Calendar.MONTH)+1 < 10){
+		Integer.toString(cal.get(Calendar.MONTH)+1);
+		month = "0" + month;
+	}
+	String nowDate = year + "-" + month + "-"  +day;
 	String nowTime = Integer.toString(cal.get(Calendar.HOUR_OF_DAY));
+	
 	
 	if(request.getParameter("nowTimeRead")!=null){
 		nowTime =request.getParameter("nowTimeRead");
 	}
+	if(request.getParameter("nowYearRead")!=null){
+		year =request.getParameter("nowYearRead");
+	}
+	if(request.getParameter("nowMonthRead")!=null){
+		month =request.getParameter("nowMonthRead");
+	}
+	if(request.getParameter("nowDayRead")!=null){
+		day =request.getParameter("nowDayRead");
+	}
 	
 	String DateTime = nowDate + " " + nowTime;
+	if(month.equals("02")){
+		maxDay = 28;
+	}else if(month.equals("01") || month.equals("03") || month.equals("05") || month.equals("07") || month.equals("09") || month.equals("11") ){
+		maxDay = 31;
+	}else{
+		maxDay = 30;
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -52,6 +80,21 @@
 	function setNowTime(time) {
 		document.chartFrm.nowTime.value = time;
 		document.chartFrm.nowTimeRead.value = time;
+		document.chartFrm.submit();
+	}
+	function setNowYear(year) {
+		document.chartFrm.nowYear.value = year;
+		document.chartFrm.nowYearRead.value = year;
+		document.chartFrm.submit();
+	}
+	function setNowMonth(month) {
+		document.chartFrm.nowMonth.value = month;
+		document.chartFrm.nowMonthRead.value = month;
+		document.chartFrm.submit();
+	}
+	function setNowDay(day) {
+		document.chartFrm.nowDay.value = day;
+		document.chartFrm.nowDayRead.value = day;
 		document.chartFrm.submit();
 	}
 	
@@ -187,21 +230,78 @@
 <nav class="navigation">
 	<ul>
 		<li class="active">
-			<a href="#"><font style="font-size: 40px"><%=cal.get(Calendar.YEAR) + "년 " + (cal.get(Calendar.MONTH)+1) + "월 "  +cal.get(Calendar.DATE) + "일 " %> </font></a>
-			<input type="hidden" value="<%=nowDate %>" name="nowDateRead" >
+			<a href="#">
+				<font style="font-size: 40px">
+					<input type="button" name="nowYear" value="<%=year%>" style="background: transparent; border: 0;">년  
+				</font>
+			</a>
+			<input type="hidden" value="<%=year %>" name="nowYearRead" >
+			<ul class="children sub-menu">
+				<%for(int j =2000; j<(cal.get(Calendar.YEAR)+1); j++){ %>
+						<li>
+							<a href="javascript:setNowYear('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
+						</li>
+				<%} %>
+			</ul>
 		</li>
 		<li class="active">
-			<a href="#"><font style="font-size: 40px"><input type="button" name="nowTime" value="<%=nowTime%>" style="background: transparent; border: 0;">시</font></a>
+			<a href="#">
+				<font style="font-size: 40px">
+					<input type="button" name="nowMonth" value="<%=month%>" style="background: transparent; border: 0;">월 
+				</font>
+			</a>
+			<input type="hidden" value="<%=month %>" name="nowMonthRead" >
+			<ul class="children sub-menu">
+				<%for(int j =1; j<13; j++){ %>
+						<%if(j < 10){ %>
+							<li>
+								<a href="javascript:setNowMonth('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
+							</li>
+					<%}else{ %>
+							<li>
+								<a href="javascript:setNowMonth('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
+							</li>
+					<%} %>
+				<%} %>
+			</ul>
+		</li>
+		<li class="active">
+			<a href="#">
+				<font style="font-size: 40px">
+					<input type="button" name="nowDay" value="<%=day%>" style="background: transparent; border: 0;">일 
+				</font>
+			</a>
+			<input type="hidden" value="<%=day %>" name="nowDayRead" >
+			<ul class="children sub-menu">
+				<%for(int j =1; j<maxDay + 1; j++){ %>
+					<%if(j < 10){ %>	
+						<li>
+							<a href="javascript:setNowDay('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
+						</li>
+					<%}else{ %>
+						<li>
+							<a href="javascript:setNowDay('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
+						</li>
+					<%} %>
+				<%} %>
+			</ul>
+		</li>
+		<li class="active">
+			<a href="#">
+				<font style="font-size: 40px">
+					<input type="button" name="nowTime" value="<%=nowTime%>" style="background: transparent; border: 0;">시
+				</font>
+			</a>
 			<input type="hidden" value="<%=nowTime %>" name="nowTimeRead" >
 			<ul class="children sub-menu">
 				<%for(int j =1; j<(cal.get(Calendar.HOUR_OF_DAY)+1); j++){ %>
 					<%if(j < 10){ %>	
 						<li>
-							<a href="javascript:setNowTime('0<%=j%>')">0<%=j%> </a>
+							<a href="javascript:setNowTime('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
 						</li>
 					<%}else{ %>
 						<li>
-							<a href="javascript:setNowTime('<%=j%>')"><%=j%> </a>
+							<a href="javascript:setNowTime('<%=j%>')"><font style="font-size: 15px"><%=j%></font></a>
 						</li>
 					<%} %>
 				<%} %>
@@ -275,7 +375,6 @@
 					%>
 					<%
 						int chartSize = chartVlist.size();
-						out.print(chartSize);
 					%>
 					<%
 						for (int i = 0; i < chartSize; i++) {
