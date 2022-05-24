@@ -131,6 +131,44 @@ public class ChartMgr {
 		return vlist;
 	}
 	
+//	차트가져오기 시간으로 검색
+	public Vector<ChartBean> getAllChartByTime(String DateTime){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector<ChartBean> vlist = new Vector<ChartBean>();
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "SELECT * FROM tblchart WHERE getDate like ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, DateTime + "%");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ChartBean bean = new ChartBean();
+				bean.setChnum(rs.getString("chnum"));
+				bean.setRanking(rs.getString("ranking"));
+				bean.setArtist(rs.getString("artist"));
+				bean.setTitle(rs.getString("title"));
+				bean.setAlbumImg(rs.getString("albumimg"));
+				bean.setAlbumName(rs.getString("albumName"));
+				bean.setGetDate(rs.getString("getDate"));
+				bean.setMenuId(rs.getString("menuId"));
+				bean.setSongId(rs.getString("songId"));
+				bean.setLyric(rs.getString("lyric"));
+				bean.setVideo(rs.getString("video"));
+				bean.setVideoInfo(rs.getString("videoInfo"));
+				vlist.addElement(bean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	
 	public ChartBean getDetaile(String title) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
