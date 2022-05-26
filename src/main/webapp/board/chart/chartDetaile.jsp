@@ -17,7 +17,7 @@
 	%>
 	<%
 	out.print(bean.getVideo());	
-	if(bean.getVideo() == null){
+	if(bean.getVideo() == "뮤비 정보가 없습니다."){
 	%>
 	<div>뮤직비디오 정보가 없습니다.</div>
 	<%}else{ %>

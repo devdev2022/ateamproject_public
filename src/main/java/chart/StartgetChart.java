@@ -16,11 +16,12 @@ public class StartgetChart {
                 SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
                 String format_time2 = format2.format (System.currentTimeMillis());
                 getChart startChart= new getChart();
+                startChart.getChart();
 
 
             }
         };
-        scheduler.scheduleAtFixedRate(task, 1000 ,1000 * 60 * 60); //  1시간마다 반복
+        scheduler.scheduleAtFixedRate(task, 100, 3600000); //  1시간마다 반복
     }
  // codes ...
  }

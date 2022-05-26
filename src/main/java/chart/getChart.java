@@ -1,6 +1,7 @@
 package chart;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
@@ -16,7 +17,7 @@ import org.jsoup.select.Elements;
  */
 public class getChart {
 	
-		public getChart() {
+		public void getChart() {
 		String url= "https://www.melon.com/chart/index.htm";
 		
 		Document doc = null;
@@ -109,7 +110,17 @@ public class getChart {
 					
 			}
 		}
-		System.out.println("end!!");
+		Calendar cal = Calendar.getInstance();
+		String year = Integer.toString(cal.get(Calendar.YEAR));
+		String month = Integer.toString(cal.get(Calendar.MONTH)+1);
+		String day = Integer.toString(cal.get(Calendar.DATE));
+		String nowDate = year + "-" + month + "-"  +day;
+		String hour = Integer.toString(cal.get(Calendar.HOUR_OF_DAY));
+		String minute = Integer.toString(cal.get(Calendar.MINUTE));
+		String seconed = Integer.toString(cal.get(Calendar.SECOND));
+		String nowTime = hour + " : " + minute + " : " + seconed;
+		String DateTime = nowDate + " " + nowTime;
+		System.out.println(DateTime + " 가져오기 성공");
 	}
 }
 

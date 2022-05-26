@@ -140,8 +140,9 @@ public class ChartMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "SELECT * FROM tblchart WHERE getDate like ?";
+			sql = "SELECT * FROM tblchart WHERE getDate like ? limit 100";
 			pstmt = con.prepareStatement(sql);
+			System.out.println(DateTime);
 			pstmt.setString(1, DateTime + "%");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {

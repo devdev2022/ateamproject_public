@@ -1,3 +1,4 @@
+<%@page import="chart.getChart"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -9,11 +10,20 @@
 <%
 
 	Calendar cal = Calendar.getInstance();
-	SimpleDateFormat sdf = new SimpleDateFormat("MM");
 	
 	String year = Integer.toString(cal.get(Calendar.YEAR));
 	String month = Integer.toString(cal.get(Calendar.MONTH)+1);
 	String day = Integer.toString(cal.get(Calendar.DATE));
+	
+	String realYear = Integer.toString(cal.get(Calendar.YEAR));
+	String realMonth = Integer.toString(cal.get(Calendar.MONTH)+1);
+	String realDay = Integer.toString(cal.get(Calendar.DATE));
+	String realHour = Integer.toString(cal.get(Calendar.HOUR));
+	String realMinute= Integer.toString(cal.get(Calendar.MINUTE));
+	String realSecond = Integer.toString(cal.get(Calendar.SECOND));
+	String realTime = realHour + ":" + realMinute;
+	out.print(realTime);
+	
 	int maxDay = 31;
 	
 	
@@ -21,13 +31,11 @@
 		Integer.toString(cal.get(Calendar.MONTH)+1);
 		month = "0" + month;
 	}
-	String nowDate = year + "-" + month + "-"  +day;
-	String nowTime = Integer.toString(cal.get(Calendar.HOUR_OF_DAY));
-	
-	
-	if(request.getParameter("nowTimeRead")!=null){
-		nowTime =request.getParameter("nowTimeRead");
+	if(cal.get(Calendar.MONTH)+1 < 10){
+		Integer.toString(cal.get(Calendar.MONTH)+1);
+		realMonth = "0" + realMonth;
 	}
+	
 	if(request.getParameter("nowYearRead")!=null){
 		year =request.getParameter("nowYearRead");
 	}
@@ -38,14 +46,30 @@
 		day =request.getParameter("nowDayRead");
 	}
 	
+	String nowDate = year + "-" + month + "-"  +day;
+	String nowTime = Integer.toString(cal.get(Calendar.HOUR_OF_DAY));
+	String realNowDate = realYear + "-" + realMonth + "-"  +realDay;
+	
+	if(request.getParameter("nowTimeRead")!=null){
+		nowTime =request.getParameter("nowTimeRead");
+	}
+	
 	String DateTime = nowDate + " " + nowTime;
 	if(month.equals("02")){
 		maxDay = 28;
-	}else if(month.equals("01") || month.equals("03") || month.equals("05") || month.equals("07") || month.equals("09") || month.equals("11") ){
+	}else if(month.equals("01") || month.equals("03") || month.equals("05") || month.equals("07") || month.equals("08") || month.equals("10") || month.equals("12") ){
 		maxDay = 31;
 	}else{
 		maxDay = 30;
 	}
+//	차트 매시 정각에 가져오기
+//	if(realTime.equals("0:01") || realTime.equals("1:01") || realTime.equals("2:01") || realTime.equals("4:01") || realTime.equals("3:01") || realTime.equals("5:01") || realTime.equals("6:01") || realTime.equals("7:01") || realTime.equals("9:01") || realTime.equals("8:01") || realTime.equals("10:01") || realTime.equals("11:01")){
+//		getChart newChart = new getChart();
+//	}
+//	if(realTime.equals("3:22")){
+//		getChart newChart = new getChart();
+//		newChart.getChart();
+//	}
 %>
 <!DOCTYPE html>
 <html>
@@ -252,15 +276,29 @@
 			</a>
 			<input type="hidden" value="<%=month %>" name="nowMonthRead" >
 			<ul class="children sub-menu">
-				<%for(int j =1; j<13; j++){ %>
-						<%if(j < 10){ %>
-							<li>
-								<a href="javascript:setNowMonth('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
-							</li>
-					<%}else{ %>
-							<li>
-								<a href="javascript:setNowMonth('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
-							</li>
+				<%if(realYear.equals(year)){ %>
+					<%for(int j =1; j<(cal.get(Calendar.MONTH)+2); j++){ %>
+							<%if(j < 10){ %>
+								<li>
+									<a href="javascript:setNowMonth('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
+								</li>
+						<%}else{ %>
+								<li>
+									<a href="javascript:setNowMonth('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
+								</li>
+						<%} %>
+					<%} %>
+				<%}else{ %>
+					<%for(int j =1; j<13; j++){ %>
+							<%if(j < 10){ %>
+								<li>
+									<a href="javascript:setNowMonth('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
+								</li>
+						<%}else{ %>
+								<li>
+									<a href="javascript:setNowMonth('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
+								</li>
+						<%} %>
 					<%} %>
 				<%} %>
 			</ul>
@@ -273,15 +311,29 @@
 			</a>
 			<input type="hidden" value="<%=day %>" name="nowDayRead" >
 			<ul class="children sub-menu">
-				<%for(int j =1; j<maxDay + 1; j++){ %>
-					<%if(j < 10){ %>	
-						<li>
-							<a href="javascript:setNowDay('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
-						</li>
-					<%}else{ %>
-						<li>
-							<a href="javascript:setNowDay('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
-						</li>
+				<%if((realYear + "-" + realMonth).equals(year + "-" + month)){ %>
+					<%for(int j =1; j<(cal.get(Calendar.DATE)+1); j++){ %>
+						<%if(j < 10){ %>	
+							<li>
+								<a href="javascript:setNowDay('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
+							</li>
+						<%}else{ %>
+							<li>
+								<a href="javascript:setNowDay('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
+							</li>
+						<%} %>
+					<%} %>
+				<%}else{ %>
+					<%for(int j =1; j<maxDay + 1; j++){ %>
+						<%if(j < 10){ %>	
+							<li>
+								<a href="javascript:setNowDay('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
+							</li>
+						<%}else{ %>
+							<li>
+								<a href="javascript:setNowDay('<%=j%>')"><font style="font-size: 15px" ><%=j%></font></a>
+							</li>
+						<%} %>
 					<%} %>
 				<%} %>
 			</ul>
@@ -294,17 +346,31 @@
 			</a>
 			<input type="hidden" value="<%=nowTime %>" name="nowTimeRead" >
 			<ul class="children sub-menu">
-				<%for(int j =1; j<(cal.get(Calendar.HOUR_OF_DAY)+1); j++){ %>
-					<%if(j < 10){ %>	
-						<li>
-							<a href="javascript:setNowTime('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
-						</li>
-					<%}else{ %>
-						<li>
-							<a href="javascript:setNowTime('<%=j%>')"><font style="font-size: 15px"><%=j%></font></a>
-						</li>
+				<%if(realNowDate.equals(year + "-" + month + "-" + day)){ %>
+					<%for(int j =1; j<(cal.get(Calendar.HOUR_OF_DAY)+1); j++){ %>
+						<%if(j < 10){ %>	
+							<li>
+								<a href="javascript:setNowTime('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
+							</li>
+						<%}else{ %>
+							<li>
+								<a href="javascript:setNowTime('<%=j%>')"><font style="font-size: 15px"><%=j%></font></a>
+							</li>
+						<%} %>
 					<%} %>
-				<%} %>
+				<%}else{ %>
+					<%for(int j =1; j<25; j++){ %>
+						<%if(j < 10){ %>	
+							<li>
+								<a href="javascript:setNowTime('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
+							</li>
+						<%}else{ %>
+							<li>
+								<a href="javascript:setNowTime('<%=j%>')"><font style="font-size: 15px"><%=j%></font></a>
+							</li>
+						<%} %>
+					<%} %>
+				<%}%>
 			</ul>
 		</li>
 	</ul>
@@ -370,56 +436,56 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%
-						Vector<ChartBean> chartVlist = chartMgr.getAllChartByTime(DateTime);
-					%>
-					<%
-						int chartSize = chartVlist.size();
-					%>
-					<%
-						for (int i = 0; i < chartSize; i++) {
-					%>
-					<%
-						ChartBean chBean = chartVlist.get(i);
-					%>
-					<tr>
-						<!-- 순위 -->
-						<td>
-							<div align="center"><%=chBean.getRanking()%></div>
-						</td>
-						<td>
-							<!-- 앨범사진 -->
-							<div align="center">
-								<img src="<%=chBean.getAlbumImg()%>">
-							</div>
-						</td>
-						<td>
-							<!-- 타이틀 -->
-							<div align="center"><%=chBean.getTitle()%></div>
-						</td>
-						<td>
-							<!-- 아티스트 -->
-							<div align="center"><%=chBean.getArtist()%></div>
-						</td>
-						<td>
-							<!-- 앨범명 -->
-							<div align="center"><%=chBean.getAlbumName()%></div>
-						</td>
-						<td>
-							<!-- 가사 -->
-							<div align="center">
-								<a href="javascript:openchartLyric('<%=chBean.getTitle()%>')"><img
-									src="../icon/detail.png"></a>
-							</div>
-						</td>
-						<td>
-							<!-- 상세정보 -->
-							<div align="center">
-								<a href="javascript:openchartDetaile('<%=chBean.getTitle()%>')"><img
-									src="../icon/detail.png"></a>
-							</div>
-						</td>
-					</tr>
+					<%Vector<ChartBean> chartVlist = chartMgr.getAllChartByTime(DateTime);%>
+					<%int chartSize = chartVlist.size();%>
+					<%if(chartSize != 0){ %>
+						<%for (int i = 0; i < chartSize; i++) {%>
+						<%ChartBean chBean = chartVlist.get(i);%>
+							<tr>
+								<!-- 순위 -->
+								<td>
+									<div align="center"><%=chBean.getRanking()%></div>
+								</td>
+								<td>
+									<!-- 앨범사진 -->
+									<div align="center">
+										<img src="<%=chBean.getAlbumImg()%>">
+									</div>
+								</td>
+								<td>
+									<!-- 타이틀 -->
+									<div align="center"><%=chBean.getTitle()%></div>
+								</td>
+								<td>
+									<!-- 아티스트 -->
+									<div align="center"><%=chBean.getArtist()%></div>
+								</td>
+								<td>
+									<!-- 앨범명 -->
+									<div align="center"><%=chBean.getAlbumName()%></div>
+								</td>
+								<td>
+									<!-- 가사 -->
+									<div align="center">
+										<a href="javascript:openchartLyric('<%=chBean.getTitle()%>')"><img
+											src="../icon/detail.png"></a>
+									</div>
+								</td>
+								<td>
+									<!-- 상세정보 -->
+									<div align="center">
+										<a href="javascript:openchartDetaile('<%=chBean.getTitle()%>')"><img
+											src="../icon/detail.png"></a>
+									</div>
+								</td>
+							</tr>
+						<%} %>
+					<%}else{ %>
+						<tr>
+							<td colspan="7" align="center">
+								<div><font style="font-size: 30px">받아온 정보가 없습니다.</font></div>
+							</td>
+						</tr>
 					<%} %>
 				</tbody>
 			</table>
