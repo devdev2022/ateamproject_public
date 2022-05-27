@@ -107,7 +107,7 @@
 	}
 	function openchartLyric(title) {
 		url = "chartLyric.jsp?title=" + title;
-		window.open(url, "chartLyric.jsp?title=" + title, "width=950,height=900,scrollbars=yes");
+		window.open(url, "chartLyric.jsp?title=" + title, "width=250,height=550,scrollbars=yes");
 	}
 	function setNowTime(time) {
 		document.chartFrm.nowTime.value = time;

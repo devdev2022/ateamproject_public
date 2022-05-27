@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><%=title %>&nbsp;의 가사</title>
 </head>
 <body>
 	<%

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><%=title %>&nbsp;의 정보</title>
 </head>
 <body>
 	<div align="center">
@@ -25,13 +25,11 @@
 			%>
 			<div style="position: relative; padding-top: 56.25%">뮤직비디오 정보가 없습니다.</div>
 			<%}else{ %>
-			<div style="position: relative; padding-top: 56.25%" align="center">
+			<div style="position: relative; padding-top: 56.25%">
 				<iframe style="width:100%; height:100%; position : absolute;top:0; left:0" id="frame_video_" scrolling="no" src="https://www.melon.com/video/player.htm?mvId=<%=bean.getVideo() %>
 				&amp;menuId=&amp;autoPlay=Y" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" ></iframe>
 			</div>
 			<%} %>
-		<!-- //영상 플레이어 -->
-
 		<!-- 영상 상세 -->
 			<div>
 				<div>
@@ -39,7 +37,6 @@
 						[MV] <%=title %>
 					</font>
 				</div>
-				
 					<div>
 						<div>
 							<div>
@@ -47,11 +44,10 @@
 								<div>
 									<font style="color:maroon;"><%=bean.getArtist() %></font>
 								</div>
-							</div>
 						</div>
 					</div>
 				</div>
-			
+			</div>
 			<!-- 영상소개 -->
 			<div>
 				<div>
