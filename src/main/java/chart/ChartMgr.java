@@ -178,7 +178,7 @@ public class ChartMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "select video, videoInfo, lyric from tblChart where title=?";
+			sql = "select video, videoInfo, lyric, artist from tblChart where title=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, title);
 			rs = pstmt.executeQuery();
@@ -186,6 +186,7 @@ public class ChartMgr {
 				bean.setVideo(rs.getString(1));
 				bean.setVideoInfo(rs.getString(2));
 				bean.setLyric(rs.getString(3));
+				bean.setArtist(rs.getString(4));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

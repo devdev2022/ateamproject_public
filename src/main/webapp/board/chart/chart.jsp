@@ -102,12 +102,12 @@
 		document.chartFrm.submit();
 	}
 	function openchartDetaile(title) {
-		url = "chartDetaile.jsp?title=" + title;
-		window.open(url, "chartDetaile.jsp?title=" + title, "width=750,height=750,scrollbars=yes");
+		url = "chartDetailes.jsp?title=" + title;
+		window.open(url, "chartDetailes.jsp?title=" + title, "width=950,height=900,scrollbars=yes");
 	}
 	function openchartLyric(title) {
 		url = "chartLyric.jsp?title=" + title;
-		window.open(url, "chartLyric.jsp?title=" + title, "width=750,height=750,scrollbars=yes");
+		window.open(url, "chartLyric.jsp?title=" + title, "width=950,height=900,scrollbars=yes");
 	}
 	function setNowTime(time) {
 		document.chartFrm.nowTime.value = time;
