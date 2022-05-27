@@ -35,6 +35,14 @@
 		Integer.toString(cal.get(Calendar.MONTH)+1);
 		realMonth = "0" + realMonth;
 	}
+	if(cal.get(Calendar.DATE) < 10){
+		Integer.toString(cal.get(Calendar.DATE));
+		realDay = "0" + realDay;
+	}
+	if(cal.get(Calendar.DATE) < 10){
+		Integer.toString(cal.get(Calendar.DATE));
+		day = "0" + day;
+	}
 	
 	if(request.getParameter("nowYearRead")!=null){
 		year =request.getParameter("nowYearRead");
@@ -347,7 +355,7 @@
 			<input type="hidden" value="<%=nowTime %>" name="nowTimeRead" >
 			<ul class="children sub-menu">
 				<%if(realNowDate.equals(year + "-" + month + "-" + day)){ %>
-					<%for(int j =1; j<(cal.get(Calendar.HOUR_OF_DAY)+1); j++){ %>
+					<%for(int j =0; j<(cal.get(Calendar.HOUR_OF_DAY)+1); j++){ %>
 						<%if(j < 10){ %>	
 							<li>
 								<a href="javascript:setNowTime('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
@@ -359,7 +367,7 @@
 						<%} %>
 					<%} %>
 				<%}else{ %>
-					<%for(int j =1; j<25; j++){ %>
+					<%for(int j =0; j<24; j++){ %>
 						<%if(j < 10){ %>	
 							<li>
 								<a href="javascript:setNowTime('0<%=j%>')"><font style="font-size: 15px" >0<%=j%></font></a>
