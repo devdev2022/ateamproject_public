@@ -1,41 +1,4 @@
-<%@page import="board.CommentBean"%>
-<%@page import="java.util.Vector"%>
-<%@page import="board.UpFileBean"%>
-<%@page import="board.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	int num = Integer.parseInt(request.getParameter("num"));
-	String keyField = request.getParameter("keyField");
-	String keyWord = request.getParameter("keyWord");
-	String category = request.getParameter("category");
-	String bValue = request.getParameter("bValue");
-	
-	String loginId = (String)session.getAttribute("idKey");
-	session.setAttribute("bValue", bValue);
-	
-%>
-<jsp:useBean id="bMgr" class="board.BoardMgr"/>
-<jsp:useBean id="cMgr" class="board.CommentMgr"/>
-<jsp:useBean id="lMgr" class="board.LikesMgr"/>
-<jsp:useBean id="cLMgr" class="board.CmtLikesMgr"/>
-<jsp:useBean id="sMgr" class="board.SavePostMgr"/>
-
-<%
-	bMgr.upCount(num);
-	BoardBean bBean = bMgr.getBoard(num);
-	Vector<UpFileBean> fVlist = bMgr.getOneBoardFileAll(num);
-	int fCount = fVlist.size();
-	for (int i = 0; i < fCount; i++) {
-		UpFileBean fBean = fVlist.get(i);
-		String filename = fBean.getFilename();
-	}
-	int point = filename.lastIndexOf( "." );
-	String ext = filename.substring(point + 1 );
-	if(ext.trim().equals("mp3") || ext.trim().equals("wav"))  
-		System.out.println(filename);
-%>
-
-
 
 <!-- player.js 경로 참조 -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -44,15 +7,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jplayer/2.6.4/jquery.jplayer/jquery.jplayer.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jplayer/2.6.4/add-on/jplayer.playlist.min.js"></script>
 <script>
-
 $(document).ready(function(){
+	
+	<%
+		String pTitle = (request.getParameter("pFilename").replace(".mp3", "")).replace(".wav", "");
+		String pFilename = request.getParameter("pFilename");
+		String pUploader = request.getParameter("pUploader");
+	%>
 	
 	
 	  var playlist = [{
 		  /*제목, 아티스트, 음악*/
-	      title:"<%=fBean.getFilename()%>",
-	      artist:"DJ Todokki",
-	      mp3:"../sample/sample.mp3",
+	      title:"<%=pTitle%>",
+	      artist:"<%=pUploader%>",
+	      mp3:"../../UpLoadFiles/<%=pFilename%>",
 	      poster: "https://i.imgur.com/sCbrzQa.png"
 	    },{
 	      title:"Cro Magnon Man",

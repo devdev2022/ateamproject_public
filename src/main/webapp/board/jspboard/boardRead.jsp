@@ -405,7 +405,12 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 				<%}else if(ext.trim().equals("mp4") || ext.trim().equals("avi") || ext.trim().equals("wms") || ext.trim().equals("mwa") || ext.trim().equals("asf") || ext.trim().equals("mpg") || ext.trim().equals("mpeg") || ext.trim().equals("ts") || ext.trim().equals("mkv") || ext.trim().equals("mov") || ext.trim().equals("3gp") || ext.trim().equals("3g2") || ext.trim().equals("webm")) { %>
 					<div align="center"><iframe sandbox="allow-scripts" src="../../UpLoadFiles/<%=filename%>" width="600px" height="350px" seamless="seamless" name="iframe<%=i%>"></iframe></div>
 				<%}else if(ext.trim().equals("mp3") || ext.trim().equals("wav")) { %>
-					<%@ include file="../playertest/player.jsp" %> 
+					<div align="center">
+						<jsp:include page="../playertest/player.jsp" >
+							<jsp:param value="<%=filename%>" name="pFilename"/>
+							<jsp:param value="<%=bBean.getId()%>" name="pUploader"/>
+						</jsp:include>
+					</div>
 				<%}	%>
 		<%} %>
 		<br>
