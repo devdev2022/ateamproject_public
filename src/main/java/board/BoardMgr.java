@@ -686,46 +686,50 @@ public class BoardMgr {
 	
 	
 //home.jsp에서 게시글 가져오기
-	public Vector<BoardBean> getBoardListHome(String type, int max) {
+	public Vector<HomeBean> getBoardListHome(String type, int max) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
-		Vector<BoardBean> vlist = new Vector<BoardBean>();
+		Vector<HomeBean> vlist = new Vector<HomeBean>();
 		try {
 			con = pool.getConnection();
 			
-			if (type=="likes") {
+			if (type=="likesSum" || type=="count") {
 				//좋아요 순서대로 가져오기
-				sql = "SELECT *, COUNT(l.num) c FROM tblboard b JOIN tbllikes l "
+				sql = "SELECT *, COUNT(l.num) likesSum FROM tblboard b JOIN tbllikes l "
 						+ "WHERE b.num = l.num GROUP BY l.num "
-						+ "ORDER BY COUNT(l.num) DESC, l.num DESC LIMIT ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, max);
-			} else if (type=="count"||type=="num") {
-				//조회수 또는 최신순으로 가져오기
-				sql = "SELECT * FROM tblboard ORDER BY ? DESC LIMIT ?";
+						+ "ORDER BY ? DESC, l.num DESC LIMIT ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, type);
 				pstmt.setInt(2, max);
+			} else if (type=="num") {
+				System.out.println("num in");
+				//조회수 또는 최신순으로 가져오기
+				sql = "SELECT *, COUNT(l.num) likesSum FROM tblboard b JOIN tbllikes l "
+						+ "WHERE b.num = l.num GROUP BY l.num "
+						+ "ORDER BY l.num DESC LIMIT ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, max);
 			} 
 			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				BoardBean bBean = new BoardBean();
-				bBean.setNum(rs.getInt("num"));
-				bBean.setId(rs.getString("id"));
-				bBean.setSubject(rs.getString("subject"));
-				bBean.setContent(rs.getString("content"));
-				bBean.setPos(rs.getInt("pos"));
-				bBean.setRef(rs.getInt("ref"));
-				bBean.setDepth(rs.getInt("depth"));
-				bBean.setRegdate(rs.getString("regdate"));
-				bBean.setIp(rs.getString("ip"));
-				bBean.setCount(rs.getInt("count"));
-				bBean.setType_board(rs.getString("type_board"));
-				bBean.setType_cat(rs.getString("type_cat"));
-				vlist.addElement(bBean);
+				HomeBean hBean = new HomeBean();
+				hBean.setNum(rs.getInt("num"));
+				hBean.setId(rs.getString("id"));
+				hBean.setSubject(rs.getString("subject"));
+				hBean.setContent(rs.getString("content"));
+				hBean.setPos(rs.getInt("pos"));
+				hBean.setRef(rs.getInt("ref"));
+				hBean.setDepth(rs.getInt("depth"));
+				hBean.setRegdate(rs.getString("regdate"));
+				hBean.setIp(rs.getString("ip"));
+				hBean.setCount(rs.getInt("count"));
+				hBean.setType_board(rs.getString("type_board"));
+				hBean.setType_cat(rs.getString("type_cat"));
+				hBean.setLikesSum(rs.getInt("likesSum"));
+				vlist.addElement(hBean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -735,13 +739,17 @@ public class BoardMgr {
 		return vlist;
 	}
 	
-	/*
-	 * public static void main(String[] args) { System.out.println("main here");
+	
+	/*//테스트용 코드
+	 * public static void main(String[] args) {
 	 * 
-	 * BoardMgr bMgr = new BoardMgr(); Vector<BoardBean> vlist = new
-	 * Vector<BoardBean>(); vlist = bMgr.getBoardListHome("count", 9); BoardBean
-	 * bean = vlist.get(0); System.out.println(bean.getContent()); }
+	 * System.out.println("main here");
+	 * 
+	 * BoardMgr bMgr = new BoardMgr(); Vector<HomeBean> vlist = new
+	 * Vector<HomeBean>(); vlist = bMgr.getBoardListHome("count", 9); HomeBean bean
+	 * = vlist.get(0); System.out.println(bean.getContent()); }
 	 */
+
 	
 	
 }
