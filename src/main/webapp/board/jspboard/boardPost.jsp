@@ -6,6 +6,13 @@
 	String loginId = (String)session.getAttribute("idKey");
 	String bValue = request.getParameter("bValue");
 	session.setAttribute("bValue", bValue);
+	if(loginId == null) {
+		out.println("<script>");
+		out.println("alert('로그인이 필요합니다.')");
+		out.println("javascript:location.href='../jspmember/login.jsp'");
+		out.println("</script>");
+		return;
+	}
 %>
 
 <!DOCTYPE html>

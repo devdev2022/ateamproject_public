@@ -530,7 +530,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 					</li>
 				</ul>
 						<ul role="list" class="comment-data w-list-unstyled">
-							<%if(bBean.getId() == loginId || loginId.trim().equals(bBean.getId())) { %>
+							<%if(bBean.getId() == loginId ) { %>
 								<li style="list-style: none;"><a href="javascript:deleteComment('<%=cBean.getCnum() %>')">[삭제]</a></li>
 							<%} %>
 							<%int totalCmtLikes = cLMgr.countCmtLikes(num, cBean.getCnum()); %>
@@ -559,7 +559,12 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	<form name="commentFrm" action="commentPost" method="post">
 		<div class="comment-write-header w-container">
 			<div>
-				<b>댓글 작성</b> | <img src="../icon/info_large.jpg" width="20vw"> <%=loginId %>
+				<b>댓글 작성</b> | <img src="../icon/info_large.jpg" width="20vw"> 
+				<%if(loginId != null){%>
+					<%=loginId %>
+				<%}else{ %>
+					<b>로그인을 해주세요.</b>
+				<%} %>
 			</div>
 			
 			<div class="input-group mb-3">

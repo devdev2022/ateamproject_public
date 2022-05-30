@@ -9,9 +9,12 @@
 	String oriCategory = request.getParameter("category");
 	int num = Integer.parseInt(request.getParameter("num"));
 	bBean = bMgr.getBoard(num);
-	out.print(bBean.getRef());
-	out.print(bBean.getPos());
-	out.print(bBean.getDepth());
+	
+	if(loginId == null){
+		response.sendRedirect("../jspmember/login.jsp");
+		return;	
+	}
+	
 %>
 
 

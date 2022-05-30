@@ -21,7 +21,6 @@ public class BoardPostServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		
 		String bValue = (String)session.getAttribute("bValue");
 		response.sendRedirect("boardList.jsp?bValue=" + bValue);
 	}

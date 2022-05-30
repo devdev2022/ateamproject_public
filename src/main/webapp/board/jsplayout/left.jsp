@@ -29,6 +29,16 @@ align-item: center;
     -webkit-box-orient: vertical;
 }​
 </style>
+<script type="text/javascript">
+	function loginCheck(url, leftId) {
+		if(leftId == null){
+			alert("로그인이 필요합니다.");
+			location.href="../jspmember/login.jsp";
+		}else{
+			location.href=url;
+		}
+	}
+</script>
 
 <div class="sidebar w-col w-col-2">
 	<%
@@ -55,7 +65,7 @@ align-item: center;
 		<%
 		if (leftId == null) {
 		%>
-		로그인하세요.
+		<a href="../jspmember/login.jsp">로그인 하세요.</a>
 		<%
 		} else {
 		%>
@@ -74,15 +84,17 @@ align-item: center;
 	</div>
 
 	<div class="side_profile_iconbar">
-		<a href="../jspmember/joinupdate.jsp">
+		<a href="javascript:loginCheck('../jspmember/joinupdate.jsp, <%=leftId%>')">
 			<div class="side_profile_editicon w-col w-col-4">
 				<img src="../icon/edit_gray.png">
 			</div>
-		</a> <a href="../jspmember/memberLikes.jsp">
+		</a> 
+		<a href="javascript:loginCheck(../jspmember/memberLikes.jsp, <%=leftId%>')">
 			<div class="side_profile_likeicon w-col w-col-4">
 				<img src="../icon/like_gray.png">
 			</div>
-		</a> <a href="../jspmember/memberSaved.jsp">
+		</a> 
+		<a href="javascript:loginCheck('../jspmember/memberSaved.jsp, <%=leftId%>')">
 			<div class="side_profile_saveicon w-col w-col-4">
 				<img src="../icon/save_gray.png">
 			</div>
