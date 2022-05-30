@@ -7,8 +7,7 @@
 <jsp:useBean id="cMgr" class="board.CommentMgr"/>
 
 <%
-	
-	/* Vector<BoardBean> vlist = bMgr.getBoardList(keyField, keyWord, start, cnt, null, null); */
+	Vector<BoardBean> vlist = new Vector<BoardBean>(); 
 %>
 <head>
 <style>
@@ -205,115 +204,110 @@
 		</div>
 		<div class="board_block">
 			<div class="title_block">
-				<div><h3>BEST</h3></div>
+				<div><h3><b>조회순</b> | 최신순 | BEST</h3></div>
 			</div>
-			<div class="w-layout-grid board_grid">
 			
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('../photo/homeTest3.jpg');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									<span font-size: 0.5vw>게시글 제목</span>
-									<br>
-									<span font-size: 0.3vw>
-									작성자명 / 게시판 구분 / 카테고리 구분
-									<br>
-									♡ 1  |  조회수 13</span>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="#" class="link-block w-inline-block" style="background-image: url('https://uploads-ssl.webflow.com/6279d2a8b52679164d96aae3/6279d970ae44fa0e0e1511ac_01.png');">
-						<div class="trans_block">
-							<div>
-								<div class="text-label">
-									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
+			<div class="w-layout-grid board_grid">
 				
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
 				
 			</div>
 		</div>

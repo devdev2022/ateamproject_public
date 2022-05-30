@@ -15,7 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class BoardMgr {
-
+	
 	DBConnectionMgr pool;
 	public static final String SAVEFOLDER = "C:/Jsp/ateamweb/src/main/webapp/UpLoadFiles/";
 	public static final String ENCODING = "UTF-8";
@@ -683,5 +683,65 @@ public class BoardMgr {
 		}
 		return bean;
 	}
+	
+	
+//home.jsp에서 게시글 가져오기
+	public Vector<BoardBean> getBoardListHome(String type, int max) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<BoardBean> vlist = new Vector<BoardBean>();
+		try {
+			con = pool.getConnection();
+			
+			if (type=="likes") {
+				//좋아요 순서대로 가져오기
+				sql = "SELECT *, COUNT(l.num) c FROM tblboard b JOIN tbllikes l "
+						+ "WHERE b.num = l.num GROUP BY l.num "
+						+ "ORDER BY COUNT(l.num) DESC, l.num DESC LIMIT ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, max);
+			} else if (type=="count"||type=="num") {
+				//조회수 또는 최신순으로 가져오기
+				sql = "SELECT * FROM tblboard ORDER BY ? DESC LIMIT ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, type);
+				pstmt.setInt(2, max);
+			} 
+			
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BoardBean bBean = new BoardBean();
+				bBean.setNum(rs.getInt("num"));
+				bBean.setId(rs.getString("id"));
+				bBean.setSubject(rs.getString("subject"));
+				bBean.setContent(rs.getString("content"));
+				bBean.setPos(rs.getInt("pos"));
+				bBean.setRef(rs.getInt("ref"));
+				bBean.setDepth(rs.getInt("depth"));
+				bBean.setRegdate(rs.getString("regdate"));
+				bBean.setIp(rs.getString("ip"));
+				bBean.setCount(rs.getInt("count"));
+				bBean.setType_board(rs.getString("type_board"));
+				bBean.setType_cat(rs.getString("type_cat"));
+				vlist.addElement(bBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	
+	/*
+	 * public static void main(String[] args) { System.out.println("main here");
+	 * 
+	 * BoardMgr bMgr = new BoardMgr(); Vector<BoardBean> vlist = new
+	 * Vector<BoardBean>(); vlist = bMgr.getBoardListHome("count", 9); BoardBean
+	 * bean = vlist.get(0); System.out.println(bean.getContent()); }
+	 */
+	
 	
 }
