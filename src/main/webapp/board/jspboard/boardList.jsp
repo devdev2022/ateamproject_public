@@ -2359,10 +2359,8 @@ rotate(
 								int count = Bbean.getCount();
 								String Type_cat = Bbean.getType_cat();
 //								파일
-								UpFileBean Fbean = bMgr.getBoardFile(num);
-								int Fnum = Fbean.getNum();
-								String filename = Fbean.getFilename();
-								int filesize = Fbean.getFilesize();
+								Vector<UpFileBean> Fvlist = bMgr.getOneBoardFileAll(num);
+								int fileListSize = Fvlist.size();
 //								댓글 수
 								int bcount = cMgr.getBCommentCount(num);
 								%>
@@ -2379,8 +2377,27 @@ rotate(
 														out.println("&nbsp;&nbsp;&nbsp;");
 													}%>
 												<a href="javascript:read('<%=num %>')"><%=subject %></a>
-												<%if(filename != null && !filename.equals("")) {%>
-													<img src="../icon/icon_file.gif" align="middle">
+												<%
+													for(int k=0; k<fileListSize; k++){ 
+														UpFileBean Fbean = Fvlist.get(k);
+														String filename = Fbean.getFilename();
+												%>
+													<%if(fileListSize != 0) {%>
+														<%
+	//															파일 확장자 구분
+																int point = filename.lastIndexOf( "." );
+																String ext = filename.substring(point + 1).toLowerCase();
+														%>	
+														<%if(ext.trim().equals("jpg") || ext.trim().equals("gif") || ext.trim().equals("jpeg") || ext.trim().equals("bmp") || ext.trim().equals("png") || ext.trim().equals("tif") || ext.trim().equals("tga") || ext.trim().equals("rle") || ext.trim().equals("dib") || ext.trim().equals("tiff") || ext.trim().equals("raw")){ %>
+															<img src="../icon/photo.png" align="middle">
+														<%}else if(ext.trim().equals("mp4") || ext.trim().equals("avi") || ext.trim().equals("wms") || ext.trim().equals("mwa") || ext.trim().equals("asf") || ext.trim().equals("mpg") || ext.trim().equals("mpeg") || ext.trim().equals("ts") || ext.trim().equals("mkv") || ext.trim().equals("mov") || ext.trim().equals("3gp") || ext.trim().equals("3g2") || ext.trim().equals("webm")) { %>
+															<img src="../icon/video.png" align="middle">
+														<%}else if(ext.trim().equals("mp3") || ext.trim().equals("wav")) { %>
+															<img src="../icon/music.png" align="middle">
+														<%}else{%>
+															<img src="../icon/file.png" align="middle">
+														<%} %>
+													<%} %>
 												<%} %>
 												<%if(bcount > 0) {%>
 														<font color="red">[<%=bcount %>]</font>

@@ -22,7 +22,6 @@
 	String realMinute= Integer.toString(cal.get(Calendar.MINUTE));
 	String realSecond = Integer.toString(cal.get(Calendar.SECOND));
 	String realTime = realHour + ":" + realMinute;
-	out.print(realTime);
 	
 	int maxDay = 31;
 	
@@ -57,6 +56,12 @@
 	String nowDate = year + "-" + month + "-"  +day;
 	String nowTime = Integer.toString(cal.get(Calendar.HOUR_OF_DAY));
 	String realNowDate = realYear + "-" + realMonth + "-"  +realDay;
+	
+	if(cal.get(Calendar.MONTH)+1 < 10){
+		Integer.toString(cal.get(Calendar.MONTH)+1);
+		nowTime = "0" + nowTime;
+	}
+
 	
 	if(request.getParameter("nowTimeRead")!=null){
 		nowTime =request.getParameter("nowTimeRead");
@@ -254,11 +259,10 @@
 </head>
 <body>
 	<div align="center">
-		<img src="../icon/melon.png" width="30vw"> <b><font size="3vw" color="green">인기차트100</font></b>
+		<a href="../jsphome/home.jsp"><img src="../icon/melon.png" width="30vw"> <b><font size="3vw" color="green">인기차트100</font></b></a>
 	</div>
 	<form name="chartFrm" method="get">
     <div class="wrapper">
-<!--Navigation Start-->
 <nav class="navigation">
 	<ul>
 		<li class="active">

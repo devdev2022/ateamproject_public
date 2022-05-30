@@ -398,7 +398,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		<%
 //				파일 확장자 구분
 				int point = filename.lastIndexOf( "." );
-				String ext = filename.substring(point + 1 );
+				String ext = filename.substring(point + 1).toLowerCase();
 		%>	
 				<%if(ext.trim().equals("jpg") || ext.trim().equals("gif") || ext.trim().equals("jpeg") || ext.trim().equals("bmp") || ext.trim().equals("png") || ext.trim().equals("tif") || ext.trim().equals("tga") || ext.trim().equals("rle") || ext.trim().equals("dib") || ext.trim().equals("tiff") || ext.trim().equals("raw")){ %>
 					<div align="center"><img src="../../UpLoadFiles/<%=filename%>" ></div>
