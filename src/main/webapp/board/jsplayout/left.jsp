@@ -65,7 +65,7 @@ align-item: center;
 		<%
 		if (leftId == null) {
 		%>
-		<a href="../jspmember/login.jsp">로그인 하세요.</a>
+		<a href="../jspmember/login.jsp">로그인하세요.</a>
 		<%
 		} else {
 		%>
@@ -84,17 +84,17 @@ align-item: center;
 	</div>
 
 	<div class="side_profile_iconbar">
-		<a href="javascript:loginCheck('../jspmember/joinupdate.jsp, <%=leftId%>')">
+		<a href="../jspmember/joinupdate.jsp">
 			<div class="side_profile_editicon w-col w-col-4">
 				<img src="../icon/edit_gray.png">
 			</div>
 		</a> 
-		<a href="javascript:loginCheck(../jspmember/memberLikes.jsp, <%=leftId%>')">
+		<a href="../jspmember/memberLikes.jsp">
 			<div class="side_profile_likeicon w-col w-col-4">
 				<img src="../icon/like_gray.png">
 			</div>
 		</a> 
-		<a href="javascript:loginCheck('../jspmember/memberSaved.jsp, <%=leftId%>')">
+		<a href="../jspmember/memberSaved.jsp">
 			<div class="side_profile_saveicon w-col w-col-4">
 				<img src="../icon/save_gray.png">
 			</div>

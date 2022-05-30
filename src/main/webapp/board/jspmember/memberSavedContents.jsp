@@ -6,10 +6,21 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <jsp:useBean id="sMgr" class="board.SavePostMgr"/>
+
 <%
 	String loginId = (String)session.getAttribute("idKey");
 	session.setAttribute("idKey", loginId);
+	
+	if (loginId == null) {%>
+	
+<script>
+	{
+		alert("로그인이 필요합니다.");
+		window.location = "login.jsp";
+	}
+</script>
 
+<%}
 	int totalRecord = 0; //총 게시물 수
 	int numPerPage = 8; //페이지당 레코드 개수
 	int pagePerBlock = 10; //블럭당 페이지 개수

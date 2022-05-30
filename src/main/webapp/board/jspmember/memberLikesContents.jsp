@@ -8,6 +8,17 @@
 <%
 	String loginId = (String)session.getAttribute("idKey");
 	session.setAttribute("idKey", loginId);
+	
+	if (loginId == null) {%>
+	
+<script>
+	{
+		alert("로그인이 필요합니다.");
+		window.location = "login.jsp";
+	}
+</script>
+
+<%}
 
 	int totalRecord = 0; //총 게시물 수
 	int numPerPage = 8; //페이지당 레코드 개수
