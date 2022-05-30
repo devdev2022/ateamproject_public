@@ -1,4 +1,3 @@
-<%@page import="org.apache.catalina.ssi.SSICommand"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="board.BoardMgr"%>
 <%@page import="board.BoardBean"%>
@@ -10,11 +9,9 @@
 <%
 	Vector<BoardBean> vlist = new Vector<BoardBean>(); 
 	
-
-	System.out.println(request.getParameter("option"));
-	String option = request.getParameter("option");
-	if(option==null){
-		option = "count";
+	String option = "count";
+	if(request!=null){
+		option = request.getParameter("option");
 	}
 	int max = 9;
 %>
@@ -220,37 +217,26 @@ button {
 
 </style>
 
-<script type="text/javascript">
-	function optFrm(option) {
-		document.optFrm.option.value = option;
-		alert(option);
-		document.boardListFrm.action = "home.jsp";
-		document.boardListFrm.submit();
-	}
+<script>
+
+	
 </script>
 
 </head>
-<body class="panel">
-	<div class="frame_block">
-		<div class="banner_block">
-		</div>
-		<div class="board_block">
-			<div class="title_block">
-			<div><%=option%></div>
-			<form name = "optFrm" method="post">
-				<div>
-					<a href="javascript:optFrm('count')">조회순</a> |
-					<a href="javascript:optFrm('latest')">최신순</a> | 
-					<a href="javascript:optFrm('best')">BEST</a>
-					<input type="hidden" name="option" value=""></input>
-				</div>
-			</form>
-			</div>
-			
-			<div class="w-layout-grid board_grid">
-			
 
-				<%for(int i=0; i<9; i++){ %>
+				
+				<div class="grid-item">
+				<% if(option=="count"){%>
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
 				<div class="grid-item">
 					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
 						<div class="trans_block">
@@ -262,10 +248,81 @@ button {
 						</div>
 					</a>
 				</div>
-				<%}%>
-			</div>
-		</div>
-	</div>
-	
-</body>
-</html>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="grid-item">
+					<a href="#" class="link-block w-inline-block" style="background-image: url('../icon/noimg_square.jpg');">
+						<div class="trans_block">
+							<div>
+								<div class="text-label">
+									게시글 제목<br>작성자명 / 게시판 구분 / 카테고리 구분<br>♡ 1  |  조회수 13
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<%} %>

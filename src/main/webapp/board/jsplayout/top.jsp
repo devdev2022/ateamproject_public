@@ -9,6 +9,7 @@
 <script type="text/javascript">
 	function boardListFrm(bValue) {
 		document.boardListFrm.bValue.value = bValue;
+		
 		document.boardListFrm.action = "../jspboard/boardList.jsp";
 		document.boardListFrm.submit();
 	}
@@ -41,7 +42,6 @@
 			<input type="hidden" name="bValue" value="">
 			
 			<div class="ateam_header_nav_btn"><a href="../jspmember/myPageIndex.jsp">My Page</a></div>
-			<!-- 수정사항 : 로그인되어 있지 않으면, jsplogin/login.jsp로. 로그인되어 있으면, myPageIndex.jsp로.  -->
 			<div class="ateam_header_nav_btn"></div>
 		</div>
 		</form>
