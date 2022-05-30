@@ -57,7 +57,7 @@
 	String nowTime = Integer.toString(cal.get(Calendar.HOUR_OF_DAY));
 	String realNowDate = realYear + "-" + realMonth + "-"  +realDay;
 	
-	if(cal.get(Calendar.MONTH)+1 < 10){
+	if(cal.get(Calendar.HOUR_OF_DAY)+1 < 10){
 		Integer.toString(cal.get(Calendar.MONTH)+1);
 		nowTime = "0" + nowTime;
 	}
