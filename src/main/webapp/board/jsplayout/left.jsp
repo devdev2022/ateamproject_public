@@ -114,32 +114,28 @@ align-item: center;
 			<tbody class="left-chart">
 				<%
 					Vector<ChartBean> chartVlist = leftChartMgr.getAllChart();
-					%>
-				<%
 					int chartSize = chartVlist.size();
-					%>
-				<%
-					for (int i = chartSize - 1; i > chartSize - 11; i--) {
-					%>
-				<%
-					ChartBean chBean = chartVlist.get(i);
-					%>
-				<tr>
-					<!-- 순위 -->
-					<td>
-						<div align="center"><%=chBean.getRanking()%></div>
-					</td>
-					<td style="min-width:20px">
-						<div align="center"><img src="<%=chBean.getAlbumImg()%>"></div>
-					</td>
-					<td>
-						<!-- 아티스트 -->
-						<div align="center"><%=chBean.getArtist()%><br>
-							<%=chBean.getTitle()%></div>
-					</td>
+					if(chartSize > 11){
 
-				</tr>
-				<%
+					for (int i = chartSize - 1; i > chartSize - 11; i--) {
+						ChartBean chBean = chartVlist.get(i);
+						%>
+						<tr>
+							<!-- 순위 -->
+							<td>
+								<div align="center"><%=chBean.getRanking()%></div>
+							</td>
+							<td style="min-width:20px">
+								<div align="center"><img src="<%=chBean.getAlbumImg()%>"></div>
+							</td>
+							<td>
+								<!-- 아티스트 -->
+								<div align="center"><%=chBean.getArtist()%><br>
+									<%=chBean.getTitle()%></div>
+							</td>
+		
+						</tr>
+				<%		}
 					}
 					%>
 			</tbody>
