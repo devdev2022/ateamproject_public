@@ -1,7 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8"%>
-<%
-	
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- player.js 경로 참조 -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -11,13 +8,19 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jplayer/2.6.4/add-on/jplayer.playlist.min.js"></script>
 <script>
 $(document).ready(function(){
-
-
+	
+	<%
+		String pTitle = (request.getParameter("pFilename").replace(".mp3", "")).replace(".wav", "");
+		String pFilename = request.getParameter("pFilename");
+		String pUploader = request.getParameter("pUploader");
+	%>
+	
+	
 	  var playlist = [{
 		  /*제목, 아티스트, 음악*/
-	      title:"Ghetto funk Mix",
-	      artist:"DJ Todokki",
-	      mp3:"../sample/sample.mp3",
+	      title:"<%=pTitle%>",
+	      artist:"<%=pUploader%>",
+	      mp3:"../../UpLoadFiles/<%=pFilename%>",
 	      poster: "https://i.imgur.com/sCbrzQa.png"
 	    },{
 	      title:"Cro Magnon Man",
@@ -86,14 +89,11 @@ $(document).ready(function(){
 
 	  
 	});
+
 </script>
 
 <!-- player.css 경로 참조 -->
-<link href="player.css" rel="stylesheet">
-
-<div>
-	<a href="https://codepen.io/mustafaismail22/pen/Baqxbp">템플릿 원본</a>
-</div>
+<link href="../playertest/player.css" rel="stylesheet">
 
 <!-- 플레이어 시작 -->
 <div class="music-player">
@@ -146,4 +146,3 @@ $(document).ready(function(){
 	</div>
 </div>
 <!-- 플레이어 끝 -->
-<a>timestamp</a>

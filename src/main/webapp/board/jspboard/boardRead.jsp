@@ -58,6 +58,7 @@ var url_combine_band = url_default_band + encodeURI(url_this_page)+ '%0A' + enco
 var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_default_naver + encodeURI(title_this_page);
 
 
+
 	function down(filename) {
 		document.downFrm.filename.value=filename;
 		document.downFrm.submit();
@@ -362,32 +363,33 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		<div><b><%=bBean.getType_board() %></b> <font color="#E83038"><%=bBean.getType_cat() %></font></div>
 		<div><h2><%=bBean.getSubject() %></h2></div>
 		<div><img src="../icon/info_large.jpg" width="20vw"> <%=bBean.getId() %> | <%=bBean.getRegdate() %> | 조회수 <%=bBean.getCount() %> </div>
+		
+		<!-- 첨부파일영역 -->
+		<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
+			<div class="dropdown" align="right">
+				<input class="btn btn-outline-secondary dropdown-toggle" type="text" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" value="첨부파일 (<%=fCount %>)" size="10">
+				<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+				<%	
+					for(int i=0; i<fCount; i++){ 
+						
+						UpFileBean fBean = fVlist.get(i);
+						String fileN = fBean.getFilename();
+				%>
+						<%if(fileN != null && !fileN.equals("")){ %>
+								<li><a class="dropdown-item active" href="javascript:down('<%=fBean.getFilename()%>')"><%= fBean.getFilename()%></a></li>
+						<%}else{ %>
+								<li><a class="dropdown-item active" href="#">파일이 없습니다.</a></li>
+						<%} %>
+				<%} %>
+				</ul>
+			</div>
+		</div>
+		<!-- 첨부파일영역 -->
 	</div>
 	
-	<!-- 첨부파일영역 -->
-	<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-		<div class="dropdown" align="right">
-			<input class="btn btn-outline-secondary dropdown-toggle" type="text" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" value="첨부파일 (<%=fCount %>)" size="10">
-			<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-			<%	
-				for(int i=0; i<fCount; i++){ 
-					
-					UpFileBean fBean = fVlist.get(i);
-					String fileN = fBean.getFilename();
-			%>
-					<%if(fileN != null && !fileN.equals("")){ %>
-							<li><a class="dropdown-item active" href="javascript:down('<%=fBean.getFilename()%>')"><%= fBean.getFilename()%></a></li>
-					<%}else{ %>
-							<li><a class="dropdown-item active" href="#">파일이 없습니다.</a></li>
-					<%} %>
-			<%} %>
-			</ul>
-		</div>
-	</div>
-	<!-- 첨부파일영역 -->
 	
 	<div class="post-main w-container">
-		<%=bBean.getContent() %><br>
+		
 		<%	
 			for(int i=0; i<fCount; i++){ 
 				UpFileBean fBean = fVlist.get(i);
@@ -400,10 +402,20 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		%>	
 				<%if(ext.trim().equals("jpg") || ext.trim().equals("gif") || ext.trim().equals("jpeg") || ext.trim().equals("bmp") || ext.trim().equals("png") || ext.trim().equals("tif") || ext.trim().equals("tga") || ext.trim().equals("rle") || ext.trim().equals("dib") || ext.trim().equals("tiff") || ext.trim().equals("raw")){ %>
 					<div align="center"><img src="../../UpLoadFiles/<%=filename%>" ></div>
-				<%}else if(ext.trim().equals("mp3") || ext.trim().equals("mp4") || ext.trim().equals("avi") || ext.trim().equals("wms") || ext.trim().equals("mwa") || ext.trim().equals("asf") || ext.trim().equals("mpg") || ext.trim().equals("mpeg") || ext.trim().equals("ts") || ext.trim().equals("mkv") || ext.trim().equals("mov") || ext.trim().equals("3gp") || ext.trim().equals("3g2") || ext.trim().equals("webm")) { %>
+				<%}else if(ext.trim().equals("mp4") || ext.trim().equals("avi") || ext.trim().equals("wms") || ext.trim().equals("mwa") || ext.trim().equals("asf") || ext.trim().equals("mpg") || ext.trim().equals("mpeg") || ext.trim().equals("ts") || ext.trim().equals("mkv") || ext.trim().equals("mov") || ext.trim().equals("3gp") || ext.trim().equals("3g2") || ext.trim().equals("webm")) { %>
 					<div align="center"><iframe sandbox="allow-scripts" src="../../UpLoadFiles/<%=filename%>" width="600px" height="350px" seamless="seamless" name="iframe<%=i%>"></iframe></div>
+				<%}else if(ext.trim().equals("mp3") || ext.trim().equals("wav")) { %>
+					<div align="center">
+						<jsp:include page="../playertest/player.jsp" >
+							<jsp:param value="<%=filename%>" name="pFilename"/>
+							<jsp:param value="<%=bBean.getId()%>" name="pUploader"/>
+						</jsp:include>
+					</div>
 				<%}	%>
 		<%} %>
+		<br>
+		<br>
+		<%=bBean.getContent() %>
 	</div>
 	<div class="layout-upper-bottom w-container">
 		<ul role="list" class="list-2 w-list-unstyled">

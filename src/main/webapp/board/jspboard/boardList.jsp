@@ -2282,7 +2282,7 @@ rotate(
 				<div>Total : <%=totalRecord %> Articles( <%=nowPage + " / " + totalPage %> Pages)</div>
 			</div>
 		</div>
-		<div class="board-btns-top w-row">
+		<div class="board-btns-top w-row" style="margin-bottom:0.5vw;">
 			<div class="column w-col w-col-10 w-col-small-10 w-col-tiny-10">
 				<a href="javascript:setCategory('')" class="category-btn w-button">전체</a>
 				<a href="javascript:setCategory('음악')" class="category-btn w-button">음악</a>

@@ -16,6 +16,10 @@ if (leftId != null)
 %>
 
 <style>
+.sidebar{
+align-item: center;
+}
+
 .left-chart tr td{
 	font-size: 0.5vw;
 	color: white;
