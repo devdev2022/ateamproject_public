@@ -22,8 +22,8 @@ else if(option.equals("num"))
 else if(option.equals("likesSum"))
 	option = "likesSum";
 
-if(option=="count" || option=="num" || option=="likesSum")
-	System.out.println("option confirmed as " + option);
+/* if(option=="count" || option=="num" || option=="likesSum")
+	System.out.println("option confirmed as " + option); */
 
 int max = 9;
 %>
@@ -2414,11 +2414,10 @@ function optFrm(option) {
 					<div class="banner_block"></div>
 					<div class="board_block">
 						<div class="title_block">
-							<div><%=option%></div>
 							<form name="optFrm" method="post">
 								<div>
 									<a href="javascript:optFrm('count')">조회순</a> | 
-									<a href="javascript:optFrm('num')">최신순</a> | 
+									<a href="javascript:optFrm('b.num')">최신순</a> | 
 									<a href="javascript:optFrm('likesSum')">BEST</a> 
 										<input type="hidden" name="option" value=""></input>
 								</div>
