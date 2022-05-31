@@ -2427,7 +2427,7 @@ function optFrm(option) {
 
 						<div class="w-layout-grid board_grid">
 							<%vlist = bMgr.getBoardListHome(option, max);
-							for(int i=0; i<9; i++){
+							for(int i=0; i<vlist.size(); i++){
 								HomeBean bean = vlist.get(i);
 							%>
 							<div class="grid-item">
