@@ -24,6 +24,7 @@
 
 <!DOCTYPE html>
 <head>
+<title><%=bValue %> 게시글</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 <!-- 부트스트랩 요소 -->
 <link
@@ -343,6 +344,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 </style>
 
 </head>
+
 <body class="body">
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ include file="../jsplayout/top.jsp" %>

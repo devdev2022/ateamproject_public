@@ -19,7 +19,7 @@
 
 
 <head>
-
+<title><%=oriBValue %> 게시글의 답글 작성</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 <!-- 부트스트랩 요소 -->
 <link

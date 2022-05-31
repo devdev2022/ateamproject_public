@@ -22,6 +22,7 @@
 	data-wf-page="6271f01e889d5b745d71a96b"
 	data-wf-site="6271f01e889d5b73f171a96a">
 <head>
+<title>게시물 작성</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 
 

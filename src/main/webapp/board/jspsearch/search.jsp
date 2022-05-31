@@ -5,6 +5,7 @@
 %>
 
 <head>
+<title>ID / PW 찾기</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 </head>
 

@@ -4,6 +4,7 @@
 
 %>
 <head>
+<title>좋아요 페이지</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 </head>
 

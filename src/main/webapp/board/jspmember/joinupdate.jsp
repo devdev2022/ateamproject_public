@@ -5,6 +5,7 @@
 %>
 
 <head>
+<title>회원 수정</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 </head>
 

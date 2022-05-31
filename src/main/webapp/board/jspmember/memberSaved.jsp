@@ -4,6 +4,7 @@
 
 %>
 <head>
+<title>저장한 게시글 페이지</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 </head>
 

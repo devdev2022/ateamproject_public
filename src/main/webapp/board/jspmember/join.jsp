@@ -5,6 +5,7 @@
 %>
 
 <head>
+<title>회원가입</title>
 <link href="../jsplayout/css/layoutInt.css" rel="stylesheet">
 </head>
 

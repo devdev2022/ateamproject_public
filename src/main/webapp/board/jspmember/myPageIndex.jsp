@@ -13,6 +13,7 @@ if (Id == null) {%>
 <%}%>
 
 <head>
+<title>마이페이지</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 <style>
 

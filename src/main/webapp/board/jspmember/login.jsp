@@ -5,6 +5,7 @@
 %>
 
 <head>
+<title>로그인</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 </head>
 

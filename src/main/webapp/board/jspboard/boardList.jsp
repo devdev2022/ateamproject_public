@@ -65,6 +65,7 @@
 
 <!DOCTYPE html>
 <head>
+<title><%= bValue %> 게시판</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 
 <!-- 부트스트랩 요소 -->
