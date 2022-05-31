@@ -170,7 +170,7 @@ public class ChartMgr {
 		return vlist;
 	}
 	
-	public ChartBean getDetaile(String title) {
+	public ChartBean getDetaile(int chnum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -178,15 +178,16 @@ public class ChartMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "select video, videoInfo, lyric, artist from tblChart where title=?";
+			sql = "select video, videoInfo, lyric, artist, title from tblChart where chnum=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, title);
+			pstmt.setInt(1, chnum);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				bean.setVideo(rs.getString(1));
 				bean.setVideoInfo(rs.getString(2));
 				bean.setLyric(rs.getString(3));
 				bean.setArtist(rs.getString(4));
+				bean.setTitle(rs.getString(5));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

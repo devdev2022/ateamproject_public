@@ -2,13 +2,15 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="chartMgr" class="chart.ChartMgr"/>
 <%
-	String title = request.getParameter("title");
+	int chnum = Integer.parseInt(request.getParameter("chnum"));
+	ChartBean bean = new ChartBean();
+	bean = chartMgr.getDetaile(chnum); 
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title><%=title %>&nbsp;의 정보</title>
+<title><%=bean.getTitle() %>&nbsp;의 정보</title>
 </head>
 <body>
 	<div align="center">
@@ -16,10 +18,6 @@
 			<h2>영상 정보</h2>
 		</div>
 		<div style="width:1008px;height:568px;">
-		<%
-				ChartBean bean = new ChartBean();
-				bean = chartMgr.getDetaile(title); 
-		%>
 		<%
 			if(bean.getVideo() == "뮤비 정보가 없습니다."){
 			%>
@@ -34,7 +32,7 @@
 			<div>
 				<div>
 					<font style="color:maroon; ; font-size: 30px;">
-						[MV] <%=title %>
+						[MV] <%=bean.getTitle() %>
 					</font>
 				</div>
 					<div>

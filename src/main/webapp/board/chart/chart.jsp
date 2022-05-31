@@ -105,18 +105,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script type="text/javascript">
-	function goDetile(title) {
-		document.chartFrm.title.value = title;
-		document.chartFrm.action = "boardRead.jsp";
-		document.chartFrm.submit();
+	function openchartDetaile(chnum) {
+		url = "chartDetailes.jsp?chnum=" + chnum;
+		window.open(url, "뮤직비디오", "width=950,height=900,scrollbars=yes");
 	}
-	function openchartDetaile(title) {
-		url = "chartDetailes.jsp?title=" + title;
-		window.open(url, "chartDetailes.jsp?title=" + title, "width=950,height=900,scrollbars=yes");
-	}
-	function openchartLyric(title) {
-		url = "chartLyric.jsp?title=" + title;
-		window.open(url, "chartLyric.jsp?title=" + title, "width=250,height=550,scrollbars=yes");
+	function openchartLyric(chnum) {
+		url = "chartLyric.jsp?chnum=" + chnum;
+		window.open(url, "가사", "width=250,height=550,scrollbars=yes");
 	}
 	function setNowTime(time) {
 		document.chartFrm.nowTime.value = time;
@@ -419,12 +414,7 @@
 								<span>순위</span>
 							</div>
 						</th>
-						<th scope="col" align="center">
-							<div>
-								<span></span>
-							</div>
-						</th>
-						<th scope="col" align="center">
+						<th scope="col" align="center" colspan="2">
 							<div>
 								<span>타이틀</span>
 							</div>
@@ -441,12 +431,12 @@
 						</th>
 						<th scope="col" align="center">
 							<div>
-								<span>가사보기</span>
+								<span>가사</span>
 							</div>
 						</th>
 						<th scope="col" align="center">
 							<div>
-								<span>상세정보</span>
+								<span>뮤직비디오</span>
 							</div>
 						</th>
 					</tr>
@@ -483,15 +473,15 @@
 								<td>
 									<!-- 가사 -->
 									<div align="center">
-										<a href="javascript:openchartLyric('<%=chBean.getTitle()%>')"><img
-											src="../icon/detail.png"></a>
+										<a href="javascript:openchartLyric('<%=chBean.getChnum()%>')"><img
+											src="../icon/lyric.png"></a>
 									</div>
 								</td>
 								<td>
-									<!-- 상세정보 -->
+									<!-- 뮤직비디오 -->
 									<div align="center">
-										<a href="javascript:openchartDetaile('<%=chBean.getTitle()%>')"><img
-											src="../icon/detail.png"></a>
+										<a href="javascript:openchartDetaile('<%=chBean.getChnum()%>')"><img
+											src="../icon/music_video.png"></a>
 									</div>
 								</td>
 							</tr>
@@ -506,7 +496,7 @@
 				</tbody>
 			</table>
 		</div>
-		<input type="hidden" name="title" value="">
+		<input type="hidden" name="chnum" value="">
 	</form>
 </body>
 </html>
