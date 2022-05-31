@@ -15,7 +15,7 @@ public class HomeBean {
 	private String type_board;
 	private String type_cat;
 	private int likesSum;
-	
+	private String filename;
 	public int getNum() {
 		return num;
 	}
@@ -94,6 +94,11 @@ public class HomeBean {
 	public void setLikesSum(int likesSum) {
 		this.likesSum = likesSum;
 	}
-
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	
 }
