@@ -11,8 +11,10 @@
 String leftId = (String) session.getAttribute("idKey");
 leftBean = leftMgr.getMember(leftId);
 String leftGrade = "";
-if (leftId != null)
+if (leftId != null && leftBean.getGrade() != null){
 	leftGrade = (leftBean.getGrade()).trim();
+}
+	
 %>
 
 <style>

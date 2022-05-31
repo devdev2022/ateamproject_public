@@ -271,11 +271,11 @@ boolean result=mgr.loginMember(id, pwd);
 
 						<div>비밀번호*</div>
 						<div class="col-auto col-md-4">
-							<input name="pwd" class="form-control">
+							<input type="password" name="pwd" class="form-control">
 						</div>
 						<div>비밀번호 확인*</div>
 						<div class="col-auto col-md-4">
-							<input type="text" name="pwdchk" class="form-control">
+							<input type="password" name="pwdchk" class="form-control">
 						</div>
 						<div>이름*</div>
 						<div class="col-auto col-md-4">
