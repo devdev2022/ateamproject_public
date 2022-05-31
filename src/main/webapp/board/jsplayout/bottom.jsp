@@ -10,10 +10,10 @@
 				<div>
 					<h2 class="ateam_footer_heading">Board</h2>
 					<ul role="list" class="w-list-unstyled">
-						<li><a href="#" class="ateam_footer-link">Hip-Hop</a></li>
-						<li><a href="#" class="ateam_footer-link">R&B</a></li>
-						<li><a href="#" class="ateam_footer-link">POP</a></li>
-						<li><a href="#" class="ateam_footer-link">EDM</a></li>
+						<li><a href="javascript:location.href='../jspboard/boardList.jsp?bValue=Hip-Hop'" class="ateam_footer-link">Hip-Hop</a></li>
+						<li><a href="javascript:location.href='../jspboard/boardList.jsp?bValue=RnB'" class="ateam_footer-link">RnB</a></li>
+						<li><a href="javascript:location.href='../jspboard/boardList.jsp?bValue=POP'" class="ateam_footer-link">POP</a></li>
+						<li><a href="javascript:location.href='../jspboard/boardList.jsp?bValue=EDM'" class="ateam_footer-link">EDM</a></li>
 					</ul>
 				</div>
 				<div>
@@ -26,9 +26,9 @@
 				<div>
 					<h2 class="ateam_footer_heading">My Page</h2>
 					<ul role="list" class="w-list-unstyled">
-						<li><a href="#" class="ateam_footer-link">Profile</a></li>
-						<li><a href="#" class="ateam_footer-link">Likes</a></li>
-						<li><a href="#" class="ateam_footer-link">Saves</a></li>
+						<li><a href="javascript:location.href='../jspmember/joinupdata.jsp'" class="ateam_footer-link">Profile</a></li>
+						<li><a href="javascript:location.href='../jspmember/memberLikes.jsp'" class="ateam_footer-link">Likes</a></li>
+						<li><a href="javascript:location.href='../jspmember/memberSaved.jsp'" class="ateam_footer-link">Saves</a></li>
 					</ul>
 				</div>
 			</div>
