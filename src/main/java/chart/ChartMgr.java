@@ -140,7 +140,7 @@ public class ChartMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "SELECT * FROM tblchart WHERE getDate like ? order by ranking *1 asc limit 100";
+			sql = "SELECT * FROM tblchart WHERE getDate LIKE ? GROUP BY ranking order by ranking *1 asc limit 100";
 			pstmt = con.prepareStatement(sql);
 			System.out.println(DateTime);
 			pstmt.setString(1, DateTime + "%");
