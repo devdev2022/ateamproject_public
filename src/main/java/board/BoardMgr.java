@@ -686,7 +686,7 @@ public class BoardMgr {
 	
 	
 //home.jsp에서 게시글 가져오기
-	public Vector<HomeBean> getBoardListHome(String type, int max) {
+	public Vector<HomeBean> getBoardListHome(String option, int max) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -694,25 +694,13 @@ public class BoardMgr {
 		Vector<HomeBean> vlist = new Vector<HomeBean>();
 		try {
 			con = pool.getConnection();
-			
-			if (type=="likesSum" || type=="count") {
-				//좋아요 순서대로 가져오기
-				sql = "SELECT *, COUNT(l.num) likesSum FROM tblboard b JOIN tbllikes l "
-						+ "WHERE b.num = l.num GROUP BY l.num "
-						+ "ORDER BY ? DESC, l.num DESC LIMIT ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, type);
-				pstmt.setInt(2, max);
-			} else if (type=="num") {
-				System.out.println("num in");
-				//조회수 또는 최신순으로 가져오기
-				sql = "SELECT *, COUNT(l.num) likesSum FROM tblboard b JOIN tbllikes l "
-						+ "WHERE b.num = l.num GROUP BY l.num "
-						+ "ORDER BY l.num DESC LIMIT ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, max);
-			} 
-			
+			sql = "SELECT *, sum(likes) likesSum FROM tblboard b "
+					+ "LEFT JOIN tbllikes l ON b.num = l.num GROUP BY b.num ORDER BY ";
+			System.out.println(option + " in");
+			sql = sql + option + " DESC, l.num DESC LIMIT ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, max);
+
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HomeBean hBean = new HomeBean();
