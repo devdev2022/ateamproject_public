@@ -695,7 +695,8 @@ public class BoardMgr {
 		try {
 			con = pool.getConnection();
 			sql = "SELECT *, sum(likes) likesSum FROM tblboard b "
-					+ "LEFT JOIN tbllikes l ON b.num = l.num GROUP BY b.num ORDER BY ";
+					+ "LEFT JOIN tbllikes l ON b.num = l.num LEFT JOIN tblupfile f ON b.num = f.num "
+					+ "GROUP BY b.num ORDER BY ";
 			System.out.println(option + " in");
 			sql = sql + option + " DESC, l.num DESC LIMIT ?";
 			pstmt = con.prepareStatement(sql);
@@ -717,6 +718,7 @@ public class BoardMgr {
 				hBean.setType_board(rs.getString("type_board"));
 				hBean.setType_cat(rs.getString("type_cat"));
 				hBean.setLikesSum(rs.getInt("likesSum"));
+				hBean.setFilename(rs.getString("filename"));
 				vlist.addElement(hBean);
 			}
 		} catch (Exception e) {
