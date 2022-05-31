@@ -22,10 +22,10 @@
 			<!-- ==============페이지 내용 끝============== -->
 		</div>
 		
+		
 		<%@ include file="../jsplayout/right.jsp" %>
 		
 	</div>
 <%@ include file="../jsplayout/bottom.jsp" %>
-	
 </body>
 </html>

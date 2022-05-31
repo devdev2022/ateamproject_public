@@ -2425,13 +2425,27 @@ function optFrm(option) {
 						</div>
 
 						<div class="w-layout-grid board_grid">
-							<%vlist = bMgr.getBoardListHome(option, max);
+							<%
+							vlist = bMgr.getBoardListHome(option, max);
+							
 							for(int i=0; i<vlist.size(); i++){
 								HomeBean bean = vlist.get(i);
+								String filename = bean.getFilename();
+								int point = 0;
+								String ext = "";
+								String url = "../icon/noimg_square.jpg";	
+								if(filename!=null){
+									point = filename.lastIndexOf(".");
+									ext = filename.substring(point + 1 ).toLowerCase();
+								}
+								
+							
 							%>
 							<div class="grid-item">
 								<a href="#" class="link-block w-inline-block"
-									style="background-image: url('../icon/noimg_square.jpg');">
+									style="background-image: url('<%=url%>');">
+									
+									
 									<div class="trans_block">
 										<div>
 											<div class="text-label">

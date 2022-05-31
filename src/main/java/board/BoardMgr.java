@@ -697,7 +697,6 @@ public class BoardMgr {
 			sql = "SELECT *, sum(likes) likesSum FROM tblboard b "
 					+ "LEFT JOIN tbllikes l ON b.num = l.num LEFT JOIN tblupfile f ON b.num = f.num "
 					+ "GROUP BY b.num ORDER BY ";
-			System.out.println(option + " in");
 			sql = sql + option + " DESC, l.num DESC LIMIT ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, max);
