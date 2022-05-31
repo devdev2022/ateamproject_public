@@ -2279,7 +2279,6 @@ rotate(
 		<div class="board-category wf-section">
 			<div class="div-block">
 				<div class="text-block"><%=bValue%></div>
-				<div>Total : <%=totalRecord %> Articles( <%=nowPage + " / " + totalPage %> Pages)</div>
 			</div>
 		</div>
 		<div class="board-btns-top w-row" style="margin-bottom:0.5vw;">
@@ -2427,10 +2426,13 @@ rotate(
 				<td>
 					<div class="board-bottom-container w-container">
 						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							<div class="btn-group me-2" role="group" aria-label="Second group">
+							<div class="btn-group me-2" role="group" aria-label="Second group" >
 								<!-- 이전블록 -->
 								<% if(nowBlock > 1) {%>
-									<a href="javascript:block('<%=nowBlock - 1%>')"><input type="text" class="btn btn-secondary" value="<" size="1"></a>
+									<a href="javascript:block('<%=nowBlock - 1%>')">
+										<button type="button" class="btn btn-secondary" ><</button>
+										<input type="hidden" class="btn btn-secondary" value="<"readonly>
+									</a>
 								<%}	%>
 								<!-- 블록번호 -->
 								<%
@@ -2439,13 +2441,15 @@ rotate(
 									for(;pageStart<pageEnd;pageStart++){
 								%>
 								<a href="javascript:pageing('<%=pageStart%>')">
-									<input type="text" class="btn btn-secondary" value="<%=pageStart %>" size="1" readonly>
+									<button type="button" class="btn btn-secondary" ><%=pageStart %></button>
+									<input type="hidden" class="btn btn-secondary" value="<%=pageStart %>" size="1" readonly>
 								</a>
 								<%} %>
 								<!-- 다음블록 -->
 								<% if(nowBlock < totalBlock) {%>
 									<a href="javascript:block('<%=nowBlock + 1%>')">
-										<input type="text" class="btn btn-secondary" value=">" size="1" readonly> 
+										<button type="button" class="btn btn-secondary" >></button>
+										<input type="hidden" class="btn btn-secondary" value=">" size="1" readonly> 
 									</a>
 								<%}	%>
 							</div>
@@ -2491,7 +2495,7 @@ rotate(
 		</table>
 	</form>
 		<form name="listFrm" method="post">
-			<input type="hidden" name="reload" value="ture">
+			<input type="hidden" name="reload" value="true">
 			<input type="hidden" name="nowPage" value="1">
 			<input type="hidden" name="bValue" value="<%=bValue%>">
 		</form>
