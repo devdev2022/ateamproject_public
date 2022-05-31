@@ -258,7 +258,10 @@
 </head>
 <body>
 	<div align="center">
-		<a href="../jsphome/home.jsp"><img src="../icon/melon.png" width="30vw"> <b><font size="3vw" color="green">인기차트100</font></b></a>
+		<a href="../jsphome/home.jsp"><img src="../icon/home.png" width="20vw"></a>
+	</div>
+	<div align="center">
+		<img src="../icon/melon.png" width="50vw"> <b><font size="20vw" color="green">인기차트100</font></b>
 	</div>
 	<form name="chartFrm" method="get">
     <div class="wrapper">
