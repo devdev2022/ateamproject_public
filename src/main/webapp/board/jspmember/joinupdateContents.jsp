@@ -247,7 +247,6 @@
 		<div class="tablbl">
 			회원<br/>‍
 		</div>
-		<div class="tab_item" onclick="location.href='login.jsp';">로그인</div>
 		<div class="tab_item" onclick="location.href='join.jsp';">회원가입</div>
 		<div class="tab_item" onclick="location.href='../jspsearch/search.jsp';">ID/PW찾기</div>
 	</div>
@@ -260,7 +259,7 @@
 		<div class="join_form_block">
 			<div style="margin-top: 2vw;"></div>
 			<div class="col-auto profile_div" width="10vw" height="10vw" >	
-				<img src="../icon/profile_def.png">
+				<img src="../photo/<%=bean.getImgname()%>" width="150vw" style="margin-left: 60px;">
 			</div>
 
 			<div style="margin-top: 2vw;"></div>
