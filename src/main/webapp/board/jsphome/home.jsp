@@ -5,6 +5,7 @@
 <%@page import="board.BoardMgr"%>
 <%@page import="board.HomeBean"%>
 <%@page import="java.util.Vector"%>
+<%@page import="java.io.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="bMgr" class="board.BoardMgr" />
 <jsp:useBean id="cMgr" class="board.CommentMgr" />
@@ -2390,6 +2391,10 @@ button {
 </style>
 
 <script type="text/javascript">
+function openBoardRead(num) {
+	url = "../jspboard/boardRead.jsp?num=" + num;
+	window.open(url, "../jspboard/boardRead.jsp?num="+num,"width=1000,height=1000,scrollbars=yes");
+}
 
 function optFrm(option) {
 	document.optFrm.option.value = option;
@@ -2433,11 +2438,24 @@ function optFrm(option) {
 								String filename = bean.getFilename();
 								int point = 0;
 								String ext = "";
-								String url = "../icon/noimg_square.jpg";	
+								String url = "../icon/noimg_square.jpg";
+								
+								//1) 파일이름이 있다. + 파일 확장자가 그림이다. 3) 실제로 경로에 파일이 있다.
+								//단 하나라도 해당되지 않는다면 url은 기본 이미지 url.
+								
+								
 								if(filename!=null){
 									point = filename.lastIndexOf(".");
 									ext = filename.substring(point + 1 ).toLowerCase();
-								}
+									if(ext.trim().equals("jpg") || ext.trim().equals("gif") || ext.trim().equals("jpeg") || ext.trim().equals("bmp") || ext.trim().equals("png") || ext.trim().equals("tif") || ext.trim().equals("tga") || ext.trim().equals("rle") || ext.trim().equals("dib") || ext.trim().equals("tiff") || ext.trim().equals("raw")){ 
+										url = "../../UpLoadFiles/" + filename;							
+									}
+								}else{
+									url = "../icon/noimg_square.jpg";	
+								} 
+								
+								
+								
 								
 							
 							%>
@@ -2449,7 +2467,7 @@ function optFrm(option) {
 									<div class="trans_block">
 										<div>
 											<div class="text-label">
-												<%=bean.getSubject()%><br><%=bean.getId()%>/<%=bean.getType_board()%>/<%=bean.getType_cat()%><br>♡ <%=bean.getLikesSum()%> | 조회수 <%=bean.getCount()%> 
+												<div onclick="openBoardRead('<%=bean.getNum()%>')"><%=bean.getSubject()%></div><%=bean.getId()%>/<%=bean.getType_board()%>/<%=bean.getType_cat()%><br>♡ <%=bean.getLikesSum()%> | 조회수 <%=bean.getCount()%> 
 											</div>
 										</div>
 									</div>
