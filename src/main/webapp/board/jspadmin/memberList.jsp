@@ -33,12 +33,29 @@
 	crossorigin="anonymous">
 </head>
 <script>
-function deleteChk(id, name){
-	var delMsg = confirm('정말로 다음 회원을 강제 탈퇴시키겠습니까?\nid: '+ id + '\n이용자명:'+	name);
+function deleteChk(num){
+	var f = document.forms[num];
+	var delId = f.delId.value;
+	var delName = f.delName.value;
+	var delMsg = confirm('정말로 다음 회원을 강제 탈퇴시키겠습니까?\nID: ' + delId + ' 이름: ' + delName);
 	if(delMsg){
-		memberDeleteProc.
+		f.submit(); 
 	}
 	return false;
+}
+
+
+
+function formChk(frm){
+	var delId = document.frm.delId;
+	var delName = document.frm.delName;
+	var delMsg = confirm('정말로 다음 회원을 강제 탈퇴시키겠습니까?\nid: '+ delId + '\n이용자명:'+ delName);
+	if(delMsg){
+		frm.submit(); 
+	}
+	
+
+	return true;
 }
 
 </script>
@@ -46,8 +63,8 @@ function deleteChk(id, name){
 <body style="padding: 5vw;">
 	<h3>관리자 페이지입니다.</h3>
 	<hr>
+	
 	<table class="table">
-		
 		<thead>
 			<tr>
 				<th scope="col">No.</th>
@@ -68,25 +85,27 @@ function deleteChk(id, name){
 				String email = mbean.getEmail1() + "@" + mbean.getEmail2();
 				String phone = mbean.getPhone1() + "-" + mbean.getPhone2() + "-" + mbean.getPhone3();
 			%>
-			<tr>
-				<th scope="row"><%=num%></th>
-				<td><%=id%></td>
-				<td><%=name%></td>
-				<td><%=email%></td>
-				<td><%=phone%></td>
-				<td><a href="#"
-					onclick="deleteChk('<%=id%>','<%=name%>')">
-						<button type="button" class="btn btn-outline-danger">X</button>
-				</a></td>
-
-			</tr>
+				<form id="mbFrm" method="post" action="memberDeleteProc.jsp">
+					<tr>
+						<th scope="row"><%=num+1%></th>
+						<td><%=id%></td>
+						<td><%=name%></td>
+						<td><%=email%></td>
+						<td><%=phone%></td>
+						<td>
+							<a href="#"
+								onclick="deleteChk(<%=num%>)">
+									<button type="button" class="btn btn-outline-danger">X</button>
+							</a>
+						</td>
+						<input type="hidden" name="delId" value="<%=id%>">
+						<input type="hidden" name="delName" value="<%=name%>">
+					</tr>	
+				</form>
 			<%} %>
-			
-			
-			
-			
 		</tbody>
 	</table>
+
 	
 </body>
 </html>
