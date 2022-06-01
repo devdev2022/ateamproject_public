@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+
 <%
 
 %>
@@ -2434,6 +2435,13 @@ rotate(
 		document.loginFrm.submit();
 	}
 </script>
+
+
+<!-- 네이버 로그인 관련 -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
 </head>
 <body class="body">
 	<div class="div-block-5">
@@ -2457,7 +2465,7 @@ rotate(
 					<input	type="password" class="text-field-6 w-input" maxlength="256"
 						name="pwd" data-name="Email" placeholder="비밀번호를 입력하세요." />
 			<!-- 	<input type="button" value="로그인"> -->
-				
+					
 				<div class="w-form-done">
 					<div>Thank you! Your submission has been received!</div>
 				</div>
@@ -2465,10 +2473,28 @@ rotate(
 					<div>Oops! Something went wrong while submitting the form.</div>
 				</div>
 			</div>
+			
 			<a href="javascript:location.href='../jspsearch/search.jsp'" class="link-7">ID/PW 찾기</a>
 			<a href="javascript:location.href='join.jsp'" class="link-8">회원가입</a>			
 			<a class="button w-button" onclick="loginFn()"><br />로그인</a>
+			
+			
+			<div id="naver_id_login" style="margin-top:30px;"></div>
+			<script type="text/javascript">
+				var naver_id_login = new naver_id_login("TtdhomtlTfeImQCp_RKn",
+						"http://127.0.0.1/ateamweb/board/jsphome/callback.jsp");
+				var state = naver_id_login.getUniqState();
+				naver_id_login.setButton("green", 2, 40);
+				naver_id_login.setDomain("http://127.0.0.1/ateamweb/board/");
+				naver_id_login.setState(state);
+				naver_id_login.setPopup();
+				naver_id_login.init_naver_id_login();
+			</script>
+			
+			
+			<div style="margin-top:10px;">[127.0.0.1로 접속하여 실행해 주세요.]</div>
 		</div>
+		
 		</form>
 	</div>
 	

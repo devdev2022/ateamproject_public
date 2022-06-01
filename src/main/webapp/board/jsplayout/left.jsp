@@ -71,7 +71,7 @@ align-item: center;
 		<%
 		} else {
 		%>
-		<%=leftId%>님,환영합니다.
+		<%=leftBean.getName()%>님,환영합니다.
 		<%
 		if (leftGrade.equals("1")) {
 		%>
