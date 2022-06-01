@@ -18,8 +18,8 @@ if (option==null)
 	option = "count";
 else if(option.equals("count"))
 	option = "count";
-else if(option.equals("num"))
-	option = "num";
+else if(option.equals("b.num"))
+	option = "b.num";
 else if(option.equals("likesSum"))
 	option = "likesSum";
 
@@ -2421,14 +2421,17 @@ function optFrm(option) {
 						<div class="title_block">
 							<form name="optFrm" method="post">
 								<div>
-									<a href="javascript:optFrm('count')">조회순</a> | 
-									<a href="javascript:optFrm('b.num')">최신순</a> | 
-									<a href="javascript:optFrm('likesSum')">BEST</a> 
+									<a href="javascript:optFrm('count')">
+										<span <%if(option=="count"){%>style="font-weight:bold;"<%}%>>조회순</span></a> | 
+									<a href="javascript:optFrm('b.num')">
+										<span <%if(option=="b.num"){%>style="font-weight:bold;"<%}%>>최신순</span></a> | 
+									<a href="javascript:optFrm('likesSum')">
+										<span <%if(option=="likesSum"){%>style="font-weight:bold;"<%}%>>BEST</span></a> 
 										<input type="hidden" name="option" value=""></input>
 								</div>
 							</form>
 						</div>
-
+						
 						<div class="w-layout-grid board_grid">
 							<%
 							vlist = bMgr.getBoardListHome(option, max);
@@ -2453,11 +2456,7 @@ function optFrm(option) {
 								}else{
 									url = "../icon/noimg_square.jpg";	
 								} 
-								
-								
-								
-								
-							
+
 							%>
 							<div class="grid-item">
 								<a href="#" class="link-block w-inline-block"
