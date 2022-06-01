@@ -4,13 +4,28 @@
 <jsp:useBean id="bean" class="member.MemberBean1"/>
 <jsp:setProperty property="*" name="bean"/>
 <%
+	String idList = request.getParameter("idList");
 	String delId = request.getParameter("delId");
-	boolean result=mgr.deleteMember(delId);
 	String msg="삭제처리 과정에서 문제가 발생했습니다. 담당자에게 문의하세요.";
 	String url="memberList.jsp";
-	if(result){
-		msg="삭제되었습니다.";
+	
+	if(idList!=null){
+		String[] delArr = idList.split(",");
+		msg = "";
+		for(int i=0; i<delArr.length; i++){
+			boolean result=mgr.deleteMember(delArr[i]);
+			if(result){
+				msg="탈퇴처리가 완료되었습니다.";
+			}		
+		}
+
+	}else{
+		boolean result=mgr.deleteMember(delId);
+		if(result){
+			msg="탈퇴처리가 완료되었습니다.";
+		}		
 	}
+	
 %>
 
 <script type="text/javascript">

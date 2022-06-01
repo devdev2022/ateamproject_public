@@ -32,8 +32,15 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
 </head>
+
+<script 
+  src="http://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+
 <script>
 function deleteChk(num){
+	
 	var f = document.forms[num];
 	var delId = f.delId.value;
 	var delName = f.delName.value;
@@ -45,17 +52,23 @@ function deleteChk(num){
 }
 
 
+function selectedValues(){
 
-function formChk(frm){
-	var delId = document.frm.delId;
-	var delName = document.frm.delName;
-	var delMsg = confirm('정말로 다음 회원을 강제 탈퇴시키겠습니까?\nid: '+ delId + '\n이용자명:'+ delName);
-	if(delMsg){
-		frm.submit(); 
-	}
-	
+	var af = arrFrm;
 
-	return true;
+    var arr = [];
+    
+    var $checkboxes = $("input[type='checkbox']:checked");
+    
+    $checkboxes.each(function(){
+        arr.push($(this).attr("value"));
+    });
+    
+    var aDelMsg = confirm('정말로 다음 회원들을 강제 탈퇴 처리합니까?\n' + arr);
+    if(aDelMsg){
+    	af.idList.value = arr;
+    	af.submit();
+    }
 }
 
 </script>
@@ -67,6 +80,7 @@ function formChk(frm){
 	<table class="table">
 		<thead>
 			<tr>
+				<th scope="col"></th>
 				<th scope="col">No.</th>
 				<th scope="col">id</th>
 				<th scope="col">name</th>
@@ -87,14 +101,16 @@ function formChk(frm){
 			%>
 				<form id="mbFrm" method="post" action="memberDeleteProc.jsp">
 					<tr>
-						<th scope="row"><%=num+1%></th>
+						<th scope="row">
+						<input class="form-check-input mt-0" type="checkbox" value="<%=id%>" aria-label="Checkbox for following text input">
+						</th>
+						<td><%=num+1%></td>
 						<td><%=id%></td>
 						<td><%=name%></td>
 						<td><%=email%></td>
 						<td><%=phone%></td>
 						<td>
-							<a href="#"
-								onclick="deleteChk(<%=num%>)">
+							<a href="#" onclick="deleteChk(<%=num%>)">
 									<button type="button" class="btn btn-outline-danger">X</button>
 							</a>
 						</td>
@@ -106,6 +122,8 @@ function formChk(frm){
 		</tbody>
 	</table>
 
-	
+	<form id="arrFrm" method="post" action="memberDeleteProc.jsp"><button type="button" class="btn btn-primary" onclick="selectedValues()">강제 탈퇴</button>
+		<input type="hidden" name="idList" value="이콩이">
+	</form>
 </body>
 </html>
