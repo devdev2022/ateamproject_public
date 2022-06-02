@@ -2482,17 +2482,17 @@ rotate(
 			<div id="naver_id_login" style="margin-top:30px;"></div>
 			<script type="text/javascript">
 				var naver_id_login = new naver_id_login("TtdhomtlTfeImQCp_RKn",
-						"http://127.0.0.1/ateamweb/board/jsphome/callback.jsp");
+						"http://10.100.204.23/ateamweb/board/jsphome/callback.jsp");
 				var state = naver_id_login.getUniqState();
 				naver_id_login.setButton("green", 2, 40);
-				naver_id_login.setDomain("http://127.0.0.1/ateamweb/board/");
+				naver_id_login.setDomain("http://10.100.204.23/ateamweb/board/");
 				naver_id_login.setState(state);
 				naver_id_login.setPopup();
 				naver_id_login.init_naver_id_login();
 			</script>
 			
 			
-			<div style="margin-top:10px;">[127.0.0.1로 접속하여 실행해 주세요.]</div>
+			<div style="margin-top:10px;">[10.100.204.23로 접속하여 실행해 주세요.]</div>
 		</div>
 		
 		</form>
