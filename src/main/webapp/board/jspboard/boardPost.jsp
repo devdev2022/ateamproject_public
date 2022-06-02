@@ -66,6 +66,13 @@
 			document.postFrm.content.focus();
 			return;
 		}
+		
+		var yValue = document.postFrm.youtube.value;
+		if(yValue !="" && yValue != null){
+			yValue = yValue.replace("watch?v=","embed/");
+			document.postFrm.content.value = '<iframe width="640" height="360" src="'+ yValue + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>' + document.postFrm.content.value;
+		}
+		
 		document.postFrm.submit();
 	}
 </script>
@@ -239,6 +246,11 @@
 			내용
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="12" name="content"></textarea>
 		</div>
+		<div class="mb-3">
+			Youtube 동영상 넣기
+			<input class="form-control" type="text" placeholder="여기에 URL을 붙여넣으세요. ex) https://www.youtube.com/watch?v=VJhdfwLjaSI" aria-label="default input example" name="youtube" size="150">	
+		</div>
+		
 	</div>
 	
 	<div class="layout-upper-bottom w-container">
