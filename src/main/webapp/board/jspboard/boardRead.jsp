@@ -18,8 +18,6 @@
 		session.setAttribute("bValue", SbValue);
 	}
 	String title = "";
-	out.print("세션 : " + SbValue);
-	out.print(" request : " +bValue);
 	if(bValue != null){
 		title = bValue;
 	}else{
