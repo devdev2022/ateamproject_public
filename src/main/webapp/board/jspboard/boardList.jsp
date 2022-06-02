@@ -2368,6 +2368,7 @@ rotate(
 								String subject = Bbean.getSubject();
 								String id = Bbean.getId();
 								String regdate = Bbean.getRegdate();
+								String content = Bbean.getContent();
 								int depth = Bbean.getDepth();
 								int count = Bbean.getCount();
 								String Type_cat = Bbean.getType_cat();
@@ -2411,6 +2412,9 @@ rotate(
 															<img src="../icon/file.png" align="middle">
 														<%} %>
 													<%} %>
+												<%} %>
+												<%if(content.contains("<iframe width=")) { %>
+													<img src="../icon/youtube.png" align="middle">
 												<%} %>
 												<%if(bcount > 0) {%>
 														<font color="red">[<%=bcount %>]</font>
