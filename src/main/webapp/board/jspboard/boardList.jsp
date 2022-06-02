@@ -1,3 +1,5 @@
+<%@page import="member.MemberBean1"%>
+<%@page import="member.MemberBean"%>
 <%@page import="board.BoardMgr"%>
 <%@page import="board.UpFileBean"%>
 <%@page import="board.BoardBean"%>
@@ -6,6 +8,7 @@
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
 <jsp:useBean id="cMgr" class="board.CommentMgr"/>
 <jsp:useBean id="fMgr" class="board.UpFileBean"/>
+<jsp:useBean id="mMgr" class="member.MemberMgr1"/>
 
 <%
 	int totalRecord = 0; //총 게시물 수
@@ -18,6 +21,10 @@
 	
 	String loginId = (String)session.getAttribute("idKey");
 	session.setAttribute("idKey", loginId);
+	
+//	로그인한 회원 정보
+	MemberBean1 Mbean = mMgr.getMember(loginId);
+	String grade = Mbean.getGrade().trim();
 	
 	if(request.getParameter("numPerPage")!=null){
 		numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
@@ -2350,6 +2357,7 @@ rotate(
 								if(i == listSize){
 									break;
 								}
+//								게시물 정보
 								BoardBean Bbean = Bvlist.get(i);
 								int num = Bbean.getNum();
 								String subject = Bbean.getSubject();
@@ -2365,10 +2373,11 @@ rotate(
 								int bcount = cMgr.getBCommentCount(num);
 								%>
 										<tr>
+										<%=grade%>
 											<td align="center">
 												<%=totalRecord - start - i %>
-												<%if(loginId == id){ %>
-												<a href="javascript:deleteBoard('<%=num%>')"><font color="red">X</font></a>
+												<%if(loginId.equals(id) || grade.equals("1")){ %>
+													<a href="javascript:deleteBoard('<%=num%>')"><img src="../icon/delete.png" align="middle"></a>
 												<%} %>
 											</td>
 											<td >
