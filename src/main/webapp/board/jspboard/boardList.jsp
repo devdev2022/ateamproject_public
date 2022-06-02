@@ -2373,7 +2373,6 @@ rotate(
 								int bcount = cMgr.getBCommentCount(num);
 								%>
 										<tr>
-										<%=grade%>
 											<td align="center">
 												<%=totalRecord - start - i %>
 												<%if(loginId.equals(id) || grade.equals("1")){ %>
