@@ -12,7 +12,7 @@
 <body>
 
 <script type="text/javascript">
-  var naver_id_login = new naver_id_login("TtdhomtlTfeImQCp_RKn", "http://127.0.0.1/ateamweb/board/jsphome/callback.jsp");
+  var naver_id_login = new naver_id_login("TtdhomtlTfeImQCp_RKn", "http://10.100.204.23/ateamweb/board/jsphome/callback.jsp");
   // 접근 토큰 값 출력
   // alert(naver_id_login.oauthParams.access_token);
   // 네이버 사용자 프로필 조회
