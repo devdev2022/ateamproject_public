@@ -71,8 +71,8 @@ function pageing(page) {
 	document.readFrm.submit();
 }
 
-function openBoardRead(num) {
-	url = "../jspboard/boardRead.jsp?num=" + num;
+function openBoardRead(num, bValue) {
+	url = "../jspboard/boardRead.jsp?num=" + num + "&bValue=" + bValue;
 	window.open(url, "../jspboard/boardRead.jsp?num="+num,"width=1000,height=1000,scrollbars=yes");
 }
 </script>
@@ -258,10 +258,10 @@ function openBoardRead(num) {
 			<div class="grid_lower">
 				<ul style="list-style: none; padding: 0.3vw;">
 					<li>
-						<font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=subject %></a></font>
+						<font color="white"><a href="javascript:openBoardRead('<%=num%>', '<%=bBean.getType_board()%>')"><%=subject %></a></font>
 					</li>
 					<li>
-						<font color="white"><a href="javascript:openBoardRead('<%=num%>')"><%=id %></a></font>
+						<font color="white"><a href="javascript:openBoardRead('<%=num%>', '<%=bBean.getType_board()%>')"><%=id %></a></font>
 					</li>
 					<li>
 						<img src="../icon/save_gray.png" width="12vw"><font color="white"> <a href="javascript:openBoardRead('<%=num%>')"></a><%=bLCount%> | 조회수 <%= count%></font>
