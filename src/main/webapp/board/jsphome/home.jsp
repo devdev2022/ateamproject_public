@@ -2391,8 +2391,8 @@ button {
 </style>
 
 <script type="text/javascript">
-function openBoardRead(num) {
-	url = "../jspboard/boardRead.jsp?num=" + num;
+function openBoardRead(num, bValue) {
+	url = "../jspboard/boardRead.jsp?num=" + num +"&bValue=" + bValue;
 	window.open(url, "../jspboard/boardRead.jsp?num="+num,"width=1000,height=1000,scrollbars=yes");
 }
 
@@ -2466,8 +2466,7 @@ function optFrm(option) {
 									<div class="trans_block">
 										<div>
 											<div class="text-label">
-												<div onclick="openBoardRead('<%=bean.getNum()%>')"><%=bean.getSubject()%></div>
-													<%=bean.getId()%>/<%=bean.getType_board()%>/<%=bean.getType_cat()%><br>♡ <%=bean.getLikesSum()%> | 조회수 <%=bean.getCount()%> 
+												<div onclick="openBoardRead('<%=bean.getNum()%>', '<%=bean.getType_board()%>')"><%=bean.getSubject()%></div><%=bean.getId()%>/<%=bean.getType_board()%>/<%=bean.getType_cat()%><br>♡ <%=bean.getLikesSum()%> | 조회수 <%=bean.getCount()%> 
 											</div>
 										</div>
 									</div>
