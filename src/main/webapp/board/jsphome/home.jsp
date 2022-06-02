@@ -2466,7 +2466,8 @@ function optFrm(option) {
 									<div class="trans_block">
 										<div>
 											<div class="text-label">
-												<div onclick="openBoardRead('<%=bean.getNum()%>')"><%=bean.getSubject()%></div><%=bean.getId()%>/<%=bean.getType_board()%>/<%=bean.getType_cat()%><br>♡ <%=bean.getLikesSum()%> | 조회수 <%=bean.getCount()%> 
+												<div onclick="openBoardRead('<%=bean.getNum()%>')"><%=bean.getSubject()%></div>
+													<%=bean.getId()%>/<%=bean.getType_board()%>/<%=bean.getType_cat()%><br>♡ <%=bean.getLikesSum()%> | 조회수 <%=bean.getCount()%> 
 											</div>
 										</div>
 									</div>
