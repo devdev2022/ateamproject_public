@@ -23,8 +23,13 @@
 	session.setAttribute("idKey", loginId);
 	
 //	로그인한 회원 정보
-	MemberBean1 Mbean = mMgr.getMember(loginId);
-	String grade = Mbean.getGrade().trim();
+	String grade = "";
+	if(loginId != null){
+		MemberBean1 Mbean = mMgr.getMember(loginId);
+		grade = Mbean.getGrade().trim();
+	}else{
+		grade = "";
+	}
 	
 	if(request.getParameter("numPerPage")!=null){
 		numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
@@ -2375,7 +2380,7 @@ rotate(
 										<tr>
 											<td align="center">
 												<%=totalRecord - start - i %>
-												<%if(loginId.equals(id) || grade.equals("1")){ %>
+												<%if(id.equals(loginId) || grade.equals("1")) { %>
 													<a href="javascript:deleteBoard('<%=num%>')"><img src="../icon/delete.png" align="middle"></a>
 												<%} %>
 											</td>
