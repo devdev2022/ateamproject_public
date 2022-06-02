@@ -14,10 +14,12 @@ import javax.servlet.http.HttpSession;
 public class DeleteSavePostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		int num = Integer.parseInt(request.getParameter("num"));
 		HttpSession session = request.getSession();
+		String bValue = (String)session.getAttribute("bValue");
+		session.setAttribute("bValue", bValue);
 		String loginId = (String)session.getAttribute("idKey");
 		if(loginId == null) {
 			PrintWriter out = response.getWriter();
@@ -27,6 +29,7 @@ public class DeleteSavePostServlet extends HttpServlet {
 			out.println("</script>");
 			return;
 		}
+		
 		SavePostMgr sMgr = new SavePostMgr();
 		sMgr.deleteSavePost(num, loginId);
 		response.sendRedirect("boardRead.jsp?num=" + num);

@@ -14,18 +14,21 @@ import javax.servlet.http.HttpSession;
 public class DeleteLikesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
+		String bValue = (String)session.getAttribute("bValue");
+		session.setAttribute("bValue", bValue);
+		PrintWriter out = response.getWriter();
 		String loginId = (String)session.getAttribute("idKey");
 		if(loginId == null) {
-			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('로그인이 필요합니다.')");
 			out.println("javascript:location.href='../jspmember/login.jsp'");
 			out.println("</script>");
 			return;
 		}
+		
 		int num = Integer.parseInt(request.getParameter("num"));
 		LikesMgr lMgr = new LikesMgr();
 		lMgr.deleteLikes(num, loginId);

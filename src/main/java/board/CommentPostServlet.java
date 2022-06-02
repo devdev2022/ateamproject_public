@@ -14,9 +14,11 @@ import javax.servlet.http.HttpSession;
 public class CommentPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
+		String bValue = (String)session.getAttribute("bValue");
+		session.setAttribute("bValue", bValue);
 		String loginId = (String)session.getAttribute("idKey");
 		if(loginId == null) {
 			PrintWriter out = response.getWriter();

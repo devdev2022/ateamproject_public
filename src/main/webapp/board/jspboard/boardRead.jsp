@@ -11,7 +11,21 @@
 	String bValue = request.getParameter("bValue");
 	
 	String loginId = (String)session.getAttribute("idKey");
-	session.setAttribute("bValue", bValue);
+	String SbValue = (String)session.getAttribute("bValue");
+	if(bValue != null){
+		session.setAttribute("bValue", bValue);
+	}else{
+		session.setAttribute("bValue", SbValue);
+	}
+	String title = "";
+	out.print("세션 : " + SbValue);
+	out.print(" request : " +bValue);
+	if(bValue != null){
+		title = bValue;
+	}else{
+		title = SbValue;
+	}
+	
 	
 %>
 <jsp:useBean id="bMgr" class="board.BoardMgr"/>
@@ -24,7 +38,7 @@
 
 <!DOCTYPE html>
 <head>
-<title><%=bValue %> 게시글</title>
+<title><%=title %> 게시글</title>
 <link href="../jsplayout/css/layout.css" rel="stylesheet">
 <!-- 부트스트랩 요소 -->
 <link
@@ -422,7 +436,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 	<div class="layout-upper-bottom w-container">
 		<ul role="list" class="list-2 w-list-unstyled">
 			<li>
-				<form name="likeFrm" action="" method="post">
+				<form name="likeFrm" action="" method="get">
 					<table>
 						<tr>
 						<%if(!lMgr.selectLikes(num, loginId)){	%>
@@ -438,10 +452,11 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 					</table>
 					<input type="hidden" name="loginId" value="<%=loginId%>">
 					<input type="hidden" name="num" value=<%=num %>>	
+					<input type="hidden" name="bValue" value=<%=bValue %>>	
 				</form>
 			</li>
 			<li>
-				<form name="savePostFrm" action="" method="post">
+				<form name="savePostFrm" action="" method="get">
 					<table>
 						<tr>
 						<%if(!sMgr.selectSavePost(num, loginId)){	%>
@@ -456,26 +471,24 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 						</tr>
 					</table>
 					<input type="hidden" name="loginId" value="<%=loginId%>">
-					<input type="hidden" name="num" value=<%=num %>>	
+					<input type="hidden" name="num" value=<%=num %>>
 				</form>	
 			</li>
 			<li>
 				<table>
-					<div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-						<div class="dropdown" align="right">
-							<img src="../icon/share_post.png" class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-							<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-								 <!-- 페이스북 공유 버튼 --> 
-								<li><a href="" onclick="window.open(url_combine_fb, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://download-hub.com/wp-content/uploads/2021/01/Facebook_icon.png" title="페이스북" class="sharebtn_custom" style="width: 32px;"></a>
-								  <!-- 트위터 공유 버튼 --> 
-								 <a href="" onclick="window.open(url_combine_tw, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://play-lh.googleusercontent.com/8sc6LSo3dRf54GaLdQR8UZfzd_fgHgWMJlNxGLP1HWPEU7YY4UxkyHc8-qCNwtyiqO55=s180-rw" title="트위터" class="sharebtn_custom" style="width: 32px;"></a>
-								  <!-- 카카오 스토리 공유 버튼 --> 
-								  <a href="" onclick="window.open(url_combine_ks, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://download.beer/wp-content/uploads/2021/03/kakaostory-logo-0x0.png" title="카카오스토리" class="sharebtn_custom" style="width: 32px;"></a>
-								  <!-- 밴드 공유 버튼 --> 
-								  <a href="" onclick="window.open(url_combine_band, '', 'scrollbars=no, width=584, height=635'); return false;"><img src="https://play-lh.googleusercontent.com/hvpSrKnGiK0h-GnDofFmj6y5mLqqB7vDpsV9kWYebCEvMuZp3dsRNDqJANnk6eNHqlA=s180-rw" title="밴드" class="sharebtn_custom" style="width: 32px;"></a></li>
-								  <!-- SNS버튼 끝 -->
-							</ul>
-						</div>
+					<div class="dropdown" align="right">
+						<img src="../icon/share_post.png" class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="true">
+						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+							 <!-- 페이스북 공유 버튼 --> 
+							<li><a href="" onclick="window.open(url_combine_fb, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://download-hub.com/wp-content/uploads/2021/01/Facebook_icon.png" title="페이스북" class="sharebtn_custom" style="width: 32px;"></a>
+							  <!-- 트위터 공유 버튼 --> 
+							 <a href="" onclick="window.open(url_combine_tw, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://play-lh.googleusercontent.com/8sc6LSo3dRf54GaLdQR8UZfzd_fgHgWMJlNxGLP1HWPEU7YY4UxkyHc8-qCNwtyiqO55=s180-rw" title="트위터" class="sharebtn_custom" style="width: 32px;"></a>
+							  <!-- 카카오 스토리 공유 버튼 --> 
+							  <a href="" onclick="window.open(url_combine_ks, '', 'scrollbars=no, width=600, height=600'); return false;"><img src="https://download.beer/wp-content/uploads/2021/03/kakaostory-logo-0x0.png" title="카카오스토리" class="sharebtn_custom" style="width: 32px;"></a>
+							  <!-- 밴드 공유 버튼 --> 
+							  <a href="" onclick="window.open(url_combine_band, '', 'scrollbars=no, width=584, height=635'); return false;"><img src="https://play-lh.googleusercontent.com/hvpSrKnGiK0h-GnDofFmj6y5mLqqB7vDpsV9kWYebCEvMuZp3dsRNDqJANnk6eNHqlA=s180-rw" title="밴드" class="sharebtn_custom" style="width: 32px;"></a></li>
+							  <!-- SNS버튼 끝 -->
+						</ul>
 					</div>
 					<tr>
 						<td></td>
@@ -502,7 +515,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		for(int i=0; i<cCount; i++){
 			CommentBean cBean = cVlist.get(i);
 	%>
-	<form name="cmtFrm<%=i%>"action="" method="post">
+	<form name="cmtFrm<%=i%>"action="" method="get">
 		<script type="text/javascript">
 			function insertCmtLike(cnum) {
 				document.cmtFrm<%=i%>.action = "insertCmtLikes";
@@ -558,7 +571,7 @@ var url_combine_naver = url_default_naver + encodeURI(url_this_page) + title_def
 		</div>
 	</form>
 	<%} %>
-	<form name="commentFrm" action="commentPost" method="post">
+	<form name="commentFrm" action="commentPost" method="get">
 		<div class="comment-write-header w-container">
 			<div>
 				<b>댓글 작성</b> | <img src="../icon/info_large.jpg" width="20vw"> 
