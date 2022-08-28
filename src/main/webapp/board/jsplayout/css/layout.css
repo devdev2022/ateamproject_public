@@ -2489,21 +2489,6 @@ textarea.w-input, textarea.w-select {
 	content: ""
 }
 
-@
-keyframes spin { 0%{
-	transform: rotate(0deg)
-}
-
-100
-%
-{
-transform
-:
-rotate(
-360deg
-)
-}
-}
 .w-dyn-empty {
 	padding: 10px;
 	background-color: #dddddd
